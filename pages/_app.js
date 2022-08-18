@@ -1,12 +1,12 @@
-import Nav from "../components/Nav";
-import { MenuStateProvider } from "../lib/menuState";
+import { MenuStateProvider, useMenu } from "../lib/menuState";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
     <MenuStateProvider>
-      <Nav />
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </MenuStateProvider>
   );
 }

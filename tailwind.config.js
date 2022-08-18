@@ -15,6 +15,12 @@ module.exports = {
       fontFamily: {
         display: ["Mundial", "sans-serif"],
       },
+      width: {
+        "screen-half": "50vw",
+      },
+    },
+    fontFamily: {
+      sans: ["Montserrat", "sans-serif"],
     },
   },
   plugins: [],

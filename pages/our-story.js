@@ -1,3 +1,5 @@
+import HomeLayout from "../components/layouts/homeLayout";
+
 export default function OurStory() {
   return (
     <div>
@@ -5,3 +7,7 @@ export default function OurStory() {
     </div>
   );
 }
+
+OurStory.getLayout = function getLayout(page) {
+  return <HomeLayout>{page}</HomeLayout>;
+};

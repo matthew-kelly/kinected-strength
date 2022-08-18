@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,8 +16,27 @@
     font-weight: 600;
     src: url("/fonts/MundialDemibold.otf") format("otf");
   }
-}
 
-a {
-  @apply cursor-pointer;
+  .body {
+    @apply flex-grow relative block;
+  }
+
+  a {
+    @apply cursor-pointer;
+  }
+
+  button {
+    @apply cursor-pointer flex justify-center items-center self-center px-4 py-3 gap-2 rounded-md font-display font-semibold text-2xl;
+  }
+
+  button.primary {
+    @apply bg-primary-light;
+  }
+
+  .home-banner-text {
+    line-height: initial;
+    font-size: clamp(5rem, 0.5rem + 9.375vw, 8rem);
+    padding-top: clamp(10rem, 28vw, 21rem);
+    margin-left: clamp(3rem, 8vw, 18rem);
+  }
 }
