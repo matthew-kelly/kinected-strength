@@ -1,7 +1,7 @@
-const Circle = ({ size = "100", color = "fill-black" }) => {
+const Circle = ({ size = "100", color = "fill-black", className = "" }) => {
   return (
-    <svg width={parseInt(size) * 2} height={parseInt(size) * 2}>
-      <circle cx="50%" cy="50%" r={size} className={color} />
+    <svg className={className} width={parseInt(size)} height={parseInt(size)}>
+      <circle cx="50%" cy="50%" r={parseInt(size) / 2} className={color} />
     </svg>
   );
 };
@@ -11,21 +11,41 @@ const Semicircle = ({
   height = "100",
   color = "fill-black",
   rotate = "0",
+  className = "",
 }) => {
   return (
-    <svg
-      width={parseInt(width * 2)}
-      height={parseInt(height)}
-      transform={`rotate(${rotate})`}
-    >
-      <ellipse
-        cx={width}
-        cy={height}
-        rx={width}
-        ry={height}
-        className={color}
-      />
-    </svg>
+    <>
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        transform={`rotate(${rotate})`}
+        xmlns="http://www.w3.org/2000/svg"
+        className={className}
+      >
+        <path
+          d={`M0 ${height}L${width} ${height}C${width} -${
+            parseInt(height) / 3
+          } 1.43099e-06 -${parseInt(height) / 3} 0 ${height}Z`}
+          className={color}
+        />
+      </svg>
+
+      {/* <svg
+        className={className}
+        width={parseInt(width)}
+        height={parseInt(height)}
+        transform={`rotate(${rotate})`}
+      >
+        <ellipse
+          cx={parseInt(width) / 2}
+          cy={height}
+          rx={parseInt(width) / 2}
+          ry={height}
+          className={color}
+        />
+      </svg> */}
+    </>
   );
 };
 
@@ -34,9 +54,15 @@ const Quartercircle = ({
   height = "100",
   color = "fill-black",
   rotate = "0",
+  className = "",
 }) => {
   return (
-    <svg width={width} height={height} transform={`rotate(${rotate})`}>
+    <svg
+      className={className}
+      width={width}
+      height={height}
+      transform={`rotate(${rotate})`}
+    >
       <ellipse cx="0" cy={height} rx={width} ry={height} className={color} />
     </svg>
   );
@@ -47,9 +73,15 @@ const Rectangle = ({
   height = "50",
   color = "fill-black",
   rotate = "0",
+  className = "",
 }) => {
   return (
-    <svg width={width} height={height} transform={`rotate(${rotate})`}>
+    <svg
+      className={className}
+      width={width}
+      height={height}
+      transform={`rotate(${rotate})`}
+    >
       <rect width={width} height={height} className={color} />
     </svg>
   );
@@ -62,9 +94,11 @@ const KLogo = ({
   colorTop = color,
   colorBottom = color,
   rotate = "0",
+  className = "",
 }) => {
   return (
     <svg
+      className={className}
       width={width}
       height={(width * 57) / 50}
       viewBox="0 0 50 57"

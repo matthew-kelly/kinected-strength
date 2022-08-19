@@ -1,19 +1,20 @@
-import { motion, useCycle, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import links from "../lib/menuItems";
 
+// Not in use
 const sideVariants = {
   closed: {
     transition: {
-      staggerChildren: 0.02,
+      staggerChildren: 0.07,
       staggerDirection: -1,
     },
   },
   open: {
     transition: {
-      staggerChildren: 0.02,
+      staggerChildren: 0.07,
       staggerDirection: 1,
     },
   },
@@ -25,6 +26,9 @@ const itemVariants = {
   },
   open: {
     opacity: 1,
+    transition: {
+      delay: 0.25,
+    },
   },
 };
 
@@ -49,23 +53,24 @@ export default function Menu({ isOpen = false, closeMenu }) {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="bg-primary-light h-screen z-[100] fixed top-0 left-0"
+          className="bg-secondary-dark h-screen z-[100] fixed top-0 left-0"
           initial={{ width: 0 }}
           animate={{ width: 300 }}
-          exit={{ width: 0, transition: { delay: 0.5, duration: 0.2 } }}
+          exit={{ width: 0, transition: { delay: 0.25, duration: 0.2 } }}
         >
           <motion.div
             className="flex flex-col mt-8"
             initial="closed"
             animate="open"
             exit="closed"
-            variants={sideVariants}
+            // variants={sideVariants}
           >
             {links.map((link) => (
               <Link href={link.href} key={link.id} passHref>
                 <motion.a
-                  className={`px-16 py-4 text-2xl hover:bg-white ${
-                    router.asPath === link.href && "bg-secondary-light"
+                  className={`px-16 py-4 text-2xl hover:bg-white text-white hover:text-black whitespace-nowrap ${
+                    router.asPath === link.href &&
+                    "bg-secondary-light text-black"
                   }`}
                   variants={itemVariants}
                   onClick={closeMenu}
