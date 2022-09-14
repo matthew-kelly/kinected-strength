@@ -1,12 +1,18 @@
 import { MenuStateProvider, useMenu } from "../lib/menuState";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  const getLayout = Component.getLayout || ((page) => page);
-
   return (
     <MenuStateProvider>
-      {getLayout(<Component {...pageProps} />)}
+      <div className="min-h-screen flex flex-col overflow-x-clip bg-primary-dark">
+        <Nav />
+        <main className="body">
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </div>
     </MenuStateProvider>
   );
 }

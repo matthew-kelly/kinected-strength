@@ -1,0 +1,12 @@
+.spinner {
+  animation: rotation 15s linear infinite;
+  transform-origin: 50% 50%;
+  /*   without this line, the path would rotate about the entire svg's viewbox */
+  transform-box: fill-box;
+}
+
+@keyframes rotation {
+  to {
+    transform: rotate(-360deg);
+  }
+}
