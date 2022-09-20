@@ -40,3 +40,8 @@
     margin-left: clamp(3rem, 8vw, 18rem);
   }
 }
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}

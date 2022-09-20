@@ -12,7 +12,7 @@ export default function Nav() {
   return (
     <>
       <nav>
-        <div className="flex justify-between items-center px-16 py-12 absolute inset-0 z-[101] max-h-min">
+        <div className="flex justify-between items-center px-16 py-12 fixed inset-0 z-[101] max-h-min">
           <Link href="/">
             <a>
               <KLogo
