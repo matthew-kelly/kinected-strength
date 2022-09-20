@@ -5,14 +5,6 @@ import { ScrollTriggerProvider } from "../components/ScrollTriggerProvider";
 import HomeBanner from "../components/HomeBanner";
 
 export default function Home() {
-  const bannerRef = useRef(null);
-  const [bannerImageHeight, setBannerImageHeight] = useState(0);
-
-  useEffect(() => {
-    const bannerImage = document.getElementById("bannerImage");
-    setBannerImageHeight(bannerImage.offsetHeight + 822); // FIXME: adjust for image dimensions for any new images
-  }, []);
-
   return (
     <>
       <Head>
@@ -21,18 +13,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div
-        ref={bannerRef}
-        className="flex flex-col"
-        style={{ height: bannerImageHeight }}
-      >
-        <ScrollTriggerProvider debug={true} options={{ end: "+=50%" }}>
+      <div className="flex flex-col" id="bannerContainer">
+        <ScrollTriggerProvider options={{ end: "+=50%" }}>
           <HomeBanner />
         </ScrollTriggerProvider>
       </div>
 
       <div className="bg-primary-dark flex flex-col relative z-10">
-        <div className="px-16 py-12 flex justify-center">
+        <div className="px-16 py-12 flex justify-center bg-yellow-200">
           <span className="font-display font-semibold text-3xl text-center text-secondary-light">
             Your home for kinesiology, strength training, and active rehab in
             North Vancouver<span className="text-secondary-dark">.</span>

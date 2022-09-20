@@ -29,6 +29,7 @@ export default function HomeBanner() {
   const [logoTop, setLogoTop] = useState(0);
 
   const getWindowWidth = () => {
+    progress.set(0);
     scrollTo(0, 0); // fix for initial image width
     setWindowWidth(window.innerWidth);
   };
@@ -66,6 +67,10 @@ export default function HomeBanner() {
     const newLogoTop = Math.round(imageWidth * 0.385 + 133);
     setLogoWidth(imageWidth - 50);
     setLogoTop(newLogoTop);
+
+    const bannerImage = document.getElementById("bannerImage");
+    const bannerContainer = document.getElementById("bannerContainer");
+    bannerContainer.style.height = bannerImage.offsetHeight + 822 + "px";
   }, [windowWidth]);
 
   return (
