@@ -5,9 +5,12 @@ import { colors } from "../utils/theme";
 import { useMenu } from "../lib/menuState";
 import Menu from "./Menu";
 import { KLogo } from "./shapes";
+import { useRouter } from "next/router";
 
 export default function Nav() {
   const { toggleMenu, closeMenu, isOpen } = useMenu();
+
+  const router = useRouter();
 
   return (
     <>
@@ -23,11 +26,13 @@ export default function Nav() {
               />
             </a>
           </Link>
-          {/* <Link href="/">
-            <a>
-              <Logo />
-            </a>
-          </Link> */}
+          {router.pathname !== "/" && (
+            <Link href="/">
+              <a>
+                <Logo />
+              </a>
+            </Link>
+          )}
           <div className="flex items-center">
             <MenuButton
               isOpen={isOpen}
