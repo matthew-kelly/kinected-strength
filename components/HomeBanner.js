@@ -29,8 +29,10 @@ export default function HomeBanner() {
   const [logoTop, setLogoTop] = useState(0);
 
   const getWindowWidth = () => {
+    // FIXME: hate this but it works for now
     progress.set(0);
     scrollTo(0, 0); // fix for initial image width
+
     setWindowWidth(window.innerWidth);
   };
 
@@ -96,7 +98,7 @@ export default function HomeBanner() {
 
       <motion.div
         ref={scrollRef}
-        className="z-20 fixed left-0 right-0" // absolute bottom-12
+        className="z-20 fixed left-0 right-0" // absolute bottom-12 z-[102]
         style={{
           top: logoContainerTop,
         }}

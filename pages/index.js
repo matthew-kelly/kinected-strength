@@ -1,8 +1,13 @@
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import LogoSpinner from "../components/LogoSpinner";
 import { ScrollTriggerProvider } from "../components/ScrollTriggerProvider";
 import HomeBanner from "../components/HomeBanner";
+import Image from "next/image";
+import tguPic from "../public/temp/tgu.png";
+import grassPic from "../public/temp/grass.png";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,23 +18,172 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col" id="bannerContainer">
+      <div className="flex flex-col h-screen" id="bannerContainer">
         <ScrollTriggerProvider options={{ end: "+=50%" }}>
           <HomeBanner />
         </ScrollTriggerProvider>
       </div>
 
       <div className="bg-primary-dark flex flex-col relative z-10">
-        <div className="px-16 py-12 flex justify-center bg-yellow-200">
-          <span className="font-display font-semibold text-3xl text-center text-secondary-light">
+        {/* FIXME: have banner be floating at bottom of screen until you scroll past (on smaller devices) */}
+        <div className="px-16 py-12 flex justify-center">
+          <h1 className="font-semibold text-3xl text-center text-secondary-light">
             Your home for kinesiology, strength training, and active rehab in
             North Vancouver<span className="text-secondary-dark">.</span>
-          </span>
+          </h1>
         </div>
 
-        <div className="bg-white h-[500vh]">
-          <div className="w-64">
-            <LogoSpinner size="250" />
+        <div className="flex">
+          <div className="w-1/2">
+            <Image
+              src={tguPic}
+              layout="responsive"
+              alt="// FIXME: add real alt text"
+            />
+          </div>
+          {/* FIXME: make shapes properly fill space at large screen sizes */}
+          <div className="w-1/2 bg-primary-light flex flex-col justify-center gap-8 p-8">
+            <div className="flex justify-center gap-8">
+              <Link href="/strength">
+                <motion.div
+                  className="relative bg-primary-dark cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <svg
+                    viewBox="0 0 88 153"
+                    className="fill-primary-dark w-full"
+                  >
+                    <rect width="88" height="153" />
+                    <g transform="rotate(90)">
+                      <text
+                        x="10"
+                        y="-10"
+                        fontSize="10"
+                        className="font-bold font-display tracking-wider fill-primary-light uppercase"
+                      >
+                        It&apos;s Strength
+                      </text>
+                    </g>
+                  </svg>
+                </motion.div>
+              </Link>
+              <div className="flex flex-col gap-8">
+                <Link href="/education">
+                  <motion.div
+                    className="relative flex justify-center items-end cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <svg
+                      viewBox="0 0 445 204"
+                      className="fill-secondary-light w-full"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M0 154L445 154C445 -51.3336 -1.07576e-05 -51.3336 0 154ZM-2.61955e-06 154L0 204L445 204V154L-2.61955e-06 154Z"
+                      />
+                      <text
+                        x="50%"
+                        y="85%"
+                        fontSize="40"
+                        textAnchor="middle"
+                        className="font-bold font-display tracking-wider fill-primary-dark uppercase"
+                      >
+                        It&apos;s Education
+                      </text>
+                    </svg>
+                  </motion.div>
+                </Link>
+                <Link href="/community">
+                  <motion.div
+                    className="relative flex justify-center items-end cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <svg
+                      viewBox="0 0 135 164"
+                      className="fill-secondary-dark w-full"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M0 56L135 56C135 -18.6667 -3.26378e-06 -18.6667 0 56ZM-4.72083e-06 56L0 164H135V56L-4.72083e-06 56Z"
+                      />
+                      <text
+                        x="50%"
+                        y="90%"
+                        fontSize="12"
+                        textAnchor="middle"
+                        className="font-bold font-display tracking-wider fill-secondary-light uppercase"
+                      >
+                        It&apos;s Community
+                      </text>
+                    </svg>
+                  </motion.div>
+                </Link>
+              </div>
+            </div>
+
+            <span className="text-primary-dark font-display font-semibold text-5xl col-span-2 text-center">
+              It&apos;s more than fitness.
+            </span>
+          </div>
+        </div>
+
+        {/* FIXME: get headings font */}
+        {/* FIXME: background colour */}
+        <div className="flex flex-col bg-slate-100 px-16 py-20">
+          <div className="flex flex-col mb-32">
+            <h2 className="text-5xl mb-8">Who we are</h2>
+            <div className="flex gap-16">
+              <div className="w-2/3">
+                <Image
+                  src={grassPic}
+                  layout="responsive"
+                  alt="// FIXME: add real alt text"
+                />
+              </div>
+              <div className="w-1/3">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                  at pretium orci, eu sodales lacus. Aenean at tortor vel tellus
+                  convallis fermentum. Duis vitae mauris condimentum diam
+                  iaculis scelerisque. Sed faucibus odio a nunc egestas
+                  ultricies. Donec quis risus vitae enim pulvinar sagittis id
+                  sed justo. Donec pretium, ante quis mattis sollicitudin,
+                  libero leo rhoncus nisl, ut laoreet tellus sem sit amet lorem.
+                  Cras ornare auctor sapien id fringilla. Phasellus vel metus
+                  convallis, sagittis risus a, tempor magna.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col px-36">
+            <div className="flex gap-16">
+              <div className="w-1/2">
+                <h2 className="text-5xl mb-8">What we do</h2>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                  at pretium orci, eu sodales lacus. Aenean at tortor vel tellus
+                  convallis fermentum. Duis vitae mauris condimentum diam
+                  iaculis scelerisque. Sed faucibus odio a nunc egestas
+                  ultricies. Donec quis risus vitae enim pulvinar sagittis id
+                  sed justo. Donec pretium, ante quis mattis sollicitudin,
+                  libero leo rhoncus nisl, ut laoreet tellus sem sit amet lorem.
+                </p>
+              </div>
+              <div className="w-1/2 relative">
+                <Image
+                  src={tguPic}
+                  layout="responsive"
+                  alt="// FIXME: add real alt text"
+                />
+                <div className="absolute -top-[100px] -right-[100px]">
+                  <LogoSpinner size="200" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
