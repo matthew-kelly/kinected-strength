@@ -42,10 +42,10 @@ export default function Home() {
             />
           </div>
           {/* FIXME: make shapes properly fill space at large screen sizes */}
-          <div className="w-1/2 bg-primary-light flex flex-col justify-center gap-8 p-8">
+          <div className="w-1/2 bg-primary-light flex flex-col justify-center gap-10 p-8">
             <div className="flex justify-center gap-8">
-              <Link href="/strength">
-                <motion.div
+              <Link href="/strength" passHref>
+                <motion.a
                   className="relative bg-primary-dark cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                 >
@@ -65,11 +65,11 @@ export default function Home() {
                       </text>
                     </g>
                   </svg>
-                </motion.div>
+                </motion.a>
               </Link>
               <div className="flex flex-col gap-8">
-                <Link href="/education">
-                  <motion.div
+                <Link href="/education" passHref>
+                  <motion.a
                     className="relative flex justify-center items-end cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                   >
@@ -92,10 +92,10 @@ export default function Home() {
                         It&apos;s Education
                       </text>
                     </svg>
-                  </motion.div>
+                  </motion.a>
                 </Link>
-                <Link href="/community">
-                  <motion.div
+                <Link href="/community" passHref>
+                  <motion.a
                     className="relative flex justify-center items-end cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                   >
@@ -118,7 +118,7 @@ export default function Home() {
                         It&apos;s Community
                       </text>
                     </svg>
-                  </motion.div>
+                  </motion.a>
                 </Link>
               </div>
             </div>

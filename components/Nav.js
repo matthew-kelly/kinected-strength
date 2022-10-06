@@ -33,10 +33,14 @@ export default function Nav() {
               </a>
             </Link>
           )}
-          <div className="flex items-center">
+          <button
+            className="flex items-center p-0"
+            onClick={toggleMenu}
+            aria-expanded={isOpen}
+            role="menu button"
+          >
             <MenuButton
               isOpen={isOpen}
-              onClick={toggleMenu}
               strokeWidth="4"
               color={colors["primary-light"]}
               lineProps={{ strokeLinecap: "round" }}
@@ -44,7 +48,7 @@ export default function Nav() {
               height="24"
               style={{ cursor: "pointer", zIndex: 103 }}
             />
-          </div>
+          </button>
         </div>
       </nav>
       <Menu isOpen={isOpen} closeMenu={closeMenu} />
