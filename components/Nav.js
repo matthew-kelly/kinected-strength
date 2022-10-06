@@ -15,7 +15,7 @@ export default function Nav() {
   return (
     <>
       <nav>
-        <div className="flex justify-between items-center px-16 py-12 fixed inset-0 z-[101] max-h-min">
+        <div className="flex justify-between items-center px-16 py-12 fixed inset-0 z-[101] h-[128px] max-h-min bg-primary-dark bg-opacity-80">
           <Link href="/">
             <a>
               <KLogo
@@ -42,7 +42,7 @@ export default function Nav() {
               lineProps={{ strokeLinecap: "round" }}
               width="28"
               height="24"
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", zIndex: 103 }}
             />
           </div>
         </div>
