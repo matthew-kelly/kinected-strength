@@ -20,9 +20,9 @@ export default function Nav() {
             <a>
               <KLogo
                 width="30"
-                colorRect="fill-primary-light"
-                colorTop="fill-secondary-dark"
-                colorBottom="fill-secondary-light"
+                colorRect="fill-secondary-light"
+                colorTop="fill-primary-light"
+                colorBottom="fill-secondary-dark"
               />
             </a>
           </Link>
