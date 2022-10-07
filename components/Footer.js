@@ -38,7 +38,7 @@ export default function Footer() {
           </svg>
         </div>
 
-        <div className="h-fit grid grid-cols-2 grid-rows-3 grid-flow-col auto-rows-min auto-cols-min gap-2 mr-8 grow-0">
+        <div className="h-fit grid grid-cols-2 grid-rows-3 grid-flow-col gap-2">
           {links.map((link) => (
             <Link href={link.href} key={link.id}>
               <a className="px-4 text-xl font-display text-primary-light hover:text-secondary-light whitespace-nowrap">
@@ -48,7 +48,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="flex justify-end grow">
+        <div className="flex justify-end ml-8 max-w-[33%] w-full">
           <FooterForm />
         </div>
       </div>

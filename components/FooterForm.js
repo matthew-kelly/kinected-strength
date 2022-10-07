@@ -36,7 +36,10 @@ export default function FooterForm({}) {
   };
 
   return (
-    <form className="flex flex-col text-primary-light" onSubmit={handleSubmit}>
+    <form
+      className="flex flex-col text-primary-light w-full"
+      onSubmit={handleSubmit}
+    >
       <span className="font-display font-semibold text-xl mb-1">
         Get in touch with us!
       </span>
@@ -50,7 +53,7 @@ export default function FooterForm({}) {
               type="text"
               name="name"
               id="name"
-              className="text-md font-display w-full max-w-[120px]"
+              className="text-md font-display w-full text-secondary-light"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -63,7 +66,7 @@ export default function FooterForm({}) {
               type="email"
               name="email"
               id="email"
-              className="text-md font-display w-full max-w-[120px]"
+              className="text-md font-display w-full text-secondary-light"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -78,7 +81,7 @@ export default function FooterForm({}) {
             type="text"
             name="message"
             id="message"
-            className="text-md font-display w-full"
+            className="text-md font-display w-full text-secondary-light"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
@@ -86,15 +89,15 @@ export default function FooterForm({}) {
 
         <button
           type="submit"
-          className="bg-primary-light text-primary-dark text-md font-display uppercase mt-1 self-start px-2 py-1"
+          className="bg-primary-light hover:bg-secondary-light text-primary-dark text-md font-display uppercase mt-1 self-start px-2 py-1"
         >
           {isSending ? "Sending..." : "Submit"}
         </button>
         {isSent && (
-          <p className="text-md font-display font-semibold">Message sent!</p>
+          <p className="text-lg font-display font-semibold">Message sent!</p>
         )}
         {isError && (
-          <p className="text-2xl font-display font-semibold text-secondary-dark">
+          <p className="text-lg font-display font-semibold text-secondary-dark">
             Error sending message
           </p>
         )}
