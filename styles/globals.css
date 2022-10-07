@@ -57,6 +57,7 @@
     @apply cursor-pointer;
   }
 
+  /*
   button {
     @apply cursor-pointer flex justify-center items-center self-center px-4 py-3 gap-2 rounded-md font-display font-semibold text-2xl;
   }
@@ -64,12 +65,16 @@
   button.primary {
     @apply bg-primary-light;
   }
+  */
 
-  .home-banner-text {
-    line-height: initial;
-    font-size: clamp(5rem, 0.5rem + 9.375vw, 8rem);
-    padding-top: clamp(10rem, 28vw, 21rem);
-    margin-left: clamp(3rem, 8vw, 18rem);
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    @apply m-0 p-0 bg-primary-dark border-0 border-b-2 border-primary-light focus:ring-0 focus:border-secondary-light; /* -translate-y-1 */
+  }
+
+  textarea {
+    @apply resize-none m-0 p-0 bg-primary-dark border-0 border-b-2 border-primary-light focus:ring-0 focus:border-secondary-light; /* -translate-y-1 */
   }
 }
 

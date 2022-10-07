@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // FIXME: update colors
         "primary-light": "#A6DBD7",
         "primary-dark": "#164AA0",
         "secondary-light": "#E1B5D4",
@@ -23,5 +24,5 @@ module.exports = {
       sans: ["Montserrat", "sans-serif"],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
 };
