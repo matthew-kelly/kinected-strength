@@ -131,7 +131,7 @@ export default function Home() {
 
         {/* FIXME: get headings font */}
         {/* FIXME: background colour */}
-        <div className="flex flex-col bg-slate-100 px-16 py-20">
+        <div className="flex flex-col bg-light-gray px-16 py-20">
           <div className="flex flex-col mb-32">
             <h2 className="text-5xl mb-8">Who we are</h2>
             <div className="flex gap-16">
