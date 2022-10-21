@@ -53,7 +53,7 @@ export default function FooterForm({}) {
               type="text"
               name="name"
               id="name"
-              className="text-md font-display w-full text-secondary-light"
+              className="m-0 p-0 bg-primary-dark border-0 border-b-2 border-primary-light focus:ring-0 focus:border-secondary-light text-md font-display w-full text-secondary-light"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -66,7 +66,7 @@ export default function FooterForm({}) {
               type="email"
               name="email"
               id="email"
-              className="text-md font-display w-full text-secondary-light"
+              className="m-0 p-0 bg-primary-dark border-0 border-b-2 border-primary-light focus:ring-0 focus:border-secondary-light text-md font-display w-full text-secondary-light"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -81,7 +81,7 @@ export default function FooterForm({}) {
             type="text"
             name="message"
             id="message"
-            className="text-md font-display w-full text-secondary-light"
+            className="m-0 p-0 bg-primary-dark border-0 border-b-2 border-primary-light focus:ring-0 focus:border-secondary-light text-md font-display w-full text-secondary-light"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
