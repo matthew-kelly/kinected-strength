@@ -8,11 +8,11 @@ module.exports = {
     extend: {
       colors: {
         // FIXME: update colors
-        "primary-light": "#A8D6CB", // "#A6DBD7",
-        "primary-dark": "#234285", //"#164AA0",
-        "secondary-light": "#D8AEC6", //"#E1B5D4",
-        "secondary-dark": "#D52F3B", // "#EF3633", 213	47	59 224	224	220
-        "light-gray": "#E0E0DC",
+        "primary-light": "rgb(177, 217, 214)", // "#A6DBD7",
+        "primary-dark": "rgb(37, 75, 154)", //"#164AA0",
+        "secondary-light": "rgb(218, 183, 211)", //"#E1B5D4",
+        "secondary-dark": "rgb(220, 72, 61)", // "#EF3633", 213	47	59 224	224	220
+        "light-gray": "#E2E2E2",
       },
       fontFamily: {
         display: ["Mundial", "sans-serif"],

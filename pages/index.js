@@ -8,6 +8,7 @@ import Image from "next/image";
 import tguPic from "../public/temp/tgu.png";
 import grassPic from "../public/temp/grass.png";
 import Link from "next/link";
+import TestimonialBlock from "../components/TestimonialBlock";
 
 export default function Home() {
   return (
@@ -131,9 +132,11 @@ export default function Home() {
 
         {/* FIXME: get headings font */}
         {/* FIXME: background colour */}
-        <div className="flex flex-col bg-light-gray px-16 py-20">
+        <div className="flex flex-col bg-light-gray px-24 py-20 text-primary-dark">
           <div className="flex flex-col mb-32">
-            <h2 className="text-5xl mb-8">Who we are</h2>
+            <h2 className="text-6xl mb-12 max-w-lg">
+              Join a community of evidence-based strength training.
+            </h2>
             <div className="flex gap-16">
               <div className="w-2/3">
                 <Image
@@ -142,17 +145,15 @@ export default function Home() {
                   alt="// FIXME: add real alt text"
                 />
               </div>
-              <div className="w-1/3">
+              <div className="w-1/3 ml-16">
+                <h3 className="uppercase mb-4">Who we are</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                  at pretium orci, eu sodales lacus. Aenean at tortor vel tellus
-                  convallis fermentum. Duis vitae mauris condimentum diam
-                  iaculis scelerisque. Sed faucibus odio a nunc egestas
-                  ultricies. Donec quis risus vitae enim pulvinar sagittis id
-                  sed justo. Donec pretium, ante quis mattis sollicitudin,
-                  libero leo rhoncus nisl, ut laoreet tellus sem sit amet lorem.
-                  Cras ornare auctor sapien id fringilla. Phasellus vel metus
-                  convallis, sagittis risus a, tempor magna.
+                  Lorem ipsum dolor sit amet, consectetuer adipi- scing elit,
+                  sed diam nonummy nibh euismod tin- cidunt ut laoreet Lorem
+                  ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                  nonummy nibh euismod tincidunt ut laoreet Lorem ipsum dolor
+                  sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                  euismod tincidunt ut.
                 </p>
               </div>
             </div>
@@ -160,9 +161,8 @@ export default function Home() {
 
           <div className="flex flex-col px-36">
             <div className="flex gap-16">
-              <div className="w-1/2">
-                <h2 className="text-5xl mb-8">What we do</h2>
-
+              <div className="w-1/2 mr-16">
+                <h3 className="uppercase mb-4">What we do</h3>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
                   at pretium orci, eu sodales lacus. Aenean at tortor vel tellus
@@ -186,6 +186,18 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <TestimonialBlock
+          testimonials={[
+            {
+              content: `"Briana is a patient, knowledgeable and motivating trainer. I am a 73-year-old with osteoporosis & scoliosis. When I started with Briana I couldn’t even get in and out of the bathtub, and I didn’t have the strength to pull on my tenser nylons. Now I can easily do these things and so much more! I recommend Briana highly. I just keep getting stronger and stronger with no injuries when I am training under her direction."`,
+              author: "LT",
+            },
+            {
+              content: `“I have been working out in the garden for the last couple of days and I am thrilled with what I can do without pain! I can get up and down, no problem. I’m amazed at my progress in a few months. Thank you so much. You know what you’re doing and have helped me so much!”`,
+              author: "CV",
+            },
+          ]}
+        />
       </div>
     </>
   );

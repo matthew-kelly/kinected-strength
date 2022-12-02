@@ -5,7 +5,7 @@ export default function Button({ className = "primary", children }) {
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className={className}
+      className={`button ${className}`}
     >
       {children}
     </motion.button>

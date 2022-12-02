@@ -57,6 +57,13 @@
     @apply cursor-pointer;
   }
 
+  .button {
+    @apply bg-primary-dark hover:bg-secondary-dark text-secondary-light font-display uppercase mt-1 self-start px-4 py-2 rounded-full tracking-wide;
+  }
+
+  .button.light {
+    @apply bg-primary-light hover:bg-secondary-light text-secondary-dark;
+  }
   /*
   button {
     @apply cursor-pointer flex justify-center items-center self-center px-4 py-3 gap-2 rounded-md font-display font-semibold text-2xl;
@@ -65,8 +72,7 @@
   button.primary {
     @apply bg-primary-light;
   }
-  */
-
+*/
   /* 
   input[type="text"],
   input[type="email"],
