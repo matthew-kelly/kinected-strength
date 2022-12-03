@@ -21,13 +21,13 @@ export default function OurStory() {
         />
       </div>
       <div className="flex flex-col bg-light-gray px-24 py-20 text-primary-dark">
-        <h2 className="uppercase text-xl mb-8">Meet the team</h2>
+        <h1 className="uppercase text-xl mb-8">Meet the team</h1>
 
         <div className="relative max-w-2xl flex flex-col ml-24 mt-12">
-          <h3 className="flex flex-col text-6xl absolute left-1/2 -translate-x-1/2 -top-16 z-20">
+          <h2 className="flex flex-col text-6xl absolute left-1/2 -translate-x-1/2 -top-16 z-20">
             <span>Andrea</span>
             <span>Brennan</span>
-          </h3>
+          </h2>
           <div className="flex items-center gap-8 z-10">
             <div className="w-1/2">
               <Image
@@ -61,10 +61,10 @@ export default function OurStory() {
         </div>
 
         <div className="relative max-w-2xl flex flex-col self-end mt-32 mr-24">
-          <h3 className="flex flex-col text-6xl absolute left-1/2 -translate-x-1/2 -top-16 z-20">
+          <h2 className="flex flex-col text-6xl absolute left-1/2 -translate-x-1/2 -top-16 z-20">
             <span>Jess</span>
             <span>Pastro</span>
-          </h3>
+          </h2>
           <div className="flex items-center gap-8 z-10 flex-row-reverse">
             <div className="w-1/2">
               <Image
@@ -103,10 +103,10 @@ export default function OurStory() {
         </div>
 
         <div className="relative max-w-2xl flex flex-col self-start ml-24 mt-32 mb-12">
-          <h3 className="flex flex-col text-6xl absolute left-1/2 -translate-x-1/2 -top-16 z-20">
+          <h2 className="flex flex-col text-6xl absolute left-1/2 -translate-x-1/2 -top-16 z-20">
             <span>Briana</span>
             <span>Kelly</span>
-          </h3>
+          </h2>
           <div className="flex items-center gap-8 z-10">
             <div className="w-1/2">
               <Image
