@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import bannerImg from "../public/temp/tempbanner-horiz.jpg";
 
 export default function Contact() {
@@ -11,6 +11,28 @@ export default function Contact() {
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  const messageBlock = createRef();
+  const [messageBlockHeight, setMessageBlockHeight] = useState(null);
+
+  const calcMessageBlockHeight = () => {
+    const elem = messageBlock.current;
+    console.log(messageBlockHeight, elem.offsetHeight, elem.scrollHeight);
+    if (elem.value.length === 0) {
+      setMessageBlockHeight(24); // line height
+    } else if (
+      elem.scrollHeight > 24 &&
+      elem.scrollHeight < messageBlockHeight
+    ) {
+      setMessageBlockHeight(messageBlockHeight - 24);
+    } else if (elem.scrollHeight + 2 !== elem.offsetHeight) {
+      setMessageBlockHeight(elem.scrollHeight);
+    }
+  };
+
+  useEffect(() => {
+    setMessageBlockHeight(messageBlock.current.offsetHeight);
+  }, [messageBlock]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,21 +73,21 @@ export default function Contact() {
       <div className="flex justify-center py-24 bg-light-gray px-64">
         <div className="flex flex-col">
           <h1 className="text-7xl mb-4 font-semibold">Get in touch.</h1>
-          <p className="text-primary-dark text-xs leading-6">
+          <p className="text-primary-dark max-w-lg">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
             nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
             volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tatio.
           </p>
 
           <form
-            className="flex flex-col text-primary-dark mt-8"
+            className="flex flex-col text-primary-dark mt-8 min-w-2xl"
             onSubmit={handleSubmit}
           >
-            <div className="flex flex-col gap-10 font-display font-semibold">
+            <div className="flex flex-col gap-10 font-display">
               <div className="flex items-end">
                 <label
                   htmlFor="firstName"
-                  className="border-b-2 border-b-primary-dark pr-2 text-sm uppercase whitespace-nowrap"
+                  className="border-b-2 border-b-primary-dark pr-2 text-sm uppercase whitespace-nowrap font-semibold"
                 >
                   First name
                 </label>
@@ -82,7 +104,7 @@ export default function Contact() {
               <div className="flex items-end">
                 <label
                   htmlFor="lastName"
-                  className="border-b-2 border-b-primary-dark pr-2 text-sm uppercase whitespace-nowrap"
+                  className="border-b-2 border-b-primary-dark pr-2 text-sm uppercase whitespace-nowrap font-semibold"
                 >
                   Last name
                 </label>
@@ -99,7 +121,7 @@ export default function Contact() {
               <div className="flex items-end">
                 <label
                   htmlFor="email"
-                  className="border-b-2 border-b-primary-dark pr-2 text-sm uppercase whitespace-nowrap"
+                  className="border-b-2 border-b-primary-dark pr-2 text-sm uppercase whitespace-nowrap font-semibold"
                 >
                   Email
                 </label>
@@ -116,17 +138,22 @@ export default function Contact() {
               <div className="flex items-end">
                 <label
                   htmlFor="message"
-                  className="border-b-2 border-b-primary-dark pr-2 text-sm uppercase whitespace-nowrap"
+                  className="border-b-2 border-b-primary-dark pr-2 text-sm uppercase whitespace-nowrap font-semibold"
                 >
                   Message
                 </label>
-                <input
-                  type="text"
+                <textarea
+                  ref={messageBlock}
+                  rows="1"
                   name="message"
                   id="message"
-                  className="m-0 p-0 pl-2 border-0 border-b-2 border-b-primary-dark focus:border-b-secondary-dark focus:ring-0 text-md bg-transparent grow"
+                  className="m-0 p-0 pl-2 border-0 border-b-2 border-b-primary-dark focus:border-b-secondary-dark focus:ring-0 text-md bg-transparent grow resize-none overflow-hidden"
+                  style={{ height: messageBlockHeight + "px" }}
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                    calcMessageBlockHeight();
+                  }}
                 />
               </div>
 

@@ -17,6 +17,12 @@ module.exports = {
       fontFamily: {
         display: ["Mundial", "sans-serif"],
       },
+      minWidth: {
+        md: "28rem",
+        lg: "32rem",
+        xl: "36rem",
+        "2xl": "42rem",
+      },
       width: {
         "screen-half": "50vw",
       },
