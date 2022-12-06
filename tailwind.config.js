@@ -23,6 +23,19 @@ module.exports = {
         xl: "36rem",
         "2xl": "42rem",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: "rgb(37 75 154)",
+            a: {
+              color: "#333",
+              "&:hover": {
+                color: "rgb(220 72 61)",
+              },
+            },
+          },
+        },
+      },
       width: {
         "screen-half": "50vw",
       },
