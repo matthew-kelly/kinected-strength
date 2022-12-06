@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import LogoSpinner from "../../components/LogoSpinner";
+import { KLogo } from "../../components/shapes";
 import bannerImg from "../../public/temp/tempbanner-horiz.jpg"; // FIXME: get from blog post
 
 export default function BlogPost() {
@@ -9,12 +10,15 @@ export default function BlogPost() {
   return (
     <>
       <div className="bg-primary-dark flex flex-col relative pt-32"></div>
-      <article className="bg-light-gray p-24 mx-24 text-primary-dark relative">
-        <div className="absolute top-0 right-0">
+
+      <article className="flex flex-col bg-light-gray lg:p-24 md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative">
+        <div className="md:block hidden absolute top-0 right-0">
           <LogoSpinner size="125" />
         </div>
-        <h1 className="mb-4 text-5xl">This is the title of a blog post</h1>
-        <div className="flex justify-between border-b-primary-dark border-b-2 mb-16">
+        <h1 className="mb-4 md:text-5xl text-4xl mr-12">
+          This is the title of a blog post
+        </h1>
+        <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-16 mb-8 md:text-base text-sm">
           <span>Author Name</span>
           <span>December 1, 2022</span>
         </div>
@@ -53,6 +57,14 @@ export default function BlogPost() {
             porro harum eligendi a unde eius, deleniti illum exercitationem,
             alias eaque.
           </p>
+        </div>
+        <div className="self-center md:mt-16 mt-8">
+          <KLogo
+            width="75"
+            colorRect="fill-secondary-light"
+            colorTop="fill-primary-light"
+            colorBottom="fill-secondary-dark"
+          />
         </div>
       </article>
     </>
