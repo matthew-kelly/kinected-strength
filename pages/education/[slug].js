@@ -11,11 +11,11 @@ export default function BlogPost() {
     <>
       <div className="bg-primary-dark flex flex-col relative pt-32"></div>
 
-      <article className="flex flex-col bg-light-gray lg:p-24 md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative">
+      <article className="flex flex-col bg-light-gray md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative">
         <div className="md:block hidden absolute top-0 right-0">
           <LogoSpinner size="125" />
         </div>
-        <h1 className="mb-4 md:text-5xl text-4xl mr-12">
+        <h1 className="mb-6 md:text-5xl text-4xl mr-12">
           This is the title of a blog post
         </h1>
         <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-16 mb-8 md:text-base text-sm">
@@ -23,7 +23,7 @@ export default function BlogPost() {
           <span>December 1, 2022</span>
         </div>
 
-        <div className="prose prose-headings:mb-4 prose-headings:text-primary-dark lg:ml-12">
+        <div className="prose prose-headings:mb-4 prose-headings:text-primary-dark lg:ml-24">
           <Image
             layout="responsive"
             src={bannerImg}
@@ -58,7 +58,8 @@ export default function BlogPost() {
             alias eaque.
           </p>
         </div>
-        <div className="self-center md:mt-16 mt-8">
+        <div className="md:my-16 my-8 w-full border-t-primary-dark border-t-2" />
+        <div className="self-center">
           <KLogo
             width="75"
             colorRect="fill-secondary-light"
