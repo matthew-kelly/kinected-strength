@@ -9,7 +9,7 @@ export default function PageBanner({
   textWidthClass = "w-2/5",
 }) {
   return (
-    <div className="bg-primary-dark flex flex-col relative z-10">
+    <div className="bg-primary-dark flex flex-col relative z-10 max-w-7xl self-center">
       {image.length && image.length > 1 ? (
         <div className="flex space-between justify-center w-full gap-24 px-24">
           {image.map((img, i) => (
