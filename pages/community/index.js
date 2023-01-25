@@ -5,7 +5,7 @@ import grassImg from "../../public/temp/grass.png"; // FIXME: get from db
 import EventCard from "../../components/EventCard";
 import { Quartercircle } from "../../components/shapes";
 
-export default function Education() {
+export default function Community() {
   // FIXME: source from database?
   const title = "Community";
   const tagline = `Lorem ipsum dolor sit amet, consectetuer adipi- scing elit, sed diam nonummy nibh euismod tinci`;
@@ -22,15 +22,8 @@ export default function Education() {
   };
   return (
     <>
-      <div className="bg-primary-dark flex flex-col relative pt-32">
-        <PageBanner
-          image={image}
-          title={title}
-          tagline={tagline}
-          text={text}
-          taglineWidthClass="w-3/4"
-          textWidthClass="w-1/4"
-        />
+      <div className="bg-primary-dark flex flex-col relative">
+        <PageBanner image={image} title={title} tagline={tagline} text={text} />
       </div>
       <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-8 mdpb-32 text-primary-dark">
         <div className="flex flex-col max-w-6xl w-full self-center">

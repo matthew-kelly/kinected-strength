@@ -1,22 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   @font-face {
-    font-family: "Mundial";
-    font-weight: 700;
-    src: url("/fonts/MundialBold.otf") format("otf");
+    font-family: "Raleway";
+    src: url("/fonts/Raleway-VariableFont_wght.ttf")
+      format("truetype-variations");
+    font-weight: 100 900;
+    font-style: normal;
   }
 
   @font-face {
-    font-family: "Mundial";
-    font-weight: 600;
-    src: url("/fonts/MundialDemibold.otf") format("otf");
+    font-family: "Raleway";
+    src: url("/fonts/Raleway-Italic-VariableFont_wght.ttf")
+      format("truetype-variations");
+    font-weight: 100 900;
+    font-style: italic;
   }
 
+  /* html body */
+  body {
+    @apply overscroll-y-none;
+  }
+  /* app body */
   .body {
     @apply flex-grow relative block;
   }
@@ -31,10 +38,10 @@
   }
 
   h1 {
-    @apply text-4xl;
+    @apply text-4xl font-extrabold tracking-wider;
   }
   h2 {
-    @apply text-3xl;
+    @apply text-3xl font-extrabold;
   }
   h3 {
     @apply text-2xl;
@@ -50,19 +57,41 @@
   }
 
   p {
-    @apply font-sans text-sm leading-6 font-medium;
+    @apply font-sans text-sm leading-6 font-normal; /* font-light */
   }
 
   a {
     @apply cursor-pointer;
   }
 
+  a.wavy {
+    @apply text-black hover:text-secondary-dark hover:underline hover:decoration-wavy hover:underline-offset-4;
+  }
+
+  a.wavy2 {
+    /* background: linear-gradient(to bottom, #0087ca 0%, #0087ca 100%); */
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    color: inherit;
+    text-decoration: none;
+  }
+  a.wavy2:hover {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift 0.4s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%230087ca' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+    background-size: auto 4px;
+    background-position: bottom 50%;
+  }
+
   .button {
-    @apply bg-primary-dark hover:bg-secondary-dark text-secondary-light font-display uppercase mt-1 self-start px-4 py-2 rounded-full tracking-wide;
+    @apply bg-primary-dark hover:bg-secondary-dark text-secondary-light font-display uppercase self-start px-4 py-2 rounded-full tracking-wide font-bold;
   }
 
   .button.light {
-    @apply bg-primary-light hover:bg-secondary-light text-secondary-dark;
+    @apply bg-secondary-light hover:bg-primary-light text-primary-dark;
+  }
+
+  .button.large {
+    @apply text-xl px-8 py-4;
   }
   /*
   button {
@@ -89,4 +118,5 @@
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
+  @apply md:mr-[15px];
 }

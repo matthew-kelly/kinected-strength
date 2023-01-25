@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { createRef, useEffect, useState } from "react";
+import Button from "../components/Button";
 import bannerImg from "../public/temp/tempbanner-horiz.jpg";
+import { useWindowSize } from "../lib/useWindowSize";
+import { breakpoints } from "../utils/theme";
 
 export default function Contact() {
   // email contact form
@@ -11,6 +14,7 @@ export default function Contact() {
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
   const [isError, setIsError] = useState(false);
+  const windowSize = useWindowSize();
 
   const messageBlock = createRef();
   const [messageBlockHeight, setMessageBlockHeight] = useState(null);
@@ -62,7 +66,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="mt-32">
+    <div className="flex flex-col">
       <Image
         id="bannerImage"
         src={bannerImg}
@@ -70,17 +74,17 @@ export default function Contact() {
         priority
         alt="// FIXME: add real alt text"
       />
-      <div className="flex justify-center py-24 bg-light-gray px-64">
+      <div className="flex justify-center lg:py-24 md:py-16 py-8 bg-light-gray lg:px-64 md:px-32 px-8">
         <div className="flex flex-col">
-          <h1 className="text-7xl mb-4 font-semibold">Get in touch.</h1>
-          <p className="text-primary-dark max-w-lg">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tatio.
+          <h1 className="lg:text-7xl md:text-6xl text-5xl mb-4 font-extrabold">
+            Get in touch.
+          </h1>
+          <p className="text-primary-dark max-w-lg font-bold text-base">
+            Come say hi to get strong, feel confident and see concrete results.
           </p>
 
           <form
-            className="flex flex-col text-primary-dark mt-8 min-w-2xl"
+            className="flex flex-col text-primary-dark mt-8 md:min-w-2xl"
             onSubmit={handleSubmit}
           >
             <div className="flex flex-col gap-10 font-display">
@@ -157,12 +161,9 @@ export default function Contact() {
                 />
               </div>
 
-              <button
-                type="submit"
-                className="bg-primary-dark hover:bg-secondary-dark text-secondary-light text-md uppercase self-start px-6 py-2 rounded-full"
-              >
+              <Button type="submit" className="md:large">
                 {isSending ? "Sending..." : "Submit"}
-              </button>
+              </Button>
               {isSent && (
                 <p className="text-lg font-display font-semibold">
                   Message sent!
@@ -176,6 +177,16 @@ export default function Contact() {
             </div>
           </form>
         </div>
+      </div>
+      <div className="w-full bg-light-gray">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2601.280737739979!2d-123.07635148399432!3d49.30896687682839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548671e460619c1b%3A0xd130a8b8f72514e0!2sKinected%20Strength!5e0!3m2!1sen!2sca!4v1674508975221!5m2!1sen!2sca"
+          width={windowSize.width}
+          height={windowSize.width > breakpoints.sm ? 300 : 375}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
   );

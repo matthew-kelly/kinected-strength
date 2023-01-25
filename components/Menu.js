@@ -60,11 +60,13 @@ export default function Menu({ isOpen = false, closeMenu }) {
           exit="closed"
         >
           {links.map((link) => (
-            <motion.div key={link.id} variants={itemVariants} className="py-3">
+            <motion.div key={link.id} variants={itemVariants} className="py-4">
               <Link href={link.href} key={link.id} passHref>
                 <a
-                  className={`text-6xl font-display font-semibold text-primary-light hover:text-secondary-light whitespace-nowrap ${
-                    router.asPath === link.href && "text-secondary-light"
+                  className={`lg:text-6xl md:text-5xl text-4xl font-display font-bold hover:text-secondary-light whitespace-nowrap ${
+                    router.asPath === link.href
+                      ? "text-secondary-light"
+                      : "text-primary-light"
                   }`}
                   onClick={closeMenu}
                 >

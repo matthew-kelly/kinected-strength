@@ -14,7 +14,7 @@ export default function LogoSpinner({ size = 100 }) {
         />
       </defs>
       <text
-        className={`${styles.spinner} uppercase font-display font-bold fill-primary-dark text-[9px] tracking-[0.125rem] select-none`}
+        className={`${styles.spinner} uppercase font-display font-extrabold fill-primary-dark text-[9px] tracking-[0.125rem] select-none`}
       >
         <textPath xlinkHref="#circlepath">Kinected • Strength</textPath>
       </text>

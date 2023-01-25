@@ -25,15 +25,8 @@ export default function Education() {
   };
   return (
     <>
-      <div className="bg-primary-dark flex flex-col relative pt-32">
-        <PageBanner
-          image={image}
-          title={title}
-          tagline={tagline}
-          text={text}
-          taglineWidthClass="w-3/4"
-          textWidthClass="w-1/4"
-        />
+      <div className="bg-primary-dark flex flex-col relative">
+        <PageBanner image={image} title={title} tagline={tagline} text={text} />
       </div>
       <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-8 mdpb-32 text-primary-dark">
         <h2 className="uppercase text-xl mb-8">Blog</h2>

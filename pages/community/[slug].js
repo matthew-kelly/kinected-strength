@@ -9,7 +9,7 @@ export default function CommunityEvent() {
   const { slug } = router.query;
   return (
     <>
-      <div className="bg-primary-dark flex flex-col relative pt-32"></div>
+      <div className="bg-primary-dark flex flex-col relative"></div>
 
       <article className="flex flex-col bg-light-gray md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative">
         <div className="md:block hidden absolute top-0 right-0">
@@ -61,9 +61,9 @@ export default function CommunityEvent() {
         <div className="self-center">
           <KLogo
             width="75"
-            colorRect="fill-secondary-light"
-            colorTop="fill-primary-light"
-            colorBottom="fill-secondary-dark"
+            colorRect="fill-primary-light"
+            colorTop="fill-secondary-dark"
+            colorBottom="fill-secondary-light"
           />
         </div>
       </article>

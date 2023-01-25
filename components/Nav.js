@@ -1,85 +1,76 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { MenuButton } from "./MenuButton";
-import { colors } from "../utils/theme";
+import { breakpoints, colors } from "../utils/theme";
 import { useMenu } from "../lib/menuState";
 import Menu from "./Menu";
 import { KLogo } from "./shapes";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { debounce } from "../utils/debounce";
+import { useWindowSize } from "../lib/useWindowSize";
+import { useScrollDirection } from "../lib/useScrollDirection";
 
 export default function Nav() {
   const { toggleMenu, closeMenu, isOpen } = useMenu();
   const router = useRouter();
+  const [isHomePage, setIsHomePage] = useState(false);
 
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  const handleScroll = debounce(() => {
-    // current scroll position
-    const currentScrollPos = window.scrollY;
-    // set state based on location info
-    const isVisible =
-      (currentScrollPos > 128 &&
-        prevScrollPos > currentScrollPos &&
-        prevScrollPos - currentScrollPos > 70) ||
-      currentScrollPos < 10;
-    setVisible(isVisible);
-    setPrevScrollPos(currentScrollPos);
-  }, 100);
+  const windowSize = useWindowSize();
+  const scrollDirection = useScrollDirection();
 
   useEffect(() => {
-    // do not fire on home page
-    if (router.pathname !== "/") {
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }
-  }, [prevScrollPos, visible, handleScroll, router.pathname]);
+    setIsHomePage(router.pathname === "/");
+  }, [router.pathname]);
 
   return (
     <>
-      <nav>
-        <div
-          className={`flex justify-between items-center px-16 py-12 fixed inset-0 z-[101] h-32 max-h-min bg-primary-dark transition-[top] ease-in-out duration-300 ${
-            visible ? "top-0" : "-top-32"
-          }`}
-        >
-          {/* bg-opacity-80 */}
+      <nav
+        id="nav-main"
+        className={`sticky flex justify-between items-center md:px-16 px-4 z-[101] md:h-32 h-20 transition-[top] ease-in-out duration-300 ${
+          !isHomePage && scrollDirection === "down"
+            ? "md:-top-32 -top-20"
+            : "top-0"
+        } ${isHomePage ? "bg-transparent" : "bg-primary-dark"}`}
+      >
+        {/* bg-opacity-80 */}
+        <Link href="/">
+          <a>
+            <KLogo
+              width="30"
+              colorRect="fill-primary-light"
+              colorTop="fill-secondary-dark"
+              colorBottom="fill-secondary-light"
+              className="md:h-8 h-6"
+            />
+          </a>
+        </Link>
+        {isHomePage ? (
+          <div>
+            <Logo noHover={true} />
+          </div>
+        ) : (
           <Link href="/">
             <a>
-              <KLogo
-                width="30"
-                colorRect="fill-secondary-light"
-                colorTop="fill-primary-light"
-                colorBottom="fill-secondary-dark"
-              />
+              <Logo />
             </a>
           </Link>
-          {router.pathname !== "/" && (
-            <Link href="/">
-              <a>
-                <Logo />
-              </a>
-            </Link>
-          )}
-          <button
-            className="flex items-center p-0"
-            onClick={toggleMenu}
-            aria-expanded={isOpen}
-            role="menu button"
-          >
-            <MenuButton
-              isOpen={isOpen}
-              strokeWidth="4"
-              color={colors["primary-light"]}
-              lineProps={{ strokeLinecap: "round" }}
-              width="28"
-              height="24"
-              style={{ cursor: "pointer", zIndex: 103 }}
-            />
-          </button>
-        </div>
+        )}
+        <button
+          className="flex items-center p-0"
+          onClick={toggleMenu}
+          aria-expanded={isOpen}
+          role="menu button"
+        >
+          <MenuButton
+            isOpen={isOpen}
+            strokeWidth={windowSize.width > breakpoints.sm ? "4" : "2"}
+            color={colors["primary-light"]}
+            lineProps={{ strokeLinecap: "round" }}
+            width={windowSize.width > breakpoints.sm ? "28" : "14"}
+            height={windowSize.width > breakpoints.sm ? "24" : "12"}
+            style={{ cursor: "pointer", zIndex: 103 }}
+          />
+        </button>
       </nav>
       <Menu isOpen={isOpen} closeMenu={closeMenu} />
     </>

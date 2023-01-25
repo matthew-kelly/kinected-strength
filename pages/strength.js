@@ -1,44 +1,38 @@
 import Image from "next/image";
 import PageBanner from "../components/PageBanner";
+import { Circle } from "../components/shapes";
 import TestimonialBlock from "../components/TestimonialBlock";
 import bannerImg from "../public/temp/andrea-tgu-temp.png"; // FIXME: get from db
 
 export default function Strength() {
   // FIXME: source from database?
   const title = "Strength";
-  const tagline =
-    "Strength is a skill. Practice moving well, then move often. Get strong. Feel confident. See concrete results.";
-  const text = `Lorem ipsum dolor sit amet, consectetuer adipi- scing elit, sed diam nonummy nibh euismod tinci- dunt ut laoreet Lorem ipsum dolor sit amet, con- sectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam`;
+  const tagline = "High quality strength training. Inclusive to all.";
+  const text = `Training is not about finding the best “workout”. Training is a deliberate practice with concrete goals and outcomes. We will give you the tools to train for your goals in a smart, fun, and sustainable way. We will support you as we fuel your passion for good movement through education and guided strength training, and help you navigate the path to your health and training goals.`;
   const image = [{ url: bannerImg }, { url: bannerImg }];
   return (
     <>
-      <div className="bg-primary-dark flex flex-col relative pt-32">
-        <PageBanner
-          image={image}
-          title={title}
-          tagline={tagline}
-          text={text}
-          taglineWidthClass="w-3/4"
-          textWidthClass="w-1/4"
-        />
+      <div className="bg-primary-dark flex flex-col relative">
+        <PageBanner image={image} title={title} tagline={tagline} text={text} />
       </div>
-      <div className="flex flex-col bg-light-gray px-24 py-20 pb-32 text-primary-dark">
-        <h1 className="uppercase text-xl mb-8">Services</h1>
-        <div className="flex flex-col gap-60">
-          <div className="relative flex justify-between">
-            <div className="max-w-lg">
-              <h2 className="text-6xl mb-8">Personal Training</h2>
+      <div className="flex flex-col bg-light-gray lg:px-24 md:px-16 px-8 md:py-20 md:pb-32 py-12 text-primary-dark">
+        <div className="flex flex-col max-w-6xl w-full self-center">
+          <h1 className="uppercase text-xl mb-8">Services</h1>
+
+          <div className="relative flex md:flex-row flex-col justify-between md:gap-0 gap-8 md:mb-60 mb-24">
+            <div className="lg:max-w-lg md:max-w-sm">
+              <h2 className="md:text-5xl text-4xl md:mb-8 mb-4">
+                Personal Training
+              </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum dolor
-                sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euis- mod tincidunt ut laoreet Lorem ipsum dolor sit amet,
-                consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                tincidunt ut laoreet Lorem ipsum dolor sit amet, consectetuer
-                adipi
+                Personal training with a kinesiologist is a supportive
+                experience offered in-person in North Vancouver. This is the
+                right choice for you if you have strength and fitness goals, are
+                recovering from acute or chronic injury, or love the extra touch
+                of personalized accountability.
               </p>
             </div>
-            <div className="absolute right-0 top-1/2 -translate-y-1/2">
+            <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center">
               <Image
                 width={250}
                 height={375}
@@ -49,23 +43,25 @@ export default function Strength() {
             </div>
           </div>
 
-          <div className="relative flex flex-row-reverse justify-between mr-16">
-            <div className="max-w-lg">
-              <h2 className="text-6xl mb-8">Online Training</h2>
+          <div className="relative flex md:flex-row-reverse flex-col justify-between md:gap-0 gap-8 xl:mr-16 md:mb-60 mb-24">
+            <div className="lg:max-w-lg md:max-w-xs">
+              <h2 className="md:text-5xl text-4xl md:mb-8 mb-4">
+                ICBC Active Rehabilitation
+              </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum dolor
-                sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euis- mod tincidunt ut laoreet Lorem ipsum dolor sit amet,
-                consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                tincidunt ut laoreet Lorem ipsum dolor sit amet, consectetuer
-                adipi
+                ICBC Active rehabilitation with a kinesiologist supports
+                individuals suffering from injury or chronic pain due to a motor
+                vehicle accident. We assess and design an exercise program to
+                guide and reintroduce safe functional movement. We work closely
+                with other practitioners on your care team to offer appropriate
+                progressions, modifications and goals for your rehab. Direct
+                billing through ICBC is available.
               </p>
             </div>
-            <div className="absolute left-0 top-1/2 -translate-y-1/2">
+            <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center">
               <Image
-                width={375}
-                height={565}
+                width={325}
+                height={500}
                 // layout="responsive"
                 src={bannerImg}
                 alt="// FIXME: use real alt text"
@@ -73,23 +69,52 @@ export default function Strength() {
             </div>
           </div>
 
-          <div className="relative flex justify-between">
-            <div className="max-w-lg">
-              <h2 className="text-6xl mb-8">ICBC Active Rehab</h2>
+          <div className="relative flex md:flex-row flex-col justify-between md:gap-0 gap-8 md:mb-60 mb-24">
+            <div className="lg:max-w-lg md:max-w-sm">
+              <h2 className="md:text-5xl text-4xl md:mb-8 mb-4">
+                Physio-Led Active Rehabilitation
+              </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum dolor
-                sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euis- mod tincidunt ut laoreet Lorem ipsum dolor sit amet,
-                consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                tincidunt ut laoreet Lorem ipsum dolor sit amet, consectetuer
-                adipi
+                Kinected Strength has partnered with{" "}
+                <a
+                  className="wavy font-medium"
+                  href="https://thebalancedcollective.com/blogs/news/what-is-physiotherapy-led-active-rehab?_pos=1&_sid=e4940b102&_ss=r"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  The Balanced Collective
+                </a>{" "}
+                to provide physio-led active rehab. Begin with a high level
+                assessment from a TBC physio then carry out your treatment plan
+                in the gym with your Kinesiologist.
               </p>
             </div>
-            <div className="absolute right-0 bottom-0">
+            <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center">
               <Image
                 width={250}
                 height={375}
+                // layout="responsive"
+                src={bannerImg}
+                alt="// FIXME: use real alt text"
+              />
+            </div>
+          </div>
+
+          <div className="relative flex md:flex-row-reverse flex-col justify-between md:gap-0 gap-8 xl:mr-16 md:mb-60 mb-24">
+            <div className="lg:max-w-lg md:max-w-xs">
+              <h2 className="md:text-5xl text-4xl md:mb-8 mb-4">
+                Online Training
+              </h2>
+              <p>
+                Flexible options available including telehealth and remote
+                coaching. Contact us for more information. Great as an add on
+                for your in person training.
+              </p>
+            </div>
+            <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center">
+              <Image
+                width={325}
+                height={450}
                 // layout="responsive"
                 src={bannerImg}
                 alt="// FIXME: use real alt text"
@@ -97,8 +122,27 @@ export default function Strength() {
             </div>
           </div>
         </div>
+
+        <div className="relative md:self-center md:mt-16 md:mb-0 mb-12 flex flex-col gap-8 md:max-w-3xl">
+          <p className="md:text-xl text-lg font-semibold z-10">
+            We value education and provide specific and individualized
+            programming. We believe there should always be 'why' behind each
+            exercise. By tailoring your program specifically to you we will
+            streamline your results and support continued growth.
+          </p>
+          <p className="md:text-xl text-lg font-semibold z-10">
+            Even if you're a beginner to strength training, you're not on this
+            journey alone; join our community of strong and confident members!
+          </p>
+          <Circle
+            size={200}
+            color="fill-secondary-light"
+            className="absolute md:-top-24 -top-16 md:-left-24 -left-16"
+          />
+        </div>
       </div>
 
+      {/* FIXME: get from db */}
       <TestimonialBlock
         testimonials={[
           {
