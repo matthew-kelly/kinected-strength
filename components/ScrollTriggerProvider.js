@@ -16,12 +16,15 @@ const ScrollTriggerContext = createContext(null);
 const useScrollTrigger = () => useContext(ScrollTriggerContext);
 
 const DEFAULT_OPTIONS = {
-  // end: "+=50%", //"+=100%"
-  // pin: true, // false
+  end: "+=50%", //"+=100%"
+  // pin: true,
   pin: false,
   scrub: true,
   start: "top top",
 };
+
+// matrix3d(1,   0,  0,  0,  0,  1,  0,  0,  0,  0,  1,  0,  0, -2340,  0, 1);
+// matrix3d(a1, b1, c1, d1, a2, b2, c2, d2, a3, b3, c3, d3, a4,    b4, c4, d4);
 
 const ScrollTriggerProvider = ({ children, debug = false, options = {} }) => {
   const refScrollTrigger = useRef(null);

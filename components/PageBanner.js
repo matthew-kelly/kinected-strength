@@ -10,29 +10,17 @@ export default function PageBanner({
 }) {
   return (
     <div className="bg-primary-dark flex flex-col relative z-10 max-w-7xl self-center">
-      {image.length && image.length > 1 ? (
-        <div className="flex space-between justify-center w-full lg:gap-24 md:gap-16 gap-8 lg:px-24 md:px-16">
-          {image.map((img, i) => (
-            <div key={i} className="w-full">
-              <Image
-                src={img.url}
-                layout="responsive"
-                priority
-                alt="img.alt // FIXME: add real alt text"
-                className="z-0"
-              />
-            </div>
-          ))}
-        </div>
-      ) : (
+      <div>
         <Image
-          src={image.url}
+          src={image.image}
           layout="responsive"
           priority
-          alt="image.alt // FIXME: add real alt text"
+          quality={90}
+          sizes="100vw"
+          alt={image.alt}
           className="z-0"
         />
-      )}
+      </div>
       <div className="flex flex-col lg:p-24 md:p-16 p-8">
         <h1 className="text-primary-light uppercase text-xl font-extrabold tracking-widest mb-8">
           {title}

@@ -76,7 +76,7 @@ export default function Contact() {
       />
       <div className="flex justify-center lg:py-24 md:py-16 py-8 bg-light-gray lg:px-64 md:px-32 px-8">
         <div className="flex flex-col">
-          <h1 className="lg:text-7xl md:text-6xl text-5xl mb-4 font-extrabold">
+          <h1 className="lg:text-7xl md:text-6xl text-5xl mb-6 font-extrabold">
             Get in touch.
           </h1>
           <p className="text-primary-dark max-w-lg font-bold text-base">
@@ -84,7 +84,7 @@ export default function Contact() {
           </p>
 
           <form
-            className="flex flex-col text-primary-dark mt-8 md:min-w-2xl"
+            className="flex flex-col text-primary-dark mt-16 md:min-w-2xl"
             onSubmit={handleSubmit}
           >
             <div className="flex flex-col gap-10 font-display">

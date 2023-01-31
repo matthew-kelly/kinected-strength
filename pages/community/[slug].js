@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import Button from "../../components/Button";
 import LogoSpinner from "../../components/LogoSpinner";
 import { KLogo } from "../../components/shapes";
 import bannerImg from "../../public/temp/tempbanner-horiz.jpg"; // FIXME: get from blog post
@@ -57,14 +59,17 @@ export default function CommunityEvent() {
             alias eaque.
           </p>
         </div>
-        <div className="md:my-16 my-8 w-full border-t-primary-dark border-t-2" />
-        <div className="self-center">
-          <KLogo
-            width="75"
-            colorRect="fill-primary-light"
-            colorTop="fill-secondary-dark"
-            colorBottom="fill-secondary-light"
-          />
+        <div className="md:my-12 my-8 w-full border-t-primary-dark border-t-2" />
+        <div className="md:self-start self-center md:mb-0 mb-2">
+          <Link href="/community">
+            <a>
+              <Button className="md:large">
+                <span className="whitespace-nowrap">
+                  &lt;&lt; Back to Events
+                </span>
+              </Button>
+            </a>
+          </Link>
         </div>
       </article>
     </>

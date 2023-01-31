@@ -22,6 +22,7 @@
   /* html body */
   body {
     @apply overscroll-y-none;
+    -webkit-overflow-scrolling: touch;
   }
   /* app body */
   .body {
@@ -118,5 +119,13 @@
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
-  @apply md:mr-[15px];
+  /* @apply md:mr-[15px]; */
+}
+
+.stop-scrolling #nav-main {
+  @apply md:right-[15px]; /* HACK: home banner image sticks out when un-commenting the at-apply in .stop-scrolling */
+}
+
+.stop-scrolling #bannerContainer {
+  /* @apply md:max-w-full; FIXME: home banner sticks out side of page when opening menu */
 }

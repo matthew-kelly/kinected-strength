@@ -1,14 +1,14 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import Menu from "./Menu";
 import Logo from "./Logo";
 import { MenuButton } from "./MenuButton";
-import { breakpoints, colors } from "../utils/theme";
-import { useMenu } from "../lib/menuState";
-import Menu from "./Menu";
 import { KLogo } from "./shapes";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useMenu } from "../lib/menuState";
 import { useWindowSize } from "../lib/useWindowSize";
 import { useScrollDirection } from "../lib/useScrollDirection";
+import { breakpoints, colors } from "../utils/theme";
 
 export default function Nav() {
   const { toggleMenu, closeMenu, isOpen } = useMenu();
@@ -26,29 +26,40 @@ export default function Nav() {
     <>
       <nav
         id="nav-main"
-        className={`sticky flex justify-between items-center md:px-16 px-4 z-[101] md:h-32 h-20 transition-[top] ease-in-out duration-300 ${
-          !isHomePage && scrollDirection === "down"
+        className={`flex justify-between items-center bg-primary-dark md:px-16 px-4 z-[101] md:h-32 h-20 transition-[top] ease-in-out duration-300 ${
+          ((isHomePage && windowSize.width < breakpoints.lg) || !isHomePage) &&
+          scrollDirection === "down"
             ? "md:-top-32 -top-20"
             : "top-0"
-        } ${isHomePage ? "bg-transparent" : "bg-primary-dark"}`}
+        } ${
+          isHomePage && windowSize.width >= breakpoints.lg
+            ? "fixed w-full"
+            : "sticky"
+        }`}
       >
         {/* bg-opacity-80 */}
-        <Link href="/">
-          <a>
-            <KLogo
-              width="30"
-              colorRect="fill-primary-light"
-              colorTop="fill-secondary-dark"
-              colorBottom="fill-secondary-light"
-              className="md:h-8 h-6"
-            />
-          </a>
-        </Link>
         {isHomePage ? (
-          <div>
-            <Logo noHover={true} />
-          </div>
+          <KLogo
+            width="30"
+            colorRect="fill-primary-light"
+            colorTop="fill-secondary-dark"
+            colorBottom="fill-secondary-light"
+            className="md:h-8 h-6"
+          />
         ) : (
+          <Link href="/">
+            <a>
+              <KLogo
+                width="30"
+                colorRect="fill-primary-light"
+                colorTop="fill-secondary-dark"
+                colorBottom="fill-secondary-light"
+                className="md:h-8 h-6"
+              />
+            </a>
+          </Link>
+        )}
+        {(!isHomePage || (isHomePage && windowSize.width < breakpoints.lg)) && (
           <Link href="/">
             <a>
               <Logo />

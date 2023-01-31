@@ -61,18 +61,23 @@ export default function Menu({ isOpen = false, closeMenu }) {
         >
           {links.map((link) => (
             <motion.div key={link.id} variants={itemVariants} className="py-4">
-              <Link href={link.href} key={link.id} passHref>
-                <a
-                  className={`lg:text-6xl md:text-5xl text-4xl font-display font-bold hover:text-secondary-light whitespace-nowrap ${
-                    router.asPath === link.href
-                      ? "text-secondary-light"
-                      : "text-primary-light"
-                  }`}
+              {router.asPath === link.href ? (
+                <span
+                  className="lg:text-6xl md:text-5xl text-4xl font-display font-bold hover:text-secondary-light whitespace-nowrap text-secondary-light cursor-pointer"
                   onClick={closeMenu}
                 >
                   {link.name}
-                </a>
-              </Link>
+                </span>
+              ) : (
+                <Link href={link.href} key={link.id} passHref>
+                  <a
+                    className="lg:text-6xl md:text-5xl text-4xl font-display font-bold hover:text-secondary-light whitespace-nowrap text-primary-light"
+                    onClick={closeMenu}
+                  >
+                    {link.name}
+                  </a>
+                </Link>
+              )}
             </motion.div>
           ))}
         </motion.div>

@@ -2,14 +2,15 @@ import Image from "next/image";
 import PageBanner from "../components/PageBanner";
 import { Circle } from "../components/shapes";
 import TestimonialBlock from "../components/TestimonialBlock";
-import bannerImg from "../public/temp/andrea-tgu-temp.png"; // FIXME: get from db
+import testimonialImg from "../public/temp/testimonial-sample.png"; // FIXME: get each image from db
+import bannerImg from "../public/images/strength.jpg";
 
 export default function Strength() {
   // FIXME: source from database?
   const title = "Strength";
   const tagline = "High quality strength training. Inclusive to all.";
   const text = `Training is not about finding the best “workout”. Training is a deliberate practice with concrete goals and outcomes. We will give you the tools to train for your goals in a smart, fun, and sustainable way. We will support you as we fuel your passion for good movement through education and guided strength training, and help you navigate the path to your health and training goals.`;
-  const image = [{ url: bannerImg }, { url: bannerImg }];
+  const image = { image: bannerImg, alt: "// FIXME: real alt text" };
   return (
     <>
       <div className="bg-primary-dark flex flex-col relative">
@@ -126,13 +127,14 @@ export default function Strength() {
         <div className="relative md:self-center md:mt-16 md:mb-0 mb-12 flex flex-col gap-8 md:max-w-3xl">
           <p className="md:text-xl text-lg font-semibold z-10">
             We value education and provide specific and individualized
-            programming. We believe there should always be 'why' behind each
-            exercise. By tailoring your program specifically to you we will
-            streamline your results and support continued growth.
+            programming. We believe there should always be &apos;why&apos;
+            behind each exercise. By tailoring your program specifically to you
+            we will streamline your results and support continued growth.
           </p>
           <p className="md:text-xl text-lg font-semibold z-10">
-            Even if you're a beginner to strength training, you're not on this
-            journey alone; join our community of strong and confident members!
+            Even if you&apos;re a beginner to strength training, you&apos;re not
+            on this journey alone; join our community of strong and confident
+            members!
           </p>
           <Circle
             size={200}
@@ -144,16 +146,12 @@ export default function Strength() {
 
       {/* FIXME: get from db */}
       <TestimonialBlock
-        testimonials={[
-          {
-            content: `"Briana is a patient, knowledgeable and motivating trainer. I am a 73-year-old with osteoporosis & scoliosis. When I started with Briana I couldn’t even get in and out of the bathtub, and I didn’t have the strength to pull on my tenser nylons. Now I can easily do these things and so much more! I recommend Briana highly. I just keep getting stronger and stronger with no injuries when I am training under her direction."`,
-            author: "LT",
-          },
-          {
-            content: `“I have been working out in the garden for the last couple of days and I am thrilled with what I can do without pain! I can get up and down, no problem. I’m amazed at my progress in a few months. Thank you so much. You know what you’re doing and have helped me so much!”`,
-            author: "CV",
-          },
-        ]}
+        testimonial={{
+          content: `"Briana is a patient, knowledgeable and motivating trainer. I am a 73-year-old with osteoporosis & scoliosis. When I started with Briana I couldn’t even get in and out of the bathtub, and I didn’t have the strength to pull on my tenser nylons. Now I can easily do these things and so much more! I recommend Briana highly. I just keep getting stronger and stronger with no injuries when I am training under her direction."`,
+          author: "LT",
+          image: testimonialImg,
+        }}
+        word="strength"
       />
     </>
   );

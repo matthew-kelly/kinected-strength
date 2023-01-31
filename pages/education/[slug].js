@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import Button from "../../components/Button";
 import LogoSpinner from "../../components/LogoSpinner";
 import { KLogo } from "../../components/shapes";
 import bannerImg from "../../public/temp/tempbanner-horiz.jpg"; // FIXME: get from blog post
@@ -59,13 +61,23 @@ export default function BlogPost() {
           </p>
         </div>
         <div className="md:my-16 my-8 w-full border-t-primary-dark border-t-2" />
-        <div className="self-center">
-          <KLogo
-            width="75"
-            colorRect="fill-primary-light"
-            colorTop="fill-secondary-dark"
-            colorBottom="fill-secondary-light"
-          />
+        {/* TODO: next and previous blog */}
+        <div className="flex md:flex-row flex-col gap-4 md:justify-between md:mb-0 mb-2">
+          <Link href="#">
+            <a>
+              <Button className="md:large">
+                <span className="whitespace-nowrap">&lt;&lt; Prevous post</span>
+              </Button>
+            </a>
+          </Link>
+
+          <Link href="#">
+            <a>
+              <Button className="md:large md:text-start text-end">
+                <span className="whitespace-nowrap">Next post &gt;&gt;</span>
+              </Button>
+            </a>
+          </Link>
         </div>
       </article>
     </>

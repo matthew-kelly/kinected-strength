@@ -1,11 +1,22 @@
-import { MenuStateProvider, useMenu } from "../lib/menuState";
+import Head from "next/head";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import { MenuStateProvider } from "../lib/menuState";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     <MenuStateProvider>
+      <Head>
+        <link rel="icon" type="image/svg" href="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+      </Head>
       <div className="min-h-screen flex flex-col overflow-x-clip bg-primary-dark">
         <Nav />
         <main className="body">

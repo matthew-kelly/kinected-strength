@@ -1,7 +1,10 @@
 import Image from "next/image";
 import PageBanner from "../components/PageBanner";
-import bannerImg from "../public/temp/tempbanner-horiz.jpg"; // FIXME: get from db
-import tguPic from "../public/temp/tgu.png"; // FIXME: get each image from db
+import bannerImg from "../public/images/our-story-1.jpg";
+import andreaImg from "../public/images/our-story-andrea.jpg";
+import jessImg from "../public/images/our-story-jess.jpg";
+import brianaImg from "../public/images/our-story-briana.jpg";
+import testimonialImg from "../public/temp/testimonial-sample.png"; // FIXME: get each image from db
 import { Circle } from "../components/shapes";
 import TestimonialBlock from "../components/TestimonialBlock";
 import {
@@ -78,7 +81,7 @@ export default function OurStory() {
     <>
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner
-          image={{ url: bannerImg }}
+          image={{ image: bannerImg, alt: "" }}
           title={title}
           tagline={tagline}
           text={text}
@@ -137,11 +140,11 @@ export default function OurStory() {
                   className="md:w-1/2 w-full"
                 >
                   <Image
-                    width={300}
-                    height={425}
                     layout="responsive"
-                    src={tguPic}
-                    alt="// FIXME: use real alt text"
+                    src={andreaImg}
+                    quality={90}
+                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
+                    alt="Andrea Brennan"
                   />
                 </motion.div>
                 <motion.div
@@ -230,11 +233,11 @@ export default function OurStory() {
                   className="md:w-1/2 w-full"
                 >
                   <Image
-                    width={300}
-                    height={425}
                     layout="responsive"
-                    src={tguPic}
-                    alt="// FIXME: use real alt text"
+                    src={jessImg}
+                    quality={90}
+                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
+                    alt="Jess Pastro"
                   />
                 </motion.div>
                 <motion.div
@@ -322,11 +325,11 @@ export default function OurStory() {
                   className="md:w-1/2 w-full"
                 >
                   <Image
-                    width={300}
-                    height={425}
                     layout="responsive"
-                    src={tguPic}
-                    alt="// FIXME: use real alt text"
+                    src={brianaImg}
+                    quality={90}
+                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
+                    alt="Briana Kelly"
                   />
                 </motion.div>
                 <motion.div
@@ -377,16 +380,11 @@ export default function OurStory() {
       </div>
 
       <TestimonialBlock
-        testimonials={[
-          {
-            content: `"Briana is a patient, knowledgeable and motivating trainer. I am a 73-year-old with osteoporosis & scoliosis. When I started with Briana I couldn’t even get in and out of the bathtub, and I didn’t have the strength to pull on my tenser nylons. Now I can easily do these things and so much more! I recommend Briana highly. I just keep getting stronger and stronger with no injuries when I am training under her direction."`,
-            author: "LT",
-          },
-          {
-            content: `“I have been working out in the garden for the last couple of days and I am thrilled with what I can do without pain! I can get up and down, no problem. I’m amazed at my progress in a few months. Thank you so much. You know what you’re doing and have helped me so much!”`,
-            author: "CV",
-          },
-        ]}
+        testimonial={{
+          image: testimonialImg,
+          content: `"Briana is a patient, knowledgeable and motivating trainer. I am a 73-year-old with osteoporosis & scoliosis. When I started with Briana I couldn’t even get in and out of the bathtub, and I didn’t have the strength to pull on my tenser nylons. Now I can easily do these things and so much more! I recommend Briana highly. I just keep getting stronger and stronger with no injuries when I am training under her direction."`,
+          author: "Leslee T.",
+        }}
       />
     </>
   );
