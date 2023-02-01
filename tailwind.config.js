@@ -7,7 +7,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // FIXME: update colors
         "primary-light": "#A6DBD7", //"rgb(177 217 214)", // "#A6DBD7",
         "primary-dark": "#164AA0", //"rgb(37 75 154)", //"#164AA0",
         "secondary-light": "#E1B5D4", //"rgb(218 183 211)", //"#E1B5D4",

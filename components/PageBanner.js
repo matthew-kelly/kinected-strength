@@ -19,6 +19,7 @@ export default function PageBanner({
           sizes="100vw"
           alt={image.alt}
           className="z-0"
+          placeholder="blur"
         />
       </div>
       <div className="flex flex-col lg:p-24 md:p-16 p-8">

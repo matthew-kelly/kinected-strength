@@ -9,6 +9,7 @@ export default function Testimonial({ content, author, image }) {
             src={image}
             // layout="responsive"
             alt="// FIXME: real alt text"
+            placeholder="blur"
           />
         </div>
       )}

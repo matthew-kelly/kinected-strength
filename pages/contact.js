@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { createRef, useEffect, useState } from "react";
 import Button from "../components/Button";
-import bannerImg from "../public/temp/tempbanner-horiz.jpg";
+import bannerImg from "../public/images/get-in-touch.jpg";
 import { useWindowSize } from "../lib/useWindowSize";
 import { breakpoints } from "../utils/theme";
 
@@ -70,9 +70,11 @@ export default function Contact() {
       <Image
         id="bannerImage"
         src={bannerImg}
+        sizes="100vw"
         layout="responsive"
         priority
-        alt="// FIXME: add real alt text"
+        alt="Andrea, Jess, and Briana sitting on the grass"
+        placeholder="blur"
       />
       <div className="flex justify-center lg:py-24 md:py-16 py-8 bg-light-gray lg:px-64 md:px-32 px-8">
         <div className="flex flex-col">

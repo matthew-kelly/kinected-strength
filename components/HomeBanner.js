@@ -67,6 +67,8 @@ export default function HomeBanner() {
     setLogoWidth(newLogoWidth);
     setLogoTop(newLogoTop);
 
+    // TODO: make banner image scroll up with flow of document once progress = 1
+
     bannerContainer.style.height = `${Math.round(
       windowSize.width * 0.926 + 128
     )}px`; // HACK: not a perfect fit, doesn't work properly after window resize
@@ -75,6 +77,7 @@ export default function HomeBanner() {
   return (
     <LayoutGroup>
       <motion.div
+        id="banner-image-container"
         ref={bannerImageRef}
         layout
         className={`self-center w-full z-0 fixed mt-32`}
@@ -90,21 +93,27 @@ export default function HomeBanner() {
           priority
           sizes="100vw"
           quality={90}
-          alt="// FIXME: add real alt text"
+          alt="Briana, Andrea, and Jess walking along a dock"
           className="z-0"
+          placeholder="blur"
         />
       </motion.div>
 
       <AnimatePresence>
         {!isOpen && (
           <motion.div
+            id="home-logo"
             ref={scrollRef}
             className="fixed left-1/2 transform -translate-x-1/2"
             style={{
               top: logoContainerTop,
               zIndex: 102,
             }}
-            exit={{ opacity: 0 }}
+            exit={{
+              opacity: [1, 0],
+              paddingRight: [16, 16],
+              transition: { duration: 0.3 },
+            }}
           >
             <motion.svg
               // height="200"

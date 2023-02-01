@@ -144,6 +144,7 @@ export default function OurStory() {
                     src={andreaImg}
                     quality={90}
                     sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
+                    placeholder="blur"
                     alt="Andrea Brennan"
                   />
                 </motion.div>
@@ -237,6 +238,7 @@ export default function OurStory() {
                     src={jessImg}
                     quality={90}
                     sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
+                    placeholder="blur"
                     alt="Jess Pastro"
                   />
                 </motion.div>
@@ -329,6 +331,7 @@ export default function OurStory() {
                     src={brianaImg}
                     quality={90}
                     sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
+                    placeholder="blur"
                     alt="Briana Kelly"
                   />
                 </motion.div>

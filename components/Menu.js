@@ -9,17 +9,17 @@ const container = {
     y: "-100vh",
     transition: {
       type: "tween",
-      duration: 0.5,
+      duration: 0.7,
     },
   },
   open: {
     y: 0,
     transition: {
       type: "tween",
-      duration: 0.3,
+      duration: 0.4,
       ease: "easeIn",
       delayChildren: 0.35,
-      staggerChildren: 0.05,
+      staggerChildren: 0.08,
     },
   },
 };
@@ -35,8 +35,6 @@ const itemVariants = {
 
 export default function Menu({ isOpen = false, closeMenu }) {
   const router = useRouter();
-
-  // FIXME: make sure this is proper technique for closing menu
 
   useEffect(() => {
     const handleRouteChange = (url) => {

@@ -4,13 +4,23 @@ import { Circle } from "../components/shapes";
 import TestimonialBlock from "../components/TestimonialBlock";
 import testimonialImg from "../public/temp/testimonial-sample.png"; // FIXME: get each image from db
 import bannerImg from "../public/images/strength.jpg";
+import imgICBC from "../public/images/services-ICBC.jpg";
+import imgOnline from "../public/images/services-online.jpg";
+import imgPhysio from "../public/images/services-physio-led.jpg";
+import imgPrivate from "../public/images/services-private.jpg";
+import DivInView from "../components/DivInView";
 
 export default function Strength() {
   // FIXME: source from database?
   const title = "Strength";
   const tagline = "High quality strength training. Inclusive to all.";
-  const text = `Training is not about finding the best “workout”. Training is a deliberate practice with concrete goals and outcomes. We will give you the tools to train for your goals in a smart, fun, and sustainable way. We will support you as we fuel your passion for good movement through education and guided strength training, and help you navigate the path to your health and training goals.`;
-  const image = { image: bannerImg, alt: "// FIXME: real alt text" };
+  const text = `Training is not about finding the best "workout". Training is a deliberate practice with concrete goals and outcomes. We will give you the tools to train for your goals in a smart, fun, and sustainable way. We will support you as we fuel your passion for good movement through education and guided strength training, and help you navigate the path to your health and training goals.`;
+  const image = {
+    image: bannerImg,
+    alt: "Andrea, Briana, and Jess standing by the water",
+  };
+
+  // TODO: animate images and text entry
   return (
     <>
       <div className="bg-primary-dark flex flex-col relative">
@@ -33,19 +43,20 @@ export default function Strength() {
                 of personalized accountability.
               </p>
             </div>
-            <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center">
-              <Image
-                width={250}
-                height={375}
-                // layout="responsive"
-                src={bannerImg}
-                alt="// FIXME: use real alt text"
-              />
+            <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center md:max-w-[250px]">
+              <DivInView>
+                <Image
+                  src={imgPrivate}
+                  alt="Jess swinging a kettlebell"
+                  // sizes={`(max-width: ${breakpoints.md}px) 100vw, 250px`}
+                  placeholder="blur"
+                />
+              </DivInView>
             </div>
           </div>
 
           <div className="relative flex md:flex-row-reverse flex-col justify-between md:gap-0 gap-8 xl:mr-16 md:mb-60 mb-24">
-            <div className="lg:max-w-lg md:max-w-xs">
+            <div className="lg:max-w-md md:max-w-xs">
               <h2 className="md:text-5xl text-4xl md:mb-8 mb-4">
                 ICBC Active Rehabilitation
               </h2>
@@ -59,14 +70,15 @@ export default function Strength() {
                 billing through ICBC is available.
               </p>
             </div>
-            <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center">
-              <Image
-                width={325}
-                height={500}
-                // layout="responsive"
-                src={bannerImg}
-                alt="// FIXME: use real alt text"
-              />
+            <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center lg:max-w-[325px] md:max-w-[300px]">
+              <DivInView>
+                <Image
+                  src={imgICBC}
+                  // sizes={`(max-width: ${breakpoints.md}px) 100vw, (max-width: ${breakpoints.lg}px) 300px, 325px`}
+                  alt="Briana holding a plank position"
+                  placeholder="blur"
+                />
+              </DivInView>
             </div>
           </div>
 
@@ -90,19 +102,20 @@ export default function Strength() {
                 in the gym with your Kinesiologist.
               </p>
             </div>
-            <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center">
-              <Image
-                width={250}
-                height={375}
-                // layout="responsive"
-                src={bannerImg}
-                alt="// FIXME: use real alt text"
-              />
+            <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center md:max-w-[250px]">
+              <DivInView>
+                <Image
+                  src={imgPhysio}
+                  alt="Andrea swinging a kettlebell"
+                  // sizes={`(max-width: ${breakpoints.md}px) 100vw, 250px`}
+                  placeholder="blur"
+                />
+              </DivInView>
             </div>
           </div>
 
           <div className="relative flex md:flex-row-reverse flex-col justify-between md:gap-0 gap-8 xl:mr-16 md:mb-60 mb-24">
-            <div className="lg:max-w-lg md:max-w-xs">
+            <div className="lg:max-w-md md:max-w-xs">
               <h2 className="md:text-5xl text-4xl md:mb-8 mb-4">
                 Online Training
               </h2>
@@ -112,14 +125,17 @@ export default function Strength() {
                 for your in person training.
               </p>
             </div>
-            <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center">
-              <Image
-                width={325}
-                height={450}
-                // layout="responsive"
-                src={bannerImg}
-                alt="// FIXME: use real alt text"
-              />
+            <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center lg:max-w-[325px] md:max-w-[300px]">
+              <DivInView>
+                <Image
+                  src={imgOnline}
+                  alt="A kettlebell, water bottle, foam roller, and yoga mat on a dock"
+                  // sizes={`(max-width: ${breakpoints.md}px) 100vw,
+                  //   (max-width: ${breakpoints.lg}px) 30vw,
+                  //   35vw`}
+                  placeholder="blur"
+                />
+              </DivInView>
             </div>
           </div>
         </div>

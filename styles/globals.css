@@ -119,13 +119,20 @@
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
-  /* @apply md:mr-[15px]; */
+  @apply md:mr-[15px];
 }
 
-.stop-scrolling #nav-main {
-  @apply md:right-[15px]; /* HACK: home banner image sticks out when un-commenting the at-apply in .stop-scrolling */
+.stop-scrolling #home-page {
+  @apply lg:mr-0 md:mr-0;
 }
 
-.stop-scrolling #bannerContainer {
-  /* @apply md:max-w-full; FIXME: home banner sticks out side of page when opening menu */
+.stop-scrolling #home-page #menu-button {
+  @apply lg:mr-[15px];
+}
+.stop-scrolling #home-logo {
+  @apply lg:mr-[15px];
+}
+
+.stop-scrolling #banner-image-container {
+  @apply lg:!max-w-[calc(100vw_-_15px)];
 }

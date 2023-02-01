@@ -71,6 +71,7 @@ export default function Nav() {
           onClick={toggleMenu}
           aria-expanded={isOpen}
           role="menu button"
+          id="menu-button"
         >
           <MenuButton
             isOpen={isOpen}

@@ -27,7 +27,6 @@ export default function Home() {
       {windowSize.width >= breakpoints.lg ? (
         <div id="bannerContainer" className="flex flex-col">
           <ScrollTriggerProvider options={{ end: "+=50%" }}>
-            {/* <HomeBanner /> */}
             <HomeBanner />
           </ScrollTriggerProvider>
         </div>
@@ -38,14 +37,15 @@ export default function Home() {
           priority
           sizes="100vw"
           quality={90}
-          alt="// FIXME: add real alt text"
+          alt="Briana, Andrea, and Jess walking along a dock"
+          placeholder="blur"
           className="z-0"
         />
       )}
 
       <div className="bg-primary-dark flex flex-col relative z-10">
         {/* maybe not needed */}
-        {/* FIXME: have banner be floating at bottom of screen until you scroll past (on smaller devices) */}
+        {/* TODO: have banner be floating at bottom of screen until you scroll past (on smaller devices) */}
         {/* <div className="px-16 py-12 flex justify-center">
           <h1 className="font-semibold text-3xl text-center text-secondary-light">
             Your home for kinesiology, strength training, and active rehab in
@@ -61,11 +61,11 @@ export default function Home() {
               sizes={`(max-width: ${breakpoints.sm}px) 100vw,
               50vw`}
               quality={90}
-              alt="// FIXME: add real alt text"
+              alt="Briana and Jess doing kettlebell exercises"
+              placeholder="blur"
               className="object-cover object-center"
             />
           </div>
-          {/* FIXME: make shapes properly fill space at large screen sizes */}
           <div className="sm:w-1/2 bg-primary-light flex flex-col justify-center md:gap-10 gap-8 p-8">
             <div className="flex justify-center md:gap-8 gap-4">
               <Link href="/strength" passHref>
@@ -165,7 +165,8 @@ export default function Home() {
                   layout="responsive"
                   quality={90}
                   sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
-                  alt="// FIXME: add real alt text"
+                  placeholder="blur"
+                  alt="Briana, Jess, and Andrea flexing for the camera"
                 />
               </div>
               <div className="lg:w-1/3 md:w-1/2 lg:ml-16">
@@ -184,7 +185,7 @@ export default function Home() {
                     personalities and values align, but so did our coaching
                     styles.
                   </p>
-                  <p>We're three best friends who love what we do!</p>
+                  <p>We&apos;re three best friends who love what we do!</p>
                 </div>
               </div>
             </div>
@@ -211,7 +212,8 @@ export default function Home() {
                     layout="responsive"
                     quality={90}
                     sizes={`(max-width: ${breakpoints.md}px) 100vw, 38vw`}
-                    alt="// FIXME: add real alt text"
+                    placeholder="blur"
+                    alt="Jess doing a turkish get-up"
                   />
                 </div>
                 <div className="absolute -top-[75px] md:-right-[75px] self-center">
@@ -221,6 +223,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {/* FIXME: get from db */}
         <TestimonialBlock
           testimonial={{
             content: `"Briana is a patient, knowledgeable and motivating trainer. I am a 73-year-old with osteoporosis & scoliosis. When I started with Briana I couldn’t even get in and out of the bathtub, and I didn’t have the strength to pull on my tenser nylons. Now I can easily do these things and so much more! I recommend Briana highly. I just keep getting stronger and stronger with no injuries when I am training under her direction."`,
