@@ -20,6 +20,7 @@ const myFont = localFont({
       style: "italic",
     },
   ],
+  display: "swap",
   variable: "--font-raleway",
 });
 
