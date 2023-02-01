@@ -7,6 +7,7 @@ import TestimonialBlock from "../../components/TestimonialBlock";
 import testimonialImg from "../../public/temp/testimonial-sample.png"; // FIXME: get each image from db
 import bannerImg from "../../public/temp/tempbanner-horiz.jpg"; // FIXME: get from db
 import grassImg from "../../public/temp/grass.png"; // FIXME: get from db
+import Head from "next/head";
 
 export default function Education() {
   // FIXME: source from database?
@@ -26,6 +27,10 @@ export default function Education() {
   };
   return (
     <>
+      <Head>
+        <title>Education | Kinected Strength</title>
+        {/* <meta name="description" content="" /> */}
+      </Head>
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner image={image} title={title} tagline={tagline} text={text} />
       </div>

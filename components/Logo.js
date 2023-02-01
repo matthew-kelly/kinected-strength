@@ -6,7 +6,7 @@ const variants = {
     fill: colors["primary-light"],
   },
   hover: {
-    fill: colors["secondary-dark"],
+    fill: colors["secondary-light"],
   },
 };
 

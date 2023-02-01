@@ -9,6 +9,7 @@ import imgOnline from "../public/images/services-online.jpg";
 import imgPhysio from "../public/images/services-physio-led.jpg";
 import imgPrivate from "../public/images/services-private.jpg";
 import DivInView from "../components/DivInView";
+import Head from "next/head";
 
 export default function Strength() {
   // FIXME: source from database?
@@ -23,6 +24,10 @@ export default function Strength() {
   // TODO: animate images and text entry
   return (
     <>
+      <Head>
+        <title>Strength Training | Kinected Strength</title>
+        {/* <meta name="description" content="" /> */}
+      </Head>
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner image={image} title={title} tagline={tagline} text={text} />
       </div>

@@ -23,6 +23,8 @@ function MyApp({ Component, pageProps }) {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
+        <meta charSet="UTF-8" />
+        <title>Kinected Strength</title>
       </Head>
       <div
         className="min-h-screen flex flex-col overflow-x-clip bg-primary-dark"

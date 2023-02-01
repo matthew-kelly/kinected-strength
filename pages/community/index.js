@@ -5,6 +5,7 @@ import testimonialImg from "../../public/temp/testimonial-sample.png"; // FIXME:
 import grassImg from "../../public/temp/grass.png"; // FIXME: get from db
 import EventCard from "../../components/EventCard";
 import { Quartercircle } from "../../components/shapes";
+import Head from "next/head";
 
 export default function Community() {
   // FIXME: source from database?
@@ -23,6 +24,10 @@ export default function Community() {
   };
   return (
     <>
+      <Head>
+        <title>Community | Kinected Strength</title>
+        {/* <meta name="description" content="" /> */}
+      </Head>
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner image={image} title={title} tagline={tagline} text={text} />
       </div>

@@ -17,6 +17,7 @@ import {
 import { useEffect, useRef } from "react";
 import { useWindowSize } from "../lib/useWindowSize";
 import { breakpoints } from "../utils/theme";
+import Head from "next/head";
 
 export default function OurStory() {
   const windowSize = useWindowSize();
@@ -79,6 +80,11 @@ export default function OurStory() {
   const text = `Andrea, Bri and Jess have 25+ combined years experience working in the field. We believe that quality training should be available to everyone no matter their level of fitness or experience.`;
   return (
     <>
+      <Head>
+        <title>Our Story | Kinected Strength</title>
+        {/* <meta name="description" content="" /> */}
+      </Head>
+
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner
           image={{ image: bannerImg, alt: "" }}
