@@ -67,14 +67,16 @@ export default function Menu({ isOpen = false, closeMenu }) {
                   {link.name}
                 </span>
               ) : (
-                <Link href={link.href} key={link.id} passHref>
-                  <a
-                    className="lg:text-6xl md:text-5xl text-4xl font-display font-bold hover:text-secondary-light whitespace-nowrap text-primary-light"
-                    onClick={closeMenu}
-                  >
-                    {link.name}
-                  </a>
-                </Link>
+                (<Link
+                  href={link.href}
+                  key={link.id}
+                  passHref
+                  className="lg:text-6xl md:text-5xl text-4xl font-display font-bold hover:text-secondary-light whitespace-nowrap text-primary-light"
+                  onClick={closeMenu}>
+
+                  {link.name}
+
+                </Link>)
               )}
             </motion.div>
           ))}

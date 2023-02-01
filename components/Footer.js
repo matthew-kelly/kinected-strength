@@ -84,11 +84,11 @@ export default function Footer() {
 
             <div className="md:hidden block">
               <Link href="/contact">
-                <a>
-                  <Button className="light md:large justify-self-end">
-                    <span className="whitespace-nowrap">Get in touch</span>
-                  </Button>
-                </a>
+
+                <Button className="light md:large justify-self-end">
+                  <span className="whitespace-nowrap">Get in touch</span>
+                </Button>
+
               </Link>
             </div>
           </div>
@@ -102,11 +102,11 @@ export default function Footer() {
           </span>
           <div className="md:block hidden">
             <Link href="/contact">
-              <a>
-                <Button className="light md:large">
-                  <span className="whitespace-nowrap">Get in touch</span>
-                </Button>
-              </a>
+
+              <Button className="light md:large">
+                <span className="whitespace-nowrap">Get in touch</span>
+              </Button>
+
             </Link>
           </div>
         </div>

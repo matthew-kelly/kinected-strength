@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import PageBanner from "../components/PageBanner";
 import { Circle } from "../components/shapes";
 import TestimonialBlock from "../components/TestimonialBlock";

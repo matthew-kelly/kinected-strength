@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { createRef, useEffect, useState } from "react";
 import Button from "../components/Button";
 import bannerImg from "../public/images/get-in-touch.jpg";

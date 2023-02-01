@@ -14,7 +14,7 @@ module.exports = {
         "light-gray": "#E2E2E2",
       },
       fontFamily: {
-        display: ["Raleway", "sans-serif"],
+        display: ["var(--font-raleway)", "sans-serif"], // Raleway
       },
       minWidth: {
         md: "28rem",
@@ -40,7 +40,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ["Raleway", "sans-serif"],
+      sans: ["var(--font-raleway)", "sans-serif"], // Raleway
     },
   },
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],

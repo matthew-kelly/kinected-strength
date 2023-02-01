@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Button from "../../components/Button";
@@ -67,13 +67,9 @@ export default function CommunityEvent() {
         <div className="md:my-12 my-8 w-full border-t-primary-dark border-t-2" />
         <div className="md:self-start self-center md:mb-0 mb-2">
           <Link href="/community">
-            <a>
-              <Button className="md:large">
-                <span className="whitespace-nowrap">
-                  &lt;&lt; Back to Events
-                </span>
-              </Button>
-            </a>
+            <Button className="md:large">
+              <span className="whitespace-nowrap">&lt;&lt; Back to Events</span>
+            </Button>
           </Link>
         </div>
       </article>

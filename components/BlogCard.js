@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { colors } from "../utils/theme";
 
@@ -73,34 +73,30 @@ export default function BlogCard({ post }) {
       variants={containerVariants}
     >
       <Link href={`/education/${post.slug}`}>
-        <a>
+        <motion.div
+          variants={imageVariants}
+          className="relative border-primary-dark"
+        >
+          <Image
+            layout="responsive"
+            src={post.image.url}
+            alt="// FIXME: real alt text"
+          />
+        </motion.div>
+        <motion.div
+          className="mt-4 flex flex-col relative border-l-primary-dark"
+          variants={textContainerVariants}
+        >
+          <span className="font-display font-bold text-3xl">{post.title}</span>
+          <div className="flex justify-between mt-2">
+            <span>{post.author}</span>
+            <span>{post.date}</span>
+          </div>
           <motion.div
-            variants={imageVariants}
-            className="relative border-primary-dark"
-          >
-            <Image
-              layout="responsive"
-              src={post.image.url}
-              alt="// FIXME: real alt text"
-            />
-          </motion.div>
-          <motion.div
-            className="mt-4 flex flex-col relative border-l-primary-dark"
-            variants={textContainerVariants}
-          >
-            <span className="font-display font-bold text-3xl">
-              {post.title}
-            </span>
-            <div className="flex justify-between mt-2">
-              <span>{post.author}</span>
-              <span>{post.date}</span>
-            </div>
-            <motion.div
-              className="bg-primary-dark self-center absolute -bottom-2"
-              variants={lineVariants}
-            />
-          </motion.div>
-        </a>
+            className="bg-primary-dark self-center absolute -bottom-2"
+            variants={lineVariants}
+          />
+        </motion.div>
       </Link>
     </motion.div>
   );

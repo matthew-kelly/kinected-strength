@@ -5,8 +5,7 @@ import {
   motion,
   useTransform,
 } from "framer-motion";
-// import { useRouter } from "next/router";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useScrollTrigger } from "./ScrollTriggerProvider";
 import { useMenu } from "../lib/menuState";
 import { useWindowSize } from "../lib/useWindowSize";

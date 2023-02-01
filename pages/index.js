@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { ScrollTriggerProvider } from "../components/ScrollTriggerProvider";
 import HomeBanner from "../components/HomeBanner";
@@ -49,11 +49,11 @@ export default function Home() {
         {/* maybe not needed */}
         {/* TODO: have banner be floating at bottom of screen until you scroll past (on smaller devices) */}
         {/* <div className="px-16 py-12 flex justify-center">
-          <h1 className="font-semibold text-3xl text-center text-secondary-light">
-            Your home for kinesiology, strength training, and active rehab in
-            North Vancouver<span className="text-secondary-dark">.</span>
-          </h1>
-        </div> */}
+        <h1 className="font-semibold text-3xl text-center text-secondary-light">
+          Your home for kinesiology, strength training, and active rehab in
+          North Vancouver<span className="text-secondary-dark">.</span>
+        </h1>
+      </div> */}
 
         <div className="flex sm:flex-row flex-col-reverse">
           <div className="sm:w-1/2 w-full relative overflow-hidden sm:h-auto h-[100vw]">
@@ -61,7 +61,7 @@ export default function Home() {
               src={mainImg2}
               layout="fill"
               sizes={`(max-width: ${breakpoints.sm}px) 100vw,
-              50vw`}
+            50vw`}
               quality={90}
               alt="Briana and Jess doing kettlebell exercises"
               placeholder="blur"
@@ -70,8 +70,8 @@ export default function Home() {
           </div>
           <div className="sm:w-1/2 bg-primary-light flex flex-col justify-center md:gap-10 gap-8 p-8">
             <div className="flex justify-center md:gap-8 gap-4">
-              <Link href="/strength" passHref>
-                <motion.a
+              <Link href="/strength" passHref legacyBehavior>
+                <motion.div
                   className="relative bg-primary-dark cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                 >
@@ -91,11 +91,11 @@ export default function Home() {
                       </text>
                     </g>
                   </svg>
-                </motion.a>
+                </motion.div>
               </Link>
               <div className="flex flex-col md:gap-8 gap-4">
-                <Link href="/education" passHref>
-                  <motion.a
+                <Link href="/education" passHref legacyBehavior>
+                  <motion.div
                     className="relative flex justify-center items-end cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                   >
@@ -118,10 +118,10 @@ export default function Home() {
                         It&apos;s Education
                       </text>
                     </svg>
-                  </motion.a>
+                  </motion.div>
                 </Link>
-                <Link href="/community" passHref>
-                  <motion.a
+                <Link href="/community" passHref legacyBehavior>
+                  <motion.div
                     className="relative flex justify-center items-end cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                   >
@@ -144,7 +144,7 @@ export default function Home() {
                         It&apos;s Community
                       </text>
                     </svg>
-                  </motion.a>
+                  </motion.div>
                 </Link>
               </div>
             </div>

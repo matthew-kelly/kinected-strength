@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import PageBanner from "../components/PageBanner";
 import bannerImg from "../public/images/our-story-1.jpg";
 import andreaImg from "../public/images/our-story-andrea.jpg";

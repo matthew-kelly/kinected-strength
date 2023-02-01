@@ -1,10 +1,27 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import localFont from "@next/font/local";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { MenuStateProvider } from "../lib/menuState";
 import "../styles/globals.css";
+
+const myFont = localFont({
+  src: [
+    {
+      path: "../public/fonts/Raleway-VariableFont_wght.ttf",
+      weight: "100 900",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Raleway-Italic-VariableFont_wght.ttf",
+      weight: "100 900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-raleway",
+});
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -12,6 +29,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     setIsHomePage(router.pathname === "/");
   }, [router.pathname]);
+
   return (
     <MenuStateProvider>
       <Head>
@@ -27,7 +45,7 @@ function MyApp({ Component, pageProps }) {
         <title>Kinected Strength</title>
       </Head>
       <div
-        className="min-h-screen flex flex-col overflow-x-clip bg-primary-dark"
+        className={`${myFont.variable} min-h-screen flex flex-col overflow-x-clip bg-primary-dark`}
         id={isHomePage ? "home-page" : undefined}
       >
         <Nav />
