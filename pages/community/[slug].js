@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -11,7 +12,11 @@ export default function CommunityEvent() {
   const { slug } = router.query;
   return (
     <>
-      <div className="bg-primary-dark flex flex-col relative"></div>
+      <Head>
+        {/* //FIXME: get event info from getStaticProps and getStaticPaths */}
+        <title>EVENT TITLE | Kinected Strength</title>
+        {/* <meta name="description" content="" /> */}
+      </Head>
 
       <article className="flex flex-col bg-light-gray md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative">
         <div className="md:block hidden absolute top-0 right-0">
