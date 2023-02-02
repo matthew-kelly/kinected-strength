@@ -9,6 +9,7 @@ export default function DivInView({
   once = true,
   amount = "some", // all, some, number between 0-1
   className = "",
+  allowOnMobile = false,
 }) {
   const variants = { hidden, visible };
 
@@ -26,14 +27,20 @@ export default function DivInView({
   }, [controls, isInView]);
 
   return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial={initial}
-      variants={variants}
-      className={className}
-    >
-      {children}
-    </motion.div>
+    <>
+      {allowOnMobile ? (
+        <motion.div
+          ref={ref}
+          animate={controls}
+          initial={initial}
+          variants={variants}
+          className={className}
+        >
+          {children}
+        </motion.div>
+      ) : (
+        <div className={className}>{children}</div>
+      )}
+    </>
   );
 }

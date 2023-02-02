@@ -156,7 +156,7 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-12 text-primary-dark">
-          <div className="flex flex-col md:mb-32 mb-20 md:max-w-6xl md:mx-auto">
+          <div className="flex flex-col md:mb-32 md:max-w-6xl md:mx-auto">
             <h2 className="lg:text-6xl md:text-5xl text-3xl md:mb-12 mb-8 md:max-w-[580px]">
               Join a community of evidence-based strength training.
             </h2>
@@ -207,7 +207,7 @@ export default function Home() {
                   key pillars of health.
                 </p>
               </div>
-              <div className="md:w-1/2 relative flex flex-col">
+              <div className="md:w-1/2 relative flex md:flex-col flex-col-reverse">
                 <div>
                   <Image
                     src={mainImg4}
@@ -218,8 +218,8 @@ export default function Home() {
                     alt="Jess doing a turkish get-up"
                   />
                 </div>
-                <div className="absolute -top-[75px] md:-right-[75px] self-center">
-                  <LogoSpinner size="150" />
+                <div className="md:absolute md:-top-[100px] md:-right-[100px] self-center">
+                  <LogoSpinner size="200" />
                 </div>
               </div>
             </div>
