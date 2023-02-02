@@ -104,7 +104,8 @@ export default function Strength() {
                 </a>{" "}
                 to provide physio-led active rehab. Begin with a high level
                 assessment from a TBC physio then carry out your treatment plan
-                in the gym with your Kinesiologist.
+                in the gym with your Kinesiologist. Direct billing is available
+                for Pacific Blue Cross insurance plans.
               </p>
             </div>
             <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center md:max-w-[250px]">
@@ -125,9 +126,12 @@ export default function Strength() {
                 Online Training
               </h2>
               <p>
-                Flexible options available including telehealth and remote
-                coaching. Contact us for more information. Great as an add on
-                for your in person training.
+                Flexible options available via telehealth for private training
+                or active rehabilitation. This is a great option for those who
+                don’t live in North Vancouver. Remote program design and
+                coaching available through Truecoach. This is ideal for those
+                looking to add expert progressive programming to their
+                independent training.
               </p>
             </div>
             <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center lg:max-w-[325px] md:max-w-[300px]">
