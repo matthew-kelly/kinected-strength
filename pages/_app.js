@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
 
   const stopLoading = () => {
     setIsLoading(false);
-    setTimeout(() => enableScroll, 300); // length of exit animation
+    setTimeout(() => enableScroll(), 300); // length of exit animation
   };
 
   useEffect(() => {
