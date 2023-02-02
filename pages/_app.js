@@ -22,7 +22,7 @@ const myFont = localFont({
       style: "italic",
     },
   ],
-  display: "swap",
+  display: "block", // "swap"
   variable: "--font-raleway",
 });
 
@@ -31,31 +31,33 @@ function MyApp({ Component, pageProps }) {
   const [isHomePage, setIsHomePage] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const startLoading = () => {
+    disableScroll();
+    setIsLoading(true);
+  };
+
+  const stopLoading = () => {
+    setIsLoading(false);
+    setTimeout(() => enableScroll, 300); // length of exit animation
+  };
+
   useEffect(() => {
     setIsHomePage(router.pathname === "/");
   }, [router.pathname]);
 
   useEffect(() => {
-    router.events.on("routeChangeStart", () => setIsLoading(true));
-    router.events.on("routeChangeComplete", () => setIsLoading(false));
-    router.events.on("routeChangeError", () => setIsLoading(false));
+    router.events.on("routeChangeStart", startLoading);
+    router.events.on("routeChangeComplete", stopLoading);
+    router.events.on("routeChangeError", stopLoading);
 
     return () => {
-      router.events.off("routeChangeStart", () => setIsLoading(true));
-      router.events.off("routeChangeComplete", () => setIsLoading(false));
-      router.events.off("routeChangeError", () => setIsLoading(false));
+      router.events.off("routeChangeStart", startLoading);
+      router.events.off("routeChangeComplete", stopLoading);
+      router.events.off("routeChangeError", stopLoading);
     };
   }, [router.events]);
 
   useEffect(() => setIsLoading(false), []);
-
-  useEffect(() => {
-    if (isLoading) {
-      disableScroll();
-    } else {
-      enableScroll();
-    }
-  }, [isLoading]);
 
   return (
     <MenuStateProvider>
