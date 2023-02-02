@@ -6,6 +6,8 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { MenuStateProvider } from "../lib/menuState";
 import "../styles/globals.css";
+import LoadingScreen from "../components/LoadingScreen";
+import { disableScroll, enableScroll } from "../utils/scroll";
 
 const myFont = localFont({
   src: [
@@ -27,9 +29,33 @@ const myFont = localFont({
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isHomePage, setIsHomePage] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     setIsHomePage(router.pathname === "/");
   }, [router.pathname]);
+
+  useEffect(() => {
+    router.events.on("routeChangeStart", () => setIsLoading(true));
+    router.events.on("routeChangeComplete", () => setIsLoading(false));
+    router.events.on("routeChangeError", () => setIsLoading(false));
+
+    return () => {
+      router.events.off("routeChangeStart", () => setIsLoading(true));
+      router.events.off("routeChangeComplete", () => setIsLoading(false));
+      router.events.off("routeChangeError", () => setIsLoading(false));
+    };
+  }, [router.events]);
+
+  useEffect(() => setIsLoading(false), []);
+
+  useEffect(() => {
+    if (isLoading) {
+      disableScroll();
+    } else {
+      enableScroll();
+    }
+  }, [isLoading]);
 
   return (
     <MenuStateProvider>
@@ -51,6 +77,7 @@ function MyApp({ Component, pageProps }) {
       >
         <Nav />
         <main className="body">
+          <LoadingScreen isLoading={isLoading} />
           <Component {...pageProps} />
         </main>
         <Footer />
