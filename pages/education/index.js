@@ -1,30 +1,39 @@
-import Image from "next/legacy/image";
-import Link from "next/link";
+import { useState } from "react";
+import Head from "next/head";
 import BlogCard from "../../components/BlogCard";
 import Button from "../../components/Button";
 import PageBanner from "../../components/PageBanner";
 import TestimonialBlock from "../../components/TestimonialBlock";
-import testimonialImg from "../../public/temp/testimonial-sample.png"; // FIXME: get each image from db
+import { client } from "../../lib/sanityClient";
+import {
+  allPostsCountQuery,
+  allPostsQueryNextPage,
+  allPostsQueryPagination,
+} from "../../lib/queries";
 import bannerImg from "../../public/temp/tempbanner-horiz.jpg"; // FIXME: get from db
-import grassImg from "../../public/temp/grass.png"; // FIXME: get from db
-import Head from "next/head";
+import testimonialImg from "../../public/temp/testimonial-sample.png"; // FIXME: get each image from db
 
-export default function Education() {
+export default function Education({ posts, count }) {
   // FIXME: source from database?
   const title = "Education";
   const tagline = `Lorem ipsum dolor sit amet, consectetuer adipi- scing elit, sed diam nonummy nibh euismod tinci`;
   const text = `Lorem ipsum dolor sit amet, consectetuer adipi- scing elit, sed diam nonummy nibh euismod tinci- dunt ut laoreet Lorem ipsum dolor sit amet, con- sectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam`;
   const image = { image: bannerImg, alt: "// FIXME: real alt text" };
 
-  const post = {
-    image: {
-      url: grassImg,
-    },
-    title: "This is the title for a blog post",
-    author: "Author Name",
-    date: "December 1, 2022",
-    slug: "examplepost",
+  const [allPosts, setAllPosts] = useState(posts);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getMorePosts = async () => {
+    setIsLoading(true);
+    const timestamp = allPosts[allPosts.length - 1]._createdAt;
+    const morePosts = await client.fetch(allPostsQueryNextPage, {
+      lastCreatedAt: timestamp,
+    });
+    const tempPosts = allPosts.concat(morePosts);
+    setAllPosts(tempPosts);
+    setIsLoading(false);
   };
+
   return (
     <>
       <Head>
@@ -35,15 +44,22 @@ export default function Education() {
         <PageBanner image={image} title={title} tagline={tagline} text={text} />
       </div>
       <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-8 mdpb-32 text-primary-dark">
-        <h2 className="uppercase text-xl mb-8">Blog</h2>
-        <div className="grid md:grid-cols-2 gap-16">
-          {/* FIXME: get from db */}
-          <BlogCard post={post} />
-          <BlogCard post={post} />
-          <BlogCard post={post} />
-          <BlogCard post={post} />
+        <div className="flex flex-col max-w-6xl w-full self-center">
+          <h2 className="uppercase text-xl mb-8">Blog</h2>
+          <div className="grid md:grid-cols-2 gap-16">
+            {allPosts &&
+              allPosts.map((post) => <BlogCard key={post._id} post={post} />)}
+          </div>
+          {allPosts.length < count && (
+            <Button
+              className="self-center md:mt-16 mt-8"
+              onClick={getMorePosts}
+              isLoading={isLoading}
+            >
+              View more
+            </Button>
+          )}
         </div>
-        <Button className="self-center md:mt-16 mt-8">View more</Button>
       </div>
 
       {/* FIXME: get from db */}
@@ -57,4 +73,16 @@ export default function Education() {
       />
     </>
   );
+}
+
+export async function getStaticProps() {
+  const posts = await client.fetch(allPostsQueryPagination);
+  const count = await client.fetch(allPostsCountQuery);
+
+  return {
+    props: {
+      posts,
+      count,
+    },
+  };
 }

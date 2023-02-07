@@ -1,16 +1,12 @@
 import { motion } from "framer-motion";
+import { DateTime } from "luxon";
 import Image from "next/legacy/image";
 import Link from "next/link";
-import { colors } from "../utils/theme";
+import { urlForImage } from "../lib/sanity";
 
 export default function BlogCard({ post }) {
-  const containerVariants = {
-    hover: {
-      // boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-      // borderRadius: "8px",
-      // overflow: "hidden",
-    },
-  };
+  const date = DateTime.fromISO(post._createdAt);
+
   const imageVariants = {
     initial: {
       // borderRadius: "0px",
@@ -28,24 +24,7 @@ export default function BlogCard({ post }) {
       },
     },
   };
-  const textContainerVariants = {
-    // initial: {
 
-    // },
-    hover: {
-      // padding: "0px 8px",
-      // marginTop: "2px",
-      // marginBottom: "8px",
-      // color: colors["secondary-dark"],
-      // x: [0, 4, 4],
-      // borderLeftWidth: [0, 0, 4],
-      // paddingLeft: [0, 4, 4],
-      // transition: {
-      //   duration: 0.1,
-      //   // delay: 0.25,
-      // },
-    },
-  };
   const lineVariants = {
     initial: {
       height: 1,
@@ -70,7 +49,6 @@ export default function BlogCard({ post }) {
       className="flex flex-col gap-4"
       whileHover="hover"
       initial="initial"
-      variants={containerVariants}
     >
       <Link href={`/education/${post.slug}`}>
         <motion.div
@@ -79,24 +57,25 @@ export default function BlogCard({ post }) {
         >
           <Image
             layout="responsive"
-            src={post.image.url}
-            alt="// FIXME: real alt text"
+            placeholder="blur"
+            blurDataURL={post.blur}
+            src={urlForImage(post.mainImage).width(700).height(700).url()}
+            width={700}
+            height={700}
+            alt={post.mainImage.alt}
           />
         </motion.div>
-        <motion.div
-          className="mt-4 flex flex-col relative border-l-primary-dark"
-          variants={textContainerVariants}
-        >
+        <div className="mt-4 flex flex-col relative border-l-primary-dark">
           <span className="font-display font-bold text-3xl">{post.title}</span>
           <div className="flex justify-between mt-2">
             <span>{post.author}</span>
-            <span>{post.date}</span>
+            <span>{date.toLocaleString(DateTime.DATE_FULL)}</span>
           </div>
           <motion.div
             className="bg-primary-dark self-center absolute -bottom-2"
             variants={lineVariants}
           />
-        </motion.div>
+        </div>
       </Link>
     </motion.div>
   );

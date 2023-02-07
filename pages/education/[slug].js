@@ -1,88 +1,125 @@
 import Head from "next/head";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { PortableText } from "@portabletext/react";
+import { DateTime } from "luxon";
 import Button from "../../components/Button";
-import LogoSpinner from "../../components/LogoSpinner";
-import { KLogo } from "../../components/shapes";
-import bannerImg from "../../public/temp/tempbanner-horiz.jpg"; // FIXME: get from blog post
+import { postQuery, postSlugsQuery } from "../../lib/queries";
+import { urlForImage } from "../../lib/sanity";
+import { client } from "../../lib/sanityClient";
 
-export default function BlogPost() {
-  const router = useRouter();
-  const { slug } = router.query;
-  return <>
-    <Head>
-      {/* //FIXME: get blog info from getStaticProps and getStaticPaths */}
-      <title>BLOG TITLE | Kinected Strength</title>
-      {/* <meta name="description" content="" /> */}
-    </Head>
+export default function BlogPost({ data }) {
+  const post = data?.post;
+  const prevPost = data?.prevPost;
+  const nextPost = data?.nextPost;
 
-    <article className="flex flex-col bg-light-gray md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative">
-      <div className="md:block hidden absolute top-0 right-0">
-        <LogoSpinner size="125" />
+  const date = DateTime.fromISO(post._createdAt);
+
+  return (
+    <>
+      {/* TODO: confirm this is all the metadata required */}
+      <Head>
+        <title>{post.title} | Kinected Strength</title>
+        {
+          post?.mainImage?.asset?._ref && (
+            <meta
+              key="ogImage"
+              property="og:image"
+              content={urlForImage(post.mainImage)
+                .width(1200)
+                .height(627)
+                .fit("crop")
+                .url()}
+            />
+          ) // FIXME: proper image layout
+        }
+        {post.description && (
+          <meta name="description" content={post.description} />
+        )}
+      </Head>
+
+      <div className="flex flex-col bg-primary-dark text-primary-dark">
+        <article className="flex flex-col bg-light-gray md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative self-center max-w-6xl">
+          <Image
+            src={urlForImage(post.mainImage).width(1152).height(500).url()}
+            width={1152}
+            height={500}
+            quality={90}
+            placeholder="blur"
+            blurDataURL={post.blur}
+            alt={post.mainImage.alt}
+          />
+
+          <div className="flex flex-col relative mt-8">
+            <h1 className="mb-6 md:text-5xl text-4xl mr-12">{post.title}</h1>
+            <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-16 mb-8 md:text-base text-sm">
+              <span>{post.author}</span>
+              <span>{date.toLocaleString(DateTime.DATE_FULL)}</span>
+            </div>
+          </div>
+
+          <div className="prose prose-sm prose-headings:mb-4 prose-headings:text-primary-dark lg:ml-24">
+            <PortableText
+              value={post.body}
+              components={{
+                types: {
+                  image: ({ value }) => (
+                    <div className="relative w-full">
+                      <Image
+                        src={urlForImage(value).width(800).url()}
+                        width={800}
+                        height={10000}
+                        quality={90}
+                        alt={value?.alt}
+                      />
+                    </div>
+                  ),
+                },
+              }}
+            />
+          </div>
+
+          <div className="md:my-12 my-8 w-full border-t-primary-dark border-t-2" />
+
+          <div className="flex md:flex-row flex-col gap-4 md:justify-between md:mb-0 mb-2">
+            {nextPost && (
+              <Link href={nextPost.slug}>
+                <Button>{nextPost.title}</Button>
+              </Link>
+            )}
+            {prevPost && (
+              <Link href={prevPost.slug} className="self-end">
+                <Button>{prevPost.title}</Button>
+              </Link>
+            )}
+          </div>
+        </article>
       </div>
-      <h1 className="mb-6 md:text-5xl text-4xl mr-12">
-        This is the title of a blog post
-      </h1>
-      <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-16 mb-8 md:text-base text-sm">
-        <span>Author Name</span>
-        <span>December 1, 2022</span>
-      </div>
-
-      <div className="prose prose-headings:mb-4 prose-headings:text-primary-dark lg:ml-24">
-        <Image
-          layout="responsive"
-          src={bannerImg}
-          alt="// FIXME: real alt text"
-        />
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eum
-          sit ex ipsum ab dolor architecto dicta vitae nemo cumque deserunt
-          dolorem officiis consequatur impedit, rem debitis sed vero?
-          Laudantium.
-        </p>
-        <h2>This is a subheading</h2>
-        <p>
-          Obcaecati incidunt ipsum omnis adipisci voluptas commodi tempore
-          mollitia iste praesentium. Inventore ipsa nam, reiciendis incidunt
-          perspiciatis natus{" "}
-          <a href="#">minima harum non neque perferendis</a> alias fugiat in
-          eligendi aspernatur, iusto autem?
-        </p>
-        <p>
-          Quidem assumenda aspernatur id voluptatibus placeat aliquam at.
-          Recusandae reprehenderit nihil ex ad rem quaerat est autem numquam
-          iusto labore? Accusamus sit sequi architecto veniam odio dicta
-          eligendi vitae incidunt!
-        </p>
-        <h2>Another subheading</h2>
-        <h3>With a h3 under it</h3>
-        <p>
-          Hic, voluptas commodi minima corporis inventore vitae expedita iusto
-          porro minus vel nostrum veniam nulla illo? Pariatur quaerat dolor
-          porro harum eligendi a unde eius, deleniti illum exercitationem,
-          alias eaque.
-        </p>
-      </div>
-      <div className="md:my-16 my-8 w-full border-t-primary-dark border-t-2" />
-      {/* TODO: next and previous blog */}
-      <div className="flex md:flex-row flex-col gap-4 md:justify-between md:mb-0 mb-2">
-        <Link href="#">
-
-          <Button className="md:large">
-            <span className="whitespace-nowrap">&lt;&lt; Prevous post</span>
-          </Button>
-
-        </Link>
-
-        <Link href="#">
-
-          <Button className="md:large md:text-start text-end">
-            <span className="whitespace-nowrap">Next post &gt;&gt;</span>
-          </Button>
-
-        </Link>
-      </div>
-    </article>
-  </>;
+    </>
+  );
 }
+
+export async function getStaticProps({ params }) {
+  const { post, prevPost, nextPost } = await client.fetch(postQuery, {
+    slug: params.slug,
+  });
+
+  return {
+    props: {
+      data: {
+        post,
+        prevPost,
+        nextPost,
+      },
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const paths = await client.fetch(postSlugsQuery);
+  console.log("[slug] getStaticPaths", paths);
+  return {
+    paths: paths.map((slug) => ({ params: { slug } })),
+    fallback: false,
+  };
+} // TODO: complete getStaticPaths
