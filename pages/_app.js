@@ -6,8 +6,8 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { MenuStateProvider } from "../lib/menuState";
 import "../styles/globals.css";
-import LoadingScreen from "../components/LoadingScreen";
-import { disableScroll, enableScroll } from "../utils/scroll";
+// import LoadingScreen from "../components/LoadingScreen";
+// import { disableScroll, enableScroll } from "../utils/scroll";
 
 const myFont = localFont({
   src: [
@@ -29,35 +29,35 @@ const myFont = localFont({
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isHomePage, setIsHomePage] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  const startLoading = () => {
-    disableScroll();
-    setIsLoading(true);
-  };
+  // const startLoading = () => {
+  //   disableScroll();
+  //   setIsLoading(true);
+  // };
 
-  const stopLoading = () => {
-    setIsLoading(false);
-    setTimeout(() => enableScroll(), 300); // length of exit animation
-  };
+  // const stopLoading = () => {
+  //   setIsLoading(false);
+  //   setTimeout(() => enableScroll(), 300); // length of exit animation
+  // };
 
   useEffect(() => {
     setIsHomePage(router.pathname === "/");
   }, [router.pathname]);
 
-  useEffect(() => {
-    router.events.on("routeChangeStart", startLoading);
-    router.events.on("routeChangeComplete", stopLoading);
-    router.events.on("routeChangeError", stopLoading);
+  // useEffect(() => {
+  //   router.events.on("routeChangeStart", startLoading);
+  //   router.events.on("routeChangeComplete", stopLoading);
+  //   router.events.on("routeChangeError", stopLoading);
 
-    return () => {
-      router.events.off("routeChangeStart", startLoading);
-      router.events.off("routeChangeComplete", stopLoading);
-      router.events.off("routeChangeError", stopLoading);
-    };
-  }, [router.events]);
+  //   return () => {
+  //     router.events.off("routeChangeStart", startLoading);
+  //     router.events.off("routeChangeComplete", stopLoading);
+  //     router.events.off("routeChangeError", stopLoading);
+  //   };
+  // }, [router.events]);
 
-  useEffect(() => setIsLoading(false), []);
+  // useEffect(() => setIsLoading(false), []);
 
   return (
     <MenuStateProvider>
@@ -79,7 +79,7 @@ function MyApp({ Component, pageProps }) {
       >
         <Nav />
         <main className="body">
-          <LoadingScreen isLoading={isLoading} />
+          {/* <LoadingScreen isLoading={isLoading} /> */}
           <Component {...pageProps} />
         </main>
         <Footer />
