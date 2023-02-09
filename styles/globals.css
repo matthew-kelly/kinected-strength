@@ -130,3 +130,8 @@
 .stop-scrolling #banner-image-container {
   @apply lg:!max-w-[calc(100vw_-_15px)];
 }
+
+/* react-responsive-carousel overrides */
+.carousel .slide {
+  @apply md:!mt-auto md:!mb-auto;
+}

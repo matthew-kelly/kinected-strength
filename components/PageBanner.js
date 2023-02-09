@@ -3,8 +3,8 @@ import Image from "next/legacy/image";
 export default function PageBanner({
   image,
   title,
-  tagline,
-  taglineWidthClass = "md:w-3/5",
+  headline,
+  headlineWidthClass = "md:w-3/5",
   text,
   textWidthClass = "md:w-2/5",
 }) {
@@ -27,9 +27,9 @@ export default function PageBanner({
           {title}
         </h1>
         <div className="flex md:flex-row flex-col">
-          <div className={taglineWidthClass}>
+          <div className={headlineWidthClass}>
             <h2 className="text-primary-light lg:text-5xl md:text-4xl text-2xl font-extrabold tracking-wider">
-              {tagline}
+              {headline}
             </h2>
           </div>
           <div

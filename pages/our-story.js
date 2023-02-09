@@ -4,7 +4,6 @@ import bannerImg from "../public/images/our-story-1.jpg";
 import andreaImg from "../public/images/our-story-andrea.jpg";
 import jessImg from "../public/images/our-story-jess.jpg";
 import brianaImg from "../public/images/our-story-briana.jpg";
-import testimonialImg from "../public/temp/testimonial-sample.png"; // FIXME: get each image from db
 import { Circle } from "../components/shapes";
 import TestimonialBlock from "../components/TestimonialBlock";
 import {
@@ -18,8 +17,10 @@ import { useEffect, useRef } from "react";
 import { useWindowSize } from "../lib/useWindowSize";
 import { breakpoints } from "../utils/theme";
 import Head from "next/head";
+import { client } from "../lib/sanityClient";
+import { testimonialsQuery } from "../lib/queries";
 
-export default function OurStory() {
+export default function OurStory({ page }) {
   const windowSize = useWindowSize();
   const reduceMotion = useReducedMotion();
   const isMobile = windowSize.width < breakpoints.sm;
@@ -74,10 +75,6 @@ export default function OurStory() {
     }
   }, [controlsBri, isInViewBri]);
 
-  // FIXME: source from database?
-  const title = "Our Story";
-  const tagline = "Three Kinesiologists building a community of strength.";
-  const text = `Andrea, Bri and Jess have 25+ combined years experience working in the field. We believe that quality training should be available to everyone no matter their level of fitness or experience.`;
   return (
     <>
       <Head>
@@ -87,10 +84,13 @@ export default function OurStory() {
 
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner
-          image={{ image: bannerImg, alt: "" }}
-          title={title}
-          tagline={tagline}
-          text={text}
+          image={{
+            image: bannerImg,
+            alt: "Briana, Jess, and Andrea doing kettlebell exercises",
+          }}
+          title={page.title}
+          headline={page.bannerHeadline}
+          text={page.bannerText}
         />
       </div>
       <div className="flex flex-col bg-light-gray lg:px-24 md:px-16 px-8 md:py-20 md:pb-32 py-12 text-primary-dark">
@@ -388,13 +388,25 @@ export default function OurStory() {
         </div>
       </div>
 
-      <TestimonialBlock
-        testimonial={{
-          image: testimonialImg,
-          content: `"Briana is a patient, knowledgeable and motivating trainer. I am a 73-year-old with osteoporosis & scoliosis. When I started with Briana I couldn’t even get in and out of the bathtub, and I didn’t have the strength to pull on my tenser nylons. Now I can easily do these things and so much more! I recommend Briana highly. I just keep getting stronger and stronger with no injuries when I am training under her direction."`,
-          author: "Leslee T.",
-        }}
-      />
+      {page?.testimonials && (
+        <TestimonialBlock
+          testimonials={page.testimonials}
+          question={page.question}
+          highlight={page.highlight}
+        />
+      )}
     </>
   );
+}
+
+export async function getStaticProps() {
+  const page = await client.fetch(testimonialsQuery, {
+    slug: "our-story",
+  });
+
+  return {
+    props: {
+      page,
+    },
+  };
 }

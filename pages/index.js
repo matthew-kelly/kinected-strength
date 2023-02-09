@@ -11,10 +11,11 @@ import bannerImg from "../public/images/main-page-1.jpg";
 import mainImg2 from "../public/images/main-page-2.jpg";
 import mainImg3 from "../public/images/main-page-3.jpg";
 import mainImg4 from "../public/images/main-page-4.jpg";
-import testimonialImg from "../public/temp/testimonial-sample.png"; // FIXME: get each image from db
 import { useWindowSize } from "../lib/useWindowSize";
+import { client } from "../lib/sanityClient";
+import { testimonialsQuery } from "../lib/queries";
 
-export default function Home() {
+export default function Home({ page }) {
   const windowSize = useWindowSize();
 
   return (
@@ -225,15 +226,26 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* FIXME: get from db */}
-        <TestimonialBlock
-          testimonial={{
-            content: `"Briana is a patient, knowledgeable and motivating trainer. I am a 73-year-old with osteoporosis & scoliosis. When I started with Briana I couldn’t even get in and out of the bathtub, and I didn’t have the strength to pull on my tenser nylons. Now I can easily do these things and so much more! I recommend Briana highly. I just keep getting stronger and stronger with no injuries when I am training under her direction."`,
-            author: "LT",
-            image: testimonialImg,
-          }}
-        />
+        {page?.testimonials && (
+          <TestimonialBlock
+            testimonials={page.testimonials}
+            question={page.question}
+            highlight={page.highlight}
+          />
+        )}
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const page = await client.fetch(testimonialsQuery, {
+    slug: "home",
+  });
+
+  return {
+    props: {
+      page,
+    },
+  };
 }

@@ -2,21 +2,21 @@ import Head from "next/head";
 import PageBanner from "../../components/PageBanner";
 import TestimonialBlock from "../../components/TestimonialBlock";
 import bannerImg from "../../public/images/community.jpg";
-import testimonialImg from "../../public/temp/testimonial-sample.png"; // FIXME: get each image from db
 import EventCard from "../../components/EventCard";
 import { Quartercircle } from "../../components/shapes";
-import { eventsQuery, featuredEventQuery } from "../../lib/queries";
+import {
+  eventsQuery,
+  featuredEventQuery,
+  testimonialsQuery,
+} from "../../lib/queries";
 import { client } from "../../lib/sanityClient";
 
 export default function Community({
   upcomingEvents,
   pastEvents,
   featuredEvent,
+  page,
 }) {
-  // FIXME: source from database?
-  const title = "Community";
-  const tagline = `Lorem ipsum dolor sit amet, consectetuer adipi- scing elit, sed diam nonummy nibh euismod tinci`;
-  const text = `Lorem ipsum dolor sit amet, consectetuer adipi- scing elit, sed diam nonummy nibh euismod tinci- dunt ut laoreet Lorem ipsum dolor sit amet, con- sectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam`;
   const image = {
     image: bannerImg,
     alt: "Briana, Jess, and Andrea sitting on a pier",
@@ -31,7 +31,12 @@ export default function Community({
       </Head>
 
       <div className="bg-primary-dark flex flex-col relative">
-        <PageBanner image={image} title={title} tagline={tagline} text={text} />
+        <PageBanner
+          image={image}
+          title={page.title}
+          headline={page.bannerHeadline}
+          text={page.bannerText}
+        />
       </div>
       <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-8 md:pb-16 text-primary-dark">
         <div className="flex flex-col max-w-6xl w-full self-center">
@@ -77,15 +82,13 @@ export default function Community({
         </div>
       </div>
 
-      {/* FIXME: get from db */}
-      <TestimonialBlock
-        testimonial={{
-          content: `"Briana is a patient, knowledgeable and motivating trainer. I am a 73-year-old with osteoporosis & scoliosis. When I started with Briana I couldn’t even get in and out of the bathtub, and I didn’t have the strength to pull on my tenser nylons. Now I can easily do these things and so much more! I recommend Briana highly. I just keep getting stronger and stronger with no injuries when I am training under her direction."`,
-          author: "LT",
-          image: testimonialImg,
-        }}
-        word="community"
-      />
+      {page?.testimonials && (
+        <TestimonialBlock
+          testimonials={page.testimonials}
+          question={page.question}
+          highlight={page.highlight}
+        />
+      )}
     </>
   );
 }
@@ -95,12 +98,16 @@ export async function getStaticProps() {
   const { upcomingEvents, pastEvents } = await client.fetch(eventsQuery, {
     featuredEventId: featuredEvent?._id,
   });
+  const page = await client.fetch(testimonialsQuery, {
+    slug: "community",
+  });
 
   return {
     props: {
       upcomingEvents,
       pastEvents,
       featuredEvent,
+      page,
     },
   };
 }

@@ -1,18 +1,13 @@
-import Image from "next/legacy/image";
+import { motion } from "framer-motion";
 
-export default function Testimonial({ content, author, image }) {
+export default function Testimonial({ content, author, isFirst = true }) {
   return (
-    <div className="text-primary-dark flex md:flex-row flex-col items-center lg:gap-16 md:gap-8 gap-4">
-      {image && (
-        <div className="max-w-fit min-w-[200px]">
-          <Image
-            src={image}
-            // layout="responsive"
-            alt="// FIXME: real alt text"
-            placeholder="blur"
-          />
-        </div>
-      )}
+    <motion.div
+      className="text-primary-dark flex md:flex-row flex-col items-center lg:gap-16 md:gap-8 gap-4 text-left px-8 cursor-pointer"
+      whileHover={{
+        x: isFirst ? -8 : 8,
+      }}
+    >
       <div className="flex flex-col">
         <svg
           className="mb-2"
@@ -30,6 +25,6 @@ export default function Testimonial({ content, author, image }) {
         <p>{content}</p>
         <p className="mt-2 font-semibold">&ndash; {author}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
