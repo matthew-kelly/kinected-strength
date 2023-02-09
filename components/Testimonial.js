@@ -1,12 +1,20 @@
 import { motion } from "framer-motion";
 
-export default function Testimonial({ content, author, isFirst = true }) {
+export default function Testimonial({
+  content,
+  author,
+  isFirst = true,
+  count = 1,
+}) {
+  const hoverState = {
+    x: count > 1 ? (isFirst ? -8 : 8) : 0,
+  };
   return (
     <motion.div
-      className="text-primary-dark flex md:flex-row flex-col items-center lg:gap-16 md:gap-8 gap-4 text-left px-8 cursor-pointer"
-      whileHover={{
-        x: isFirst ? -8 : 8,
-      }}
+      className={`text-primary-dark flex md:flex-row flex-col items-center lg:gap-16 md:gap-8 gap-4 text-left px-8 ${
+        count > 1 ? "cursor-pointer" : ""
+      }`}
+      whileHover={hoverState}
     >
       <div className="flex flex-col">
         <svg

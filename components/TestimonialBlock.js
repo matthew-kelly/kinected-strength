@@ -34,6 +34,7 @@ export default function TestimonialBlock({
                 content={item.content}
                 author={item.author}
                 isFirst={index === 0}
+                count={testimonials.length}
               />
             ))}
           </Carousel>
