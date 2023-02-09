@@ -65,7 +65,7 @@ export default function CommunityEvent({ event }) {
           </div>
 
           <div className="md:my-12 my-8 w-full border-t-primary-dark border-t-2" />
-          <div className="md:self-start self-center md:mb-0 mb-2">
+          <div className="self-start md:mb-0 mb-2">
             <Link href="/community">
               <Button className="md:large">
                 <span className="whitespace-nowrap">
