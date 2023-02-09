@@ -7,33 +7,32 @@ import Button from "../../components/Button";
 import { postQuery, postSlugsQuery } from "../../lib/queries";
 import { urlForImage } from "../../lib/sanity";
 import { client } from "../../lib/sanityClient";
+import BlockImage from "../../components/BlockImage";
 
 export default function BlogPost({ data }) {
   const post = data?.post;
   const prevPost = data?.prevPost;
   const nextPost = data?.nextPost;
-
   const date = DateTime.fromISO(post._createdAt);
 
   return (
     <>
-      {/* TODO: confirm this is all the metadata required */}
       <Head>
+        {/* TODO: confirm this is all the metadata required */}
         <title>{post.title} | Kinected Strength</title>
-        {
-          post?.mainImage?.asset?._ref && (
-            <meta
-              key="ogImage"
-              property="og:image"
-              content={urlForImage(post.mainImage)
-                .width(1200)
-                .height(627)
-                .fit("crop")
-                .url()}
-            />
-          ) // FIXME: proper image layout
-        }
-        {post.description && (
+        {post?.mainImage && (
+          <meta
+            key="ogImage"
+            property="og:image"
+            content={urlForImage(post.mainImage)
+              .width(1200)
+              .height(627)
+              .fit("crop")
+              .url()}
+          />
+        )}
+        {/* // FIXME: proper image layout */}
+        {post?.description && (
           <meta name="description" content={post.description} />
         )}
       </Head>
@@ -63,17 +62,7 @@ export default function BlogPost({ data }) {
               value={post.body}
               components={{
                 types: {
-                  image: ({ value }) => (
-                    <div className="relative w-full">
-                      <Image
-                        src={urlForImage(value).width(800).url()}
-                        width={800}
-                        height={10000}
-                        quality={90}
-                        alt={value?.alt}
-                      />
-                    </div>
-                  ),
+                  image: ({ value }) => <BlockImage value={value} />,
                 },
               }}
             />
@@ -117,9 +106,9 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const paths = await client.fetch(postSlugsQuery);
-  console.log("[slug] getStaticPaths", paths);
+
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
     fallback: false,
   };
-} // TODO: complete getStaticPaths
+}

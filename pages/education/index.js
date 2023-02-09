@@ -10,7 +10,7 @@ import {
   allPostsQueryNextPage,
   allPostsQueryPagination,
 } from "../../lib/queries";
-import bannerImg from "../../public/temp/tempbanner-horiz.jpg"; // FIXME: get from db
+import bannerImg from "../../public/images/education.jpg";
 import testimonialImg from "../../public/temp/testimonial-sample.png"; // FIXME: get each image from db
 
 export default function Education({ posts, count }) {
@@ -18,7 +18,10 @@ export default function Education({ posts, count }) {
   const title = "Education";
   const tagline = `Lorem ipsum dolor sit amet, consectetuer adipi- scing elit, sed diam nonummy nibh euismod tinci`;
   const text = `Lorem ipsum dolor sit amet, consectetuer adipi- scing elit, sed diam nonummy nibh euismod tinci- dunt ut laoreet Lorem ipsum dolor sit amet, con- sectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam`;
-  const image = { image: bannerImg, alt: "// FIXME: real alt text" };
+  const image = {
+    image: bannerImg,
+    alt: "Briana, Jess, and Andrea doing exercises with kettlebells",
+  };
 
   const [allPosts, setAllPosts] = useState(posts);
   const [isLoading, setIsLoading] = useState(false);

@@ -104,6 +104,12 @@
   */
 }
 
+@layer components {
+  .prose {
+    @apply max-w-2xl;
+  }
+}
+
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
