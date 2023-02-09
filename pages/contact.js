@@ -4,7 +4,7 @@ import Button from "../components/Button";
 import bannerImg from "../public/images/get-in-touch.jpg";
 import { useWindowSize } from "../lib/useWindowSize";
 import { breakpoints } from "../utils/theme";
-import Head from "next/head";
+import MetaTags from "../components/MetaTags";
 
 export default function Contact() {
   // email contact form
@@ -68,10 +68,13 @@ export default function Contact() {
 
   return (
     <>
-      <Head>
-        <title>Get in touch | Kinected Strength</title>
-        {/* <meta name="description" content="" /> */}
-      </Head>
+      <MetaTags
+        title="Get in touch"
+        description="Come say hi to get strong, feel confident and see concrete results."
+        slug="contact"
+        image={{ src: bannerImg.src, isExternal: false }}
+      />
+
       <div className="flex flex-col">
         <Image
           id="bannerImage"

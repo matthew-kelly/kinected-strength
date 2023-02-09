@@ -16,9 +16,9 @@ import {
 import { useEffect, useRef } from "react";
 import { useWindowSize } from "../lib/useWindowSize";
 import { breakpoints } from "../utils/theme";
-import Head from "next/head";
 import { client } from "../lib/sanityClient";
 import { testimonialsQuery } from "../lib/queries";
+import MetaTags from "../components/MetaTags";
 
 export default function OurStory({ page }) {
   const windowSize = useWindowSize();
@@ -77,10 +77,12 @@ export default function OurStory({ page }) {
 
   return (
     <>
-      <Head>
-        <title>Our Story | Kinected Strength</title>
-        {/* <meta name="description" content="" /> */}
-      </Head>
+      <MetaTags
+        title={page.title}
+        description={`${page.bannerHeadline} ${page.bannerText}`}
+        slug="our-story"
+        image={{ src: bannerImg.src, isExternal: false }}
+      />
 
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner

@@ -1,4 +1,3 @@
-import Head from "next/head";
 import PageBanner from "../../components/PageBanner";
 import TestimonialBlock from "../../components/TestimonialBlock";
 import bannerImg from "../../public/images/community.jpg";
@@ -10,6 +9,7 @@ import {
   testimonialsQuery,
 } from "../../lib/queries";
 import { client } from "../../lib/sanityClient";
+import MetaTags from "../../components/MetaTags";
 
 export default function Community({
   upcomingEvents,
@@ -24,11 +24,12 @@ export default function Community({
 
   return (
     <>
-      <Head>
-        {/* FIXME: add metadata */}
-        <title>Community | Kinected Strength</title>
-        {/* <meta name="description" content="" /> */}
-      </Head>
+      <MetaTags
+        title={page.title}
+        description={`${page.bannerHeadline} ${page.bannerText}`}
+        slug="community"
+        image={{ src: bannerImg.src, isExternal: false }}
+      />
 
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner

@@ -8,9 +8,9 @@ import imgOnline from "../public/images/services-online.jpg";
 import imgPhysio from "../public/images/services-physio-led.jpg";
 import imgPrivate from "../public/images/services-private.jpg";
 import DivInView from "../components/DivInView";
-import Head from "next/head";
 import { client } from "../lib/sanityClient";
 import { testimonialsQuery } from "../lib/queries";
+import MetaTags from "../components/MetaTags";
 
 export default function Strength({ page }) {
   const image = {
@@ -21,11 +21,13 @@ export default function Strength({ page }) {
   // TODO: animate images and text entry
   return (
     <>
-      <Head>
-        {/* TODO: confirm this is all the metadata required */}
-        <title>Strength Training | Kinected Strength</title>
-        {/* <meta name="description" content="" /> */}
-      </Head>
+      <MetaTags
+        title={page.title}
+        description={`${page.bannerHeadline} ${page.bannerText}`}
+        slug="strength"
+        image={{ src: bannerImg.src, isExternal: false }}
+      />
+
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner
           image={image}

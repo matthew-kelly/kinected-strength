@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps }) {
           href="/favicon-16x16.png"
         />
         <meta charSet="UTF-8" />
-        <title>Kinected Strength</title>
+        <title key="title">Kinected Strength</title>
       </Head>
       <div
         className={`${myFont.variable} min-h-screen flex flex-col overflow-x-clip bg-primary-dark`}

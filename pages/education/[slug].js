@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
@@ -8,6 +7,7 @@ import { postQuery, postSlugsQuery } from "../../lib/queries";
 import { urlForImage } from "../../lib/sanity";
 import { client } from "../../lib/sanityClient";
 import BlockImage from "../../components/BlockImage";
+import MetaTags from "../../components/MetaTags";
 
 export default function BlogPost({ data }) {
   const post = data?.post;
@@ -15,27 +15,23 @@ export default function BlogPost({ data }) {
   const nextPost = data?.nextPost;
   const date = DateTime.fromISO(post._createdAt);
 
+  console.log(post);
+
   return (
     <>
-      <Head>
-        {/* TODO: confirm this is all the metadata required */}
-        <title>{post.title} | Kinected Strength</title>
-        {post?.mainImage && (
-          <meta
-            key="ogImage"
-            property="og:image"
-            content={urlForImage(post.mainImage)
-              .width(1200)
-              .height(627)
-              .fit("crop")
-              .url()}
-          />
-        )}
-        {/* // FIXME: proper image layout */}
-        {post?.description && (
-          <meta name="description" content={post.description} />
-        )}
-      </Head>
+      <MetaTags
+        title={`${post.title} - Education`}
+        description={post?.description}
+        slug={`education/${post.slug}`}
+        image={{
+          src: urlForImage(post.mainImage)
+            .width(1200)
+            .height(627)
+            .fit("crop")
+            .url(),
+          isExternal: true,
+        }}
+      />
 
       <div className="flex flex-col bg-primary-dark text-primary-dark">
         <article className="flex flex-col bg-light-gray md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative self-center max-w-6xl">

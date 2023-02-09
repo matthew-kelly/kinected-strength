@@ -44,6 +44,7 @@ export default function Footer() {
                 href="https://instagram.com/kinectedstrength"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Kinected Strength Instagram page"
               >
                 <div className="bg-secondary-light hover:bg-primary-light rounded-full p-2">
                   <svg
@@ -64,6 +65,7 @@ export default function Footer() {
                 href="https://facebook.com/kinectedstrength"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Kinected Strength Facebook page"
               >
                 <div className="bg-secondary-light hover:bg-primary-light rounded-full p-2">
                   <svg

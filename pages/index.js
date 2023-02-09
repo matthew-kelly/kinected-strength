@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { motion } from "framer-motion";
 import Image from "next/legacy/image";
 import Link from "next/link";
@@ -14,18 +13,19 @@ import mainImg4 from "../public/images/main-page-4.jpg";
 import { useWindowSize } from "../lib/useWindowSize";
 import { client } from "../lib/sanityClient";
 import { testimonialsQuery } from "../lib/queries";
+import MetaTags from "../components/MetaTags";
 
 export default function Home({ page }) {
   const windowSize = useWindowSize();
 
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Your home for kinesiology, strength training, and active rehab in North Vancouver."
-        />
-      </Head>
+      <MetaTags
+        title="Home"
+        description="Your home for kinesiology, strength training, and active rehab in North Vancouver."
+        slug=""
+        image={{ src: bannerImg.src, isExternal: false }}
+      />
 
       {windowSize.width >= breakpoints.lg ? (
         <div id="bannerContainer" className="flex flex-col">

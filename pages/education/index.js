@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Head from "next/head";
 import BlogCard from "../../components/BlogCard";
 import Button from "../../components/Button";
 import PageBanner from "../../components/PageBanner";
@@ -12,6 +11,7 @@ import {
   testimonialsQuery,
 } from "../../lib/queries";
 import bannerImg from "../../public/images/education.jpg";
+import MetaTags from "../../components/MetaTags";
 
 export default function Education({ page, posts, count }) {
   const image = {
@@ -35,10 +35,13 @@ export default function Education({ page, posts, count }) {
 
   return (
     <>
-      <Head>
-        <title>Education | Kinected Strength</title>
-        {/* <meta name="description" content="" /> */}
-      </Head>
+      <MetaTags
+        title={page.title}
+        description={`${page.bannerHeadline} ${page.bannerText}`}
+        slug="education"
+        image={{ src: bannerImg.src, isExternal: false }}
+      />
+
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner
           image={image}
