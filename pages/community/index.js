@@ -10,6 +10,8 @@ import {
 } from "../../lib/queries";
 import { client } from "../../lib/sanityClient";
 import MetaTags from "../../components/MetaTags";
+import { useWindowSize } from "../../lib/useWindowSize";
+import { breakpoints } from "../../utils/theme";
 
 export default function Community({
   upcomingEvents,
@@ -21,6 +23,8 @@ export default function Community({
     image: bannerImg,
     alt: "Briana, Jess, and Andrea sitting on a pier",
   };
+
+  const windowSize = useWindowSize();
 
   return (
     <>
@@ -44,24 +48,30 @@ export default function Community({
           <h1 className="uppercase text-xl mb-8">Upcoming Events</h1>
 
           {featuredEvent?._id && (
-            <div className="flex justify-start md:flex-row flex-col lg:gap-16 gap-4 mb-16">
-              <div className="lg:min-w-md md:min-w-sm">
-                <EventCard event={featuredEvent} />
-              </div>
-              <div className="md:max-w-sm md:mt-16 mt-4 lg:ml-8 md:ml-4 flex flex-col items-center relative">
+            <div className="grid md:grid-cols-2 md:gap-16 gap-2">
+              {/* <div className="flex justify-start md:flex-row flex-col lg:gap-16 gap-4 mb-16"> */}
+              {/* <div className="lg:min-w-md md:min-w-sm"> */}
+              <EventCard event={featuredEvent} />
+              {/* </div> */}
+              {/* <div className="md:max-w-sm md:mt-16 mt-4 lg:ml-8 md:ml-4 flex flex-col items-center relative"> */}
+              <div className="md:max-w-sm lg:mt-16 md:mt-8 mt-4 lg:ml-8 md:ml-4 flex flex-col items-center relative">
                 <p className="z-10">{featuredEvent.description}</p>
                 <Quartercircle
-                  width={150}
-                  height={150}
+                  width={windowSize.width >= breakpoints.md ? 150 : 75}
+                  height={windowSize.width >= breakpoints.md ? 150 : 75}
                   color="fill-secondary-light"
-                  className="rotate-0 md:absolute md:block hidden -right-20 -top-20"
+                  className={`absolute md:block ${
+                    windowSize.width >= breakpoints.md
+                      ? "-right-20 -top-20"
+                      : "-left-4 -bottom-4"
+                  }`}
                 />
               </div>
             </div>
           )}
 
           {upcomingEvents.length > 0 && (
-            <div className="grid md:grid-cols-2 gap-16">
+            <div className="mt-16 grid md:grid-cols-2 gap-16">
               {upcomingEvents &&
                 upcomingEvents.map((item) => (
                   <EventCard key={item._id} event={item} />

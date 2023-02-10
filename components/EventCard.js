@@ -46,7 +46,7 @@ export default function EventCard({ event }) {
 
   return (
     <motion.div
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 z-10"
       whileHover="hover"
       initial="initial"
     >
