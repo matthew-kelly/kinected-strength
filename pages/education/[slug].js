@@ -1,19 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
-import { DateTime } from "luxon";
 import Button from "../../components/Button";
 import { postQuery, postSlugsQuery } from "../../lib/queries";
 import { urlForImage } from "../../lib/sanity";
 import { client } from "../../lib/sanityClient";
 import BlockImage from "../../components/BlockImage";
 import MetaTags from "../../components/MetaTags";
+import { dateFormatter } from "../../utils/dateFormatter";
 
 export default function BlogPost({ data }) {
   const post = data?.post;
   const prevPost = data?.prevPost;
   const nextPost = data?.nextPost;
-  const date = DateTime.fromISO(post._createdAt);
+  const date = dateFormatter(post._createdAt);
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function BlogPost({ data }) {
             <h1 className="mb-6 md:text-5xl text-4xl mr-12">{post.title}</h1>
             <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-16 mb-8 md:text-base text-sm">
               <span>{post.author}</span>
-              <span>{date.toLocaleString(DateTime.DATE_FULL)}</span>
+              <span>{date}</span>
             </div>
           </div>
 

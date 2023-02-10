@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { DateTime } from "luxon";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { urlForImage } from "../lib/sanity";
+import { dateFormatter } from "../utils/dateFormatter";
 
 export default function EventCard({ event }) {
-  const date = DateTime.fromISO(event.eventDate);
+  const date = dateFormatter(event.eventDate);
 
   const imageVariants = {
     initial: {
@@ -68,7 +68,7 @@ export default function EventCard({ event }) {
         <div className="mt-4 flex flex-col relative border-l-primary-dark">
           <span className="font-display font-bold text-3xl">{event.title}</span>
           <div className="flex justify-between mt-2">
-            <span>{date.toLocaleString(DateTime.DATE_FULL)}</span>
+            <span>{date}</span>
           </div>
           <motion.div
             className="bg-primary-dark self-center absolute -bottom-2"

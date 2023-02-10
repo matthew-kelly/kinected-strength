@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { DateTime } from "luxon";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { urlForImage } from "../lib/sanity";
+import { dateFormatter } from "../utils/dateFormatter";
 
 export default function BlogCard({ post }) {
-  const date = DateTime.fromISO(post._createdAt);
+  const date = dateFormatter(post._createdAt);
 
   const imageVariants = {
     initial: {
@@ -69,7 +69,7 @@ export default function BlogCard({ post }) {
           <span className="font-display font-bold text-3xl">{post.title}</span>
           <div className="flex justify-between mt-2">
             <span>{post.author}</span>
-            <span>{date.toLocaleString(DateTime.DATE_FULL)}</span>
+            <span>{date}</span>
           </div>
           <motion.div
             className="bg-primary-dark self-center absolute -bottom-2"

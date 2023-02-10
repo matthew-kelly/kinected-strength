@@ -1,6 +1,5 @@
 import Image from "next/legacy/image";
 import Link from "next/link";
-import { DateTime } from "luxon";
 import Button from "../../components/Button";
 import { eventQuery, eventsSlugsQuery } from "../../lib/queries";
 import { urlForImage } from "../../lib/sanity";
@@ -8,9 +7,10 @@ import { client } from "../../lib/sanityClient";
 import { PortableText } from "@portabletext/react";
 import BlockImage from "../../components/BlockImage";
 import MetaTags from "../../components/MetaTags";
+import { dateFormatter } from "../../utils/dateFormatter";
 
 export default function CommunityEvent({ event }) {
-  const date = DateTime.fromISO(event.eventDate);
+  const date = dateFormatter(event.eventDate);
 
   return (
     <>
@@ -42,7 +42,7 @@ export default function CommunityEvent({ event }) {
           <div className="flex flex-col relative mt-8">
             <h1 className="mb-6 md:text-5xl text-4xl mr-12">{event.title}</h1>
             <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-16 mb-8 md:text-base text-sm">
-              <span>{date.toLocaleString(DateTime.DATE_FULL)}</span>
+              <span>{date}</span>
             </div>
           </div>
 
