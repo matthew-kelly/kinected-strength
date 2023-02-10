@@ -15,8 +15,6 @@ export default function BlogPost({ data }) {
   const nextPost = data?.nextPost;
   const date = DateTime.fromISO(post._createdAt);
 
-  console.log(post);
-
   return (
     <>
       <MetaTags
