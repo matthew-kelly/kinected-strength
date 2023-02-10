@@ -61,7 +61,6 @@ export default function Contact() {
     setIsError(false);
     setIsSent(false);
 
-    // FIXME: set up API route for sending email
     const res = await fetch("/api/contact", {
       method: "POST",
       headers: {

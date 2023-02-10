@@ -18,7 +18,6 @@ export default function Strength({ page }) {
     alt: "Andrea, Briana, and Jess standing by the water",
   };
 
-  // TODO: animate images and text entry
   return (
     <>
       <MetaTags
