@@ -1,7 +1,5 @@
 export function dateFormatter(dateString, options = false) {
   let date = new Date(dateString.split("-").join("/"));
-
-  console.log(dateString, date);
   const dateOptions = options
     ? options
     : {
