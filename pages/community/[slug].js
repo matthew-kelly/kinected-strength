@@ -12,6 +12,19 @@ import { dateFormatter } from "../../utils/dateFormatter";
 export default function CommunityEvent({ event }) {
   const date = dateFormatter(event.eventDate);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.title,
+    description: event.description,
+    image: urlForImage(event.mainImage).url(),
+    startDate: event.eventDate,
+    organizer: {
+      "@type": "Organization",
+      name: "Kinected Strength",
+    },
+  };
+
   return (
     <>
       <MetaTags
@@ -26,6 +39,7 @@ export default function CommunityEvent({ event }) {
             .url(),
           isExternal: true,
         }}
+        structuredData={structuredData}
       />
 
       <div className="flex flex-col bg-primary-dark text-primary-dark">

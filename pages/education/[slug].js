@@ -15,6 +15,23 @@ export default function BlogPost({ data }) {
   const nextPost = data?.nextPost;
   const date = dateFormatter(post._createdAt);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: post.title,
+    description: post.description,
+    author: {
+      "@type": "Person",
+      name: post.author,
+    },
+    image: urlForImage(post.mainImage).url(),
+    datePublished: post._createdAt,
+    publisher: {
+      "@type": "Organization",
+      name: "Kinected Strength",
+    },
+  };
+
   return (
     <>
       <MetaTags
@@ -29,6 +46,7 @@ export default function BlogPost({ data }) {
             .url(),
           isExternal: true,
         }}
+        structuredData={structuredData}
       />
 
       <div className="flex flex-col bg-primary-dark text-primary-dark">

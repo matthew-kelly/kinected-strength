@@ -1,6 +1,12 @@
 import Head from "next/head";
 
-export default function MetaTags({ title, description, slug, image }) {
+export default function MetaTags({
+  title,
+  description,
+  slug,
+  image,
+  structuredData,
+}) {
   const pageTitle = `${title !== "Home" ? `${title} | ` : ""}Kinected Strength`;
   const pageUrl = `${process.env.NEXT_PUBLIC_SITE_PROTOCOL}${
     process.env.NEXT_PUBLIC_SITE_URL
@@ -32,6 +38,14 @@ export default function MetaTags({ title, description, slug, image }) {
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
+
+      {structuredData && (
+        <script
+          key="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      )}
     </Head>
   );
 }
