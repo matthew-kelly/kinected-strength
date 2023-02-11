@@ -1,4 +1,3 @@
-import ReactHtmlParser from "react-html-parser";
 import { Carousel } from "react-responsive-carousel";
 import Testimonial from "./Testimonial";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -17,9 +16,10 @@ export default function TestimonialBlock({
       <div className="flex flex-col max-w-6xl">
         <h3 className="uppercase text-xl mb-8">Testimonials</h3>
         <div className="flex md:flex-row flex-col md:items-center lg:gap-16 gap-8 md:mb-4">
-          <span className="font-bold text-primary-dark text-4xl min-w-[250px]">
-            {ReactHtmlParser(phrase)}?
-          </span>
+          <span
+            className="font-bold text-primary-dark text-4xl min-w-[250px]"
+            dangerouslySetInnerHTML={{ __html: `${phrase}?` }}
+          ></span>
           <Carousel
             autoPlay={false}
             autoFocus={false}
