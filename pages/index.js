@@ -47,15 +47,6 @@ export default function Home({ page }) {
       )}
 
       <div className="bg-primary-dark flex flex-col relative z-10">
-        {/* maybe not needed */}
-        {/* TODO: have banner be floating at bottom of screen until you scroll past (on smaller devices) */}
-        {/* <div className="px-16 py-12 flex justify-center">
-        <h1 className="font-semibold text-3xl text-center text-secondary-light">
-          Your home for kinesiology, strength training, and active rehab in
-          North Vancouver<span className="text-secondary-dark">.</span>
-        </h1>
-      </div> */}
-
         <div className="flex sm:flex-row flex-col-reverse">
           <div className="sm:w-1/2 w-full relative overflow-hidden sm:h-auto h-[100vw]">
             <Image

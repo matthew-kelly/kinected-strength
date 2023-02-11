@@ -108,6 +108,8 @@ export default function HomeBanner() {
               top: logoContainerTop,
               zIndex: 102,
             }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.3 } }}
             exit={{
               opacity: [1, 0],
               paddingRight: [16, 16],
