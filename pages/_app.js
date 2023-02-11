@@ -6,7 +6,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { MenuStateProvider } from "../lib/menuState";
 import "../styles/globals.css";
-// import LoadingScreen from "../components/LoadingScreen";
+import LoadingScreen from "../components/LoadingScreen";
 // import { disableScroll, enableScroll } from "../utils/scroll";
 
 const myFont = localFont({
@@ -29,7 +29,7 @@ const myFont = localFont({
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isHomePage, setIsHomePage] = useState(false);
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   // const startLoading = () => {
   //   disableScroll();
@@ -57,7 +57,7 @@ function MyApp({ Component, pageProps }) {
   //   };
   // }, [router.events]);
 
-  // useEffect(() => setIsLoading(false), []);
+  useEffect(() => setIsLoading(false), []);
 
   return (
     <MenuStateProvider>
@@ -79,7 +79,7 @@ function MyApp({ Component, pageProps }) {
       >
         <Nav />
         <main className="body">
-          {/* <LoadingScreen isLoading={isLoading} /> */}
+          <LoadingScreen isLoading={isLoading} />
           <Component {...pageProps} />
         </main>
         <Footer />
