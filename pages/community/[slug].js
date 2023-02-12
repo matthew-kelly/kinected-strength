@@ -92,6 +92,12 @@ export async function getStaticProps({ params }) {
     slug: params.slug,
   });
 
+  if (!event) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       event,
@@ -104,6 +110,6 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: false,
+    fallback: "blocking",
   };
 }

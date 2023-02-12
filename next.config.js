@@ -16,6 +16,19 @@ const nextConfig = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  async headers() {
+    return [
+      {
+        source: "/api/revalidate",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: process.env.SANITY_SITE_URL,
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

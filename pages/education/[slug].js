@@ -101,9 +101,17 @@ export default function BlogPost({ data }) {
 }
 
 export async function getStaticProps({ params }) {
-  const { post, prevPost, nextPost } = await client.fetch(postQuery, {
+  const data = await client.fetch(postQuery, {
     slug: params.slug,
   });
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const { post, prevPost, nextPost } = data;
 
   return {
     props: {
@@ -121,6 +129,6 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: false,
+    fallback: "blocking",
   };
 }
