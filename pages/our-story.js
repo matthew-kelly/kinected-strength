@@ -17,13 +17,23 @@ import { useEffect, useRef } from "react";
 import { useWindowSize } from "../lib/useWindowSize";
 import { breakpoints } from "../utils/theme";
 import { client } from "../lib/sanityClient";
-import { testimonialsQuery } from "../lib/queries";
+import { authorsQuery, testimonialsQuery } from "../lib/queries";
 import MetaTags from "../components/MetaTags";
 
-export default function OurStory({ page }) {
+export default function OurStory({ page, team }) {
   const windowSize = useWindowSize();
   const reduceMotion = useReducedMotion();
   const isMobile = windowSize.width < breakpoints.sm;
+
+  const dataAndrea = team.find(
+    (member) => member._id === "6546d0cd-24ed-4569-b3ce-f6816858574a"
+  );
+  const dataJess = team.find(
+    (member) => member._id === "8934489f-bed1-4946-b55e-d1a0c0133078"
+  );
+  const dataBriana = team.find(
+    (member) => member._id === "0ef95911-ac60-4c6d-8a2d-5e0a361f38ca"
+  );
 
   // Animation - options
   const inViewOptions = {
@@ -167,18 +177,12 @@ export default function OurStory({ page }) {
                   }}
                   className="md:w-1/2"
                 >
-                  <p className="text-lg font-display font-extrabold mb-4">
-                    elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-                    Lorem ipsum dolor sit
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipi- scing elit,
-                    sed diam nonummy nibh euismod tinci- dunt ut laoreet Lorem
-                    ipsum dolor sit amet, con- sectetuer adipiscing elit, sed
-                    diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum
-                    dolor sit amet, consectetuer adipiscing elit, sed diam
-                    nonummy nibh euismod tincidunt ut laoreet
-                  </p>
+                  {dataAndrea?.headline && (
+                    <p className="text-lg font-display font-extrabold mb-4">
+                      {dataAndrea.headline}
+                    </p>
+                  )}
+                  <p>{dataAndrea.bio}</p>
                 </motion.div>
               </div>
               <motion.div
@@ -261,18 +265,12 @@ export default function OurStory({ page }) {
                   }}
                   className="md:w-1/2"
                 >
-                  <p className="text-lg font-display font-extrabold mb-4">
-                    elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-                    Lorem ipsum dolor sit
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipi- scing elit,
-                    sed diam nonummy nibh euismod tinci- dunt ut laoreet Lorem
-                    ipsum dolor sit amet, con- sectetuer adipiscing elit, sed
-                    diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum
-                    dolor sit amet, consectetuer adipiscing elit, sed diam
-                    nonummy nibh euismod tincidunt ut laoreet
-                  </p>
+                  {dataJess?.headline && (
+                    <p className="text-lg font-display font-extrabold mb-4">
+                      {dataJess.headline}
+                    </p>
+                  )}
+                  <p>{dataJess.bio}</p>
                 </motion.div>
               </div>
               <motion.svg
@@ -354,18 +352,12 @@ export default function OurStory({ page }) {
                   }}
                   className="md:w-1/2"
                 >
-                  <p className="text-lg font-display font-extrabold mb-4">
-                    elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-                    Lorem ipsum dolor sit
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipi- scing elit,
-                    sed diam nonummy nibh euismod tinci- dunt ut laoreet Lorem
-                    ipsum dolor sit amet, con- sectetuer adipiscing elit, sed
-                    diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum
-                    dolor sit amet, consectetuer adipiscing elit, sed diam
-                    nonummy nibh euismod tincidunt ut laoreet
-                  </p>
+                  {dataBriana?.headline && (
+                    <p className="text-lg font-display font-extrabold mb-4">
+                      {dataBriana.headline}
+                    </p>
+                  )}
+                  <p>{dataBriana.bio}</p>
                 </motion.div>
               </div>
               <motion.svg
@@ -405,10 +397,12 @@ export async function getStaticProps() {
   const page = await client.fetch(testimonialsQuery, {
     slug: "our-story",
   });
+  const team = await client.fetch(authorsQuery);
 
   return {
     props: {
       page,
+      team,
     },
   };
 }
