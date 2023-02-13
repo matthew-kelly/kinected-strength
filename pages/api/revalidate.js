@@ -19,5 +19,3 @@ export default async function handler(req, res) {
     return res.status(500).send("Error revalidating");
   }
 }
-
-// TODO: set up fallback: true, or whatever will allow blogs/events to be created/deleted
