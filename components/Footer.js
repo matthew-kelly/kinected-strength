@@ -110,9 +110,27 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center text-primary-light text-xs mb-4">
-        <span>Kinected Strength | &copy; 2023</span>
-        {/* // FIXME: links to sites */}
-        <span>Site by Matty Kelly & Heather Haughn</span>
+        <span>Kinected Strength &ndash; est. 2023</span>
+        <span>
+          Site by{" "}
+          <a
+            className="text-secondary-light font-semibold"
+            href="https://matthewkelly.ca"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Matty Kelly
+          </a>{" "}
+          &{" "}
+          <a
+            className="text-secondary-light font-semibold"
+            href="https://www.heather-haughn.com"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Heather Haughn
+          </a>
+        </span>
       </div>
     </footer>
   );
