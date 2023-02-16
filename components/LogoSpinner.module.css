@@ -6,58 +6,12 @@
 }
 
 @keyframes rot {
-  /* FIXME: keyframes "to" doesn't seem to work on iOS */
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
-    -webkit-rotate: 0deg;
-    /* 
-    rotate: 0deg;
-    */
-    fill: green;
   }
   100% {
     -webkit-transform: rotate(-360deg);
     transform: rotate(-360deg);
-    -webkit-rotate: -360deg;
-    /* 
-    rotate: -360deg;
-    */
-    fill: blue;
-  }
-}
-
-.spinnerRotation {
-  -webkit-animation: spinnerRotation 3s linear infinite;
-  animation: spinnerRotation 3s linear infinite;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-direction: reverse;
-  animation-direction: reverse;
-  transform-box: fill-box;
-}
-
-@-webkit-keyframes spinnerRotation {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -webkit-transform-origin: 50% 50%;
-    transform-box: fill-box;
-  }
-  100% {
-    -webkit-transform: rotate(-360deg);
-    -webkit-transform-origin: 50% 50%;
-    transform-box: fill-box;
-  }
-}
-@keyframes spinnerRotation {
-  0% {
-    transform: rotate(0deg);
-    transform-origin: 50% 50%;
-    transform-box: fill-box;
-  }
-  100% {
-    transform: rotate(-360deg);
-    transform-origin: 50% 50%;
-    transform-box: fill-box;
   }
 }
