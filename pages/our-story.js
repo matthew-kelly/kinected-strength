@@ -19,6 +19,7 @@ import { breakpoints } from "../utils/theme";
 import { client } from "../lib/sanityClient";
 import { authorsQuery, testimonialsQuery } from "../lib/queries";
 import MetaTags from "../components/MetaTags";
+import { PortableText } from "@portabletext/react";
 
 export default function OurStory({ page, team }) {
   const windowSize = useWindowSize();
@@ -149,7 +150,7 @@ export default function OurStory({ page, team }) {
                   Brennan
                 </motion.span>
               </h2>
-              <div className="flex md:items-center md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
+              <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : -200 },
@@ -177,12 +178,15 @@ export default function OurStory({ page, team }) {
                   }}
                   className="md:w-1/2"
                 >
+                  <div className="h-16 lg:block hidden"></div>
                   {dataAndrea?.headline && (
                     <p className="text-lg font-display font-extrabold mb-4">
                       {dataAndrea.headline}
                     </p>
                   )}
-                  <p>{dataAndrea.bio}</p>
+                  <div className="prose prose-sm prose-p:my-2">
+                    <PortableText value={dataAndrea.bio} />
+                  </div>
                 </motion.div>
               </div>
               <motion.div
@@ -237,7 +241,7 @@ export default function OurStory({ page, team }) {
                   Pastro
                 </motion.span>
               </h2>
-              <div className="flex md:items-center md:flex-row-reverse flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
+              <div className="flex md:flex-row-reverse flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : 100 },
@@ -265,12 +269,15 @@ export default function OurStory({ page, team }) {
                   }}
                   className="md:w-1/2"
                 >
+                  <div className="h-16 lg:block hidden"></div>
                   {dataJess?.headline && (
                     <p className="text-lg font-display font-extrabold mb-4">
                       {dataJess.headline}
                     </p>
                   )}
-                  <p>{dataJess.bio}</p>
+                  <div className="prose prose-sm prose-p:my-2">
+                    <PortableText value={dataJess.bio} />
+                  </div>
                 </motion.div>
               </div>
               <motion.svg
@@ -324,7 +331,7 @@ export default function OurStory({ page, team }) {
                   Kelly
                 </motion.span>
               </h2>
-              <div className="flex md:flex-row flex-col md:items-center md:gap-10 gap-4 z-10 md:mt-0 mt-4">
+              <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : -200 },
@@ -352,12 +359,15 @@ export default function OurStory({ page, team }) {
                   }}
                   className="md:w-1/2"
                 >
+                  <div className="h-16 lg:block hidden"></div>
                   {dataBriana?.headline && (
                     <p className="text-lg font-display font-extrabold mb-4">
                       {dataBriana.headline}
                     </p>
                   )}
-                  <p>{dataBriana.bio}</p>
+                  <div className="prose prose-sm prose-p:my-2">
+                    <PortableText value={dataBriana.bio} />
+                  </div>
                 </motion.div>
               </div>
               <motion.svg
@@ -369,7 +379,7 @@ export default function OurStory({ page, team }) {
                   },
                 }}
                 viewBox="0 0 445 204"
-                className="fill-secondary-dark absolute md:bottom-0 md:top-auto top-16 md:rotate-0 -rotate-90 translate-y-1/2 md:-left-32 -right-24 md:w-64 w-48"
+                className="fill-secondary-dark absolute md:top-0 top-16 md:rotate-0 -rotate-90 md:-translate-y-1/2 translate-y-1/2 md:-left-32 -right-24 md:w-64 w-48"
               >
                 <path
                   fillRule="evenodd"
