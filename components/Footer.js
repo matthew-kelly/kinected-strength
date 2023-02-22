@@ -38,7 +38,7 @@ export default function Footer() {
             </svg>
           </div>
 
-          <div className="md:max-w-min max-w-none flex justify-between mt-6 md:ml-[70px]">
+          <div className="md:max-w-min flex md:justify-between justify-start md:gap-0 gap-6 mt-6 md:ml-[70px]">
             <div className="flex md:gap-4 gap-6">
               <a
                 href="https://instagram.com/kinectedstrength"
@@ -94,9 +94,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center items-end md:ml-8 md:mt-0 mt-4">
+        <div className="flex flex-col justify-center md:items-end items-start md:ml-8 md:mt-0 mt-4">
           {/* <FooterForm /> */}
-          <span className="font-medium md:text-sm text-xs md:mb-4 md:mt-0 mt-2 text-primary-light text-right uppercase tracking-wider md:leading-7 leading-6">
+          <span className="font-medium md:text-sm text-xs md:mb-4 md:mt-0 mt-2 text-primary-light md:text-right text-left uppercase tracking-wider md:leading-7 leading-6">
             kinectedstrength@gmail.com <br />
             North Vancouver, BC
           </span>
@@ -109,7 +109,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center text-primary-light text-xs mb-4">
+      <div className="flex flex-col md:items-center md:justify-center text-primary-light text-xs mb-4 md:ml-0 ml-4">
         <span>Kinected Strength &ndash; est. 2023</span>
         <span>
           Site by{" "}
