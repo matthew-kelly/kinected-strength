@@ -24,9 +24,9 @@ export default function Education({ page, posts, count }) {
 
   const getMorePosts = async () => {
     setIsLoading(true);
-    const timestamp = allPosts[allPosts.length - 1]._createdAt;
+    const timestamp = allPosts[allPosts.length - 1].publishedDate;
     const morePosts = await client.fetch(allPostsQueryNextPage, {
-      lastCreatedAt: timestamp,
+      lastPublishedDate: timestamp,
     });
     const tempPosts = allPosts.concat(morePosts);
     setAllPosts(tempPosts);

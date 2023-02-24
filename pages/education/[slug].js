@@ -13,7 +13,7 @@ export default function BlogPost({ data }) {
   const post = data?.post;
   const prevPost = data?.prevPost;
   const nextPost = data?.nextPost;
-  const date = dateFormatter(post._createdAt);
+  const date = dateFormatter(post.publishedDate);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -25,7 +25,7 @@ export default function BlogPost({ data }) {
       name: post.author,
     },
     image: urlForImage(post.mainImage).url(),
-    datePublished: post._createdAt,
+    datePublished: post.publishedDate,
     publisher: {
       "@type": "Organization",
       name: "Kinected Strength",
@@ -82,15 +82,25 @@ export default function BlogPost({ data }) {
 
           <div className="md:my-12 my-8 w-full border-t-primary-dark border-t-2" />
 
-          <div className="flex md:flex-row flex-col gap-4 md:justify-between md:mb-0 mb-2">
+          <div className="flex flex-col gap-4 md:mb-0 mb-2">
             {nextPost && (
               <Link href={nextPost.slug}>
-                <Button>{nextPost.title}</Button>
+                <Button>
+                  <div className="flex justify-between items-center gap-1">
+                    <span>&lt;&lt;</span>
+                    {nextPost.title}
+                  </div>
+                </Button>
               </Link>
             )}
             {prevPost && (
               <Link href={prevPost.slug} className="self-end">
-                <Button>{prevPost.title}</Button>
+                <Button>
+                  <div className="flex justify-between items-center gap-1">
+                    {prevPost.title}
+                    <span>&gt;&gt;</span>
+                  </div>
+                </Button>
               </Link>
             )}
           </div>

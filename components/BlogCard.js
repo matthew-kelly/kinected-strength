@@ -5,7 +5,7 @@ import { urlForImage } from "../lib/sanity";
 import { dateFormatter } from "../utils/dateFormatter";
 
 export default function BlogCard({ post }) {
-  const date = dateFormatter(post._createdAt);
+  const date = dateFormatter(post.publishedDate);
 
   const imageVariants = {
     initial: {
