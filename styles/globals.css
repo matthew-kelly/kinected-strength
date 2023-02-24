@@ -10,9 +10,7 @@
   .app-container {
     @apply overscroll-y-none;
     -webkit-overflow-scrolling: touch;
-    max-width: -webkit-fill-available;
-    max-width: fill-available;
-    background: yellow;
+    max-width: stretch;
   }
 
   /* html body */
