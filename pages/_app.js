@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }) {
         <title key="title">Kinected Strength</title>
       </Head>
       <div
-        className={`${myFont.variable} min-h-screen flex flex-col overflow-x-hidden bg-primary-dark w-screen`}
+        className={`${myFont.variable} min-h-screen flex flex-col overflow-x-hidden bg-primary-dark w-screen app-container`}
         id={isHomePage ? "home-page" : undefined}
       >
         <Nav />
