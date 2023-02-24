@@ -300,7 +300,7 @@ export default function OurStory({ page, team }) {
               animate={controlsBri}
               initial={reduceMotion ? "visible" : "hidden"}
               variants={variantsMain}
-              className="relative md:max-w-4xl w-full flex flex-col md:self-start lg:ml-24 lg:pr-8 md:mt-32 mb-12 md:pt-0 pt-32 "
+              className="relative md:max-w-4xl w-full flex flex-col md:self-start lg:ml-24 lg:pr-8 md:mt-24 mb-12 md:pt-0 pt-32 "
             >
               <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[27%] md:-translate-x-1/2 md:-top-12 z-20">
                 {/* flex md:flex-col md:gap-0 gap-2          md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] lg:-translate-x-1/2 md:-translate-x-1/2 md:-top-12 z-20 */}
