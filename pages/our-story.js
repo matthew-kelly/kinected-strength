@@ -116,9 +116,9 @@ export default function OurStory({ page, team }) {
               animate={controlsAndrea}
               initial={reduceMotion ? "visible" : "hidden"}
               variants={variantsMain}
-              className="relative md:max-w-2xl flex flex-col md:ml-24 md:mt-12 md:mb-24"
+              className="relative md:max-w-4xl w-full flex flex-col lg:ml-24 lg:pr-8 md:mt-12 md:mb-12"
             >
-              <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-1/2 md:left-1/3 lg:-translate-x-1/2 md:-translate-x-1/2 md:-top-12 z-20">
+              <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] md:-translate-x-1/2 md:-top-12 z-20">
                 <motion.span
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : 100 },
@@ -156,7 +156,7 @@ export default function OurStory({ page, team }) {
                     hidden: { opacity: 0, x: isMobile ? 0 : -200 },
                     visible: { opacity: 1, x: 0 },
                   }}
-                  className="md:w-1/2 w-full"
+                  className="md:w-2/5 w-full"
                 >
                   <Image
                     layout="responsive"
@@ -176,7 +176,7 @@ export default function OurStory({ page, team }) {
                       transition: { delay: isMobile ? 0 : 0.7 },
                     },
                   }}
-                  className="md:w-1/2"
+                  className="md:w-3/5"
                 >
                   <div className="h-16 lg:block hidden"></div>
                   {dataAndrea?.headline && (
@@ -197,12 +197,9 @@ export default function OurStory({ page, team }) {
                     transition: { delay: isMobile ? 0 : 0.6 },
                   },
                 }}
+                className="absolute md:top-1/2 md:-translate-y-1/2 md:-left-24 top-full -translate-y-2/3 -left-16"
               >
-                <Circle
-                  size={200}
-                  color="fill-secondary-light"
-                  className="absolute md:-bottom-24 -bottom-16 md:-left-24 -left-16"
-                />
+                <Circle size={200} color="fill-secondary-light" />
               </motion.div>
             </motion.div>
           </LayoutGroup>
@@ -213,9 +210,9 @@ export default function OurStory({ page, team }) {
               animate={controlsJess}
               initial={reduceMotion ? "visible" : "hidden"}
               variants={variantsMain}
-              className="relative md:max-w-2xl flex flex-col md:self-end md:pt-0 pt-32 md:mt-32 md:mr-24 md:mb-24"
+              className="relative md:max-w-4xl w-full flex flex-col md:self-end md:pt-0 pt-32 md:mt-24 lg:mr-24 lg:pl-8 md:mb-12"
             >
-              <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-1/2 left-2/3 lg:-translate-x-1/2 md:-translate-x-2/3 md:-top-12 z-20">
+              <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[60%] md:left-[73%] left-2/3 md:-translate-x-1/2 md:-top-12 z-20">
                 <motion.span
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : -100 },
@@ -247,7 +244,7 @@ export default function OurStory({ page, team }) {
                     hidden: { opacity: 0, x: isMobile ? 0 : 100 },
                     visible: { opacity: 1, x: 0 },
                   }}
-                  className="md:w-1/2 w-full"
+                  className="md:w-2/5 w-full"
                 >
                   <Image
                     layout="responsive"
@@ -267,7 +264,7 @@ export default function OurStory({ page, team }) {
                       transition: { delay: isMobile ? 0 : 0.7 },
                     },
                   }}
-                  className="md:w-1/2"
+                  className="md:w-3/5"
                 >
                   <div className="h-16 lg:block hidden"></div>
                   {dataJess?.headline && (
@@ -303,9 +300,10 @@ export default function OurStory({ page, team }) {
               animate={controlsBri}
               initial={reduceMotion ? "visible" : "hidden"}
               variants={variantsMain}
-              className="relative md:max-w-2xl flex flex-col md:self-start md:ml-24 md:mt-32 mb-12 md:pt-0 pt-32 "
+              className="relative md:max-w-4xl w-full flex flex-col md:self-start lg:ml-24 lg:pr-8 md:mt-32 mb-12 md:pt-0 pt-32 "
             >
-              <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-1/2 md:left-1/3 lg:-translate-x-1/2 md:-translate-x-1/3 md:-top-12 z-20">
+              <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[27%] md:-translate-x-1/2 md:-top-12 z-20">
+                {/* flex md:flex-col md:gap-0 gap-2          md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] lg:-translate-x-1/2 md:-translate-x-1/2 md:-top-12 z-20 */}
                 <motion.span
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : 100 },
@@ -337,7 +335,7 @@ export default function OurStory({ page, team }) {
                     hidden: { opacity: 0, x: isMobile ? 0 : -200 },
                     visible: { opacity: 1, x: 0 },
                   }}
-                  className="md:w-1/2 w-full"
+                  className="md:w-2/5 w-full"
                 >
                   <Image
                     layout="responsive"
@@ -357,7 +355,7 @@ export default function OurStory({ page, team }) {
                       transition: { delay: isMobile ? 0 : 0.7 },
                     },
                   }}
-                  className="md:w-1/2"
+                  className="md:w-3/5"
                 >
                   <div className="h-16 lg:block hidden"></div>
                   {dataBriana?.headline && (
