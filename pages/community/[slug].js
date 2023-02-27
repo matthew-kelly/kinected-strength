@@ -11,6 +11,10 @@ import { dateFormatter } from "../../utils/dateFormatter";
 
 export default function CommunityEvent({ event }) {
   const date = dateFormatter(event.eventDate);
+  let endDate;
+  if (event.isOngoingEvent && event.endDate) {
+    endDate = dateFormatter(event.endDate);
+  }
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -24,6 +28,10 @@ export default function CommunityEvent({ event }) {
       name: "Kinected Strength",
     },
   };
+
+  if (endDate) {
+    structuredData.endDate = endDate;
+  }
 
   return (
     <>
@@ -54,9 +62,13 @@ export default function CommunityEvent({ event }) {
             alt={event.mainImage.alt}
           />
           <div className="flex flex-col relative mt-8">
-            <h1 className="mb-6 md:text-5xl text-4xl mr-12">{event.title}</h1>
+            <h1 className="md:mb-4 mb-2 md:text-5xl text-4xl">{event.title}</h1>
             <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-16 mb-8 md:text-base text-sm">
-              <span>{date}</span>
+              <span>
+                {event.isOngoingEvent
+                  ? `${date} ${endDate ? `- ${endDate}` : "(Ongoing)"}`
+                  : date}
+              </span>
             </div>
           </div>
 

@@ -6,6 +6,10 @@ import { dateFormatter } from "../utils/dateFormatter";
 
 export default function EventCard({ event }) {
   const date = dateFormatter(event.eventDate);
+  let endDate;
+  if (event.isOngoingEvent && event.endDate) {
+    endDate = dateFormatter(event.endDate);
+  }
 
   const imageVariants = {
     initial: {
@@ -68,7 +72,11 @@ export default function EventCard({ event }) {
         <div className="mt-4 flex flex-col relative border-l-primary-dark">
           <span className="font-display font-bold text-3xl">{event.title}</span>
           <div className="flex justify-between mt-2">
-            <span>{date}</span>
+            <span>
+              {event.isOngoingEvent
+                ? `${date} ${endDate ? `- ${endDate}` : "(Ongoing)"}`
+                : date}
+            </span>
           </div>
           <motion.div
             className="bg-primary-dark self-center absolute -bottom-2"

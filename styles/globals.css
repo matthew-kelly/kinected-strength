@@ -114,6 +114,10 @@
   .prose {
     @apply max-w-2xl;
   }
+
+  .prose a {
+    word-break: break-word;
+  }
 }
 
 .stop-scrolling {

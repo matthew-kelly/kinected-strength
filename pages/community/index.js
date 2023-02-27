@@ -55,7 +55,11 @@ export default function Community({
               {/* </div> */}
               {/* <div className="md:max-w-sm md:mt-16 mt-4 lg:ml-8 md:ml-4 flex flex-col items-center relative"> */}
               <div className="md:max-w-sm lg:mt-16 md:mt-8 mt-4 lg:ml-8 md:ml-4 flex flex-col items-center relative">
-                <p className="z-10">{featuredEvent.description}</p>
+                <p className="z-10">
+                  {featuredEvent.longDescription
+                    ? featuredEvent.longDescription
+                    : featuredEvent.description}
+                </p>
                 <Quartercircle
                   width={windowSize.width >= breakpoints.md ? 150 : 75}
                   height={windowSize.width >= breakpoints.md ? 150 : 75}
