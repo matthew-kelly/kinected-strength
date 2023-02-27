@@ -62,7 +62,7 @@ export default function BlogPost({ data }) {
           />
 
           <div className="flex flex-col relative mt-8">
-            <h1 className="mb-6 md:text-5xl text-4xl mr-12">{post.title}</h1>
+            <h1 className="md:mb-4 mb-2 md:text-5xl text-4xl">{post.title}</h1>
             <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-16 mb-8 md:text-base text-sm">
               <span>{post.author}</span>
               <span>{date}</span>
