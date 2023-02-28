@@ -84,7 +84,7 @@ export default function BlogPost({ data }) {
 
           <div className="flex flex-col gap-4 md:mb-0 mb-2">
             {nextPost && (
-              <Link href={nextPost.slug}>
+              <Link href={nextPost.slug} className="self-start">
                 <Button>
                   <div className="flex justify-between items-center gap-1">
                     <span>&lt;&lt;</span>
