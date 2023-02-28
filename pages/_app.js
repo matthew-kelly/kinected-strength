@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 import localFont from "@next/font/local";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
@@ -84,6 +85,7 @@ function MyApp({ Component, pageProps }) {
         </main>
         <Footer />
       </div>
+      <Analytics />
     </MenuStateProvider>
   );
 }
