@@ -110,6 +110,15 @@ export default function Footer() {
         </div>
       </div>
 
+      <div className="md:pl-16 px-4 md:mt-4 max-w-xl">
+        <p className="text-primary-light italic">
+          Kinected Strength acknowledges that we live, work and play on the
+          traditional territories of the Coast Salish peoples &ndash;
+          xʷməθkʷəy̓əm (Musqueam), sḵwx̱wú7mesh (Squamish), and sel̓íl̓witulh
+          (Tsleil-Waututh) nations.
+        </p>
+      </div>
+
       <div className="flex flex-col md:items-center md:justify-center text-primary-light text-xs md:mt-4 mt-8 mb-4 md:ml-0 ml-4">
         <span>Kinected Strength &ndash; est. 2023</span>
         <span>
