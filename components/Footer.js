@@ -4,7 +4,7 @@ import Button from "./Button";
 export default function Footer() {
   return (
     <footer className="bg-primary-dark w-full z-10 md:pt-0 pt-4">
-      <div className="md:p-16 p-4 py-6 flex md:flex-row flex-col justify-between">
+      <div className="md:p-16 md:pb-0 p-4 py-6 flex md:flex-row flex-col justify-between">
         <div className="w-full md:max-w-xs mr-8">
           <div className="md:max-w-xs max-w-[250px]">
             <svg viewBox="0 0 276 46">
@@ -109,7 +109,17 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:items-center md:justify-center text-primary-light text-xs mb-4 md:ml-0 ml-4">
+
+      <div className="md:pl-16 px-4 md:mt-4 max-w-xl">
+        <p className="text-primary-light italic">
+          Kinected Strength acknowledges that we live, work and play on the
+          traditional territories of the Coast Salish peoples &ndash;
+          xʷməθkʷəy̓əm (Musqueam), sḵwx̱wú7mesh (Squamish), and sel̓íl̓witulh
+          (Tsleil-Waututh) nations.
+        </p>
+      </div>
+
+      <div className="flex flex-col md:items-center md:justify-center text-primary-light text-xs md:mt-4 mt-8 mb-4 md:ml-0 ml-4">
         <span>Kinected Strength &ndash; est. 2023</span>
         <span>
           Site by{" "}
