@@ -71,6 +71,11 @@ function MyApp({ Component, pageProps }) {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
         <meta charSet="UTF-8" />
         <title key="title">Kinected Strength</title>
       </Head>
