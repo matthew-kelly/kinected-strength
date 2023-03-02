@@ -1,6 +1,8 @@
 import { Carousel } from "react-responsive-carousel";
 import Testimonial from "./Testimonial";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useWindowSize } from "../lib/useWindowSize";
+import { breakpoints } from "../utils/theme";
 
 export default function TestimonialBlock({
   testimonials = [],
@@ -11,6 +13,7 @@ export default function TestimonialBlock({
     highlight,
     `<br /><span class="text-secondary-dark">${highlight}</span>`
   );
+  const windowSize = useWindowSize();
   return (
     <div className="bg-primary-light py-12 lg:px-24 md:px-12 px-8 flex flex-col items-center">
       <div className="flex flex-col max-w-6xl">
@@ -27,6 +30,10 @@ export default function TestimonialBlock({
             showThumbs={false}
             showIndicators={false}
             showStatus={false}
+            preventMovementUntilSwipeScrollTolerance={
+              windowSize.width < breakpoints.md
+            }
+            swipeScrollTolerance={50}
           >
             {testimonials.map((item, index) => (
               <Testimonial

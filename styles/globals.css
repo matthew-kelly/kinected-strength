@@ -145,3 +145,9 @@
 .carousel .slide {
   @apply md:!mt-auto md:!mb-auto;
 }
+.carousel .control-next.control-arrow:before {
+  @apply !border-l-primary-dark;
+}
+.carousel .control-prev.control-arrow:before {
+  @apply !border-r-primary-dark;
+}

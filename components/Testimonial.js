@@ -11,7 +11,7 @@ export default function Testimonial({
   };
   return (
     <motion.div
-      className={`text-primary-dark flex md:flex-row flex-col items-center lg:gap-16 md:gap-8 gap-4 text-left px-8 ${
+      className={`text-primary-dark flex md:flex-row flex-col items-center lg:gap-16 md:gap-8 gap-4 text-left md:px-8 px-6 ${
         count > 1 ? "cursor-pointer" : ""
       }`}
       whileHover={hoverState}
