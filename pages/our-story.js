@@ -106,7 +106,7 @@ export default function OurStory({ page, team }) {
           text={page.bannerText}
         />
       </div>
-      <div className="flex flex-col bg-light-gray lg:px-24 md:px-16 px-8 md:py-20 md:pb-32 py-12 text-primary-dark">
+      <div className="flex flex-col bg-light-gray lg:px-24 md:px-16 px-8 md:py-20 md:pb-32 py-12 text-primary-dark overflow-hidden">
         <div className="flex flex-col max-w-6xl w-full self-center">
           <h1 className="uppercase text-xl mb-8">Meet the team</h1>
 
