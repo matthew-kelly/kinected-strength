@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Button from "./Button";
+import FooterForm from "./FooterForm";
 
 export default function Footer() {
   return (
@@ -94,19 +95,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center md:items-end items-start md:ml-8 md:mt-0 mt-4">
-          {/* <FooterForm /> */}
-          <span className="font-medium md:text-sm text-xs md:mb-4 md:mt-0 mt-2 text-primary-light md:text-right text-left uppercase tracking-wider md:leading-7 leading-6">
+        <div className="flex flex-col justify-center md:items-end items-start md:ml-8 md:mt-0 mt-4 md:gap-4 gap-6 max-w-sm">
+          <FooterForm />
+          <span className="font-medium md:text-sm text-xs text-primary-light md:text-right text-left uppercase tracking-wider md:leading-7 leading-6">
             kinectedstrength@gmail.com <br />
             North Vancouver, BC
           </span>
-          <div className="md:block hidden">
+          {/* <div className="md:block hidden">
             <Link href="/contact">
               <Button className="light md:large">
                 <span className="whitespace-nowrap">Get in touch</span>
               </Button>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
 
