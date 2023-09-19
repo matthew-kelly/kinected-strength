@@ -108,8 +108,8 @@ export default function Strength({ page }) {
                 </a>{" "}
                 to provide physio-led active rehab. Begin with a high level
                 assessment from a TBC physio then carry out your treatment plan
-                in the gym with your Kinesiologist. Direct billing is available
-                for Pacific Blue Cross insurance plans.
+                in the gym with your Kinesiologist under the
+                Physiotherapist&apos;s direct supervision.
               </p>
             </div>
             <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:self-auto self-center md:max-w-[250px]">
