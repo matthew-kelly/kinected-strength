@@ -74,7 +74,7 @@ export default function EventCard({ event }) {
           <div className="flex justify-between mt-2">
             <span>
               {event.isOngoingEvent
-                ? `${date} ${endDate ? `- ${endDate}` : "(Ongoing)"}`
+                ? `${endDate ? `${date} - ${endDate}` : "Ongoing"}`
                 : date}
             </span>
           </div>

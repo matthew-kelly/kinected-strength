@@ -66,7 +66,7 @@ export default function CommunityEvent({ event }) {
             <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-16 mb-8 md:text-base text-sm">
               <span>
                 {event.isOngoingEvent
-                  ? `${date} ${endDate ? `- ${endDate}` : "(Ongoing)"}`
+                  ? `${endDate ? `${date} - ${endDate}` : "Ongoing"}`
                   : date}
               </span>
             </div>
@@ -78,6 +78,18 @@ export default function CommunityEvent({ event }) {
               components={{
                 types: {
                   image: ({ value }) => <BlockImage value={value} />,
+                },
+                marks: {
+                  link: ({ value, children }) => {
+                    const { external, href } = value;
+                    return external ? (
+                      <a href={href} target="_blank" rel="noreferrer">
+                        {children}
+                      </a>
+                    ) : (
+                      <a href={href}>{children}</a>
+                    );
+                  },
                 },
               }}
             />

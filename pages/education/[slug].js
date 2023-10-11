@@ -76,6 +76,18 @@ export default function BlogPost({ data }) {
                 types: {
                   image: ({ value }) => <BlockImage value={value} />,
                 },
+                marks: {
+                  link: ({ value, children }) => {
+                    const { external, href } = value;
+                    return external ? (
+                      <a href={href} target="_blank" rel="noreferrer">
+                        {children}
+                      </a>
+                    ) : (
+                      <a href={href}>{children}</a>
+                    );
+                  },
+                },
               }}
             />
           </div>

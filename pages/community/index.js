@@ -55,7 +55,7 @@ export default function Community({
               {/* </div> */}
               {/* <div className="md:max-w-sm md:mt-16 mt-4 lg:ml-8 md:ml-4 flex flex-col items-center relative"> */}
               <div className="md:max-w-sm lg:mt-16 md:mt-8 mt-4 lg:ml-8 md:ml-4 flex flex-col items-center relative">
-                <p className="z-10">
+                <p className="z-10 md:text-base lg:text-lg">
                   {featuredEvent.longDescription
                     ? featuredEvent.longDescription
                     : featuredEvent.description}
