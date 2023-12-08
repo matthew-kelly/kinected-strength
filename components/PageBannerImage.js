@@ -36,8 +36,6 @@ export default function PageBannerImage({
     src: mobileImage,
   }).props;
 
-  console.log({ common, desktop, mobile });
-
   const desktopMedia = `(min-width: ${breakpoint}px)`;
   const mobileMedia = `(max-width: ${breakpoint - 1}px)`;
   return (
