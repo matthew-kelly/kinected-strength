@@ -24,7 +24,7 @@
     "framer-motion": "^7.1.1",
     "gsap": "^3.11.1",
     "js-cookie": "^3.0.5",
-    "next": "^13.1.6",
+    "next": "^13.5.0",
     "next-sanity": "4.1.2",
     "next-sitemap": "^3.1.52",
     "react": "^18.2.0",
