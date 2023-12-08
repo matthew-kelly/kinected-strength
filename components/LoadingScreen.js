@@ -6,6 +6,7 @@ export default function LoadingScreen({ isLoading }) {
     <AnimatePresence>
       {isLoading && (
         <motion.div
+          id="loading-screen"
           className="fixed inset-0 h-screen w-screen bg-primary-dark flex flex-col items-center justify-center z-[200]"
           key="loadingScreen"
           transition={{

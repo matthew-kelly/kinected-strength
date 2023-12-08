@@ -2,7 +2,7 @@ import { getImageDimensions } from "@sanity/asset-utils";
 import Image from "next/image";
 import { urlForImage } from "../lib/sanity";
 
-export default function BlockImage({ value }) {
+export default function BlockImage({ value, className = "" }) {
   const { aspectRatio } = getImageDimensions(value);
   const maxWidth = 800;
   const newHeight = Math.round(maxWidth / aspectRatio);
@@ -14,6 +14,7 @@ export default function BlockImage({ value }) {
         height={newHeight}
         quality={90}
         alt={value?.alt}
+        className={className}
       />
     </div>
   );

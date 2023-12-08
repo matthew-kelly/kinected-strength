@@ -10,6 +10,15 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
+"@approximant/next-progress@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@approximant/next-progress/-/next-progress-0.1.0.tgz#2d554ffa76bf4f43277a77f3d5a3b4adcb9f9a7a"
+  integrity sha512-ONOvXrc1f0AYpXgRn8jx7S4GShl5ZVnpQZcWCXQM0oW6w6v+oRCkCznwJhhI5StIiXPjIh3r+Lz18UC2hA+VtQ==
+  dependencies:
+    "@types/nprogress" "^0.2.0"
+    nprogress "^0.2.0"
+    prop-types "^15.8.1"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.18.6":
   version "7.18.6"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.18.6.tgz#3b25d38c89600baa2dcc219edfa88a74eb2c427a"
@@ -1205,6 +1214,11 @@
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz#d3357479a0fdfdd5907fe67e17e0a85c906e1301"
   integrity sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==
 
+"@types/nprogress@^0.2.0":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@types/nprogress/-/nprogress-0.2.3.tgz#b2150b054a13622fabcba12cf6f0b54c48b14287"
+  integrity sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==
+
 "@types/prop-types@*":
   version "15.7.5"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
@@ -1699,9 +1713,9 @@ camelize@^1.0.0:
   integrity sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==
 
 caniuse-lite@^1.0.30001370, caniuse-lite@^1.0.30001373, caniuse-lite@^1.0.30001406:
-  version "1.0.30001450"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001450.tgz"
-  integrity sha512-qMBmvmQmFXaSxexkjjfMvD5rnDL0+m+dUMZKoDYsGG8iZN29RuYh9eRoMvKsT6uMAWlyUUGDEQGJJYjzCIO9ew==
+  version "1.0.30001566"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001566.tgz"
+  integrity sha512-ggIhCsTxmITBAMmK8yZjEhCO5/47jKXPu6Dha/wuCS4JePVL+3uiDEBuhu2aIoT+bqTOR8L76Ip1ARL9xYsEJA==
 
 capture-stack-trace@^1.0.0:
   version "1.0.2"
@@ -1765,7 +1779,7 @@ classnames@^2.2.5:
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
   integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
 
-client-only@0.0.1:
+client-only@0.0.1, client-only@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/client-only/-/client-only-0.0.1.tgz#38bba5d403c41ab150bff64a95c85013cf73bca1"
   integrity sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==
@@ -3675,6 +3689,11 @@ isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==
 
+js-cookie@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.5.tgz#0b7e2fd0c01552c58ba86e0841f94dc2557dcdbc"
+  integrity sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz"
@@ -4171,6 +4190,11 @@ npm-run-path@^3.0.0:
   integrity sha512-Dbl4A/VfiVGLgQv29URL9xshU8XDY1GeLy+fsaZ1AA8JDSfjvr5P5+pzRbWqRSBxk6/DW7MIh8lTM/PaGnP2kg==
   dependencies:
     path-key "^3.0.0"
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 nwsapi@^2.2.2:
   version "2.2.2"
@@ -4815,6 +4839,11 @@ react@^18.2.0:
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
+
+reactjs-popup@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/reactjs-popup/-/reactjs-popup-2.0.6.tgz#ff0e340e31d03785ae62f6b6cf62de1ef48c9605"
+  integrity sha512-A+tt+x9wdgZiZjv0e2WzYLD3IfFwJALaRaqwrCSXGjo0iQdsry/EtBEbQXRSmQs7cHmOi5eytCiSlOm8k4C+dg==
 
 read-cache@^1.0.0:
   version "1.0.0"
@@ -5534,6 +5563,14 @@ suspend-react@^0.0.9:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/suspend-react/-/suspend-react-0.0.9.tgz#329072e330be9dc5cc97d1e3a563d542460c3ee5"
   integrity sha512-668Pxy4z54fhjpnPqw6olj3vvpV03VywFNXazyNSYSTuHaRw3NJJjO5l8R49AUk5fMTkJXGVGaaVSgdaO01S3w==
+
+swr@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-2.2.4.tgz#03ec4c56019902fbdc904d78544bd7a9a6fa3f07"
+  integrity sha512-njiZ/4RiIhoOlAaLYDqwz5qH/KZXVilRLvomrx83HjzCWTfa+InyfAjv05PSFxnmLzZkNO9ZfvgoqzAaEI4sGQ==
+  dependencies:
+    client-only "^0.0.1"
+    use-sync-external-store "^1.2.0"
 
 symbol-tree@^3.2.4:
   version "3.2.4"

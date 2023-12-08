@@ -8,6 +8,9 @@ import Footer from "../components/Footer";
 import { MenuStateProvider } from "../lib/menuState";
 import "../styles/globals.css";
 import LoadingScreen from "../components/LoadingScreen";
+import PopupModal from "../components/PopupModal";
+import ProgressBar from "@approximant/next-progress";
+import { colors } from "../utils/theme";
 // import { disableScroll, enableScroll } from "../utils/scroll";
 
 const myFont = localFont({
@@ -84,13 +87,20 @@ function MyApp({ Component, pageProps }) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta charSet="UTF-8" />
         <title key="title">Kinected Strength</title>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<style>#loading-screen {display: none !important;}</style>`,
+          }}
+        ></noscript>
       </Head>
       <div
         className={`${myFont.variable} min-h-screen flex flex-col overflow-x-clip bg-primary-dark app-container`}
         id={isHomePage ? "home-page" : undefined}
       >
+        <ProgressBar color={colors["primary-light"]} debounce={300} />
         <Nav />
         <main className="body">
+          <PopupModal fontVar={myFont.variable} />
           <LoadingScreen isLoading={isLoading} />
           <Component {...pageProps} />
         </main>
