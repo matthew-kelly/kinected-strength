@@ -1,10 +1,11 @@
-import Image from "next/legacy/image";
 import { createRef, useEffect, useState } from "react";
 import Button from "../components/Button";
 import bannerImg from "../public/images/get-in-touch.jpg";
+import bannerImgMobile from "../public/images/get-in-touch-mobile.jpg";
 import { useWindowSize } from "../lib/useWindowSize";
 import { breakpoints } from "../utils/theme";
 import MetaTags from "../components/MetaTags";
+import PageBannerImage from "../components/PageBannerImage";
 
 export default function Contact() {
   // email contact form
@@ -97,14 +98,11 @@ export default function Contact() {
       />
       <div className="flex flex-col bg-light-gray text-primary-dark">
         <div className="flex flex-col max-w-7xl w-full self-center">
-          <Image
-            id="bannerImage"
-            src={bannerImg}
-            sizes="100vw"
-            layout="responsive"
-            priority
+          <PageBannerImage
             alt="Andrea, Jess, and Briana sitting on the grass"
-            placeholder="blur"
+            breakpoint={breakpoints.md}
+            desktopImage={bannerImg}
+            mobileImage={bannerImgMobile}
           />
         </div>
         <div className="flex flex-col max-w-6xl w-full self-center">

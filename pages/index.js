@@ -7,6 +7,7 @@ import LogoSpinner from "../components/LogoSpinner";
 import TestimonialBlock from "../components/TestimonialBlock";
 import { breakpoints } from "../utils/theme";
 import bannerImg from "../public/images/main-page-1.jpg";
+import bannerImgMobile from "../public/images/main-page-1-mobile.jpg";
 import mainImg2 from "../public/images/main-page-2.jpg";
 import mainImg3 from "../public/images/main-page-3.jpg";
 import mainImg4 from "../public/images/main-page-4.jpg";
@@ -35,11 +36,11 @@ export default function Home({ page }) {
         </div>
       ) : (
         <Image
-          src={bannerImg}
+          src={bannerImgMobile}
           layout="responsive"
           priority
           sizes="100vw"
-          quality={90}
+          quality={95}
           alt="Briana, Andrea, and Jess walking along a dock"
           placeholder="blur"
           className="z-0"

@@ -3,6 +3,7 @@ import PageBanner from "../components/PageBanner";
 import { Circle } from "../components/shapes";
 import TestimonialBlock from "../components/TestimonialBlock";
 import bannerImg from "../public/images/strength.jpg";
+import bannerImgMobile from "../public/images/strength-mobile.jpg";
 import imgICBC from "../public/images/services-ICBC.jpg";
 import imgOnline from "../public/images/services-online.jpg";
 import imgPhysio from "../public/images/services-physio-led.jpg";
@@ -13,11 +14,6 @@ import { testimonialsQuery } from "../lib/queries";
 import MetaTags from "../components/MetaTags";
 
 export default function Strength({ page }) {
-  const image = {
-    image: bannerImg,
-    alt: "Andrea, Briana, and Jess standing by the water",
-  };
-
   return (
     <>
       <MetaTags
@@ -29,7 +25,9 @@ export default function Strength({ page }) {
 
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner
-          image={image}
+          image={bannerImg}
+          mobileImage={bannerImgMobile}
+          alt="Andrea, Briana, and Jess standing by the water"
           title={page.title}
           headline={page.bannerHeadline}
           text={page.bannerText}

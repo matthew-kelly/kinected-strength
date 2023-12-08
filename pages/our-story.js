@@ -1,6 +1,7 @@
 import Image from "next/legacy/image";
 import PageBanner from "../components/PageBanner";
 import bannerImg from "../public/images/our-story-1.jpg";
+import bannerImgMobile from "../public/images/our-story-1-mobile.jpg";
 import andreaImg from "../public/images/our-story-andrea.jpg";
 import jessImg from "../public/images/our-story-jess.jpg";
 import brianaImg from "../public/images/our-story-briana.jpg";
@@ -97,10 +98,9 @@ export default function OurStory({ page, team }) {
 
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner
-          image={{
-            image: bannerImg,
-            alt: "Briana, Jess, and Andrea doing kettlebell exercises",
-          }}
+          image={bannerImg}
+          mobileImage={bannerImgMobile}
+          alt="Briana, Jess, and Andrea doing kettlebell exercises"
           title={page.title}
           headline={page.bannerHeadline}
           text={page.bannerText}

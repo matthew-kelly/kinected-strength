@@ -1,7 +1,10 @@
-import Image from "next/legacy/image";
+import PageBannerImage from "./PageBannerImage";
+import { breakpoints } from "../utils/theme";
 
 export default function PageBanner({
   image,
+  mobileImage,
+  alt,
   title,
   headline,
   headlineWidthClass = "md:w-3/5",
@@ -10,16 +13,12 @@ export default function PageBanner({
 }) {
   return (
     <div className="bg-primary-dark flex flex-col relative z-10 max-w-7xl self-center">
-      <div>
-        <Image
-          src={image.image}
-          layout="responsive"
-          priority
-          quality={90}
-          sizes="100vw"
-          alt={image.alt}
-          className="z-0"
-          placeholder="blur"
+      <div className="relative block">
+        <PageBannerImage
+          alt={alt}
+          breakpoint={breakpoints.md}
+          desktopImage={image}
+          mobileImage={mobileImage}
         />
       </div>
       <div className="flex flex-col lg:p-24 md:p-16 p-8">

@@ -11,14 +11,10 @@ import {
   testimonialsQuery,
 } from "../../lib/queries";
 import bannerImg from "../../public/images/education.jpg";
+import bannerImgMobile from "../../public/images/education-mobile.jpg";
 import MetaTags from "../../components/MetaTags";
 
 export default function Education({ page, posts, count }) {
-  const image = {
-    image: bannerImg,
-    alt: "Briana, Jess, and Andrea doing exercises with kettlebells",
-  };
-
   const [allPosts, setAllPosts] = useState(posts);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -44,7 +40,9 @@ export default function Education({ page, posts, count }) {
 
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner
-          image={image}
+          image={bannerImg}
+          mobileImage={bannerImgMobile}
+          alt="Briana, Jess, and Andrea doing exercises with kettlebells"
           title={page.title}
           headline={page.bannerHeadline}
           text={page.bannerText}

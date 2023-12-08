@@ -1,6 +1,7 @@
 import PageBanner from "../../components/PageBanner";
 import TestimonialBlock from "../../components/TestimonialBlock";
 import bannerImg from "../../public/images/community.jpg";
+import bannerImgMobile from "../../public/images/community-mobile.jpg";
 import EventCard from "../../components/EventCard";
 import { Quartercircle } from "../../components/shapes";
 import {
@@ -19,11 +20,6 @@ export default function Community({
   featuredEvent,
   page,
 }) {
-  const image = {
-    image: bannerImg,
-    alt: "Briana, Jess, and Andrea sitting on a pier",
-  };
-
   const windowSize = useWindowSize();
 
   return (
@@ -37,7 +33,9 @@ export default function Community({
 
       <div className="bg-primary-dark flex flex-col relative">
         <PageBanner
-          image={image}
+          image={bannerImg}
+          mobileImage={bannerImgMobile}
+          alt="Briana, Jess, and Andrea sitting on a pier"
           title={page.title}
           headline={page.bannerHeadline}
           text={page.bannerText}
