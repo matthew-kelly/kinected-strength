@@ -72,7 +72,7 @@ export default function PopupModal({ fontVar }) {
             onClick={popupData?.clickToClose ? closePopup : () => {}}
           />
           {/* popup box */}
-          <div className="popupmodal-box relative m-auto w-11/12 max-w-xl">
+          <div className="popupmodal-box relative m-auto w-11/12 max-w-xl overflow-y-auto max-h-screen">
             <button
               className="cursor-pointer absolute top-1 right-1 w-8 z-10"
               onClick={closePopup}
@@ -110,7 +110,7 @@ export default function PopupModal({ fontVar }) {
                 }}
               >
                 {popupData.content.useContent && popupData.content.title && (
-                  <h1 className="text-primary-dark font-display mb-2 text-3xl">
+                  <h1 className="text-primary-dark font-display mb-2 text-xl sm:text-2xl md:text-3xl">
                     {popupData.content.title}
                   </h1>
                 )}
