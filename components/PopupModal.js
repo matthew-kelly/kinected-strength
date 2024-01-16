@@ -33,6 +33,7 @@ export default function PopupModal({ fontVar }) {
   const openPopup = () => {
     window.removeEventListener("mousemove", openPopup);
     window.removeEventListener("scrollend", openPopup);
+    window.removeEventListener("touchend", openPopup);
     disableScroll();
     setIsOpen(true);
   };
@@ -53,12 +54,16 @@ export default function PopupModal({ fontVar }) {
       setTimeout(() => {
         window.addEventListener("mousemove", openPopup);
         window.addEventListener("scrollend", openPopup);
+        if (!("scrollend" in window)) {
+          window.addEventListener("touchend", openPopup);
+        }
       }, 3000);
     }
 
     return () => {
       window.removeEventListener("mousemove", openPopup);
       window.removeEventListener("scrollend", openPopup);
+      window.removeEventListener("touchend", openPopup);
     };
   }, [popupData]);
 
