@@ -42,7 +42,11 @@ export default function Nav() {
             isHomePage && windowSize.width >= breakpoints.lg
               ? "fixed w-full"
               : "sticky"
-          } ${isOpen ? "shadow-[0_-2px_14px_0_rgba(0,0,0,0.18)]" : ""}`}
+          } ${
+            isOpen && windowSize.width < breakpoints.md
+              ? "shadow-[0_-2px_14px_0_rgba(0,0,0,0.18)]"
+              : ""
+          }`}
         >
           {/* bg-opacity-80 */}
           {isHomePage ? (
