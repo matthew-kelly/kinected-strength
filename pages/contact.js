@@ -111,9 +111,17 @@ export default function Contact() {
               <h1 className="lg:text-7xl md:text-6xl text-5xl mb-6 font-extrabold">
                 Get in touch.
               </h1>
-              <p className="text-primary-dark max-w-lg font-bold text-base">
+              <h2 className="text-primary-dark max-w-lg font-bold mb-4">
                 Come say hi to get strong, feel confident and see concrete
                 results.
+              </h2>
+              <p className="text-primary-dark max-w-lg text-base mb-4">
+                We&apos;re Bri, Jess, and Andrea - Kinesiologists of Kinected
+                Strength. We offer private and group training in North Vancouver
+                and several online training options.
+              </p>
+              <p className="text-primary-dark max-w-lg text-base">
+                We&apos;ll get back to you within 72 hours!
               </p>
 
               <form
@@ -175,19 +183,19 @@ export default function Contact() {
                     />
                   </div>
 
-                  <div className="flex items-end">
+                  <div className="flex flex-col">
                     <label
                       htmlFor="message"
-                      className="border-b-2 border-b-primary-dark pr-2 text-sm uppercase whitespace-nowrap font-semibold"
+                      className="text-sm uppercase font-semibold"
                     >
-                      Message
+                      Tell us a bit about yourself and how we can help you
                     </label>
                     <textarea
                       ref={messageBlock}
                       rows="1"
                       name="message"
                       id="message"
-                      className="m-0 p-0 pl-2 border-0 border-b-2 border-b-primary-dark focus:border-b-secondary-dark focus:ring-0 text-md bg-transparent grow resize-none overflow-hidden"
+                      className="m-0 p-0 border-0 border-b-2 border-b-primary-dark focus:border-b-secondary-dark focus:ring-0 text-md bg-transparent grow resize-none overflow-hidden"
                       style={{ height: messageBlockHeight + "px" }}
                       value={message}
                       onChange={(e) => {
