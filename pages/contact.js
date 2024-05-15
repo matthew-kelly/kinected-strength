@@ -116,7 +116,7 @@ export default function Contact() {
                 results.
               </h2>
               <p className="text-primary-dark max-w-lg text-base mb-4">
-                We&apos;re Bri, Jess, and Andrea - Kinesiologists of Kinected
+                We&apos;re Briana, Jess, and Andrea - Kinesiologists of Kinected
                 Strength. We offer private and group training in North Vancouver
                 and several online training options.
               </p>

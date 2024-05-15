@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import Button from "../../components/Button";
 import { eventQuery, eventsSlugsQuery } from "../../lib/queries";
@@ -8,6 +8,7 @@ import { PortableText } from "@portabletext/react";
 import BlockImage from "../../components/BlockImage";
 import MetaTags from "../../components/MetaTags";
 import { dateFormatter } from "../../utils/dateFormatter";
+import { breakpoints } from "../../utils/theme";
 
 export default function CommunityEvent({ event }) {
   const date = dateFormatter(event.eventDate);
@@ -60,6 +61,8 @@ export default function CommunityEvent({ event }) {
             placeholder="blur"
             blurDataURL={event.blur}
             alt={event.mainImage.alt}
+            sizes={`(max-width: ${breakpoints.md}px) 100vw, 100vw`}
+            className="w-full h-auto"
           />
           <div className="flex flex-col relative mt-8">
             <h1 className="md:mb-4 mb-2 md:text-5xl text-4xl">{event.title}</h1>

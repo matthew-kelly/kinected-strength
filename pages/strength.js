@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import PageBanner from "../components/PageBanner";
 import { Circle } from "../components/shapes";
 import TestimonialBlock from "../components/TestimonialBlock";
@@ -12,6 +12,7 @@ import DivInView from "../components/DivInView";
 import { client } from "../lib/sanityClient";
 import { testimonialsQuery } from "../lib/queries";
 import MetaTags from "../components/MetaTags";
+import { breakpoints } from "../utils/theme";
 
 export default function Strength({ page }) {
   return (
@@ -55,8 +56,9 @@ export default function Strength({ page }) {
                 <Image
                   src={imgPrivate}
                   alt="Jess swinging a kettlebell"
-                  // sizes={`(max-width: ${breakpoints.md}px) 100vw, 250px`}
+                  sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 250px`}
                   placeholder="blur"
+                  className="w-full h-auto"
                 />
               </DivInView>
             </div>
@@ -81,9 +83,10 @@ export default function Strength({ page }) {
               <DivInView>
                 <Image
                   src={imgICBC}
-                  // sizes={`(max-width: ${breakpoints.md}px) 100vw, (max-width: ${breakpoints.lg}px) 300px, 325px`}
+                  sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 325px`}
                   alt="Briana holding a plank position"
                   placeholder="blur"
+                  className="w-full h-auto"
                 />
               </DivInView>
             </div>
@@ -115,8 +118,9 @@ export default function Strength({ page }) {
                 <Image
                   src={imgPhysio}
                   alt="Andrea swinging a kettlebell"
-                  // sizes={`(max-width: ${breakpoints.md}px) 100vw, 250px`}
+                  sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 250px`}
                   placeholder="blur"
+                  className="w-full h-auto"
                 />
               </DivInView>
             </div>
@@ -144,7 +148,9 @@ export default function Strength({ page }) {
                   // sizes={`(max-width: ${breakpoints.md}px) 100vw,
                   //   (max-width: ${breakpoints.lg}px) 30vw,
                   //   35vw`}
+                  sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 325px`}
                   placeholder="blur"
+                  className="w-full h-auto"
                 />
               </DivInView>
             </div>

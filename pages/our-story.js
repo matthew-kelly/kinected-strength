@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import PageBanner from "../components/PageBanner";
 import bannerImg from "../public/images/our-story-1.jpg";
 import bannerImgMobile from "../public/images/our-story-1-mobile.jpg";
@@ -9,7 +9,7 @@ import { Circle } from "../components/shapes";
 import TestimonialBlock from "../components/TestimonialBlock";
 import {
   LayoutGroup,
-  motion,
+  m,
   useAnimationControls,
   useInView,
   useReducedMotion,
@@ -40,7 +40,7 @@ export default function OurStory({ page, team }) {
   // Animation - options
   const inViewOptions = {
     once: true,
-    amount: isMobile ? "some" : 0.5,
+    amount: isMobile ? "some" : 0.2,
   };
   const variantsMain = {
     hidden: {
@@ -111,7 +111,7 @@ export default function OurStory({ page, team }) {
           <h1 className="uppercase text-xl mb-8">Meet the team</h1>
 
           <LayoutGroup>
-            <motion.div
+            <m.div
               ref={refAndrea}
               animate={controlsAndrea}
               initial={reduceMotion ? "visible" : "hidden"}
@@ -119,7 +119,7 @@ export default function OurStory({ page, team }) {
               className="relative md:max-w-4xl w-full flex flex-col lg:ml-24 lg:pr-8 md:mt-12 md:mb-12"
             >
               <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] md:-translate-x-1/2 md:-top-12 z-20">
-                <motion.span
+                <m.span
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : 100 },
                     visible: {
@@ -130,8 +130,8 @@ export default function OurStory({ page, team }) {
                   }}
                 >
                   Andrea
-                </motion.span>
-                <motion.span
+                </m.span>
+                <m.span
                   variants={
                     isMobile
                       ? {
@@ -148,10 +148,10 @@ export default function OurStory({ page, team }) {
                   }
                 >
                   Brennan
-                </motion.span>
+                </m.span>
               </h2>
               <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
-                <motion.div
+                <m.div
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : -200 },
                     visible: { opacity: 1, x: 0 },
@@ -159,15 +159,15 @@ export default function OurStory({ page, team }) {
                   className="md:w-2/5 w-full"
                 >
                   <Image
-                    layout="responsive"
                     src={andreaImg}
                     quality={90}
-                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
+                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 33vw`}
                     placeholder="blur"
                     alt="Andrea Brennan"
+                    className="w-full h-auto"
                   />
-                </motion.div>
-                <motion.div
+                </m.div>
+                <m.div
                   variants={{
                     hidden: { opacity: 0, y: isMobile ? 0 : 200 },
                     visible: {
@@ -187,9 +187,9 @@ export default function OurStory({ page, team }) {
                   <div className="prose prose-sm prose-p:my-2">
                     <PortableText value={dataAndrea.bio} />
                   </div>
-                </motion.div>
+                </m.div>
               </div>
-              <motion.div
+              <m.div
                 variants={{
                   hidden: { opacity: 0 },
                   visible: {
@@ -200,12 +200,12 @@ export default function OurStory({ page, team }) {
                 className="absolute md:top-1/2 md:-translate-y-1/2 md:-left-24 top-full -translate-y-2/3 -left-16"
               >
                 <Circle size={200} color="fill-secondary-light" />
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           </LayoutGroup>
 
           <LayoutGroup>
-            <motion.div
+            <m.div
               ref={refJess}
               animate={controlsJess}
               initial={reduceMotion ? "visible" : "hidden"}
@@ -213,7 +213,7 @@ export default function OurStory({ page, team }) {
               className="relative md:max-w-4xl w-full flex flex-col md:self-end md:pt-0 pt-32 md:mt-24 lg:mr-24 lg:pl-8 md:mb-12"
             >
               <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[60%] md:left-[73%] left-2/3 md:-translate-x-1/2 md:-top-12 z-20">
-                <motion.span
+                <m.span
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : -100 },
                     visible: {
@@ -224,8 +224,8 @@ export default function OurStory({ page, team }) {
                   }}
                 >
                   Jess
-                </motion.span>
-                <motion.span
+                </m.span>
+                <m.span
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : -100 },
                     visible: {
@@ -236,10 +236,10 @@ export default function OurStory({ page, team }) {
                   }}
                 >
                   Pastro
-                </motion.span>
+                </m.span>
               </h2>
               <div className="flex md:flex-row-reverse flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
-                <motion.div
+                <m.div
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : 100 },
                     visible: { opacity: 1, x: 0 },
@@ -247,15 +247,15 @@ export default function OurStory({ page, team }) {
                   className="md:w-2/5 w-full"
                 >
                   <Image
-                    layout="responsive"
                     src={jessImg}
                     quality={90}
-                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
+                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 33vw`}
                     placeholder="blur"
                     alt="Jess Pastro"
+                    className="w-full h-auto"
                   />
-                </motion.div>
-                <motion.div
+                </m.div>
+                <m.div
                   variants={{
                     hidden: { opacity: 0, y: isMobile ? 0 : 200 },
                     visible: {
@@ -275,9 +275,9 @@ export default function OurStory({ page, team }) {
                   <div className="prose prose-sm prose-p:my-2">
                     <PortableText value={dataJess.bio} />
                   </div>
-                </motion.div>
+                </m.div>
               </div>
-              <motion.svg
+              <m.svg
                 variants={{
                   hidden: { opacity: 0 },
                   visible: { opacity: 1, transition: { delay: 0 } },
@@ -290,12 +290,12 @@ export default function OurStory({ page, team }) {
                   clipRule="evenodd"
                   d="M0 56L135 56C135 -18.6667 -3.26378e-06 -18.6667 0 56ZM-4.72083e-06 56L0 164H135V56L-4.72083e-06 56Z"
                 />
-              </motion.svg>
-            </motion.div>
+              </m.svg>
+            </m.div>
           </LayoutGroup>
 
           <LayoutGroup>
-            <motion.div
+            <m.div
               ref={refBri}
               animate={controlsBri}
               initial={reduceMotion ? "visible" : "hidden"}
@@ -304,7 +304,7 @@ export default function OurStory({ page, team }) {
             >
               <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[27%] md:-translate-x-1/2 md:-top-12 z-20">
                 {/* flex md:flex-col md:gap-0 gap-2          md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] lg:-translate-x-1/2 md:-translate-x-1/2 md:-top-12 z-20 */}
-                <motion.span
+                <m.span
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : 100 },
                     visible: {
@@ -315,8 +315,8 @@ export default function OurStory({ page, team }) {
                   }}
                 >
                   Briana
-                </motion.span>
-                <motion.span
+                </m.span>
+                <m.span
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : 100 },
                     visible: {
@@ -327,10 +327,10 @@ export default function OurStory({ page, team }) {
                   }}
                 >
                   Kelly
-                </motion.span>
+                </m.span>
               </h2>
               <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
-                <motion.div
+                <m.div
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : -200 },
                     visible: { opacity: 1, x: 0 },
@@ -338,15 +338,15 @@ export default function OurStory({ page, team }) {
                   className="md:w-2/5 w-full"
                 >
                   <Image
-                    layout="responsive"
                     src={brianaImg}
                     quality={90}
-                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
+                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 33vw`}
                     placeholder="blur"
                     alt="Briana Kelly"
+                    className="w-full h-auto"
                   />
-                </motion.div>
-                <motion.div
+                </m.div>
+                <m.div
                   variants={{
                     hidden: { opacity: 0, y: isMobile ? 0 : 200 },
                     visible: {
@@ -366,9 +366,9 @@ export default function OurStory({ page, team }) {
                   <div className="prose prose-sm prose-p:my-2">
                     <PortableText value={dataBriana.bio} />
                   </div>
-                </motion.div>
+                </m.div>
               </div>
-              <motion.svg
+              <m.svg
                 variants={{
                   hidden: { opacity: 0 },
                   visible: {
@@ -384,8 +384,8 @@ export default function OurStory({ page, team }) {
                   clipRule="evenodd"
                   d="M0 154L445 154C445 -51.3336 -1.07576e-05 -51.3336 0 154ZM-2.61955e-06 154L0 204L445 204V154L-2.61955e-06 154Z"
                 />
-              </motion.svg>
-            </motion.div>
+              </m.svg>
+            </m.div>
           </LayoutGroup>
         </div>
       </div>

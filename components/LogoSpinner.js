@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import styles from "./LogoSpinner.module.css";
 
 export default function LogoSpinner({ size = 100, textClass = "" }) {
   // HACK: iOS currently has an unresolved bug where transforms cannot be animated, using framer-motion instead of css
   return (
-    <motion.div
+    <m.div
       style={{
         originX: "50%",
         originY: "50%",
@@ -36,6 +36,6 @@ export default function LogoSpinner({ size = 100, textClass = "" }) {
           <textPath xlinkHref="#circlepath">Kinected • Strength</textPath>
         </text>
       </svg>
-    </motion.div>
+    </m.div>
   );
 }

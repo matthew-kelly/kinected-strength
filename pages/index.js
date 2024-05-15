@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import Image from "next/legacy/image";
+import { m } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { ScrollTriggerProvider } from "../components/ScrollTriggerProvider";
 import HomeBanner from "../components/HomeBanner";
@@ -15,6 +15,12 @@ import { useWindowSize } from "../lib/useWindowSize";
 import { client } from "../lib/sanityClient";
 import { testimonialsQuery } from "../lib/queries";
 import MetaTags from "../components/MetaTags";
+// import dynamic from "next/dynamic";
+
+// client components
+// const HomeBanner = dynamic(() => import("../components/HomeBanner"), {
+//   // ssr: false,
+// });
 
 export default function Home({ page }) {
   const windowSize = useWindowSize();
@@ -37,13 +43,12 @@ export default function Home({ page }) {
       ) : (
         <Image
           src={bannerImgMobile}
-          layout="responsive"
           priority
           sizes="100vw"
-          quality={95}
+          quality={90}
           alt="Briana, Andrea, and Jess walking along a dock"
           placeholder="blur"
-          className="z-0"
+          className="z-0 w-full h-auto"
         />
       )}
 
@@ -52,7 +57,7 @@ export default function Home({ page }) {
           <div className="sm:w-1/2 w-full relative overflow-hidden sm:h-auto h-[100vw]">
             <Image
               src={mainImg2}
-              layout="fill"
+              fill
               sizes={`(max-width: ${breakpoints.sm}px) 100vw,
             50vw`}
               quality={90}
@@ -64,7 +69,7 @@ export default function Home({ page }) {
           <div className="sm:w-1/2 bg-primary-light flex flex-col justify-center md:gap-10 gap-8 p-8">
             <div className="flex justify-center md:gap-8 gap-4">
               <Link href="/strength" passHref legacyBehavior>
-                <motion.div
+                <m.div
                   className="relative bg-primary-dark cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                 >
@@ -84,11 +89,11 @@ export default function Home({ page }) {
                       </text>
                     </g>
                   </svg>
-                </motion.div>
+                </m.div>
               </Link>
               <div className="flex flex-col md:gap-8 gap-4">
                 <Link href="/education" passHref legacyBehavior>
-                  <motion.div
+                  <m.div
                     className="relative flex justify-center items-end cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                   >
@@ -111,10 +116,10 @@ export default function Home({ page }) {
                         It&apos;s Education
                       </text>
                     </svg>
-                  </motion.div>
+                  </m.div>
                 </Link>
                 <Link href="/community" passHref legacyBehavior>
-                  <motion.div
+                  <m.div
                     className="relative flex justify-center items-end cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                   >
@@ -137,7 +142,7 @@ export default function Home({ page }) {
                         It&apos;s Community
                       </text>
                     </svg>
-                  </motion.div>
+                  </m.div>
                 </Link>
               </div>
             </div>
@@ -157,7 +162,6 @@ export default function Home({ page }) {
               <div className="lg:w-2/3 md:w-1/2">
                 <Image
                   src={mainImg3}
-                  layout="responsive"
                   quality={90}
                   sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
                   placeholder="blur"
@@ -204,7 +208,6 @@ export default function Home({ page }) {
                 <div>
                   <Image
                     src={mainImg4}
-                    layout="responsive"
                     quality={90}
                     sizes={`(max-width: ${breakpoints.md}px) 100vw, 38vw`}
                     placeholder="blur"

@@ -1,4 +1,4 @@
-import { motion, useAnimationControls, useInView } from "framer-motion";
+import { m, useAnimationControls, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 export default function DivInView({
@@ -29,7 +29,7 @@ export default function DivInView({
   return (
     <>
       {allowOnMobile ? (
-        <motion.div
+        <m.div
           ref={ref}
           animate={controls}
           initial={initial}
@@ -37,7 +37,7 @@ export default function DivInView({
           className={className}
         >
           {children}
-        </motion.div>
+        </m.div>
       ) : (
         <div className={className}>{children}</div>
       )}

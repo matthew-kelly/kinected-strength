@@ -1,11 +1,11 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import LogoSpinner from "./LogoSpinner";
 
 export default function LoadingScreen({ isLoading }) {
   return (
     <AnimatePresence>
       {isLoading && (
-        <motion.div
+        <m.div
           id="loading-screen"
           className="fixed inset-0 h-screen w-screen bg-primary-dark flex flex-col items-center justify-center z-[200]"
           key="loadingScreen"
@@ -22,7 +22,7 @@ export default function LoadingScreen({ isLoading }) {
           }}
         >
           <LogoSpinner size="300" textClass="fill-primary-light" />
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

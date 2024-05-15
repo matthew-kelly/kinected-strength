@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import Image from "next/legacy/image";
+import { m } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { urlForImage } from "../lib/sanity";
 import { dateFormatter } from "../utils/dateFormatter";
@@ -49,26 +49,26 @@ export default function EventCard({ event }) {
   };
 
   return (
-    <motion.div
+    <m.div
       className="flex flex-col gap-4 z-10"
       whileHover="hover"
       initial="initial"
     >
       <Link href={`/community/${event.slug}`}>
-        <motion.div
+        <m.div
           variants={imageVariants}
           className="relative border-primary-dark"
         >
           <Image
-            layout="responsive"
             placeholder="blur"
             blurDataURL={event.blur}
             src={urlForImage(event.mainImage).width(700).height(700).url()}
             width={700}
             height={700}
             alt={event.mainImage.alt}
+            className="w-full h-auto"
           />
-        </motion.div>
+        </m.div>
         <div className="mt-4 flex flex-col relative border-l-primary-dark">
           <span className="font-display font-bold text-3xl">{event.title}</span>
           <div className="flex justify-between mt-2">
@@ -78,12 +78,12 @@ export default function EventCard({ event }) {
                 : date}
             </span>
           </div>
-          <motion.div
+          <m.div
             className="bg-primary-dark self-center absolute -bottom-2"
             variants={lineVariants}
           />
         </div>
       </Link>
-    </motion.div>
+    </m.div>
   );
 }

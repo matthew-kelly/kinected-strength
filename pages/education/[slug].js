@@ -59,6 +59,7 @@ export default function BlogPost({ data }) {
             placeholder="blur"
             blurDataURL={post.blur}
             alt={post.mainImage.alt}
+            sizes={`(max-width: ${breakpoints.md}px) 100vw, 100vw`}
           />
 
           <div className="flex flex-col relative mt-8">

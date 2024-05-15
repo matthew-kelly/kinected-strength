@@ -2,7 +2,7 @@ import {
   createContext,
   useContext,
   useEffect,
-  useLayoutEffect,
+  // useLayoutEffect,
   useRef,
 } from "react";
 import { useMotionValue } from "framer-motion";
@@ -42,6 +42,7 @@ const ScrollTriggerProvider = ({ children, debug = false, options = {} }) => {
           trigger: refScrollTrigger.current,
           onUpdate: (instance) => {
             progress.set(clamp(instance.progress, 0, 1));
+            console.log(progress.get());
           },
         },
       });

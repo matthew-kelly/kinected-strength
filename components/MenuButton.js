@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const MenuButton = ({
   isOpen = false,
@@ -52,7 +52,7 @@ const MenuButton = ({
   const unitWidth = (unitHeight * width) / height;
 
   return (
-    <motion.svg
+    <m.svg
       viewBox={`0 0 ${unitWidth} ${unitHeight}`}
       overflow="visible"
       preserveAspectRatio="none"
@@ -60,7 +60,7 @@ const MenuButton = ({
       height={height}
       {...props}
     >
-      <motion.line
+      <m.line
         x1="0"
         x2={unitWidth}
         y1="0"
@@ -68,7 +68,7 @@ const MenuButton = ({
         variants={top}
         {...lineProps}
       />
-      <motion.line
+      <m.line
         x1="0"
         x2={unitWidth}
         y1="2"
@@ -76,7 +76,7 @@ const MenuButton = ({
         variants={center}
         {...lineProps}
       />
-      <motion.line
+      <m.line
         x1="0"
         x2={unitWidth}
         y1="4"
@@ -84,7 +84,7 @@ const MenuButton = ({
         variants={bottom}
         {...lineProps}
       />
-    </motion.svg>
+    </m.svg>
   );
 };
 

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function Testimonial({
   content,
@@ -10,7 +10,7 @@ export default function Testimonial({
     x: count > 1 ? (isFirst ? -8 : 8) : 0,
   };
   return (
-    <motion.div
+    <m.div
       className={`text-primary-dark flex md:flex-row flex-col items-center lg:gap-16 md:gap-8 gap-4 text-left md:px-8 px-6 ${
         count > 1 ? "cursor-pointer" : ""
       }`}
@@ -33,6 +33,6 @@ export default function Testimonial({
         <p>{content}</p>
         <p className="mt-2 font-semibold">&ndash; {author}</p>
       </div>
-    </motion.div>
+    </m.div>
   );
 }

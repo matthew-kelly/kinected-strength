@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Button from "./Button";
-import { set } from "sanity";
 
 export default function FooterForm({}) {
   // email contact form for footer
@@ -71,7 +70,7 @@ export default function FooterForm({}) {
           </div>
           <div className="flex items-end gap-2 grow">
             <label
-              htmlFor="last-name"
+              htmlFor="last-name-footer"
               className="text-sm font-display whitespace-nowrap"
             >
               Last Name

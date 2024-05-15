@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -52,7 +52,7 @@ export default function Menu({ isOpen = false, closeMenu }) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           className="bg-primary-dark h-screen w-screen z-[100] fixed inset-0 flex flex-col pt-20 md:pt-32 items-center overflow-y-auto"
           variants={container}
           initial="closed"
@@ -61,7 +61,7 @@ export default function Menu({ isOpen = false, closeMenu }) {
           role="me"
         >
           {links.map((link) => (
-            <motion.div
+            <m.div
               key={link.id}
               variants={itemVariants}
               className="py-4 first:pt-8 last:pb-8"
@@ -84,9 +84,9 @@ export default function Menu({ isOpen = false, closeMenu }) {
                   {link.name}
                 </Link>
               )}
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );
