@@ -43,7 +43,7 @@ export default function Home({ page }) {
       ) : (
         <Image
           src={bannerImgMobile}
-          // priority
+          priority
           sizes={`
           (max-width: ${breakpoints.sm}px) ${breakpoints.sm}px,
           100vw
