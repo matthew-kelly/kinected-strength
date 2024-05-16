@@ -43,9 +43,12 @@ export default function Home({ page }) {
       ) : (
         <Image
           src={bannerImgMobile}
-          priority
-          sizes="100vw"
-          quality={90}
+          // priority
+          sizes={`
+          (max-width: ${breakpoints.sm}px) ${breakpoints.sm}px,
+          100vw
+          `}
+          // quality={80}
           alt="Briana, Andrea, and Jess walking along a dock"
           placeholder="blur"
           className="z-0 w-full h-auto"
@@ -59,8 +62,8 @@ export default function Home({ page }) {
               src={mainImg2}
               fill
               sizes={`(max-width: ${breakpoints.sm}px) 100vw,
-            50vw`}
-              quality={90}
+              50vw`}
+              // quality={80}
               alt="Briana and Jess doing kettlebell exercises"
               placeholder="blur"
               className="object-cover object-center"
@@ -162,7 +165,7 @@ export default function Home({ page }) {
               <div className="lg:w-2/3 md:w-1/2">
                 <Image
                   src={mainImg3}
-                  quality={90}
+                  // quality={80}
                   sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
                   placeholder="blur"
                   alt="Briana, Jess, and Andrea flexing for the camera"
@@ -208,7 +211,7 @@ export default function Home({ page }) {
                 <div>
                   <Image
                     src={mainImg4}
-                    quality={90}
+                    // quality={80}
                     sizes={`(max-width: ${breakpoints.md}px) 100vw, 38vw`}
                     placeholder="blur"
                     alt="Jess doing a turkish get-up"

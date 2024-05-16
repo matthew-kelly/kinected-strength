@@ -11,7 +11,7 @@ export default function PageBannerImage({
   desktopImage,
   mobileImage,
   style = { objectFit: "cover" },
-  quality = 90,
+  quality = 80,
   placeholder = "blur",
   layout = "responsive",
   ...props

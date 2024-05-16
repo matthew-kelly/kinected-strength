@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Button from "./Button";
 import FooterForm from "./FooterForm";
+import links from "../lib/menuItems";
 
 export default function Footer() {
   return (
@@ -110,6 +111,19 @@ export default function Footer() {
           </div> */}
         </div>
       </div>
+
+      <nav className="md:pl-16 px-4 mb-4 md:mt-4 max-w-xl flex flex-wrap md:grid grid-cols-3 grid-flow-row">
+        {links.map((link) => (
+          <Link
+            href={link.href}
+            key={link.id}
+            passHref
+            className="text-sm hover:text-secondary-light text-primary-light font-bold whitespace-nowrap py-1 mr-6 last:mr-0"
+          >
+            {link.name}
+          </Link>
+        ))}
+      </nav>
 
       <div className="md:pl-16 px-4 md:mt-4 max-w-xl">
         <p className="text-primary-light italic">

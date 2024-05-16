@@ -23,7 +23,7 @@ export default function Nav() {
   }, [router.pathname]);
 
   return (
-    <>
+    <header>
       <nav
         id="nav-main"
         className={`z-[101] transition-[top] ease-in-out duration-300 ${
@@ -95,6 +95,6 @@ export default function Nav() {
         </div>
         <Menu isOpen={isOpen} closeMenu={closeMenu} />
       </nav>
-    </>
+    </header>
   );
 }
