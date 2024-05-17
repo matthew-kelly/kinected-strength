@@ -1,7 +1,6 @@
 import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ScrollTriggerProvider } from "../components/ScrollTriggerProvider";
 import HomeBanner from "../components/HomeBanner";
 import LogoSpinner from "../components/LogoSpinner";
 import TestimonialBlock from "../components/TestimonialBlock";
@@ -15,12 +14,6 @@ import { useWindowSize } from "../lib/useWindowSize";
 import { client } from "../lib/sanityClient";
 import { testimonialsQuery } from "../lib/queries";
 import MetaTags from "../components/MetaTags";
-// import dynamic from "next/dynamic";
-
-// client components
-// const HomeBanner = dynamic(() => import("../components/HomeBanner"), {
-//   // ssr: false,
-// });
 
 export default function Home({ page }) {
   const windowSize = useWindowSize();
@@ -35,11 +28,7 @@ export default function Home({ page }) {
       />
 
       {windowSize.width >= breakpoints.lg ? (
-        <div id="bannerContainer" className="flex flex-col">
-          <ScrollTriggerProvider options={{ end: "+=50%" }}>
-            <HomeBanner />
-          </ScrollTriggerProvider>
-        </div>
+        <HomeBanner />
       ) : (
         <Image
           src={bannerImgMobile}
