@@ -10,7 +10,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import PopupModal from "../components/PopupModal";
 import ProgressBar from "@approximant/next-progress";
 import { colors } from "../utils/theme";
-import { LazyMotion, domAnimation } from "framer-motion";
+import { LazyMotion } from "framer-motion";
 // import { disableScroll, enableScroll } from "../utils/scroll";
 
 const myFont = localFont({
@@ -30,9 +30,9 @@ const myFont = localFont({
   variable: "--font-raleway",
 });
 
-// // lazyloading framer-motion library, currently bugs out homepage logo on load
-// const loadFramerMotionFeatures = () =>
-//   import("../lib/framerMotionFeatures.js").then((res) => res.default);
+// lazyloading framer-motion library
+const loadFramerMotionFeatures = () =>
+  import("../lib/framerMotionFeatures.js").then((res) => res.default);
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -69,8 +69,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <MenuStateProvider>
-      <LazyMotion features={domAnimation} strict>
-        {/* <LazyMotion features={loadFramerMotionFeatures} strict> */}
+      <LazyMotion features={loadFramerMotionFeatures} strict>
         <Head>
           <link
             rel="icon"

@@ -3,33 +3,35 @@ import {
   AnimatePresence,
   LayoutGroup,
   m,
+  transform,
   useMotionValue,
-  useTransform,
 } from "framer-motion";
 import Image from "next/image";
 import { useMenu } from "../lib/menuState";
-import { useWindowSize } from "../lib/useWindowSize";
 import bannerImg from "../public/images/main-page-1.jpg";
 import clamp from "../utils/clamp";
 
 export default function HomeBanner() {
+  // TODO: make banner image scroll up with flow of document once progress = 1
   const { isOpen } = useMenu();
 
   const bannerRef = useRef(null);
   const bannerImageRef = useRef(null);
   const scrollRef = useRef(null);
 
-  const windowSize = useWindowSize();
-  const [logoWidth, setLogoWidth] = useState(0);
-  const [logoTop, setLogoTop] = useState(0);
-  const bannerImageSidePadding = 128;
-  const navHeight = 64; // 128;
-
-  // FIXME: title not appearing on load with lazyloading framer-motion library
-
-  // TODO: load in with progress set (no jumping on first scroll)
-
+  const bannerImageSidePadding = 148;
+  const [logoWidth, setLogoWidth] = useState(
+    Math.round((window.innerWidth - bannerImageSidePadding * 2) * 0.77)
+  );
+  const [logoTop, setLogoTop] = useState(
+    Math.round(window.innerWidth * 0.516 - 100)
+  );
+  const navHeight = 32; // 128; // for modifying distance animation takes to complete, not true navHeight
+  const animationSteps = [0, 1];
   const progress = useMotionValue(0);
+  const logoContainerTop = useMotionValue(logoTop);
+  const logoStylesWidth = useMotionValue(logoWidth);
+  const bannerPaddingSide = useMotionValue(bannerImageSidePadding);
 
   const setScrollPosition = () => {
     const base =
@@ -57,47 +59,58 @@ export default function HomeBanner() {
   // update progress on window resize
   useEffect(() => {
     setScrollPosition();
-  }, [windowSize.width]);
-
-  const animationSteps = [0, 1];
-
-  const logoContainerTop = useTransform(progress, animationSteps, [
-    logoTop,
-    34,
-  ]);
-  const logoStylesWidth = useTransform(progress, animationSteps, [
-    logoWidth,
-    256,
-  ]);
-  const bannerPaddingLeft = useTransform(progress, animationSteps, [
-    bannerImageSidePadding,
-    0,
-  ]);
-  const bannerPaddingRight = useTransform(progress, animationSteps, [
-    bannerImageSidePadding,
-    0,
-  ]);
+    updateLogo();
+  }, [window.innerWidth]);
 
   useEffect(() => {
+    function updateLogoContainerTop() {
+      const newVal = transform(progress.get(), animationSteps, [logoTop, 34]);
+      logoContainerTop.set(newVal);
+    }
+    function updateLogoStylesWidth() {
+      const newVal = transform(progress.get(), animationSteps, [
+        logoWidth,
+        256,
+      ]);
+      logoStylesWidth.set(newVal);
+    }
+    function updateBannerPadding() {
+      const newVal = transform(progress.get(), animationSteps, [
+        bannerImageSidePadding,
+        0,
+      ]);
+      bannerPaddingSide.set(newVal);
+    }
+
+    function updateAll() {
+      updateLogoContainerTop();
+      updateLogoStylesWidth();
+      updateBannerPadding();
+    }
+
+    const unsubscribeProgress = progress.onChange(updateAll);
+
+    return () => {
+      unsubscribeProgress();
+    };
+  }, [logoTop, logoWidth]);
+
+  const updateLogo = () => {
     const img = bannerImageRef.current.children[0];
     const imgDimensions = img.getBoundingClientRect();
     const currentProgress = progress.get();
     const newLogoWidth =
       (imgDimensions.width - bannerImageSidePadding * 2 * currentProgress) *
       0.78;
-    let newLogoTop;
-    if (currentProgress >= 1) {
-      newLogoTop = Math.round(imgDimensions.width * 0.457 - 52); // position at progress = 0
-    } else if (currentProgress > 0 && currentProgress < 1) {
-      newLogoTop = Math.round(imgDimensions.width * 0.345 + 126); // good enough
-    } else {
-      newLogoTop = Math.round(imgDimensions.width * 0.449 + 129);
-    }
+    let newLogoTop = Math.round(window.innerWidth * 0.516 - 100);
     setLogoWidth(newLogoWidth);
     setLogoTop(newLogoTop);
-
-    // TODO: make banner image scroll up with flow of document once progress = 1
-  }, [windowSize.width, progress]);
+    if (currentProgress === 0) {
+      progress.set(0.0001); // hack to update when at top of page
+    } else {
+      progress.set(currentProgress);
+    }
+  };
 
   return (
     <div
@@ -112,8 +125,8 @@ export default function HomeBanner() {
           layout
           className={`self-center w-full z-0 fixed mt-32`}
           style={{
-            paddingLeft: bannerPaddingLeft,
-            paddingRight: bannerPaddingRight,
+            paddingLeft: bannerPaddingSide,
+            paddingRight: bannerPaddingSide,
           }}
         >
           <Image
@@ -133,7 +146,7 @@ export default function HomeBanner() {
             <m.div
               id="home-logo"
               ref={scrollRef}
-              className="fixed left-1/2 transform -translate-x-1/2"
+              className="fixed left-1/2 transform -translate-x-1/2 w-full"
               style={{
                 top: logoContainerTop,
                 zIndex: 102,
