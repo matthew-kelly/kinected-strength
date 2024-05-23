@@ -33,10 +33,7 @@ export default function Home({ page }) {
         <Image
           src={bannerImgMobile}
           priority
-          sizes={`
-          (max-width: ${breakpoints.sm}px) ${breakpoints.sm}px,
-          100vw
-          `}
+          sizes="100vw"
           // quality={80}
           alt="Briana, Andrea, and Jess walking along a dock"
           placeholder="blur"

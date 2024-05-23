@@ -20,18 +20,21 @@ export default function HomeBanner() {
   const scrollRef = useRef(null);
 
   const bannerImageSidePadding = 148;
-  const [logoWidth, setLogoWidth] = useState(
-    Math.round((window.innerWidth - bannerImageSidePadding * 2) * 0.77)
-  );
-  const [logoTop, setLogoTop] = useState(
-    Math.round(window.innerWidth * 0.516 - 100)
-  );
+  const [logoWidth, setLogoWidth] = useState(calcLogoWidth());
+  const [logoTop, setLogoTop] = useState(calcLogoTop());
   const navHeight = 32; // 128; // for modifying distance animation takes to complete, not true navHeight
   const animationSteps = [0, 1];
   const progress = useMotionValue(0);
   const logoContainerTop = useMotionValue(logoTop);
   const logoStylesWidth = useMotionValue(logoWidth);
   const bannerPaddingSide = useMotionValue(bannerImageSidePadding);
+
+  function calcLogoTop() {
+    return Math.round(window.innerWidth * 0.4498 - 13.0376);
+  }
+  function calcLogoWidth() {
+    return Math.round((window.innerWidth - bannerImageSidePadding * 2) * 0.77);
+  }
 
   const setScrollPosition = () => {
     const base =
@@ -99,10 +102,9 @@ export default function HomeBanner() {
     const img = bannerImageRef.current.children[0];
     const imgDimensions = img.getBoundingClientRect();
     const currentProgress = progress.get();
-    const newLogoWidth =
-      (imgDimensions.width - bannerImageSidePadding * 2 * currentProgress) *
-      0.78;
-    let newLogoTop = Math.round(window.innerWidth * 0.516 - 100);
+    const newLogoWidth = calcLogoWidth();
+    // (imgDimensions.width - bannerImageSidePadding * 2 * currentProgress) * 0.78;
+    let newLogoTop = calcLogoTop();
     setLogoWidth(newLogoWidth);
     setLogoTop(newLogoTop);
     if (currentProgress === 0) {
@@ -134,7 +136,7 @@ export default function HomeBanner() {
             src={bannerImg}
             priority
             sizes="100vw"
-            quality={90}
+            // quality={90}
             alt="Briana, Andrea, and Jess walking along a dock"
             className="z-0"
             placeholder="blur"
