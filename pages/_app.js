@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { MenuStateProvider } from "../lib/menuState";
