@@ -160,7 +160,7 @@ export default function OurStory({ page, team }) {
                 >
                   <Image
                     src={andreaImg}
-                    quality={90}
+                    quality={80}
                     sizes={`(max-width: ${breakpoints.md}px) 100vw, 33vw`}
                     placeholder="blur"
                     alt="Andrea Brennan"
@@ -248,7 +248,7 @@ export default function OurStory({ page, team }) {
                 >
                   <Image
                     src={jessImg}
-                    quality={90}
+                    quality={80}
                     sizes={`(max-width: ${breakpoints.md}px) 100vw, 33vw`}
                     placeholder="blur"
                     alt="Jess Pastro"
@@ -339,7 +339,7 @@ export default function OurStory({ page, team }) {
                 >
                   <Image
                     src={brianaImg}
-                    quality={90}
+                    quality={80}
                     sizes={`(max-width: ${breakpoints.md}px) 100vw, 33vw`}
                     placeholder="blur"
                     alt="Briana Kelly"

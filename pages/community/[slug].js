@@ -57,7 +57,7 @@ export default function CommunityEvent({ event }) {
             src={urlForImage(event.mainImage).width(1152).height(500).url()}
             width={1152}
             height={500}
-            quality={90}
+            quality={80}
             placeholder="blur"
             blurDataURL={event.blur}
             alt={event.mainImage.alt}
