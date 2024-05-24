@@ -51,7 +51,7 @@ export default function Education({ page, posts, count }) {
       <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-8 mdpb-32 text-primary-dark">
         <div className="flex flex-col max-w-6xl w-full self-center">
           <h2 className="uppercase text-xl mb-8">Blog</h2>
-          <div className="grid md:grid-cols-2 gap-16">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16">
             {allPosts &&
               allPosts.map((post) => <BlogCard key={post._id} post={post} />)}
           </div>

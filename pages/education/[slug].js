@@ -16,10 +16,13 @@ export default function BlogPost({ data }) {
   const nextPost = data?.nextPost;
   const date = dateFormatter(post.publishedDate);
 
+  console.log(post);
+
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "NewsArticle",
+    "@type": "BlogPosting",
     headline: post.title,
+    abstract: post.description,
     description: post.description,
     author: {
       "@type": "Person",
@@ -27,6 +30,8 @@ export default function BlogPost({ data }) {
     },
     image: urlForImage(post.mainImage).url(),
     datePublished: post.publishedDate,
+    dateCreated: post.publishedDate,
+    dateModified: post._updatedAt,
     publisher: {
       "@type": "Organization",
       name: "Kinected Strength",
@@ -60,18 +65,18 @@ export default function BlogPost({ data }) {
             placeholder="blur"
             blurDataURL={post.blur}
             alt={post.mainImage.alt}
-            sizes={`(max-width: ${breakpoints.md}px) 100vw, 100vw`}
+            sizes="100vw"
           />
 
-          <div className="flex flex-col relative mt-8">
-            <h1 className="md:mb-4 mb-2 md:text-5xl text-4xl">{post.title}</h1>
-            <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-16 mb-8 md:text-base text-sm">
+          <div className="flex flex-col relative mt-2 md:mt-8">
+            <h1 className="md:mb-4 mb-1 md:text-5xl text-3xl">{post.title}</h1>
+            <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-8 mb-4 md:text-base text-sm">
               <span>{post.author}</span>
               <span>{date}</span>
             </div>
           </div>
 
-          <div className="prose prose-sm prose-headings:mb-4 prose-headings:text-primary-dark lg:ml-24">
+          <div className="prose prose-sm prose-headings:mt-6 prose-headings:mb-4 prose-headings:text-primary-dark prose-strong:text-primary-dark prose-img:my-2 md:prose-img:my-4 prose-p:mt-0 prose-p:mb-2 md:prose-p:mb-4 prose-ul:mt-0 prose-ul:mb-2 md:prose-ul:mb-4 prose-li:pl-0 lg:ml-24">
             <PortableText
               value={post.body}
               components={{
@@ -101,7 +106,16 @@ export default function BlogPost({ data }) {
               <Link href={nextPost.slug} className="self-start">
                 <Button>
                   <div className="flex justify-between items-center gap-1">
-                    <span>&lt;&lt;</span>
+                    <span>
+                      <svg
+                        className="w-6 fill-secondary-light"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <title>chevron-left</title>
+                        <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+                      </svg>
+                    </span>
                     {nextPost.title}
                   </div>
                 </Button>
@@ -112,7 +126,16 @@ export default function BlogPost({ data }) {
                 <Button>
                   <div className="flex justify-between items-center gap-1">
                     {prevPost.title}
-                    <span>&gt;&gt;</span>
+                    <span>
+                      <svg
+                        className="w-6 fill-secondary-light"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <title>chevron-right</title>
+                        <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                      </svg>
+                    </span>
                   </div>
                 </Button>
               </Link>

@@ -73,7 +73,7 @@ export default function Community({
           )}
 
           {upcomingEvents.length > 0 && (
-            <div className="mt-16 grid md:grid-cols-2 gap-16">
+            <div className="mt-16 grid md:grid-cols-2 gap-8 md:gap-16">
               {upcomingEvents &&
                 upcomingEvents.map((item) => (
                   <EventCard key={item._id} event={item} />
@@ -84,7 +84,7 @@ export default function Community({
           {pastEvents.length > 0 && (
             <>
               <h1 className="uppercase text-xl mb-8 mt-16">Past Events</h1>
-              <div className="grid md:grid-cols-2 gap-16">
+              <div className="grid md:grid-cols-2 gap-8 md:gap-16">
                 {pastEvents &&
                   pastEvents.map((item) => (
                     <EventCard key={item._id} event={item} />

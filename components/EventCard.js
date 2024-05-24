@@ -49,12 +49,8 @@ export default function EventCard({ event }) {
   };
 
   return (
-    <m.div
-      className="flex flex-col gap-4 z-10"
-      whileHover="hover"
-      initial="initial"
-    >
-      <Link href={`/community/${event.slug}`}>
+    <m.div className="z-10" whileHover="hover" initial="initial">
+      <Link href={`/community/${event.slug}`} className="flex flex-col">
         <m.div
           variants={imageVariants}
           className="relative border-primary-dark"
@@ -69,9 +65,11 @@ export default function EventCard({ event }) {
             className="w-full h-auto"
           />
         </m.div>
-        <div className="mt-4 flex flex-col relative border-l-primary-dark">
-          <span className="font-display font-bold text-3xl">{event.title}</span>
-          <div className="flex justify-between mt-2">
+        <div className="mt-2 md:mt-4 flex flex-col relative p-2 pt-0 md:p-0 bg-[#e5e5e5] md:bg-transparent">
+          <span className="font-display font-bold text-2xl md:text-3xl">
+            {event.title}
+          </span>
+          <div className="flex justify-between mt-2 text-sm md:text-base">
             <span>
               {event.isOngoingEvent
                 ? `${endDate ? `${date} - ${endDate}` : "Ongoing"}`
