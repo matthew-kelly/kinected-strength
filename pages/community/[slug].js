@@ -37,7 +37,7 @@ export default function CommunityEvent({ event }) {
   return (
     <>
       <MetaTags
-        title={`${event.title} - Community`}
+        title={`${event.title}`}
         description={event?.description}
         slug={`education/${event.slug}`}
         image={{

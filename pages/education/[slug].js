@@ -8,7 +8,6 @@ import { client } from "../../lib/sanityClient";
 import BlockImage from "../../components/BlockImage";
 import MetaTags from "../../components/MetaTags";
 import { dateFormatter } from "../../utils/dateFormatter";
-import { breakpoints } from "../../utils/theme";
 
 export default function BlogPost({ data }) {
   const post = data?.post;
@@ -39,7 +38,7 @@ export default function BlogPost({ data }) {
   return (
     <>
       <MetaTags
-        title={`${post.title} - Education`}
+        title={`${post.title}`}
         description={post?.description}
         slug={`education/${post.slug}`}
         image={{
