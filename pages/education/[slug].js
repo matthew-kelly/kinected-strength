@@ -16,8 +16,6 @@ export default function BlogPost({ data }) {
   const nextPost = data?.nextPost;
   const date = dateFormatter(post.publishedDate);
 
-  console.log(post);
-
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
