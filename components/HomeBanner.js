@@ -148,7 +148,7 @@ export default function HomeBanner() {
             <m.div
               id="home-logo"
               ref={scrollRef}
-              className="fixed left-1/2 transform -translate-x-1/2 w-full"
+              className="fixed left-1/2 transform -translate-x-1/2"
               style={{
                 top: logoContainerTop,
                 zIndex: 102,
