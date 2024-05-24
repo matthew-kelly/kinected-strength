@@ -144,7 +144,23 @@ export default function Home({ page }) {
 
         <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-12 text-primary-dark">
           <div className="flex flex-col md:mb-32 md:max-w-6xl md:mx-auto">
-            <h2 className="lg:text-6xl md:text-5xl text-3xl md:mb-12 mb-8 md:max-w-[580px]">
+            <h1 className="lg:text-6xl md:text-5xl text-3xl md:mb-12 mb-8 !leading-normal md:!leading-snug lg:!leading-[1.3] tracking-wide">
+              Your home for{" "}
+              <span className="bg-primary-light px-2 py-1">kinesiology</span>,{" "}
+              <span className="bg-secondary-dark text-secondary-light px-2 py-1 whitespace-nowrap">
+                strength training
+              </span>
+              , and{" "}
+              <span className="bg-secondary-light px-2 py-1 whitespace-nowrap">
+                active rehab
+              </span>{" "}
+              in <span className="md:whitespace-nowrap">North Vancouver.</span>
+            </h1>
+            {/* <h1 className="lg:text-6xl md:text-5xl text-3xl md:mb-12 mb-8 !leading-snug tracking-wide">
+              Your home for kinesiology, strength training, and active rehab in
+              North Vancouver.
+            </h1> */}
+            <h2 className="lg:text-5xl md:text-4xl text-2xl md:mb-12 mb-8 md:max-w-[580px]">
               Join a community of evidence-based strength training.
             </h2>
             <div className="flex md:flex-row flex-col md:gap-16 gap-8">
