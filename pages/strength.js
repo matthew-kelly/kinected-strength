@@ -36,13 +36,13 @@ export default function Strength({ page }) {
       </div>
       <div className="flex flex-col bg-light-gray lg:px-24 md:px-16 px-8 md:py-20 md:pb-32 py-12 text-primary-dark">
         <div className="flex flex-col max-w-6xl w-full self-center">
-          <h1 className="uppercase text-xl mb-8">Services</h1>
+          <h2 className="uppercase text-xl mb-8 tracking-wider">Services</h2>
 
           <div className="relative flex md:flex-row flex-col justify-between md:gap-0 gap-8 md:mb-60 mb-24">
             <div className="lg:max-w-lg md:max-w-sm">
-              <h2 className="md:text-5xl text-4xl md:mb-8 mb-4">
+              <h3 className="font-extrabold md:text-5xl text-4xl md:mb-8 mb-4">
                 Personal Training
-              </h2>
+              </h3>
               <p>
                 Personal training with a kinesiologist is a supportive
                 experience offered in-person in North Vancouver. This is the
@@ -66,9 +66,9 @@ export default function Strength({ page }) {
 
           <div className="relative flex md:flex-row-reverse flex-col justify-between md:gap-0 gap-8 xl:mr-16 md:mb-60 mb-24">
             <div className="lg:max-w-md md:max-w-xs">
-              <h2 className="md:text-5xl text-4xl md:mb-8 mb-4">
+              <h3 className="font-extrabold md:text-5xl text-4xl md:mb-8 mb-4">
                 ICBC Active Rehabilitation
-              </h2>
+              </h3>
               <p>
                 ICBC Active rehabilitation with a kinesiologist supports
                 individuals suffering from injury or chronic pain due to a motor
@@ -94,9 +94,9 @@ export default function Strength({ page }) {
 
           <div className="relative flex md:flex-row flex-col justify-between md:gap-0 gap-8 md:mb-60 mb-24">
             <div className="lg:max-w-lg md:max-w-sm">
-              <h2 className="md:text-5xl text-4xl md:mb-8 mb-4">
+              <h3 className="font-extrabold md:text-5xl text-4xl md:mb-8 mb-4">
                 Physio-Led Active Rehabilitation
-              </h2>
+              </h3>
               <p>
                 Kinected Strength has partnered with{" "}
                 <a
@@ -128,9 +128,9 @@ export default function Strength({ page }) {
 
           <div className="relative flex md:flex-row-reverse flex-col justify-between md:gap-0 gap-8 xl:mr-16 md:mb-60 mb-24">
             <div className="lg:max-w-md md:max-w-xs">
-              <h2 className="md:text-5xl text-4xl md:mb-8 mb-4">
+              <h3 className="font-extrabold md:text-5xl text-4xl md:mb-8 mb-4">
                 Online Training
-              </h2>
+              </h3>
               <p>
                 Flexible options available via telehealth for private training
                 or active rehabilitation. This is a great option for those who

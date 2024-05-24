@@ -108,7 +108,9 @@ export default function OurStory({ page, team }) {
       </div>
       <div className="flex flex-col bg-light-gray lg:px-24 md:px-16 px-8 md:py-20 md:pb-32 py-12 text-primary-dark overflow-hidden">
         <div className="flex flex-col max-w-6xl w-full self-center">
-          <h1 className="uppercase text-xl mb-8">Meet the team</h1>
+          <h2 className="uppercase text-xl mb-8 tracking-wider">
+            Meet the team
+          </h2>
 
           <LayoutGroup>
             <m.div
@@ -118,7 +120,7 @@ export default function OurStory({ page, team }) {
               variants={variantsMain}
               className="relative md:max-w-4xl w-full flex flex-col lg:ml-24 lg:pr-8 md:mt-12 md:mb-12"
             >
-              <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] md:-translate-x-1/2 md:-top-12 z-20">
+              <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
                 <m.span
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : 100 },
@@ -149,7 +151,7 @@ export default function OurStory({ page, team }) {
                 >
                   Brennan
                 </m.span>
-              </h2>
+              </h3>
               <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <m.div
                   variants={{
@@ -184,7 +186,7 @@ export default function OurStory({ page, team }) {
                       {dataAndrea.headline}
                     </p>
                   )}
-                  <div className="prose prose-sm prose-p:my-2">
+                  <div className="prose prose-sm prose-p:mt-0 prose-p:mb-4">
                     <PortableText value={dataAndrea.bio} />
                   </div>
                 </m.div>
@@ -197,7 +199,7 @@ export default function OurStory({ page, team }) {
                     transition: { delay: isMobile ? 0 : 0.6 },
                   },
                 }}
-                className="absolute md:top-1/2 md:-translate-y-1/2 md:-left-24 top-full -translate-y-2/3 -left-16"
+                className="absolute md:top-1/2 md:-translate-y-1/2 md:-left-24 top-full -translate-y-3/4 -left-16"
               >
                 <Circle size={200} color="fill-secondary-light" />
               </m.div>
@@ -212,7 +214,7 @@ export default function OurStory({ page, team }) {
               variants={variantsMain}
               className="relative md:max-w-4xl w-full flex flex-col md:self-end md:pt-0 pt-32 md:mt-24 lg:mr-24 lg:pl-8 md:mb-12"
             >
-              <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[60%] md:left-[73%] left-2/3 md:-translate-x-1/2 md:-top-12 z-20">
+              <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[60%] md:left-[73%] left-2/3 md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
                 <m.span
                   variants={{
                     hidden: { opacity: 0, x: isMobile ? 0 : -100 },
@@ -237,7 +239,7 @@ export default function OurStory({ page, team }) {
                 >
                   Pastro
                 </m.span>
-              </h2>
+              </h3>
               <div className="flex md:flex-row-reverse flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <m.div
                   variants={{
@@ -272,7 +274,7 @@ export default function OurStory({ page, team }) {
                       {dataJess.headline}
                     </p>
                   )}
-                  <div className="prose prose-sm prose-p:my-2">
+                  <div className="prose prose-sm prose-p:mt-0 prose-p:mb-4">
                     <PortableText value={dataJess.bio} />
                   </div>
                 </m.div>
@@ -302,7 +304,7 @@ export default function OurStory({ page, team }) {
               variants={variantsMain}
               className="relative md:max-w-4xl w-full flex flex-col md:self-start lg:ml-24 lg:pr-8 md:mt-24 mb-12 md:pt-0 pt-32 "
             >
-              <h2 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[27%] md:-translate-x-1/2 md:-top-12 z-20">
+              <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[27%] md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
                 {/* flex md:flex-col md:gap-0 gap-2          md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] lg:-translate-x-1/2 md:-translate-x-1/2 md:-top-12 z-20 */}
                 <m.span
                   variants={{
@@ -328,7 +330,7 @@ export default function OurStory({ page, team }) {
                 >
                   Kelly
                 </m.span>
-              </h2>
+              </h3>
               <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <m.div
                   variants={{
@@ -363,7 +365,7 @@ export default function OurStory({ page, team }) {
                       {dataBriana.headline}
                     </p>
                   )}
-                  <div className="prose prose-sm prose-p:my-2">
+                  <div className="prose prose-sm prose-p:mt-0 prose-p:mb-4">
                     <PortableText value={dataBriana.bio} />
                   </div>
                 </m.div>

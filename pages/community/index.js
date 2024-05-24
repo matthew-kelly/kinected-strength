@@ -43,7 +43,9 @@ export default function Community({
       </div>
       <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-8 md:pb-16 text-primary-dark">
         <div className="flex flex-col max-w-6xl w-full self-center">
-          <h1 className="uppercase text-xl mb-8">Upcoming Events</h1>
+          <h2 className="uppercase text-xl mb-8 tracking-wider">
+            Upcoming Events
+          </h2>
 
           {featuredEvent?._id && (
             <div className="grid md:grid-cols-2 md:gap-16 gap-2">
@@ -83,7 +85,9 @@ export default function Community({
 
           {pastEvents.length > 0 && (
             <>
-              <h1 className="uppercase text-xl mb-8 mt-16">Past Events</h1>
+              <h2 className="uppercase text-xl mb-8 mt-16 tracking-wider">
+                Past Events
+              </h2>
               <div className="grid md:grid-cols-2 gap-8 md:gap-16">
                 {pastEvents &&
                   pastEvents.map((item) => (
