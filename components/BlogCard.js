@@ -61,7 +61,7 @@ export default function BlogCard({ post }) {
             className="w-full h-auto"
           />
         </m.div>
-        <div className="mt-2 md:mt-4 flex flex-col relative p-2 pt-0 md:p-0 bg-[#e5e5e5] md:bg-transparent">
+        <div className="mt-2 md:mt-4 flex flex-col relative p-2 pt-0 md:p-0">
           <span className="font-display font-bold text-2xl md:text-3xl">
             {post.title}
           </span>

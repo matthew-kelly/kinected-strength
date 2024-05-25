@@ -8,7 +8,6 @@ import { PortableText } from "@portabletext/react";
 import BlockImage from "../../components/BlockImage";
 import MetaTags from "../../components/MetaTags";
 import { dateFormatter } from "../../utils/dateFormatter";
-import { breakpoints } from "../../utils/theme";
 
 export default function CommunityEvent({ event }) {
   const date = dateFormatter(event.eventDate);
@@ -43,7 +42,7 @@ export default function CommunityEvent({ event }) {
         image={{
           src: urlForImage(event.mainImage)
             .width(1200)
-            .height(627)
+            .height(675)
             .fit("crop")
             .url(),
           isExternal: true,
@@ -54,18 +53,18 @@ export default function CommunityEvent({ event }) {
       <div className="flex flex-col bg-primary-dark text-primary-dark">
         <article className="flex flex-col bg-light-gray md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative self-center max-w-6xl">
           <Image
-            src={urlForImage(event.mainImage).width(1152).height(500).url()}
+            src={urlForImage(event.mainImage).width(1152).height(648).url()}
             width={1152}
-            height={500}
+            height={648}
             quality={80}
             placeholder="blur"
             blurDataURL={event.blur}
             alt={event.mainImage.alt}
             sizes="100vw"
-            className="w-full h-auto"
+            className="w-full h-auto aspect-video"
           />
-          <div className="flex flex-col relative mt-2 md:mt-8">
-            <h1 className="md:mb-4 mb-1 md:text-5xl text-3xl">{event.title}</h1>
+          <div className="flex flex-col relative mt-4 md:mt-8">
+            <h1 className="md:mb-4 mb-2 md:text-5xl text-3xl">{event.title}</h1>
             <div className="flex justify-between border-b-primary-dark border-b-2 md:mb-8 mb-4 md:text-base text-sm">
               <span>
                 {event.isOngoingEvent
@@ -75,7 +74,7 @@ export default function CommunityEvent({ event }) {
             </div>
           </div>
 
-          <div className="prose prose-sm prose-headings:mt-6 prose-headings:mb-4 prose-headings:text-primary-dark prose-strong:text-primary-dark prose-img:my-2 md:prose-img:my-4 prose-p:mt-0 prose-p:mb-2 md:prose-p:mb-4 prose-ul:mt-0 prose-ul:mb-2 md:prose-ul:mb-4 prose-li:pl-0 lg:ml-24">
+          <div className="prose prose-sm first:prose-headings:mt-0 prose-headings:mt-6 prose-headings:mb-4 prose-headings:text-primary-dark prose-strong:text-primary-dark prose-img:my-4 prose-p:mt-0 prose-p:mb-4 prose-ul:mt-0 prose-ul:mb-4 prose-li:marker:text-secondary-dark prose-li:pl-0 lg:ml-24">
             <PortableText
               value={event.body}
               components={{

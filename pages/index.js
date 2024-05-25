@@ -49,7 +49,7 @@ export default function Home({ page }) {
               fill
               sizes={`(max-width: ${breakpoints.sm}px) 100vw,
               50vw`}
-              // quality={80}
+              quality={85}
               alt="Briana and Jess doing kettlebell exercises"
               placeholder="blur"
               className="object-cover object-center"
@@ -146,12 +146,12 @@ export default function Home({ page }) {
           <div className="flex flex-col md:mb-32 md:max-w-6xl md:mx-auto">
             <h1 className="lg:text-6xl md:text-5xl text-3xl md:mb-12 mb-8 !leading-normal md:!leading-snug lg:!leading-[1.3] tracking-wide">
               Your home for{" "}
-              <span className="bg-primary-light px-2 py-1">kinesiology</span>,{" "}
+              <span className="bg-secondary-light px-2 py-1">kinesiology</span>,{" "}
               <span className="bg-secondary-dark text-secondary-light px-2 py-1 whitespace-nowrap">
                 strength training
               </span>
               , and{" "}
-              <span className="bg-secondary-light px-2 py-1 whitespace-nowrap">
+              <span className="bg-primary-light px-2 py-1 whitespace-nowrap">
                 active rehab
               </span>{" "}
               in <span className="md:whitespace-nowrap">North Vancouver.</span>
