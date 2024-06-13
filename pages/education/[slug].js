@@ -32,6 +32,7 @@ export default function BlogPost({ data }) {
     publisher: {
       "@type": "Organization",
       name: "Kinected Strength",
+      url: `${process.env.NEXT_PUBLIC_SITE_PROTOCOL}${process.env.NEXT_PUBLIC_SITE_URL}`,
     },
   };
 

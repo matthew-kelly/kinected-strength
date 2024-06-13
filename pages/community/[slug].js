@@ -23,14 +23,29 @@ export default function CommunityEvent({ event }) {
     description: event.description,
     image: urlForImage(event.mainImage).url(),
     startDate: event.eventDate,
+    location: {
+      "@type": "Place",
+      name: event.eventLocation.name,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: event.eventLocation.address,
+        addressLocality: event.eventLocation.city,
+        addressRegion: event.eventLocation.province,
+        addressCountry: event.eventLocation.country,
+      },
+    },
     organizer: {
       "@type": "Organization",
       name: "Kinected Strength",
+      url: `${process.env.NEXT_PUBLIC_SITE_PROTOCOL}${process.env.NEXT_PUBLIC_SITE_URL}`,
     },
   };
 
   if (endDate) {
     structuredData.endDate = endDate;
+  }
+  if (event?.eventLocation?.postalCode) {
+    structuredData.location.address.postalCode = event.eventLocation.postalCode;
   }
 
   return (
