@@ -29,7 +29,7 @@ export default function PageBannerImage({
     <picture className={className}>
       <source media={desktopMedia} srcSet={desktop} />
       <source media={mobileMedia} srcSet={mobile} />
-      <img {...rest} alt={alt} />
+      <img fetchpriority={priority ? "high" : "auto"} {...rest} alt={alt} />
     </picture>
   );
 }

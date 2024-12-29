@@ -52,7 +52,7 @@ export default function OurStory({ page, team }) {
   // Animation - options
   const inViewOptions = {
     once: true,
-    amount: isMobile ? "some" : 0.2,
+    amount: isMobile ? "some" : 0.1,
   };
   const variantsMain = {
     hidden: {
