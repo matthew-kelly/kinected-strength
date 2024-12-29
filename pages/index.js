@@ -8,12 +8,14 @@ import { breakpoints } from "../utils/theme";
 import bannerImg from "../public/images/main-page-1.jpg";
 import bannerImgMobile from "../public/images/main-page-1-mobile.jpg";
 import mainImg2 from "../public/images/main-page-2.jpg";
-import mainImg3 from "../public/images/main-page-3.jpg";
+import mainImg3 from "../public/images/main-page-who-we-are.jpg";
+// import mainImg3 from "../public/images/main-page-3.jpg";
 import mainImg4 from "../public/images/main-page-4.jpg";
 import { useWindowSize } from "../lib/useWindowSize";
 import { client } from "../lib/sanityClient";
 import { testimonialsQuery } from "../lib/queries";
 import MetaTags from "../components/MetaTags";
+// import Button from "../components/Button";
 
 export default function Home({ page }) {
   const windowSize = useWindowSize();
@@ -42,6 +44,41 @@ export default function Home({ page }) {
       )}
 
       <div className="bg-primary-dark flex flex-col relative z-10">
+        <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-12 text-primary-dark">
+          <div className="flex flex-col md:max-w-6xl md:mx-auto">
+            <h1 className="lg:text-6xl md:text-5xl text-3xl !leading-normal md:!leading-snug lg:!leading-[1.3] tracking-wide">
+              Your home for{" "}
+              <span className="bg-secondary-light px-2 py-1">kinesiology</span>,{" "}
+              <span className="bg-secondary-dark text-secondary-light px-2 py-1 whitespace-nowrap">
+                strength training
+              </span>
+              , and{" "}
+              <span className="bg-primary-light px-2 py-1 whitespace-nowrap">
+                active rehab
+              </span>{" "}
+              in <span className="md:whitespace-nowrap">North Vancouver.</span>
+            </h1>
+          </div>
+
+          {/* TODO: add links once pages are live */}
+          {/* <div className="flex gap-8 justify-around md:mt-16 mt-8">
+            <Link href="/strength">
+              <Button className="md:large">
+                <span className="whitespace-nowrap flex items-center gap-1">
+                  Train in person
+                </span>
+              </Button>
+            </Link>
+            <Link href="/community">
+              <Button className="md:large light">
+                <span className="whitespace-nowrap flex items-center gap-1">
+                  Train online
+                </span>
+              </Button>
+            </Link>
+          </div> */}
+        </div>
+
         <div className="flex sm:flex-row flex-col-reverse">
           <div className="sm:w-1/2 w-full relative overflow-hidden sm:h-auto h-[100vw]">
             <Image
@@ -144,22 +181,6 @@ export default function Home({ page }) {
 
         <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-12 text-primary-dark">
           <div className="flex flex-col md:mb-32 md:max-w-6xl md:mx-auto">
-            <h1 className="lg:text-6xl md:text-5xl text-3xl md:mb-12 mb-8 !leading-normal md:!leading-snug lg:!leading-[1.3] tracking-wide">
-              Your home for{" "}
-              <span className="bg-secondary-light px-2 py-1">kinesiology</span>,{" "}
-              <span className="bg-secondary-dark text-secondary-light px-2 py-1 whitespace-nowrap">
-                strength training
-              </span>
-              , and{" "}
-              <span className="bg-primary-light px-2 py-1 whitespace-nowrap">
-                active rehab
-              </span>{" "}
-              in <span className="md:whitespace-nowrap">North Vancouver.</span>
-            </h1>
-            {/* <h1 className="lg:text-6xl md:text-5xl text-3xl md:mb-12 mb-8 !leading-snug tracking-wide">
-              Your home for kinesiology, strength training, and active rehab in
-              North Vancouver.
-            </h1> */}
             <h2 className="lg:text-5xl md:text-4xl text-2xl md:mb-12 mb-8 md:max-w-[580px]">
               Join a community of evidence-based strength training.
             </h2>
@@ -179,17 +200,20 @@ export default function Home({ page }) {
                 </h3>
                 <div className="flex flex-col gap-2">
                   <p>
-                    We are a team of three kinesiologists in North Vancouver who
-                    strive to create community and playfulness combined with
-                    high quality strength training and rehab services.
+                    We are a team of Kinesiologists and Personal Trainers in
+                    North Vancouver dedicated to delivering exceptional strength
+                    training and rehab services with a twist: community,
+                    playfulness, and education.
                   </p>
                   <p>
-                    Since starting to work together in 2017, we quickly
-                    discovered we had a connection. Not only did our
-                    personalities and values align, but so did our coaching
-                    styles.
+                    Since joining forces in 2017, our synergy has only grown
+                    stronger. United by shared values and coaching philosophies,
+                    we love what we do and it is shown in the results.
                   </p>
-                  <p>We&apos;re three best friends who love what we do!</p>
+                  <p>
+                    We work with people who want to get stronger, feel more
+                    confident and move better for life!
+                  </p>
                 </div>
               </div>
             </div>
@@ -201,13 +225,14 @@ export default function Home({ page }) {
                 <h3 className="uppercase mb-4 text-lg font-extrabold">
                   What we do
                 </h3>
-                <p>
-                  When you train with us you can expect evidence-based training
-                  with a focus on movement quality. This includes individualized
-                  mobility, motor control, balance, core, and strength work. Our
-                  favorite tool is the kettlebell, as it addresses all of these
-                  key pillars of health.
-                </p>
+                <ul className="list-disc list-inside [&_li]:font-sans [&_li]:text-sm [&_li]:leading-6 [&_li]:font-normal [&_li]:mb-1">
+                  <li>Evidence-based Personal Training and Kinesiology</li>
+                  <li>Detailed Initial Assessments</li>
+                  <li>Online Training</li>
+                  <li>ICBC Active Rehab</li>
+                  <li>Small Group Classes</li>
+                  <li>Community Events</li>
+                </ul>
               </div>
               <div className="md:w-1/2 relative flex md:flex-col flex-col-reverse">
                 <div>
