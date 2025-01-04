@@ -11,7 +11,9 @@ const nextConfig = {
         pathname: `/images/${process.env.NEXT_PUBLIC_SANITY_API_PROJECT_ID}/**`,
       },
     ],
-    deviceSizes: [448, 512, 640, 750, 828, 1080, 1200, 1440], //1600, 1920 2048, 3840
+    deviceSizes: [
+      448, 512, 640, 750, 828, 1080, 1200, 1440, 1600, 1920, 2048, 3840,
+    ],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 432],
   },
   i18n: {
@@ -28,6 +30,25 @@ const nextConfig = {
             value: process.env.SANITY_SITE_URL,
           },
         ],
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/strength",
+        destination: "/train-in-person",
+        permanent: true,
+      },
+      {
+        source: "/education",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/education/:slug",
+        destination: "/blog/:slug",
+        permanent: true,
       },
     ];
   },
