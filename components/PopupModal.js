@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
-import { disableScroll, enableScroll } from "../utils/scroll";
+import { disableScroll, enableScroll } from "@/utils/scroll";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import Button from "./Button";
-import usePopupData from "../lib/usePopupData";
+import usePopupData from "@/lib/usePopupData";
 import { PortableText } from "@portabletext/react";
 import BlockImage from "./BlockImage";
-import { colors } from "../utils/theme";
+import { colors } from "@/utils/theme";
+import BlockCTA from "./BlockCTA";
 
 const POPUP_FIELD = "popup_has_triggered";
 
@@ -126,6 +127,7 @@ export default function PopupModal({ fontVar }) {
                       components={{
                         types: {
                           image: ({ value }) => <BlockImage value={value} />,
+                          CTA: ({ value }) => <BlockCTA value={value} />,
                         },
                         marks: {
                           link: ({ value, children }) => {

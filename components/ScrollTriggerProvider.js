@@ -8,8 +8,8 @@ import {
 import { useMotionValue } from "framer-motion";
 // import gsap from "gsap";
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { gsap } from "../lib/gsap";
-import clamp from "../utils/clamp";
+import { gsap } from "@/lib/gsap";
+import clamp from "@/utils/clamp";
 
 const ScrollTriggerContext = createContext(null);
 

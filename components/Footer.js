@@ -1,7 +1,6 @@
-import Link from "next/link";
-import Button from "./Button";
 import FooterForm from "./FooterForm";
-import links from "../lib/menuItems";
+import links from "@/lib/menuItems";
+import ButtonLink from "./ButtonLink";
 
 export default function Footer() {
   return (
@@ -87,11 +86,12 @@ export default function Footer() {
             </div>
 
             <div className="md:hidden block">
-              <Link href="/contact">
-                <Button className="light md:large justify-self-end">
-                  <span className="whitespace-nowrap">Get in touch</span>
-                </Button>
-              </Link>
+              <ButtonLink
+                href="/contact"
+                className="light md:large justify-self-end whitespace-nowrap"
+              >
+                Contact us
+              </ButtonLink>
             </div>
           </div>
         </div>
@@ -102,17 +102,18 @@ export default function Footer() {
             kinectedstrength@gmail.com <br />
             North Vancouver, BC
           </span>
-          {/* <div className="md:block hidden">
-            <Link href="/contact">
-              <Button className="light md:large">
-                <span className="whitespace-nowrap">Get in touch</span>
-              </Button>
-            </Link>
-          </div> */}
+          <div className="md:block hidden">
+            <ButtonLink
+              href="/contact"
+              className="light md:large justify-self-end whitespace-nowrap"
+            >
+              Contact us
+            </ButtonLink>
+          </div>
         </div>
       </div>
 
-      <nav className="md:pl-16 px-4 mb-4 md:mt-4 max-w-xl flex flex-wrap md:grid grid-cols-3 grid-flow-row">
+      {/* <nav className="md:pl-16 px-4 mb-4 md:mt-4 max-w-xl flex flex-wrap md:grid grid-cols-3 grid-flow-row">
         {links.map((link) => (
           <Link
             href={link.href}
@@ -123,7 +124,7 @@ export default function Footer() {
             {link.name}
           </Link>
         ))}
-      </nav>
+      </nav> */}
 
       <div className="md:pl-16 px-4 md:mt-4 max-w-xl">
         <p className="text-primary-light italic">

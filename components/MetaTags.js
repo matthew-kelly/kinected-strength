@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { truncateString } from "../utils/truncateString";
+// import { truncateString } from "@/utils/truncateString";
 
 export default function MetaTags({
   title,
@@ -9,7 +9,8 @@ export default function MetaTags({
   structuredData,
 }) {
   const pageTitle = `${title !== "Home" ? `${title} | ` : ""}Kinected Strength`;
-  const pageDescription = truncateString(description, 155);
+  // const pageDescription = truncateString(description, 155);
+  const pageDescription = description;
   const pageUrl = `${process.env.NEXT_PUBLIC_SITE_PROTOCOL}${
     process.env.NEXT_PUBLIC_SITE_URL
   }${title !== "Home" ? `/${slug}` : ""}`;

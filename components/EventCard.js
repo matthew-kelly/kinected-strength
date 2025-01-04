@@ -1,8 +1,8 @@
 import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { urlForImage } from "../lib/sanity";
-import { dateFormatter } from "../utils/dateFormatter";
+import { urlForImage } from "@/lib/sanity";
+import { dateFormatter } from "@/utils/dateFormatter";
 
 export default function EventCard({ event }) {
   const date = dateFormatter(event.eventDate);
@@ -49,7 +49,7 @@ export default function EventCard({ event }) {
   };
 
   return (
-    <m.div className="z-10" whileHover="hover" initial="initial">
+    <m.article className="z-10" whileHover="hover" initial="initial">
       <Link href={`/community/${event.slug}`} className="flex flex-col">
         <m.div
           variants={imageVariants}
@@ -66,9 +66,9 @@ export default function EventCard({ event }) {
           />
         </m.div>
         <div className="mt-2 md:mt-4 flex flex-col relative p-2 pt-0 md:p-0">
-          <span className="font-display font-bold text-2xl md:text-3xl">
+          <h3 className="font-display font-bold text-2xl md:text-3xl">
             {event.title}
-          </span>
+          </h3>
           <div className="flex justify-between mt-2 text-sm md:text-base">
             <span>
               {event.isOngoingEvent
@@ -82,6 +82,6 @@ export default function EventCard({ event }) {
           />
         </div>
       </Link>
-    </m.div>
+    </m.article>
   );
 }

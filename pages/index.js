@@ -1,21 +1,21 @@
 import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import HomeBanner from "../components/HomeBanner";
-import LogoSpinner from "../components/LogoSpinner";
-import TestimonialBlock from "../components/TestimonialBlock";
-import { breakpoints } from "../utils/theme";
-import bannerImg from "../public/images/main-page-1.jpg";
-import bannerImgMobile from "../public/images/main-page-1-mobile.jpg";
-import mainImg2 from "../public/images/main-page-2.jpg";
-import mainImg3 from "../public/images/main-page-who-we-are.jpg";
-// import mainImg3 from "../public/images/main-page-3.jpg";
-import mainImg4 from "../public/images/main-page-4.jpg";
-import { useWindowSize } from "../lib/useWindowSize";
-import { client } from "../lib/sanityClient";
-import { testimonialsQuery } from "../lib/queries";
-import MetaTags from "../components/MetaTags";
-// import Button from "../components/Button";
+import HomeBanner from "@/components/HomeBanner";
+import LogoSpinner from "@/components/LogoSpinner";
+import TestimonialBlock from "@/components/TestimonialBlock";
+import { breakpoints } from "@/utils/theme";
+import bannerImg from "@/public/images/main-page-1.jpg";
+import bannerImgMobile from "@/public/images/main-page-1-mobile.jpg";
+import mainImg2 from "@/public/images/main-page-2.jpg";
+import mainImg3 from "@/public/images/main-page-who-we-are.jpg";
+// import mainImg3 from "@/public/images/main-page-3.jpg";
+import mainImg4 from "@/public/images/main-page-4.jpg";
+import { useWindowSize } from "@/lib/useWindowSize";
+import { client } from "@/lib/sanityClient";
+import { testimonialsQuery } from "@/lib/queries";
+import MetaTags from "@/components/MetaTags";
+import ButtonLink from "@/components/ButtonLink";
 
 export default function Home({ page }) {
   const windowSize = useWindowSize();
@@ -43,7 +43,7 @@ export default function Home({ page }) {
         />
       )}
 
-      <div className="bg-primary-dark flex flex-col relative z-10">
+      <section className="bg-primary-dark flex flex-col relative z-10">
         <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-12 text-primary-dark">
           <div className="flex flex-col md:max-w-6xl md:mx-auto">
             <h1 className="lg:text-6xl md:text-5xl text-3xl !leading-normal md:!leading-snug lg:!leading-[1.3] tracking-wide">
@@ -60,23 +60,20 @@ export default function Home({ page }) {
             </h1>
           </div>
 
-          {/* TODO: add links once pages are live */}
-          {/* <div className="flex gap-8 justify-around md:mt-16 mt-8">
-            <Link href="/strength">
-              <Button className="md:large">
-                <span className="whitespace-nowrap flex items-center gap-1">
-                  Train in person
-                </span>
-              </Button>
-            </Link>
-            <Link href="/community">
-              <Button className="md:large light">
-                <span className="whitespace-nowrap flex items-center gap-1">
-                  Train online
-                </span>
-              </Button>
-            </Link>
-          </div> */}
+          <div className="flex gap-8 justify-around md:mt-16 mt-8">
+            <ButtonLink
+              href="/train-in-person"
+              className="md:large whitespace-nowrap"
+            >
+              Train in person
+            </ButtonLink>
+            <ButtonLink
+              href="/train-online"
+              className="md:large light whitespace-nowrap"
+            >
+              Train online
+            </ButtonLink>
+          </div>
         </div>
 
         <div className="flex sm:flex-row flex-col-reverse">
@@ -94,8 +91,8 @@ export default function Home({ page }) {
           </div>
           <div className="sm:w-1/2 bg-primary-light flex flex-col justify-center md:gap-10 gap-8 p-8">
             <div className="flex justify-center md:gap-8 gap-4">
-              <Link href="/strength" passHref legacyBehavior>
-                <m.div
+              <Link href="/train-in-person" legacyBehavior passHref>
+                <m.a
                   className="relative bg-primary-dark cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                 >
@@ -115,11 +112,11 @@ export default function Home({ page }) {
                       </text>
                     </g>
                   </svg>
-                </m.div>
+                </m.a>
               </Link>
               <div className="flex flex-col md:gap-8 gap-4">
-                <Link href="/education" passHref legacyBehavior>
-                  <m.div
+                <Link href="/blog" legacyBehavior passHref>
+                  <m.a
                     className="relative flex justify-center items-end cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                   >
@@ -142,10 +139,10 @@ export default function Home({ page }) {
                         It&apos;s Education
                       </text>
                     </svg>
-                  </m.div>
+                  </m.a>
                 </Link>
-                <Link href="/community" passHref legacyBehavior>
-                  <m.div
+                <Link href="/community" legacyBehavior passHref>
+                  <m.a
                     className="relative flex justify-center items-end cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                   >
@@ -168,7 +165,7 @@ export default function Home({ page }) {
                         It&apos;s Community
                       </text>
                     </svg>
-                  </m.div>
+                  </m.a>
                 </Link>
               </div>
             </div>
@@ -181,7 +178,8 @@ export default function Home({ page }) {
 
         <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-12 text-primary-dark">
           <div className="flex flex-col md:mb-32 md:max-w-6xl md:mx-auto">
-            <h2 className="lg:text-5xl md:text-4xl text-2xl md:mb-12 mb-8 md:max-w-[580px]">
+            {/* TODO: replace this text with new highlighted version */}
+            <h2 className="lg:text-5xl md:text-4xl text-2xl md:mb-12 mb-8 md:max-w-5xl">
               Join a community of evidence-based strength training.
             </h2>
             <div className="flex md:flex-row flex-col md:gap-16 gap-8">
@@ -258,7 +256,7 @@ export default function Home({ page }) {
             highlight={page.highlight}
           />
         )}
-      </div>
+      </section>
     </>
   );
 }

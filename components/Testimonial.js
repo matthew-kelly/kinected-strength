@@ -16,7 +16,7 @@ export default function Testimonial({
       }`}
       whileHover={hoverState}
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col select-none">
         <svg
           className="mb-2"
           width="24"
@@ -30,7 +30,7 @@ export default function Testimonial({
           />
         </svg>
 
-        <p>{content}</p>
+        <p className="text-wrap ">{content}</p>
         <p className="mt-2 font-semibold">&ndash; {author}</p>
       </div>
     </m.div>

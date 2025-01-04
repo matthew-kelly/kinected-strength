@@ -1,13 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
-import Button from "../../components/Button";
-import { eventQuery, eventsSlugsQuery } from "../../lib/queries";
-import { urlForImage } from "../../lib/sanity";
-import { client } from "../../lib/sanityClient";
 import { PortableText } from "@portabletext/react";
-import BlockImage from "../../components/BlockImage";
-import MetaTags from "../../components/MetaTags";
-import { dateFormatter } from "../../utils/dateFormatter";
+import BlockImage from "@/components/BlockImage";
+import MetaTags from "@/components/MetaTags";
+import BlockCTA from "@/components/BlockCTA";
+import ButtonLink from "@/components/ButtonLink";
+import { dateFormatter } from "@/utils/dateFormatter";
+import { eventQuery, eventsSlugsQuery } from "@/lib/queries";
+import { urlForImage } from "@/lib/sanity";
+import { client } from "@/lib/sanityClient";
 
 export default function CommunityEvent({ event }) {
   const date = dateFormatter(event.eventDate);
@@ -53,7 +53,7 @@ export default function CommunityEvent({ event }) {
       <MetaTags
         title={`${event.title}`}
         description={event?.description}
-        slug={`education/${event.slug}`}
+        slug={`community/${event.slug}`}
         image={{
           src: urlForImage(event.mainImage)
             .width(1200)
@@ -66,7 +66,7 @@ export default function CommunityEvent({ event }) {
       />
 
       <div className="flex flex-col bg-primary-dark text-primary-dark">
-        <article className="flex flex-col bg-light-gray md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative self-center max-w-6xl">
+        <article className="flex flex-col bg-light-gray md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative self-center max-w-6xl w-full">
           <Image
             src={urlForImage(event.mainImage).width(1152).height(648).url()}
             width={1152}
@@ -95,6 +95,7 @@ export default function CommunityEvent({ event }) {
               components={{
                 types: {
                   image: ({ value }) => <BlockImage value={value} />,
+                  CTA: ({ value }) => <BlockCTA value={value} />,
                 },
                 marks: {
                   link: ({ value, children }) => {
@@ -114,21 +115,19 @@ export default function CommunityEvent({ event }) {
 
           <div className="md:my-12 my-8 w-full border-t-primary-dark border-t-2" />
           <div className="self-start md:mb-0 mb-2">
-            <Link href="/community">
-              <Button className="md:large">
-                <span className="whitespace-nowrap flex items-center gap-1">
-                  <svg
-                    className="w-6 md:w-8 fill-secondary-light"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                  >
-                    <title>chevron-left</title>
-                    <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
-                  </svg>
-                  Back to Events
-                </span>
-              </Button>
-            </Link>
+            <ButtonLink href="/community">
+              <span className="whitespace-nowrap flex items-center gap-1">
+                <svg
+                  className="w-6 md:w-8 fill-secondary-light"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <title>chevron-left</title>
+                  <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+                </svg>
+                Back to Events
+              </span>
+            </ButtonLink>
           </div>
         </article>
       </div>

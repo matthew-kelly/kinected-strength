@@ -29,7 +29,7 @@
   h4,
   h5,
   h6 {
-    @apply font-display font-bold text-primary-dark;
+    @apply font-display font-bold text-primary-dark text-pretty;
   }
 
   h1 {
@@ -52,7 +52,7 @@
   }
 
   p {
-    @apply font-sans text-sm leading-6 font-normal; /* font-light */
+    @apply font-sans text-sm leading-6 font-normal text-pretty; /* font-light */
   }
 
   a {
@@ -83,6 +83,10 @@
 
   .button.light {
     @apply bg-secondary-light hover:bg-primary-light text-primary-dark;
+  }
+
+  .button.inverse {
+    @apply bg-primary-light hover:bg-secondary-light text-primary-dark;
   }
 
   .button.large {
@@ -117,6 +121,10 @@
 
   .prose a {
     word-break: break-word;
+  }
+
+  .prose p {
+    @apply text-pretty;
   }
 
   .popupmodal-overlay {

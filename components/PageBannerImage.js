@@ -1,7 +1,7 @@
-import { getImageProps } from "next/image";
+import Image, { getImageProps } from "next/image";
 
 export default function PageBannerImage({
-  className,
+  className = "",
   alt,
   fill = false,
   priority = true,
@@ -29,7 +29,12 @@ export default function PageBannerImage({
     <picture className={className}>
       <source media={desktopMedia} srcSet={desktop} />
       <source media={mobileMedia} srcSet={mobile} />
-      <img fetchpriority={priority ? "high" : "auto"} {...rest} alt={alt} />
+      <img
+        priority={priority ? "high" : "auto"}
+        fetchpriority={priority ? "high" : "auto"}
+        {...rest}
+        alt={alt}
+      />
     </picture>
   );
 }

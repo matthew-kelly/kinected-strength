@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
-import Button from "../../components/Button";
-import { postQuery, postSlugsQuery } from "../../lib/queries";
-import { urlForImage } from "../../lib/sanity";
-import { client } from "../../lib/sanityClient";
-import BlockImage from "../../components/BlockImage";
-import MetaTags from "../../components/MetaTags";
-import { dateFormatter } from "../../utils/dateFormatter";
+import { postQuery, postSlugsQuery } from "@/lib/queries";
+import { urlForImage } from "@/lib/sanity";
+import { client } from "@/lib/sanityClient";
+import BlockImage from "@/components/BlockImage";
+import MetaTags from "@/components/MetaTags";
+import { dateFormatter } from "@/utils/dateFormatter";
+import BlockCTA from "@/components/BlockCTA";
+import ButtonLink from "@/components/ButtonLink";
 
 export default function BlogPost({ data }) {
   const post = data?.post;
@@ -41,7 +42,7 @@ export default function BlogPost({ data }) {
       <MetaTags
         title={`${post.title}`}
         description={post?.description}
-        slug={`education/${post.slug}`}
+        slug={`blog/${post.slug}`}
         image={{
           src: urlForImage(post.mainImage)
             .width(1200)
@@ -56,7 +57,7 @@ export default function BlogPost({ data }) {
       <div className="flex flex-col bg-primary-dark text-primary-dark">
         <article className="flex flex-col bg-light-gray md:p-16 p-6 lg:mx-24 md:mx-8 mx-4 text-primary-dark relative self-center max-w-6xl">
           <Link
-            href="/education"
+            href="/blog"
             className="group flex items-center -ml-2.5 md:ml-0 -mt-3.5 md:mt-0 mr-auto pb-2 md:pt-2 md:absolute md:top-3.5 md:left-3.5"
           >
             <svg
@@ -68,7 +69,7 @@ export default function BlogPost({ data }) {
               <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
             </svg>
             <span className="font-bold text-sm md:text-base text-primary-dark group-hover:text-secondary-dark md:mt-0.5">
-              Education
+              Blog
             </span>
           </Link>
           <Image
@@ -97,6 +98,7 @@ export default function BlogPost({ data }) {
               components={{
                 types: {
                   image: ({ value }) => <BlockImage value={value} />,
+                  CTA: ({ value }) => <BlockCTA value={value} />,
                 },
                 marks: {
                   link: ({ value, children }) => {
@@ -118,42 +120,38 @@ export default function BlogPost({ data }) {
 
           <div className="flex flex-col gap-4 md:mb-0 mb-2">
             {nextPost && (
-              <Link href={nextPost.slug} className="self-start">
-                <Button>
-                  <div className="flex justify-between items-center gap-1">
-                    <span>
-                      <svg
-                        className="w-6 fill-secondary-light"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <title>chevron-left</title>
-                        <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
-                      </svg>
-                    </span>
-                    {nextPost.title}
-                  </div>
-                </Button>
-              </Link>
+              <ButtonLink href={nextPost.slug} className="self-start">
+                <div className="flex justify-between items-center gap-1">
+                  <span>
+                    <svg
+                      className="w-6 fill-secondary-light"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <title>chevron-left</title>
+                      <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+                    </svg>
+                  </span>
+                  {nextPost.title}
+                </div>
+              </ButtonLink>
             )}
             {prevPost && (
-              <Link href={prevPost.slug} className="self-end">
-                <Button>
-                  <div className="flex justify-between items-center gap-1">
-                    {prevPost.title}
-                    <span>
-                      <svg
-                        className="w-6 fill-secondary-light"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <title>chevron-right</title>
-                        <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                      </svg>
-                    </span>
-                  </div>
-                </Button>
-              </Link>
+              <ButtonLink href={prevPost.slug} className="self-end">
+                <div className="flex justify-between items-center gap-1">
+                  {prevPost.title}
+                  <span>
+                    <svg
+                      className="w-6 fill-secondary-light"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <title>chevron-right</title>
+                      <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                    </svg>
+                  </span>
+                </div>
+              </ButtonLink>
             )}
           </div>
         </article>

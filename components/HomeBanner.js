@@ -7,9 +7,9 @@ import {
   useMotionValue,
 } from "framer-motion";
 import Image from "next/image";
-import { useMenu } from "../lib/menuState";
-import bannerImg from "../public/images/main-page-1.jpg";
-import clamp from "../utils/clamp";
+import { useMenu } from "@/lib/menuState";
+import bannerImg from "@/public/images/main-page-1.jpg";
+import clamp from "@/utils/clamp";
 
 export default function HomeBanner() {
   // TODO: make banner image scroll up with flow of document once progress = 1
@@ -115,7 +115,7 @@ export default function HomeBanner() {
   };
 
   return (
-    <div
+    <section
       id="bannerContainer"
       className="flex flex-col h-[120vw]"
       ref={bannerRef}
@@ -175,6 +175,6 @@ export default function HomeBanner() {
           )}
         </AnimatePresence>
       </LayoutGroup>
-    </div>
+    </section>
   );
 }

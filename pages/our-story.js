@@ -1,15 +1,15 @@
 import Image from "next/image";
-import PageBanner from "../components/PageBanner";
-import bannerImg from "../public/images/our-story-banner.jpg";
-import bannerImgMobile from "../public/images/our-story-banner-mobile.jpg";
-import andreaImg from "../public/images/our-story-andrea.jpg";
-import jessImg from "../public/images/our-story-jess.jpg";
-import brianaImg from "../public/images/our-story-briana.jpg";
-import geoffImg from "../public/images/our-story-geoff.jpg";
-import daveImg from "../public/images/our-story-dave.jpg";
-import christinaImg from "../public/images/our-story-christina.jpg";
-import { Circle } from "../components/shapes";
-import TestimonialBlock from "../components/TestimonialBlock";
+import PageBanner from "@/components/PageBanner";
+import bannerImg from "@/public/images/our-story-banner.jpg";
+import bannerImgMobile from "@/public/images/our-story-banner-mobile.jpg";
+import andreaImg from "@/public/images/our-story-andrea.jpg";
+import jessImg from "@/public/images/our-story-jess.jpg";
+import brianaImg from "@/public/images/our-story-briana.jpg";
+import geoffImg from "@/public/images/our-story-geoff.jpg";
+import daveImg from "@/public/images/our-story-dave.jpg";
+import christinaImg from "@/public/images/our-story-christina.jpg";
+import { Circle } from "@/components/shapes";
+import TestimonialBlock from "@/components/TestimonialBlock";
 import {
   LayoutGroup,
   m,
@@ -18,11 +18,11 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { useWindowSize } from "../lib/useWindowSize";
-import { breakpoints } from "../utils/theme";
-import { client } from "../lib/sanityClient";
-import { authorsQuery, testimonialsQuery } from "../lib/queries";
-import MetaTags from "../components/MetaTags";
+import { useWindowSize } from "@/lib/useWindowSize";
+import { breakpoints } from "@/utils/theme";
+import { client } from "@/lib/sanityClient";
+import { authorsQuery, testimonialsQuery } from "@/lib/queries";
+import MetaTags from "@/components/MetaTags";
 import { PortableText } from "@portabletext/react";
 
 export default function OurStory({ page, team }) {
@@ -138,7 +138,7 @@ export default function OurStory({ page, team }) {
         image={{ src: bannerImg.src, isExternal: false }}
       />
 
-      <div className="bg-primary-dark flex flex-col relative">
+      <section className="bg-primary-dark flex flex-col relative">
         <PageBanner
           image={bannerImg}
           mobileImage={bannerImgMobile}
@@ -147,8 +147,8 @@ export default function OurStory({ page, team }) {
           headline={page.bannerHeadline}
           text={page.bannerText}
         />
-      </div>
-      <div className="flex flex-col bg-light-gray lg:px-24 md:px-16 px-8 md:py-20 md:pb-32 py-12 text-primary-dark overflow-hidden">
+      </section>
+      <section className="flex flex-col bg-light-gray lg:px-24 md:px-16 px-8 md:py-20 md:pb-32 py-12 text-primary-dark overflow-hidden">
         <div className="flex flex-col max-w-6xl w-full self-center">
           <h2 className="uppercase text-xl mb-8 tracking-wider">
             Meet the founders
@@ -713,7 +713,7 @@ export default function OurStory({ page, team }) {
             </m.div>
           </LayoutGroup>
         </div>
-      </div>
+      </section>
 
       {page?.testimonials && (
         <TestimonialBlock

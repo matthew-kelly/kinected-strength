@@ -1,8 +1,8 @@
 import { Carousel } from "react-responsive-carousel";
 import Testimonial from "./Testimonial";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { useWindowSize } from "../lib/useWindowSize";
-import { breakpoints } from "../utils/theme";
+import { useWindowSize } from "@/lib/useWindowSize";
+import { breakpoints } from "@/utils/theme";
 
 export default function TestimonialBlock({
   testimonials = [],

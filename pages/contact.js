@@ -1,17 +1,18 @@
 import { createRef, useEffect, useState } from "react";
-import Button from "../components/Button";
-import bannerImg from "../public/images/get-in-touch.jpg";
-import bannerImgMobile from "../public/images/get-in-touch-mobile.jpg";
-import { useWindowSize } from "../lib/useWindowSize";
-import { breakpoints } from "../utils/theme";
-import MetaTags from "../components/MetaTags";
-import PageBannerImage from "../components/PageBannerImage";
+import Button from "@/components/Button";
+import bannerImg from "@/public/images/get-in-touch.jpg";
+import bannerImgMobile from "@/public/images/get-in-touch-mobile.jpg";
+import { useWindowSize } from "@/lib/useWindowSize";
+import { breakpoints } from "@/utils/theme";
+import MetaTags from "@/components/MetaTags";
+import PageBannerImage from "@/components/PageBannerImage";
 
 export default function Contact() {
   // email contact form
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [reason, setReason] = useState("");
   const [message, setMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
@@ -46,6 +47,7 @@ export default function Contact() {
       firstName.length <= 0 ||
       lastName.length <= 0 ||
       email.length <= 0 ||
+      reason.length <= 0 ||
       message.length <= 0
     ) {
       isValid = false;
@@ -70,6 +72,7 @@ export default function Contact() {
       body: JSON.stringify({
         email,
         name: `${firstName} ${lastName}`,
+        reason,
         message,
       }),
     });
@@ -84,9 +87,12 @@ export default function Contact() {
       setEmail("");
       setFirstName("");
       setLastName("");
+      setReason("");
       setMessage("");
     }
   };
+
+  // TODO: changes in doc and obsidian notes
 
   return (
     <>
@@ -115,11 +121,6 @@ export default function Contact() {
                 Come say hi to get strong, feel confident and see concrete
                 results.
               </h2>
-              <p className="text-primary-dark max-w-lg text-base mb-4">
-                We&apos;re Briana, Jess, and Andrea - Kinesiologists of Kinected
-                Strength. We offer private and group training in North Vancouver
-                and several online training options.
-              </p>
               <p className="text-primary-dark max-w-lg text-base">
                 We&apos;ll get back to you within 72 hours!
               </p>
@@ -181,6 +182,36 @@ export default function Contact() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                     />
+                  </div>
+
+                  <div className="flex items-end">
+                    <label
+                      htmlFor="reason"
+                      className="border-b-2 border-b-primary-dark pr-2 text-sm uppercase whitespace-nowrap font-semibold sr-only"
+                    >
+                      Reason for inquiry
+                    </label>
+                    <select
+                      name="reason"
+                      id="reason"
+                      className={`m-0 p-0 border-0 border-b-2 border-b-primary-dark focus:border-b-secondary-dark focus:ring-0 bg-transparent grow ${
+                        reason === "" ? "font-semibold text-sm" : "text-md"
+                      }`}
+                      value={reason}
+                      onChange={(e) => setReason(e.target.value)}
+                      required
+                    >
+                      <option value="">REASON FOR INQUIRY</option>
+                      <option value="Personal Training">
+                        Personal Training
+                      </option>
+                      <option value="ICBC Active Rehab">
+                        ICBC Active Rehab
+                      </option>
+                      <option value="Group Classes">Group Classes</option>
+                      <option value="Online Training">Online Training</option>
+                      <option value="Other">Other</option>
+                    </select>
                   </div>
 
                   <div className="flex flex-col">

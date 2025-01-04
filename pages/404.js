@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Link from "next/link";
-import Button from "../components/Button";
+import ButtonLink from "@/components/ButtonLink";
 
 export default function Custom404() {
   return (
@@ -16,9 +15,9 @@ export default function Custom404() {
           <p className="text-lg mb-8">
             The page you were looking for couldn&apos;t be found.
           </p>
-          <Link href={"/"}>
-            <Button className="large">Back to Home</Button>
-          </Link>
+          <ButtonLink href="/" className="large">
+            Back to Home
+          </ButtonLink>
         </div>
       </div>
     </>

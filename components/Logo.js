@@ -1,5 +1,5 @@
 import { m } from "framer-motion";
-import { colors } from "../utils/theme";
+import { colors } from "@/utils/theme";
 
 const variants = {
   initial: {

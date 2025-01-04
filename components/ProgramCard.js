@@ -2,11 +2,9 @@ import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { urlForImage } from "@/lib/sanity";
-import { dateFormatter } from "@/utils/dateFormatter";
+import { formatPrice } from "@/utils/formatPrice";
 
-export default function BlogCard({ post }) {
-  const date = dateFormatter(post.publishedDate);
-
+export default function ProgramCard({ program }) {
   const imageVariants = {
     initial: {
       // borderRadius: "0px",
@@ -46,27 +44,32 @@ export default function BlogCard({ post }) {
 
   return (
     <m.article whileHover="hover" initial="initial">
-      <Link href={`/blog/${post.slug}`} className="flex flex-col">
+      <Link
+        href={`/train-online/specialty-programs/${program.slug}`}
+        className="flex flex-col"
+      >
         <m.div
           variants={imageVariants}
           className="relative border-primary-dark"
         >
           <Image
             placeholder="blur"
-            blurDataURL={post.blur}
-            src={urlForImage(post.mainImage).width(700).height(700).url()}
+            blurDataURL={program.blur}
+            src={urlForImage(program.mainImage).width(700).height(700).url()}
             width={700}
             height={700}
-            alt={post.mainImage.alt}
+            alt={program.mainImage.alt}
             className="w-full h-auto"
           />
         </m.div>
         <div className="mt-2 md:mt-4 flex flex-col relative p-2 pt-0 md:p-0">
-          <h3 className="text-2xl md:text-3xl">{post.title}</h3>
-          <div className="flex justify-between mt-2 text-sm md:text-base">
-            <span>{post.author}</span>
-            <span>{date}</span>
-          </div>
+          <h3 className="text-2xl md:text-3xl">{program.title}</h3>
+          <p className="mt-2 text-sm md:text-base text-pretty">
+            {program.subtitle}
+          </p>
+          <p className="my-0 text-base font-semibold self-end">
+            {formatPrice(program.price)}
+          </p>
           <m.div
             className="bg-primary-dark self-center absolute -bottom-2"
             variants={lineVariants}

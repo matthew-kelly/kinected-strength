@@ -1,6 +1,6 @@
 import { getImageDimensions } from "@sanity/asset-utils";
 import Image from "next/image";
-import { urlForImage } from "../lib/sanity";
+import { urlForImage } from "@/lib/sanity";
 
 export default function BlockImage({ value, className = "" }) {
   const { aspectRatio } = getImageDimensions(value);

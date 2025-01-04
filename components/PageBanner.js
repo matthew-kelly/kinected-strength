@@ -1,5 +1,5 @@
 import PageBannerImage from "./PageBannerImage";
-import { breakpoints } from "../utils/theme";
+import { breakpoints } from "@/utils/theme";
 
 export default function PageBanner({
   image,

@@ -1,20 +1,20 @@
 import { useState } from "react";
-import BlogCard from "../../components/BlogCard";
-import Button from "../../components/Button";
-import PageBanner from "../../components/PageBanner";
-import TestimonialBlock from "../../components/TestimonialBlock";
-import { client } from "../../lib/sanityClient";
+import BlogCard from "@/components/BlogCard";
+import Button from "@/components/Button";
+import PageBanner from "@/components/PageBanner";
+import TestimonialBlock from "@/components/TestimonialBlock";
+import { client } from "@/lib/sanityClient";
 import {
   allPostsCountQuery,
   allPostsQueryNextPage,
   allPostsQueryPagination,
   testimonialsQuery,
-} from "../../lib/queries";
-import bannerImg from "../../public/images/education.jpg";
-import bannerImgMobile from "../../public/images/education-mobile.jpg";
-import MetaTags from "../../components/MetaTags";
+} from "@/lib/queries";
+import bannerImg from "@/public/images/blog-banner.jpg";
+import bannerImgMobile from "@/public/images/blog-banner-mobile.jpg";
+import MetaTags from "@/components/MetaTags";
 
-export default function Education({ page, posts, count }) {
+export default function Blog({ page, posts, count }) {
   const [allPosts, setAllPosts] = useState(posts);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,11 +34,11 @@ export default function Education({ page, posts, count }) {
       <MetaTags
         title={page.title}
         description={`${page.bannerHeadline} ${page.bannerText}`}
-        slug="education"
+        slug="blog"
         image={{ src: bannerImg.src, isExternal: false }}
       />
 
-      <div className="bg-primary-dark flex flex-col relative">
+      <section className="bg-primary-dark flex flex-col relative">
         <PageBanner
           image={bannerImg}
           mobileImage={bannerImgMobile}
@@ -47,8 +47,8 @@ export default function Education({ page, posts, count }) {
           headline={page.bannerHeadline}
           text={page.bannerText}
         />
-      </div>
-      <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-8 mdpb-32 text-primary-dark">
+      </section>
+      <section className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-8 md:pb-32 text-primary-dark">
         <div className="flex flex-col max-w-6xl w-full self-center">
           <h2 className="uppercase text-xl mb-8">Blog</h2>
           <div className="grid md:grid-cols-2 gap-8 md:gap-16">
@@ -65,7 +65,7 @@ export default function Education({ page, posts, count }) {
             </Button>
           )}
         </div>
-      </div>
+      </section>
 
       {page?.testimonials && (
         <TestimonialBlock
@@ -83,7 +83,7 @@ export async function getStaticProps() {
   const count = await client.fetch(allPostsCountQuery);
   const page = await client.fetch(testimonialsQuery, {
     slug: "education",
-  });
+  }); // FIXME: rename in sanity?
 
   return {
     props: {

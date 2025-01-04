@@ -5,10 +5,10 @@ import Menu from "./Menu";
 import Logo from "./Logo";
 import { MenuButton } from "./MenuButton";
 import { KLogo } from "./shapes";
-import { useMenu } from "../lib/menuState";
-import { useWindowSize } from "../lib/useWindowSize";
-import { useScrollDirection } from "../lib/useScrollDirection";
-import { breakpoints, colors } from "../utils/theme";
+import { useMenu } from "@/lib/menuState";
+import { useWindowSize } from "@/lib/useWindowSize";
+import { useScrollDirection } from "@/lib/useScrollDirection";
+import { breakpoints, colors } from "@/utils/theme";
 
 export default function Nav() {
   const { toggleMenu, closeMenu, isOpen } = useMenu();

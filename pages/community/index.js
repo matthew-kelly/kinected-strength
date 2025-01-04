@@ -1,18 +1,18 @@
-import PageBanner from "../../components/PageBanner";
-import TestimonialBlock from "../../components/TestimonialBlock";
-import bannerImg from "../../public/images/community.jpg";
-import bannerImgMobile from "../../public/images/community-mobile.jpg";
-import EventCard from "../../components/EventCard";
-import { Quartercircle } from "../../components/shapes";
+import PageBanner from "@/components/PageBanner";
+import TestimonialBlock from "@/components/TestimonialBlock";
+import bannerImg from "@/public/images/community.jpg";
+import bannerImgMobile from "@/public/images/community-mobile.jpg";
+import EventCard from "@/components/EventCard";
+import { Quartercircle } from "@/components/shapes";
 import {
   eventsQuery,
   featuredEventQuery,
   testimonialsQuery,
-} from "../../lib/queries";
-import { client } from "../../lib/sanityClient";
-import MetaTags from "../../components/MetaTags";
-import { useWindowSize } from "../../lib/useWindowSize";
-import { breakpoints } from "../../utils/theme";
+} from "@/lib/queries";
+import { client } from "@/lib/sanityClient";
+import MetaTags from "@/components/MetaTags";
+import { useWindowSize } from "@/lib/useWindowSize";
+import { breakpoints } from "@/utils/theme";
 
 export default function Community({
   upcomingEvents,
@@ -31,7 +31,7 @@ export default function Community({
         image={{ src: bannerImg.src, isExternal: false }}
       />
 
-      <div className="bg-primary-dark flex flex-col relative">
+      <section className="bg-primary-dark flex flex-col relative">
         <PageBanner
           image={bannerImg}
           mobileImage={bannerImgMobile}
@@ -40,8 +40,8 @@ export default function Community({
           headline={page.bannerHeadline}
           text={page.bannerText}
         />
-      </div>
-      <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-8 md:pb-16 text-primary-dark">
+      </section>
+      <section className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-8 md:pb-16 text-primary-dark">
         <div className="flex flex-col max-w-6xl w-full self-center">
           <h2 className="uppercase text-xl mb-8 tracking-wider">
             Upcoming Events
@@ -97,7 +97,7 @@ export default function Community({
             </>
           )}
         </div>
-      </div>
+      </section>
 
       {page?.testimonials && (
         <TestimonialBlock
