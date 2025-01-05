@@ -16,6 +16,8 @@ import { client } from "@/lib/sanityClient";
 import { testimonialsQuery } from "@/lib/queries";
 import MetaTags from "@/components/MetaTags";
 import ButtonLink from "@/components/ButtonLink";
+import ScrollingText from "@/components/ScrollingText";
+import DivInView from "@/components/DivInView";
 
 export default function Home({ page }) {
   const windowSize = useWindowSize();
@@ -81,8 +83,7 @@ export default function Home({ page }) {
             <Image
               src={mainImg2}
               fill
-              sizes={`(max-width: ${breakpoints.sm}px) 100vw,
-              50vw`}
+              sizes={`(max-width: ${breakpoints.sm}px) 100vw, 50vw`}
               quality={85}
               alt="Briana and Jess doing kettlebell exercises"
               placeholder="blur"
@@ -249,6 +250,24 @@ export default function Home({ page }) {
             </div>
           </div>
         </div>
+
+        <div className="flex flex-col items-center w-full self-center bg-light-gray -mt-2 md:-mt-8 pb-10">
+          <ScrollingText
+            baseVelocity={-1}
+            textClass="uppercase text-3xl font-extrabold"
+          >
+            <span className="text-primary-dark bg-secondary-light p-2 mr-6 md:mr-12">
+              It's Strength.
+            </span>
+            <span className="text-secondary-light bg-secondary-dark p-2 mr-6 md:mr-12">
+              It's Education.
+            </span>
+            <span className="text-primary-dark bg-primary-light p-2">
+              It's Community.
+            </span>
+          </ScrollingText>
+        </div>
+
         {page?.testimonials && (
           <TestimonialBlock
             testimonials={page.testimonials}

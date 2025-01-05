@@ -1,46 +1,32 @@
-import { m, useAnimationControls, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { m } from "framer-motion";
 
 export default function DivInView({
   children,
-  hidden = { opacity: 0, y: 100 },
-  visible = { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hidden = { opacity: 0, y: "10%" },
+  visible = { opacity: 1, y: 0 },
+  transition = undefined,
+  delay = 0,
+  duration = 0.3,
+  ease = "easeOut",
   initial = "hidden",
   once = true,
   amount = "some", // all, some, number between 0-1
   className = "",
-  allowOnMobile = false,
 }) {
   const variants = { hidden, visible };
 
-  const controls = useAnimationControls();
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once,
-    amount,
-  });
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    }
-  }, [controls, isInView]);
+  let t = transition === undefined ? { duration, delay, ease } : transition;
 
   return (
-    <>
-      {allowOnMobile ? (
-        <m.div
-          ref={ref}
-          animate={controls}
-          initial={initial}
-          variants={variants}
-          className={className}
-        >
-          {children}
-        </m.div>
-      ) : (
-        <div className={className}>{children}</div>
-      )}
-    </>
+    <m.div
+      initial={initial}
+      variants={variants}
+      transition={t}
+      whileInView="visible"
+      viewport={{ once, amount }}
+      className={className}
+    >
+      {children}
+    </m.div>
   );
 }

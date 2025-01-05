@@ -9,8 +9,8 @@ export default function Button({
 }) {
   return (
     <m.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       className={`button flex ${className}`}
       type={type}
       onClick={onClick}

@@ -1,7 +1,10 @@
 import { m } from "framer-motion";
-import styles from "./LogoSpinner.module.css";
 
-export default function LogoSpinner({ size = 100, textClass = "" }) {
+export default function LogoSpinner({
+  size = 100,
+  textClass = "",
+  reverse = false,
+}) {
   // HACK: iOS currently has an unresolved bug where transforms cannot be animated, using framer-motion instead of css
   return (
     <m.div
@@ -11,7 +14,7 @@ export default function LogoSpinner({ size = 100, textClass = "" }) {
         transformBox: "fill-box",
       }}
       animate={{
-        rotate: -360,
+        rotate: reverse ? 360 : -360,
       }}
       transition={{
         duration: 12,
