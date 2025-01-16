@@ -16,6 +16,7 @@ export default function ButtonLink({
         className={`button flex max-w-fit ${className} ${variant}`}
         href={href}
         target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : ""}
       >
         {children}
       </m.a>

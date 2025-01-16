@@ -1,6 +1,5 @@
 import Image from "next/image";
 import PageBanner from "@/components/PageBanner";
-import { Circle } from "@/components/shapes";
 import TestimonialBlock from "@/components/TestimonialBlock";
 import DivInView from "@/components/DivInView";
 import MetaTags from "@/components/MetaTags";
@@ -42,17 +41,17 @@ export default function TrainOnline({ page }) {
             What We Offer
           </h2>
 
-          {/* TODO: update image, text, link */}
           <div className="relative flex md:flex-row flex-col justify-between items-center gap-8 mb-24">
             <ServiceTextBlock
               title="SUMMIT"
-              subtitle={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`}
-              body={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}
+              subtitle={`$59 / month`}
+              body={`Our flagship 3-day per week functional strength program. Best suited for individuals who want to build strength and improve athletic performance. It is for people who train but lack consistency, accountability, and whose progress has plateaued.`}
               link="/train-online/summit"
-              linkText="UPDATE ME"
+              linkText="Tell Me More!"
               buttonClass="light"
             />
             <DivInView>
+              {/* TODO: update image */}
               <Image
                 src={imgPrivate}
                 alt="Jess swinging a kettlebell"
@@ -63,16 +62,16 @@ export default function TrainOnline({ page }) {
             </DivInView>
           </div>
 
-          {/* TODO: update image, text, link */}
           <div className="relative flex md:flex-row-reverse flex-col justify-between items-center gap-8 mb-24">
             <ServiceTextBlock
               title="Specialty Programs"
-              subtitle={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`}
-              body={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}
+              subtitle={`Starting at $99`}
+              body={`Training for a specific goal? Planning for ski season? Looking for support during your pregnancy? We have options for you.`}
               link="/train-online/specialty-programs"
-              linkText="UPDATE ME"
+              linkText="View All Programs"
             />
             <DivInView>
+              {/* TODO: update image */}
               <Image
                 src={imgICBC}
                 alt="Briana holding a plank position"
@@ -83,17 +82,17 @@ export default function TrainOnline({ page }) {
             </DivInView>
           </div>
 
-          {/* TODO: update image, text, link */}
-          <div className="relative flex md:flex-row flex-col justify-between items-center gap-8 mb-24">
+          <div className="relative flex md:flex-row flex-col justify-between items-center gap-8">
             <ServiceTextBlock
               title="Personalized Plans"
-              subtitle={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`}
-              body={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}
+              subtitle={`Starting at $99 / month`}
+              body={`If you’re suffering from pain or injury or want an expert-built plan just for you.`}
               link="/contact"
-              linkText="UPDATE ME"
+              linkText="Get In Touch"
               buttonClass="inverse"
             />
             <DivInView>
+              {/* TODO: update image */}
               <Image
                 src={imgOnline}
                 alt="A kettlebell, water bottle, foam roller, and yoga mat on a dock"
@@ -103,19 +102,6 @@ export default function TrainOnline({ page }) {
               />
             </DivInView>
           </div>
-        </div>
-
-        <div className="relative md:self-center md:mt-16 md:mb-0 mb-12 flex flex-col gap-8 md:max-w-3xl">
-          <p className="md:text-xl text-lg font-semibold z-10 text-pretty">
-            Even if you&apos;re a beginner to strength training, you&apos;re not
-            on this journey alone; join our community of strong and confident
-            members!
-          </p>
-          <Circle
-            size={200}
-            color="fill-secondary-light"
-            className="absolute md:-top-24 -top-16 md:-left-24 -left-16"
-          />
         </div>
       </section>
 

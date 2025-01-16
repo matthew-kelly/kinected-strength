@@ -17,7 +17,6 @@ import { testimonialsQuery } from "@/lib/queries";
 import MetaTags from "@/components/MetaTags";
 import ButtonLink from "@/components/ButtonLink";
 import ScrollingText from "@/components/ScrollingText";
-import DivInView from "@/components/DivInView";
 
 export default function Home({ page }) {
   const windowSize = useWindowSize();
@@ -179,9 +178,26 @@ export default function Home({ page }) {
 
         <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-12 text-primary-dark">
           <div className="flex flex-col md:mb-32 md:max-w-6xl md:mx-auto">
-            {/* TODO: replace this text with new highlighted version */}
-            <h2 className="lg:text-5xl md:text-4xl text-2xl md:mb-12 mb-8 md:max-w-5xl">
-              Join a community of evidence-based strength training.
+            {/* TODO: confirm styling */}
+            <h2 className="lg:text-4xl md:text-3xl text-2xl md:mb-12 mb-8 !leading-normal md:!leading-snug lg:!leading-[1.4] flex flex-col gap-2 text-wrap [&_span]:max-w-fit">
+              <span>
+                We coach with{" "}
+                <span className="bg-secondary-light px-1 py-1">purpose</span>.
+              </span>
+              <span>
+                We strive to be the best so that you can{" "}
+                <span className="bg-secondary-dark text-secondary-light px-1 py-1">
+                  achieve your best
+                </span>
+                .
+              </span>
+              <span>
+                We&apos;re invested in your{" "}
+                <span className="bg-primary-light px-1 py-1">success</span>.
+              </span>
+              <span className="bg-secondary-light text-primary-dark px-1 py-1">
+                We care.
+              </span>
             </h2>
             <div className="flex md:flex-row flex-col md:gap-16 gap-8">
               <div className="lg:w-2/3 md:w-1/2">
@@ -224,7 +240,7 @@ export default function Home({ page }) {
                 <h3 className="uppercase mb-4 text-lg font-extrabold">
                   What we do
                 </h3>
-                <ul className="list-disc list-inside [&_li]:font-sans [&_li]:text-sm [&_li]:leading-6 [&_li]:font-normal [&_li]:mb-1">
+                <ul className="list-disc list-inside [&_li]:mb-1">
                   <li>Evidence-based Personal Training and Kinesiology</li>
                   <li>Detailed Initial Assessments</li>
                   <li>Online Training</li>
@@ -253,17 +269,17 @@ export default function Home({ page }) {
 
         <div className="flex flex-col items-center w-full self-center bg-light-gray -mt-2 md:-mt-8 pb-10">
           <ScrollingText
-            baseVelocity={-1}
-            textClass="uppercase text-3xl font-extrabold"
+            baseVelocity={-0.3}
+            textClass="uppercase text-xl sm:text-3xl font-extrabold"
           >
             <span className="text-primary-dark bg-secondary-light p-2 mr-6 md:mr-12">
-              It's Strength.
+              It&apos;s Strength.
             </span>
             <span className="text-secondary-light bg-secondary-dark p-2 mr-6 md:mr-12">
-              It's Education.
+              It&apos;s Education.
             </span>
             <span className="text-primary-dark bg-primary-light p-2">
-              It's Community.
+              It&apos;s Community.
             </span>
           </ScrollingText>
         </div>

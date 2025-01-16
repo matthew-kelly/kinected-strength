@@ -34,9 +34,7 @@ export default function PageBanner({
           <div
             className={`${textWidthClass} md:mx-8 md:mt-0 mt-4 md:mb-0 mb-4`}
           >
-            <p className="text-primary-light font-normal md:text-base">
-              {text}
-            </p>
+            <p className="text-primary-light">{text}</p>
           </div>
         </div>
       </div>

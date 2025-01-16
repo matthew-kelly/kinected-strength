@@ -51,8 +51,9 @@
     @apply text-base;
   }
 
-  p {
-    @apply font-sans text-sm leading-6 font-normal text-pretty; /* font-light */
+  p,
+  li {
+    @apply font-sans text-sm md:text-base leading-6 md:leading-7 font-normal text-pretty; /* font-light */
   }
 
   a {

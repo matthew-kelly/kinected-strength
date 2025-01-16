@@ -50,12 +50,26 @@ export default function Summit({ page }) {
       <div className="bg-light-gray">
         <section className="flex flex-col bg-light-gray text-primary-dark">
           <div className="flex flex-col max-w-6xl w-full self-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-center items-center py-16 bg-light-gray lg:px-32 md:px-16 px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center py-16 bg-light-gray lg:px-32 md:px-16 px-8">
               <div className="flex flex-col gap-4">
                 <h1 className="md:text-5xl text-4xl">{page.bannerHeadline}</h1>
                 <p className="text-primary-dark">{page.bannerText}</p>
+                <ul className="grid grid-cols-2 grid-flow-row gap-2 border-t-[1px] border-primary-dark pt-6 mt-2">
+                  <CheckBlock>
+                    3-days per week of functional strength
+                  </CheckBlock>
+                  <CheckBlock>Kinesiologist-led instruction</CheckBlock>
+                  <CheckBlock>
+                    Exercise variations to suit your level
+                  </CheckBlock>
+                  <CheckBlock>Educational video tutorials</CheckBlock>
+                  <CheckBlock>Accountability and consistency</CheckBlock>
+                  <CheckBlock>
+                    Includes: mobility, strength, power and core
+                  </CheckBlock>
+                </ul>
               </div>
-              <DivInView className="relative mr-6 mt-6 max-sm:order-last">
+              <DivInView className="relative mr-6 mt-6 max-md:order-last self-start">
                 <Image
                   src={summit1Img}
                   alt="Summit"
@@ -79,10 +93,10 @@ export default function Summit({ page }) {
               <ButtonLink
                 href="https://kinectedstrength.thrivecart.com/summit/"
                 target="_blank"
-                className="self-center sm:col-span-2 mx-auto text-center"
+                className="self-center sm:col-span-2 mx-auto text-center mt-4 md:mt-8"
                 variant="large"
               >
-                Lorem Ipsum
+                Get SUMMIT
               </ButtonLink>
             </div>
           </div>
@@ -93,6 +107,7 @@ export default function Summit({ page }) {
             testimonials={page.testimonials}
             question={page.question}
             highlight={page.highlight}
+            showTitle={false}
           />
         )}
 
@@ -106,23 +121,46 @@ export default function Summit({ page }) {
             duration={1}
             className="flex flex-col items-center w-full self-center"
           >
-            <ScrollingText baseVelocity={4}>SUMMIT</ScrollingText>
+            <ScrollingText
+              baseVelocity={1}
+              textClass="uppercase text-2xl sm:text-3xl pr-8 font-extrabold text-secondary-light"
+            >
+              <span>SUMMIT</span>
+            </ScrollingText>
           </DivInView>
         </section>
 
         <section className="flex flex-col bg-primary-light text-primary-dark">
           <div className="flex flex-col max-w-4xl w-full self-center">
             <div className="flex flex-col gap-8 justify-center items-center py-16 lg:px-32 md:px-16 px-8 *:text-primary-dark ">
-              <h2 className="text-4xl sm:text-5xl">Lorem ipsum dolor</h2>
+              <h2 className="text-3xl sm:text-4xl flex flex-col gap-2">
+                <span className="italic text-2xl sm:text-3xl">
+                  There&apos;s tons of online programs out there.
+                </span>
+                <span>What makes SUMMIT different?</span>
+              </h2>
               <DivInView>
                 <TextBlock>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut
+                    Most simply, we designed SUMMIT so that we could share the
+                    passion and expertise that we bring to in-person kinesiology
+                    training with a larger community. Having a plan is key to
+                    getting results, and you can trust that SUMMIT is designed
+                    using evidence-based, progressive strength programming.
+                    Leave the planning to the experts and take the thought out
+                    of training!
+                  </p>
+                  <p>
+                    As we know from years of kinesiology practice, consistency
+                    is necessary to achieve strength goals. In order to remain
+                    consistent, however, there must be some flexibility in
+                    training! SUMMIT is flexible as it explores different
+                    exercise variations to suit all levels and equipment, and
+                    prioritizes education and guided exercise technique through
+                    instructive videos. At the end of each cycle, it encourages
+                    you to push past your comfort zone with safe and progressive
+                    end-of-program testing. When the training is smart, your
+                    body feels good, and the results follow!
                   </p>
                 </TextBlock>
               </DivInView>
@@ -144,38 +182,49 @@ export default function Summit({ page }) {
         </section>
 
         <section className="flex flex-col bg-light-gray text-primary-dark">
-          <div className="flex flex-col max-w-4xl w-full self-center">
-            <div className="flex flex-col gap-8 justify-center items-center py-16 lg:px-32 md:px-16 px-8 *:text-primary-dark [&_p]:text-base">
-              <h2 className="text-4xl sm:text-5xl">Lorem ipsum dolor</h2>
+          <div className="flex flex-col max-w-6xl w-full self-center">
+            <div className="flex flex-col gap-8 justify-center items-center py-16 lg:px-32 md:px-16 px-8 *:text-primary-dark">
+              <div className="flex flex-col gap-2 sm:gap-4">
+                <h2 className="text-3xl sm:text-4xl">
+                  SUMMIT is best suited for individuals who want to build
+                  strength and athletic performance.
+                </h2>
+                <p className="text-xl sm:text-2xl font-display font-bold w-full">
+                  It&apos;s right for you if:
+                </p>
+              </div>
               <DivInView>
                 <TextBlock>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut
-                  </p>
+                  <ul className="list-disc pl-4">
+                    <li>
+                      Your progress has plateaued or you&apos;re lacking
+                      consistency
+                    </li>
+                    <li>You want to move better and get stronger</li>
+                    <li>You&apos;re injury-free and want to stay that way!</li>
+                    <li>You have some experience with resistance training</li>
+                    <li>
+                      You have access to weights (ie. barbell, dumbbells or
+                      kettlebells) and resistance bands
+                    </li>
+                  </ul>
                 </TextBlock>
               </DivInView>
               <DivInView>
-                <ButtonLink
-                  href="https://kinectedstrength.thrivecart.com/summit/"
-                  target="_blank"
-                  className="self-center sm:col-span-2 mx-auto text-center"
-                  variant="large"
-                >
-                  Lorem Ipsum Dolor Sit Amet
-                </ButtonLink>
+                <TextBlock>
+                  <p className="italic text-lg max-sm:text-center">
+                    If <span className="font-bold">SUMMIT</span> doesn&apos;t
+                    sound like the right fit, check out some of our other
+                    program options.
+                  </p>
+                  <ButtonLink
+                    href="/train-online/specialty-programs"
+                    className="self-center mx-auto text-center"
+                    variant="light"
+                  >
+                    See Our Other Programs
+                  </ButtonLink>
+                </TextBlock>
               </DivInView>
             </div>
           </div>
@@ -191,65 +240,71 @@ export default function Summit({ page }) {
             duration={1}
             className="flex flex-col items-center w-full self-center"
           >
-            <ScrollingText baseVelocity={-2}>
-              Lorem ipsum dolor sit amet.
+            <ScrollingText
+              baseVelocity={-0.5}
+              textClass="text-2xl sm:text-3xl font-bold"
+            >
+              <div className="flex gap-3">
+                <span>Follow a plan.</span>
+                <span>Build independence.</span>
+                <span>Get strong.</span>
+              </div>
             </ScrollingText>
           </DivInView>
         </section>
 
         <section className="flex flex-col bg-light-gray text-primary-dark">
           <div className="flex flex-col gap-16 max-w-6xl w-full self-center py-16">
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center items-center lg:px-32 md:px-16 px-8">
+            <div className="grid md:grid-cols-[1fr_1fr] gap-4 md:gap-8 justify-center items-center lg:px-32 md:px-16 px-8">
               <DivInView>
-                <TextBlock
-                  title="Lorem Ipsum"
-                  subtitle="Lorem ipsum dolor sit amet"
-                >
+                <TextBlock title="The Program">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Every cycle of SUMMIT includes 3 specific training phases,
+                    each 2 weeks in length. While the exercises remain
+                    consistent through the 6-week cycle, you&apos;ll see the
+                    focus shift in each phase.
                   </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut
-                  </p>
-                </TextBlock>
-              </DivInView>
-              <DivInView amount={0.3} delay={0.1}>
-                <Image
-                  src={summit6Img}
-                  alt="Screenshot of a SUMMIT workout"
-                  sizes={imgSizes}
-                  placeholder="blur"
-                />
-              </DivInView>
-            </div>
-            <div className="flex flex-col sm:flex-row-reverse gap-4 md:gap-8 justify-center items-center lg:px-32 md:px-16 px-8">
-              <DivInView>
-                <TextBlock
-                  title="Lorem Ipsum"
-                  subtitle="Lorem ipsum dolor sit amet"
-                >
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut
-                  </p>
+                  <div className="flex flex-col">
+                    <p>The phases:</p>
+                    <ol className="list-decimal pl-4 [&_li]:mb-1">
+                      <li>
+                        <span className="font-bold">
+                          Basecamp - <span className="italic">Education</span>
+                        </span>
+                        <ul className="list-disc pl-8">
+                          <li>
+                            Learn the cycle&apos;s new exercises and build
+                            movement competency by the end of the second week.
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <span className="font-bold">
+                          The Grind -{" "}
+                          <span className="italic">Build Strength</span>
+                        </span>
+                        <ul className="list-disc pl-8">
+                          <li>
+                            Train with more volume and lift heavier weights.
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <span className="font-bold">
+                          The Peak -{" "}
+                          <span className="italic">
+                            Find Your Max Potential
+                          </span>
+                        </span>
+                        <ul className="list-disc pl-8">
+                          <li>
+                            Check your progress over the cycle with optional
+                            strength or endurance testing.
+                          </li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
                 </TextBlock>
               </DivInView>
               <DivInView amount={0.3} delay={0.1}>
@@ -261,14 +316,71 @@ export default function Summit({ page }) {
                 />
               </DivInView>
             </div>
+            <div className="grid md:grid-cols-[1fr_1fr] gap-4 md:gap-8 justify-center items-center lg:px-32 md:px-16 px-8">
+              <DivInView className="md:order-last">
+                <TextBlock title="The App">
+                  <ul className="list-disc pl-4 [&_li]:mb-1">
+                    <li>
+                      Video tutorials for each exercise with the same level of
+                      coaching you&apos;d expect in person.
+                    </li>
+                    <li>Easy to follow display.</li>
+                    <li>Ability to record your weights and progress.</li>
+                    <li>Ability to ask questions directly to coaches.</li>
+                    <li>Ability to ask questions directly to coaches.</li>
+                    <li>Guidance for weight, effort, reps and rest.</li>
+                  </ul>
+                </TextBlock>
+              </DivInView>
+              <DivInView amount={0.3} delay={0.1}>
+                <Image
+                  src={summit6Img}
+                  alt="Screenshot of a SUMMIT workout"
+                  sizes={imgSizes}
+                  placeholder="blur"
+                />
+              </DivInView>
+            </div>
+
+            <div className="grid md:grid-cols-[1fr_1fr] gap-4 md:gap-8 justify-center items-center lg:px-32 md:px-16 px-8">
+              <DivInView>
+                <TextBlock title="The Exercises">
+                  <p>
+                    SUMMIT is flexible; it&apos;s designed to meet you where
+                    you&apos;re at each day. Within each session, you&apos;ll
+                    find:
+                  </p>
+                  <ul className="list-disc pl-4 [&_li]:mb-1">
+                    <li>
+                      Exercise variations for mobility, strength, power, balance
+                      and core
+                    </li>
+                    <li>Options for every skill level</li>
+                    <li>
+                      Suggestions for how to modify based on available equipment
+                    </li>
+                  </ul>
+                </TextBlock>
+              </DivInView>
+              <DivInView amount={0.3} delay={0.1}>
+                {/* TODO: replace image */}
+                <Image
+                  src={summit5Img}
+                  alt="two examples of a SUMMIT workout"
+                  sizes={imgSizes}
+                  placeholder="blur"
+                />
+              </DivInView>
+            </div>
             <DivInView>
+              {/* TODO: update button text */}
               <ButtonLink
                 href="https://kinectedstrength.thrivecart.com/summit/"
                 target="_blank"
                 className="self-center sm:col-span-2 mx-auto text-center"
                 variant="large"
               >
-                Lorem Ipsum Dolor Sit Amet
+                Join SUMMIT
               </ButtonLink>
             </DivInView>
           </div>
@@ -278,11 +390,28 @@ export default function Summit({ page }) {
   );
 }
 
+function CheckBlock({ children }) {
+  return (
+    <li className="grid grid-cols-[2rem_1fr] gap-1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="fill-green-600 w-8 h-8"
+        viewBox="0 0 24 24"
+      >
+        <title>checkmark</title>
+        <path d="m10 13.6l5.9-5.9q.275-.275.7-.275t.7.275t.275.7t-.275.7l-6.6 6.6q-.3.3-.7.3t-.7-.3l-2.6-2.6q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275z"></path>
+      </svg>
+      <p>{children}</p>
+    </li>
+  );
+}
+
 function TextBlock({ title = "", subtitle = "", children }) {
   return (
     <div className="flex flex-col gap-4">
-      {title && <h2 className="uppercase text-sm">{title}</h2>}
-      {subtitle && <h3 className="text-2xl mb-2">{subtitle}</h3>}
+      {title && <h2 className="text-2xl mb-2">{title}</h2>}
+      {/* {title && <h2 className="uppercase text-sm">{title}</h2>} */}
+      {/* {subtitle && <h3 className="text-2xl mb-2">{subtitle}</h3>} */}
       {children}
     </div>
   );

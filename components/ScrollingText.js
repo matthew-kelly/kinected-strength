@@ -1,10 +1,10 @@
 import {
   m,
-  useScroll,
-  useSpring,
+  // useScroll,
+  // useSpring,
   useTransform,
   useMotionValue,
-  useVelocity,
+  // useVelocity,
   useAnimationFrame,
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
@@ -15,26 +15,33 @@ export default function ScrollingText({
   children,
 }) {
   const baseX = useMotionValue(0);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 10,
-    stiffness: 300,
-  });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
-    clamp: false,
-  });
+  // const { scrollY } = useScroll();
+  // const scrollVelocity = useVelocity(scrollY);
+  // const smoothVelocity = useSpring(scrollVelocity, {
+  //   damping: 50,
+  //   stiffness: 400,
+  // });
+  // const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+  //   clamp: false,
+  // });
+  const dir = baseVelocity > 0 ? 1 : -1;
 
-  let repeats = 8;
-  let wrapParams = [0, -12.5];
-  if (children.length > 8) {
-    repeats = 4;
-    wrapParams = [0, -25];
-  }
+  let repeats = 16;
+  let wrapParams = [12.5 * dir, 0];
+
+  // if (children.length > 8) {
+  //   repeats = 4;
+  //   wrapParams = [25 * dir, 0];
+  // }
 
   const x = useTransform(
     baseX,
-    (v) => `${wrap(wrapParams[0], wrapParams[1], v)}%`
+    (v) =>
+      `${wrap(
+        wrapParams[dir === 1 ? 1 : 0],
+        wrapParams[dir === 1 ? 0 : 1],
+        v
+      )}%`
   );
   // const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 

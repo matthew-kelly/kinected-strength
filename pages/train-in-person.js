@@ -1,6 +1,5 @@
 import Image from "next/image";
 import PageBanner from "@/components/PageBanner";
-import { Circle } from "@/components/shapes";
 import TestimonialBlock from "@/components/TestimonialBlock";
 import DivInView from "@/components/DivInView";
 import ServiceTextBlock from "@/components/ServiceTextBlock";
@@ -42,10 +41,7 @@ export default function TrainInPerson({ page }) {
             <ServiceTextBlock
               title="Personal Training"
               subtitle={`Offered by BCAK registered kinesiologists and personal trainers`}
-              body={`Personal training is a supportive experience offered in-person
-                in North Vancouver. This is the right choice for you if you have
-                strength and fitness goals, are recovering from acute or chronic
-                injury, or love the extra touch of personalized accountability.`}
+              body={`Personal training is a supportive experience offered in-person in North Vancouver. This is the right choice for you if you have strength and fitness goals, are recovering from acute or chronic injury, or love the extra touch of personalized accountability.`}
               link="/contact"
               linkText="Start your journey"
               buttonClass="light"
@@ -80,11 +76,11 @@ export default function TrainInPerson({ page }) {
             </DivInView>
           </div>
 
-          <div className="relative flex md:flex-row flex-col justify-between items-center gap-8 mb-24">
+          <div className="relative flex md:flex-row flex-col justify-between items-center gap-8">
             <ServiceTextBlock
               title={`Group Classes`}
               subtitle={`All levels welcome!`}
-              body={`Classes available 6 days per week. Smaller class sizes, expert coaching and guidance to help you achieve your goals`}
+              body={`Classes available 6 days per week. Smaller class sizes, expert coaching and guidance to help you achieve your goals. Even if you're a beginner to strength training, you're not on this journey alone; join our community of strong and confident members!`}
               link="https://www.shypractice.ca/whatwedoyoga"
               linkText="Book your class today"
               newTab={true}
@@ -100,19 +96,6 @@ export default function TrainInPerson({ page }) {
               />
             </DivInView>
           </div>
-        </div>
-
-        <div className="relative md:self-center md:mt-16 md:mb-0 mb-12 flex flex-col gap-8 md:max-w-3xl">
-          <p className="md:text-xl text-lg font-semibold z-10 text-pretty">
-            Even if you&apos;re a beginner to strength training, you&apos;re not
-            on this journey alone; join our community of strong and confident
-            members!
-          </p>
-          <Circle
-            size={200}
-            color="fill-secondary-light"
-            className="absolute md:-top-24 -top-16 md:-left-24 -left-16"
-          />
         </div>
       </section>
 
