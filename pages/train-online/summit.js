@@ -125,7 +125,7 @@ export default function Summit({ page }) {
               baseVelocity={1}
               textClass="uppercase text-2xl sm:text-3xl pr-8 font-extrabold text-secondary-light"
             >
-              <span>SUMMIT</span>
+              <span aria-hidden="true">SUMMIT</span>
             </ScrollingText>
           </DivInView>
         </section>
@@ -245,9 +245,9 @@ export default function Summit({ page }) {
               textClass="text-2xl sm:text-3xl font-bold"
             >
               <div className="flex gap-3">
-                <span>Follow a plan.</span>
-                <span>Build independence.</span>
-                <span>Get strong.</span>
+                <span aria-hidden="true">Follow a plan.</span>
+                <span aria-hidden="true">Build independence.</span>
+                <span aria-hidden="true">Get strong.</span>
               </div>
             </ScrollingText>
           </DivInView>

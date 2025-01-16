@@ -6,6 +6,7 @@ import {
   useMotionValue,
   // useVelocity,
   useAnimationFrame,
+  useReducedMotion,
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
 
@@ -14,6 +15,7 @@ export default function ScrollingText({
   textClass = "",
   children,
 }) {
+  const shouldReduceMotion = useReducedMotion();
   const baseX = useMotionValue(0);
   // const { scrollY } = useScroll();
   // const scrollVelocity = useVelocity(scrollY);
@@ -52,17 +54,19 @@ export default function ScrollingText({
   });
 
   return (
-    <div className="m-0 whitespace-nowrap flex flex-nowrap relative">
-      <m.div
-        className="md:text-7xl text-6xl font-bold flex whitespace-nowrap flex-nowrap *:block *:mr-6 md:*:mr-12 *:select-none"
-        style={{ x }}
-      >
-        {[...Array(repeats)].map((_, index) => (
-          <span key={index} className={textClass}>
-            {children}
-          </span>
-        ))}
-      </m.div>
-    </div>
+    !shouldReduceMotion && (
+      <div className="m-0 whitespace-nowrap flex flex-nowrap relative">
+        <m.div
+          className="md:text-7xl text-6xl font-bold flex whitespace-nowrap flex-nowrap *:block *:mr-6 md:*:mr-12 *:select-none"
+          style={{ x }}
+        >
+          {[...Array(repeats)].map((_, index) => (
+            <span key={index} className={textClass} aria-hidden="true">
+              {children}
+            </span>
+          ))}
+        </m.div>
+      </div>
+    )
   );
 }

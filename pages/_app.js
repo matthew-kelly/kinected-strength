@@ -10,7 +10,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import PopupModal from "../components/PopupModal";
 import ProgressBar from "@approximant/next-progress";
 import { colors } from "../utils/theme";
-import { LazyMotion } from "framer-motion";
+import { LazyMotion, MotionConfig } from "framer-motion";
 // import { disableScroll, enableScroll } from "../utils/scroll";
 
 const myFont = localFont({
@@ -69,49 +69,51 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <MenuStateProvider>
-      <LazyMotion features={loadFramerMotionFeatures} strict>
-        <Head>
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-          />
-          <link rel="icon" type="image/svg" href="/favicon.svg" />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/apple-touch-icon.png"
-          />
-          <link rel="shortcut icon" href="/favicon.ico" />
-          <meta charSet="UTF-8" />
-          <title key="title">Kinected Strength</title>
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<style>#loading-screen {display: none !important;}</style>`,
-            }}
-          ></noscript>
-        </Head>
-        <div
-          className={`${myFont.variable} min-h-screen flex flex-col overflow-x-clip bg-primary-dark app-container`}
-          id={isHomePage ? "home-page" : undefined}
-        >
-          <ProgressBar color={colors["primary-light"]} debounce={300} />
-          <Nav />
-          <main className="body">
-            <PopupModal fontVar={myFont.variable} />
-            <LoadingScreen isLoading={isLoading} />
-            <Component {...pageProps} />
-          </main>
-          <Footer />
-        </div>
-      </LazyMotion>
+      <MotionConfig reducedMotion="user">
+        <LazyMotion features={loadFramerMotionFeatures} strict>
+          <Head>
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="/favicon-32x32.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="/favicon-16x16.png"
+            />
+            <link rel="icon" type="image/svg" href="/favicon.svg" />
+            <link
+              rel="apple-touch-icon"
+              sizes="180x180"
+              href="/apple-touch-icon.png"
+            />
+            <link rel="shortcut icon" href="/favicon.ico" />
+            <meta charSet="UTF-8" />
+            <title key="title">Kinected Strength</title>
+            <noscript
+              dangerouslySetInnerHTML={{
+                __html: `<style>#loading-screen {display: none !important;}</style>`,
+              }}
+            ></noscript>
+          </Head>
+          <div
+            className={`${myFont.variable} min-h-screen flex flex-col overflow-x-clip bg-primary-dark app-container`}
+            id={isHomePage ? "home-page" : undefined}
+          >
+            <ProgressBar color={colors["primary-light"]} debounce={300} />
+            <Nav />
+            <main className="body">
+              <PopupModal fontVar={myFont.variable} />
+              <LoadingScreen isLoading={isLoading} />
+              <Component {...pageProps} />
+            </main>
+            <Footer />
+          </div>
+        </LazyMotion>
+      </MotionConfig>
     </MenuStateProvider>
   );
 }

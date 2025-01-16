@@ -272,13 +272,22 @@ export default function Home({ page }) {
             baseVelocity={-0.3}
             textClass="uppercase text-xl sm:text-3xl font-extrabold"
           >
-            <span className="text-primary-dark bg-secondary-light p-2 mr-6 md:mr-12">
+            <span
+              className="text-primary-dark bg-secondary-light p-2 mr-6 md:mr-12"
+              aria-hidden="true"
+            >
               It&apos;s Strength.
             </span>
-            <span className="text-secondary-light bg-secondary-dark p-2 mr-6 md:mr-12">
+            <span
+              className="text-secondary-light bg-secondary-dark p-2 mr-6 md:mr-12"
+              aria-hidden="true"
+            >
               It&apos;s Education.
             </span>
-            <span className="text-primary-dark bg-primary-light p-2">
+            <span
+              className="text-primary-dark bg-primary-light p-2"
+              aria-hidden="true"
+            >
               It&apos;s Community.
             </span>
           </ScrollingText>
