@@ -40,10 +40,10 @@ export default function TrainInPerson({ page }) {
           <div className="relative flex md:flex-row flex-col justify-between items-center gap-8 mb-24">
             <ServiceTextBlock
               title="Personal Training"
-              subtitle={`Offered by BCAK registered kinesiologists and personal trainers`}
+              subtitle={`Offered by BCAK Registered Kinesiologists and Personal Trainers`}
               body={`Personal training is a supportive experience offered in-person in North Vancouver. This is the right choice for you if you have strength and fitness goals, are recovering from acute or chronic injury, or love the extra touch of personalized accountability.`}
               link="/contact"
-              linkText="Start your journey"
+              linkText="Start Your Journey"
               buttonClass="light"
             />
             <DivInView>
@@ -60,10 +60,10 @@ export default function TrainInPerson({ page }) {
           <div className="relative flex md:flex-row-reverse flex-col justify-between items-center gap-8 mb-24">
             <ServiceTextBlock
               title={`ICBC Active Rehabilitation`}
-              subtitle={`Direct billing through ICBC is available. Use fee $35 + GST.`}
+              subtitle={`Direct billing through ICBC is available. User fee $35 + GST.`}
               body={`ICBC Active rehabilitation with a kinesiologist supports individuals suffering from injury or chronic pain due to a motor vehicle accident. We assess and design an exercise program to guide and reintroduce safe functional movement. We work closely with other practitioners on your care team to offer appropriate progressions, modifications and goals for your rehab.`}
               link="/contact"
-              linkText="Get started now"
+              linkText="Get In Touch"
             />
             <DivInView>
               <Image
@@ -82,7 +82,7 @@ export default function TrainInPerson({ page }) {
               subtitle={`All levels welcome!`}
               body={`Classes available 6 days per week. Smaller class sizes, expert coaching and guidance to help you achieve your goals. Even if you're a beginner to strength training, you're not on this journey alone; join our community of strong and confident members!`}
               link="https://www.shypractice.ca/whatwedoyoga"
-              linkText="Book your class today"
+              linkText="Book Your Class Today"
               newTab={true}
               buttonClass="inverse"
             />

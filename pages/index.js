@@ -186,7 +186,7 @@ export default function Home({ page }) {
               </span>
               <span>
                 We strive to be the best so that you can{" "}
-                <span className="bg-secondary-dark text-secondary-light px-1 py-1">
+                <span className="bg-secondary-dark text-secondary-light px-1 py-1 whitespace-nowrap text-nowrap">
                   achieve your best
                 </span>
                 .
