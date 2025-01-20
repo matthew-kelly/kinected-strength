@@ -195,7 +195,7 @@ export default function Home({ page }) {
                 We&apos;re invested in your{" "}
                 <span className="bg-primary-light px-1 py-1">success</span>.
               </span>
-              <span className="bg-secondary-light text-primary-dark px-1 py-1">
+              <span className="bg-primary-dark text-primary-light px-1 py-1">
                 We care.
               </span>
             </h2>
