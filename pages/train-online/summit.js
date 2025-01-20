@@ -150,7 +150,7 @@ export default function Summit({ page }) {
                 </TextBlock>
               </DivInView>
               <DivInView amount={0.3} className="flex max-w-full mx-auto">
-                {/* TODO: use these options
+                {/* TODO: use these options for final video
                   https://www.youtube-nocookie.com/embed/
                   {video id}
                   ?rel=0&iv_load_policy=3&fs=0&color=white&disablekb=1
@@ -386,7 +386,7 @@ export default function Summit({ page }) {
                 </TextBlock>
               </DivInView>
               <DivInView amount={0.3} delay={0.1}>
-                {/* TODO: replace image */}
+                {/* TODO: replace image and alt text */}
                 <Image
                   src={summit6Img}
                   alt="example of a SUMMIT workout"

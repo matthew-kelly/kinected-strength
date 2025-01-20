@@ -112,7 +112,7 @@ export default function TrainInPerson({ page }) {
 
 export async function getStaticProps() {
   const page = await client.fetch(testimonialsQuery, {
-    slug: "strength", // FIXME: rename in sanity?
+    slug: "strength", // TODO: rename in sanity?
   });
 
   return {

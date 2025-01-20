@@ -83,7 +83,7 @@ export async function getStaticProps() {
   const count = await client.fetch(allPostsCountQuery);
   const page = await client.fetch(testimonialsQuery, {
     slug: "education",
-  }); // FIXME: rename in sanity?
+  }); // TODO: rename in sanity?
 
   return {
     props: {

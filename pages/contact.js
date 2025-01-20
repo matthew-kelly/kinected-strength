@@ -92,8 +92,6 @@ export default function Contact() {
     }
   };
 
-  // TODO: changes in doc and obsidian notes
-
   return (
     <>
       <MetaTags

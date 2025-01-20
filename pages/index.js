@@ -83,7 +83,7 @@ export default function Home({ page }) {
               src={mainImg2}
               fill
               sizes={`(max-width: ${breakpoints.sm}px) 100vw, 50vw`}
-              quality={85}
+              // quality={85}
               alt="Briana and Jess doing kettlebell exercises"
               placeholder="blur"
               className="object-cover object-center"
@@ -178,7 +178,6 @@ export default function Home({ page }) {
 
         <div className="flex flex-col bg-light-gray md:px-24 px-8 md:py-20 py-12 text-primary-dark">
           <div className="flex flex-col md:mb-32 md:max-w-6xl md:mx-auto">
-            {/* TODO: confirm styling */}
             <h2 className="lg:text-4xl md:text-3xl text-2xl md:mb-12 mb-8 !leading-normal md:!leading-snug lg:!leading-[1.4] flex flex-col gap-2 text-wrap [&_span]:max-w-fit">
               <span>
                 We coach with{" "}
