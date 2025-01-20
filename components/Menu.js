@@ -1,4 +1,4 @@
-import { m, AnimatePresence } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";

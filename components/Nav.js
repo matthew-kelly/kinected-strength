@@ -48,8 +48,7 @@ export default function Nav() {
               : ""
           }`}
         >
-          {/* bg-opacity-80 */}
-          {isHomePage ? (
+          <Link href="/" aria-label="Link to home page">
             <KLogo
               width="30"
               colorRect="fill-primary-light"
@@ -57,20 +56,10 @@ export default function Nav() {
               colorBottom="fill-secondary-light"
               className="md:h-8 h-6"
             />
-          ) : (
-            <Link href="/" aria-label="Return to home page">
-              <KLogo
-                width="30"
-                colorRect="fill-primary-light"
-                colorTop="fill-secondary-dark"
-                colorBottom="fill-secondary-light"
-                className="md:h-8 h-6"
-              />
-            </Link>
-          )}
+          </Link>
           {(!isHomePage ||
             (isHomePage && windowSize.width < breakpoints.lg)) && (
-            <Link href="/" aria-label="Return to home page">
+            <Link href="/" aria-label="Link to home page">
               <Logo />
             </Link>
           )}
