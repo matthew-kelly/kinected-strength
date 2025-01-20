@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import {
+  m,
   AnimatePresence,
   LayoutGroup,
-  m,
-  transform,
-  useMotionValue,
+  useScroll,
+  useTransform,
 } from "framer-motion";
 import Image from "next/image";
 import { useMenu } from "@/lib/menuState";
@@ -19,100 +19,41 @@ export default function HomeBanner() {
   const bannerImageRef = useRef(null);
   const scrollRef = useRef(null);
 
-  const bannerImageSidePadding = 148;
-  const [logoWidth, setLogoWidth] = useState(calcLogoWidth());
-  const [logoTop, setLogoTop] = useState(calcLogoTop());
-  const navHeight = 32; // 128; // for modifying distance animation takes to complete, not true navHeight
-  const animationSteps = [0, 1];
-  const progress = useMotionValue(0);
-  const logoContainerTop = useMotionValue(logoTop);
-  const logoStylesWidth = useMotionValue(logoWidth);
-  const bannerPaddingSide = useMotionValue(bannerImageSidePadding);
+  const { scrollYProgress } = useScroll({
+    target: bannerRef,
+  });
+  const paddingValue = useTransform(scrollYProgress, [0, 1], [148, 0]);
+  let logoTopValue = useTransform(scrollYProgress, [0, 1], [calcLogoTop(), 34]);
+  let logoWidthValue = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [calcLogoWidth(), 256]
+  );
+
+  useEffect(() => {
+    if (bannerImageRef.current) {
+      const updateValues = () => {
+        let progress = clamp(scrollYProgress.get(), 0.0001, 0.9999);
+
+        logoTopValue.set(
+          clamp(calcLogoTop() * (1 - progress), 34, window.innerWidth)
+        );
+        logoWidthValue.set(
+          clamp(calcLogoWidth() * (1 - progress), 256, window.innerWidth)
+        );
+      };
+      updateValues();
+      window.addEventListener("resize", updateValues);
+      return () => window.removeEventListener("resize", updateValues);
+    }
+  }, [scrollYProgress, logoTopValue, logoWidthValue]);
 
   function calcLogoTop() {
     return Math.round(window.innerWidth * 0.4498 - 13.0376);
   }
   function calcLogoWidth() {
-    return Math.round((window.innerWidth - bannerImageSidePadding * 2) * 0.77);
+    return Math.round((window.innerWidth - 148 * 2) * 0.77);
   }
-
-  const setScrollPosition = () => {
-    const base =
-      bannerRef.current.getBoundingClientRect().height -
-      window.innerHeight +
-      navHeight;
-    const bannerDist = clamp(
-      bannerRef.current.getBoundingClientRect().bottom -
-        window.innerHeight +
-        navHeight,
-      0,
-      bannerRef.current.getBoundingClientRect().bottom + navHeight
-    );
-    const calcPos = 1 - bannerDist / base;
-    progress.set(clamp(calcPos, 0, 1));
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", setScrollPosition);
-    return () => {
-      window.removeEventListener("scroll", setScrollPosition);
-    };
-  }, []);
-
-  // update progress on window resize
-  useEffect(() => {
-    setScrollPosition();
-    updateLogo();
-  }, [window.innerWidth]);
-
-  useEffect(() => {
-    function updateLogoContainerTop() {
-      const newVal = transform(progress.get(), animationSteps, [logoTop, 34]);
-      logoContainerTop.set(newVal);
-    }
-    function updateLogoStylesWidth() {
-      const newVal = transform(progress.get(), animationSteps, [
-        logoWidth,
-        256,
-      ]);
-      logoStylesWidth.set(newVal);
-    }
-    function updateBannerPadding() {
-      const newVal = transform(progress.get(), animationSteps, [
-        bannerImageSidePadding,
-        0,
-      ]);
-      bannerPaddingSide.set(newVal);
-    }
-
-    function updateAll() {
-      updateLogoContainerTop();
-      updateLogoStylesWidth();
-      updateBannerPadding();
-    }
-
-    const unsubscribeProgress = progress.onChange(updateAll);
-
-    return () => {
-      unsubscribeProgress();
-    };
-  }, [logoTop, logoWidth]);
-
-  const updateLogo = () => {
-    const img = bannerImageRef.current.children[0];
-    const imgDimensions = img.getBoundingClientRect();
-    const currentProgress = progress.get();
-    const newLogoWidth = calcLogoWidth();
-    // (imgDimensions.width - bannerImageSidePadding * 2 * currentProgress) * 0.78;
-    let newLogoTop = calcLogoTop();
-    setLogoWidth(newLogoWidth);
-    setLogoTop(newLogoTop);
-    if (currentProgress === 0) {
-      progress.set(0.0001); // hack to update when at top of page
-    } else {
-      progress.set(currentProgress);
-    }
-  };
 
   return (
     <section
@@ -127,8 +68,8 @@ export default function HomeBanner() {
           layout
           className={`self-center w-full z-0 fixed mt-32`}
           style={{
-            paddingLeft: bannerPaddingSide,
-            paddingRight: bannerPaddingSide,
+            paddingLeft: paddingValue,
+            paddingRight: paddingValue,
           }}
         >
           <Image
@@ -136,7 +77,7 @@ export default function HomeBanner() {
             src={bannerImg}
             priority
             sizes="100vw"
-            // quality={90}
+            quality={90}
             alt="Briana, Andrea, and Jess walking along a dock"
             className="z-0"
             placeholder="blur"
@@ -150,7 +91,7 @@ export default function HomeBanner() {
               ref={scrollRef}
               className="fixed left-1/2 transform -translate-x-1/2"
               style={{
-                top: logoContainerTop,
+                top: logoTopValue,
                 zIndex: 102,
               }}
               initial={{ opacity: 0 }}
@@ -162,9 +103,11 @@ export default function HomeBanner() {
               }}
             >
               <m.svg
-                // height="200"
+                aria-label="Kinected Strength"
                 alt="Kinected Strength"
-                width={logoStylesWidth}
+                style={{
+                  width: logoWidthValue,
+                }}
                 viewBox="0 0 192 45"
                 className="fill-primary-light m-auto"
               >
