@@ -61,16 +61,16 @@ export default function Home({ page }) {
             </h1>
           </div>
 
-          <div className="flex gap-8 justify-around md:mt-16 mt-8">
+          <div className="flex flex-col sm:flex-row gap-8 items-center sm:justify-around md:mt-16 mt-8">
             <ButtonLink
               href="/train-in-person"
-              className="md:large whitespace-nowrap"
+              className="lg:xlarge large whitespace-nowrap self-auto"
             >
               Train in person
             </ButtonLink>
             <ButtonLink
               href="/train-online"
-              className="md:large light whitespace-nowrap"
+              className="lg:xlarge large light whitespace-nowrap self-auto"
             >
               Train online
             </ButtonLink>
