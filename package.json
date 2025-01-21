@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@approximant/next-progress": "^0.1.0",
-    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@motionone/utils": "^10.18.0",
     "@next/bundle-analyzer": "^14.2.3",
     "@portabletext/react": "^2.0.1",
