@@ -15,9 +15,46 @@ import summit2Img from "@/public/images/summit-2.png";
 // import summit4Img from "@/public/images/summit-4.png";
 import summit5Img from "@/public/images/summit-5.png";
 import summit6Img from "@/public/images/summit-6.png";
+import Link from "next/link";
 
 export default function Summit({ page }) {
   const imgSizes = `(max-width: ${breakpoints.sm}px) 100vw, 50vw`;
+
+  const sd = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: "SUMMIT",
+    description: `${page.bannerHeadline} ${page.bannerText} With SUMMIT you'll get stronger, improve performance, and build resiliency so that your body is prepared to tackle anything life throws at you!`,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: 5,
+      reviewCount: 2,
+    },
+    offers: {
+      "@type": "Offer",
+      price: 59,
+      priceCurrency: "CAD",
+    },
+  };
+  // XXX: SUMMIT structured data is hardcoded (description, price)
+
+  const reviews = page?.testimonials?.map((testimonial) => ({
+    "@type": "Review",
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: 5,
+      bestRating: 5,
+    },
+    author: {
+      "@type": "Person",
+      name: testimonial.author,
+    },
+    reviewBody: testimonial.content,
+  }));
+
+  if (reviews) {
+    sd.reviews = reviews;
+  }
 
   return (
     <>
@@ -26,6 +63,7 @@ export default function Summit({ page }) {
         description={`${page.bannerHeadline} ${page.bannerText}`}
         slug="train-online/summit"
         image={{ src: bannerImg.src, isExternal: false }}
+        structuredData={sd}
       />
       <div className="bg-light-gray">
         <section className="flex flex-col bg-light-gray text-primary-dark">
@@ -33,12 +71,13 @@ export default function Summit({ page }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center py-16 bg-light-gray lg:px-32 md:px-16 px-8">
               <div className="flex flex-col gap-4">
                 <h1 className="md:text-5xl text-4xl">{page.bannerHeadline}</h1>
-                <p className="text-primary-dark">{page.bannerText}</p>
+                <p>{page.bannerText}</p>
                 <p>
                   With SUMMIT you&apos;ll get stronger, improve performance, and
                   build resiliency so that your body is prepared to tackle
                   anything life throws at you!
                 </p>
+                <p>Join our community for only $59/month.</p>
                 <ul className="grid grid-cols-2 grid-flow-row gap-2 border-t-[1px] border-primary-dark pt-6 mt-2">
                   <CheckBlock>
                     3-days per week of functional strength
@@ -79,7 +118,7 @@ export default function Summit({ page }) {
                 href="https://kinectedstrength.thrivecart.com/summit/"
                 target="_blank"
                 className="self-center sm:col-span-2 mx-auto text-center mt-4 md:mt-8"
-                variant="large"
+                variant="md:xlarge large"
               >
                 Join SUMMIT
               </ButtonLink>
@@ -167,7 +206,7 @@ export default function Summit({ page }) {
                   href="https://kinectedstrength.thrivecart.com/summit/"
                   target="_blank"
                   className="self-center mx-auto text-center mt-4"
-                  variant="large"
+                  variant="md:xlarge large"
                 >
                   Join SUMMIT
                 </ButtonLink>
@@ -178,7 +217,7 @@ export default function Summit({ page }) {
 
         <section className="flex flex-col bg-light-gray text-primary-dark">
           <div className="flex flex-col max-w-6xl w-full self-center">
-            <div className="flex flex-col gap-4 justify-center items-center py-16 lg:pb-32 lg:px-32 md:px-16 px-8 *:text-primary-dark">
+            <div className="flex flex-col gap-4 justify-center items-center py-16 lg:px-32 md:px-16 px-8 *:text-primary-dark">
               <div className="flex flex-col gap-2 sm:gap-8">
                 <h2 className="text-3xl sm:text-4xl">
                   SUMMIT is best suited for individuals who want to build
@@ -222,24 +261,22 @@ export default function Summit({ page }) {
                 <TextBlock>
                   <p className="italic text-lg max-sm:text-center">
                     If <span className="font-bold">SUMMIT</span> doesn&apos;t
-                    sound like the right fit, check out some of our other
-                    program options.
+                    sound like the right fit,{" "}
+                    <Link
+                      href="/train-online/specialty-programs"
+                      className="underline underline-offset-2 text-black hover:no-underline hover:text-primary-dark"
+                    >
+                      check out some of our other program options.
+                    </Link>
                   </p>
-                  <ButtonLink
-                    href="/train-online/specialty-programs"
-                    className="self-center mx-auto text-center"
-                    variant="light"
-                  >
-                    See Our Other Programs
-                  </ButtonLink>
                 </TextBlock>
               </DivInView>
-              <DivInView className="mt-16">
+              <DivInView className="mt-8">
                 <ButtonLink
                   href="https://kinectedstrength.thrivecart.com/summit/"
                   target="_blank"
                   className="self-center mx-auto text-center"
-                  variant="large"
+                  variant="md:xlarge large"
                 >
                   Join SUMMIT
                 </ButtonLink>
@@ -272,7 +309,7 @@ export default function Summit({ page }) {
         </section>
 
         <section className="flex flex-col bg-light-gray text-primary-dark">
-          <div className="flex flex-col gap-8 max-w-6xl w-full self-center py-16 lg:pt-32">
+          <div className="flex flex-col gap-8 max-w-6xl w-full self-center py-16">
             <div className="grid md:grid-cols-[1fr_1fr] gap-4 md:gap-8 justify-center items-center lg:px-32 md:px-16 px-8">
               <DivInView>
                 <TextBlock title="The Program">
@@ -400,7 +437,7 @@ export default function Summit({ page }) {
                 href="https://kinectedstrength.thrivecart.com/summit/"
                 target="_blank"
                 className="self-center sm:col-span-2 mx-auto text-center"
-                variant="large"
+                variant="md:xlarge large"
               >
                 Join SUMMIT
               </ButtonLink>
