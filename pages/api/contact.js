@@ -12,7 +12,7 @@ export default async function sendEmail(req, res) {
       <div>
         <p>Name: ${req.body.name}</p><br />
         <p>Email: ${req.body.email}</p><br />
-        <p>Reason: ${req.body.reason}</p><br />
+        ${req.body?.reason && `<p>Reason: ${req.body.reason}</p><br />`}
         <p>Message: ${req.body.message}</p>
       </div>`,
     };

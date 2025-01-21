@@ -47,7 +47,6 @@ export default function Contact() {
       firstName.length <= 0 ||
       lastName.length <= 0 ||
       email.length <= 0 ||
-      reason.length <= 0 ||
       message.length <= 0
     ) {
       isValid = false;
