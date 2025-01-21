@@ -1,10 +1,3 @@
-import mailchimp from "@mailchimp/mailchimp_marketing";
-
-mailchimp.setConfig({
-  apiKey: process.env.MAILCHIMP_API_KEY,
-  server: process.env.MAILCHIMP_SERVER_PREFIX,
-});
-
 export default async function subscribe(req, res) {
   const { email, firstName, lastName, honeypot } = req.body;
 
@@ -23,24 +16,35 @@ export default async function subscribe(req, res) {
   }
 
   const newSubscriber = {
-    email_address: email,
-    status: "subscribed",
-    merge_fields: {
-      FNAME: firstName,
-      LNAME: lastName,
+    email: email,
+    fields: {
+      name: firstName,
+      last_name: lastName,
     },
+    groups: [process.env.MAILERLITE_API_GROUP_ID],
   };
 
   try {
-    // const response = await mailchimp.ping.get();
-    const response = await mailchimp.lists.addListMember(
-      process.env.MAILCHIMP_AUDIENCE_ID,
-      newSubscriber
-    );
-    // console.log(response, newSubscriber);
+    const api = "https://connect.mailerlite.com/api/subscribers";
+    const key = process.env.MAILERLITE_API_KEY || "";
+
+    const response = await fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${key}`,
+      },
+      body: JSON.stringify(newSubscriber),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return res.status(200).json(data);
   } catch (error) {
     return res.status(error.statusCode || 500).json({ error: error.message });
   }
-
-  return res.status(200).json({ error: "" });
 }
