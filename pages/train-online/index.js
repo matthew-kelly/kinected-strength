@@ -9,9 +9,9 @@ import { testimonialsQuery } from "@/lib/queries";
 import { breakpoints } from "@/utils/theme";
 import bannerImg from "@/public/images/train-online-banner.jpg";
 import bannerImgMobile from "@/public/images/train-online-banner-mobile.jpg";
-import imgSUMMIT from "@/public/images/services-physio-led.jpg"; // TODO: new image
 import imgSpecialty from "@/public/images/services-specialty-programs.jpg";
 import imgPersonalized from "@/public/images/services-personalized-plans.jpg";
+import imgSUMMIT from "@/public/images/summit-1.png";
 
 export default function TrainOnline({ page }) {
   return (
@@ -52,7 +52,7 @@ export default function TrainOnline({ page }) {
               <Image
                 src={imgSUMMIT}
                 alt="Andrea working out with a kettlebell. She is on a dock by the water with the North Vancouver skyline in the background."
-                sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 325px`}
+                sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 500px`}
                 placeholder="blur"
                 className="w-full h-auto"
               />
