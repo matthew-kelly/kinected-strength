@@ -91,7 +91,7 @@ export default function BlogPost({ data }) {
           </div>
         </header>
 
-        <section className="prose prose-sm first:prose-headings:mt-0 prose-headings:mt-6 prose-headings:mb-4 prose-headings:text-primary-dark prose-strong:text-primary-dark prose-img:my-4 prose-p:mt-0 prose-p:mb-4 prose-ul:mt-0 prose-ul:mb-4 prose-li:marker:text-secondary-dark prose-li:pl-0 lg:ml-24">
+        <section className="prose prose-sm first:prose-headings:mt-0 prose-headings:mt-6 prose-headings:mb-4 prose-headings:text-primary-dark prose-strong:text-primary-dark prose-img:my-4 prose-p:mt-0 prose-p:mb-4 prose-ul:mt-0 prose-ul:mb-4 prose-li:marker:text-secondary-dark prose-li:pl-0 prose-blockquote:text-primary-dark prose-blockquote:text-base prose-blockquote:border-secondary-dark prose-blockquote:ml-4 lg:ml-24">
           <PortableText
             value={post.body}
             components={{

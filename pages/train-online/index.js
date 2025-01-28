@@ -7,13 +7,11 @@ import ServiceTextBlock from "@/components/ServiceTextBlock";
 import { client } from "@/lib/sanityClient";
 import { testimonialsQuery } from "@/lib/queries";
 import { breakpoints } from "@/utils/theme";
-import bannerImg from "@/public/images/train-in-person.jpg";
-import bannerImgMobile from "@/public/images/train-in-person-mobile.jpg";
-import imgICBC from "@/public/images/services-ICBC.jpg";
-import imgOnline from "@/public/images/services-online.jpg";
-import imgPrivate from "@/public/images/services-private.jpg";
-
-// TODO: update banner image and alt text
+import bannerImg from "@/public/images/train-online-banner.jpg";
+import bannerImgMobile from "@/public/images/train-online-banner-mobile.jpg";
+import imgSUMMIT from "@/public/images/services-physio-led.jpg"; // TODO: new image
+import imgSpecialty from "@/public/images/services-specialty-programs.jpg";
+import imgPersonalized from "@/public/images/services-personalized-plans.jpg";
 
 export default function TrainOnline({ page }) {
   return (
@@ -29,7 +27,7 @@ export default function TrainOnline({ page }) {
         <PageBanner
           image={bannerImg}
           mobileImage={bannerImgMobile}
-          alt="Andrea, Briana, and Jess standing by the water"
+          alt="Andrea, Briana, and Jess each doing kettlebell exercises on a dock by the water, with the North Vancouver skyline in the background."
           title={page.title}
           headline={page.bannerHeadline}
           text={page.bannerText}
@@ -41,7 +39,7 @@ export default function TrainOnline({ page }) {
             What We Offer
           </h2>
 
-          <div className="relative flex md:flex-row flex-col justify-between items-center gap-8 mb-24">
+          <div className="relative flex md:flex-row flex-col justify-between items-start md:items-center gap-8 mb-24">
             <ServiceTextBlock
               title="SUMMIT"
               subtitle={`$59 / month`}
@@ -51,10 +49,9 @@ export default function TrainOnline({ page }) {
               buttonClass="light"
             />
             <DivInView>
-              {/* TODO: update image */}
               <Image
-                src={imgPrivate}
-                alt="Jess swinging a kettlebell"
+                src={imgSUMMIT}
+                alt="Andrea working out with a kettlebell. She is on a dock by the water with the North Vancouver skyline in the background."
                 sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 325px`}
                 placeholder="blur"
                 className="w-full h-auto"
@@ -62,7 +59,7 @@ export default function TrainOnline({ page }) {
             </DivInView>
           </div>
 
-          <div className="relative flex md:flex-row-reverse flex-col justify-between items-center gap-8 mb-24">
+          <div className="relative flex md:flex-row-reverse flex-col justify-between items-start md:items-center gap-8 mb-24">
             <ServiceTextBlock
               title="Specialty Programs"
               subtitle={`Starting at $99`}
@@ -71,18 +68,17 @@ export default function TrainOnline({ page }) {
               linkText="View All Programs"
             />
             <DivInView>
-              {/* TODO: update image */}
               <Image
-                src={imgICBC}
-                alt="Briana holding a plank position"
+                src={imgSpecialty}
+                alt="Briana and Jess face to face and smiling, each holding a plank position."
                 sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 325px`}
                 placeholder="blur"
-                className="w-full h-auto"
+                className="md:w-full h-auto"
               />
             </DivInView>
           </div>
 
-          <div className="relative flex md:flex-row flex-col justify-between items-center gap-8">
+          <div className="relative flex md:flex-row flex-col justify-between items-start md:items-center gap-8">
             <ServiceTextBlock
               title="Personalized Plans"
               subtitle={`Starting at $99 / month`}
@@ -92,11 +88,10 @@ export default function TrainOnline({ page }) {
               buttonClass="inverse"
             />
             <DivInView>
-              {/* TODO: update image */}
               <Image
-                src={imgOnline}
-                alt="A kettlebell, water bottle, foam roller, and yoga mat on a dock"
-                sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 325px`}
+                src={imgPersonalized}
+                alt="Three kettlebells on a yoga mat in front of a person standing, ready to work out."
+                sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 500px`}
                 placeholder="blur"
                 className="w-full h-auto"
               />

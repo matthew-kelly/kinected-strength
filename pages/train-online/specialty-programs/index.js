@@ -4,10 +4,8 @@ import MetaTags from "@/components/MetaTags";
 import ProgramCard from "@/components/ProgramCard";
 import { client } from "@/lib/sanityClient";
 import { allSpecialtyProgramsQuery, testimonialsQuery } from "@/lib/queries";
-import bannerImg from "@/public/images/blog-banner.jpg";
-import bannerImgMobile from "@/public/images/blog-banner-mobile.jpg";
-
-// TODO: update banner image and alt text
+import bannerImg from "@/public/images/specialty-programs-banner.jpg";
+import bannerImgMobile from "@/public/images/specialty-programs-banner-mobile.jpg";
 
 export default function SpecialtyPrograms({ page, programs }) {
   return (
@@ -23,7 +21,7 @@ export default function SpecialtyPrograms({ page, programs }) {
         <PageBanner
           image={bannerImg}
           mobileImage={bannerImgMobile}
-          alt="Briana, Jess, and Andrea doing exercises with kettlebells"
+          alt="Briana and Jess facing each other in plank position. They are on a dock by the water with the Vancouver skyline in the background."
           title={page.title}
           headline={page.bannerHeadline}
           text={page.bannerText}

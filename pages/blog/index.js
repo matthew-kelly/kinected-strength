@@ -82,8 +82,8 @@ export async function getStaticProps() {
   const posts = await client.fetch(allPostsQueryPagination);
   const count = await client.fetch(allPostsCountQuery);
   const page = await client.fetch(testimonialsQuery, {
-    slug: "education",
-  }); // TODO: rename in sanity?
+    slug: "blog",
+  });
 
   return {
     props: {

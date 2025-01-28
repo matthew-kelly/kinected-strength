@@ -8,13 +8,10 @@ import DivInView from "@/components/DivInView";
 import { client } from "@/lib/sanityClient";
 import { testimonialsQuery } from "@/lib/queries";
 import { breakpoints } from "@/utils/theme";
-import bannerImg from "@/public/images/train-in-person.jpg";
 import summit1Img from "@/public/images/summit-1.png";
-import summit2Img from "@/public/images/summit-2.png";
-// import summit3Img from "@/public/images/summit-3.png";
-// import summit4Img from "@/public/images/summit-4.png";
-import summit5Img from "@/public/images/summit-5.png";
-import summit6Img from "@/public/images/summit-6.png";
+import summitProgramImg from "@/public/images/summit-the-program.png";
+import summitAppImg from "@/public/images/summit-the-app.png";
+import summitExercisesImg from "@/public/images/summit-3-exercise-variations.png";
 import Link from "next/link";
 
 export default function Summit({ page }) {
@@ -62,7 +59,7 @@ export default function Summit({ page }) {
         title={page.title}
         description={`${page.bannerHeadline} ${page.bannerText}`}
         slug="train-online/summit"
-        image={{ src: bannerImg.src, isExternal: false }}
+        image={{ src: summit1Img.src, isExternal: false }}
         structuredData={sd}
       />
       <div className="bg-light-gray">
@@ -189,16 +186,13 @@ export default function Summit({ page }) {
                 </TextBlock>
               </DivInView>
               <DivInView amount={0.3} className="flex max-w-full mx-auto">
-                {/* TODO: use these options for final video
-                  https://www.youtube-nocookie.com/embed/
-                  {video id}
-                  ?rel=0&iv_load_policy=3&fs=0&color=white&disablekb=1
-                */}
                 <iframe
-                  src="https://www.youtube-nocookie.com/embed/7Z_kN1aGN08?rel=0&iv_load_policy=3&fs=0&color=white&disablekb=1"
+                  src="https://www.youtube.com/embed/ysqPiGm35YE?rel=0&iv_load_policy=3&fs=0&color=white&disablekb=1"
                   width="560"
                   height="315"
-                  title="Everything You Need to Know About RISE!"
+                  title="Everything you need to know about SUMMIT"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  frameborder="0"
                 ></iframe>
               </DivInView>
               <DivInView>
@@ -309,7 +303,7 @@ export default function Summit({ page }) {
         </section>
 
         <section className="flex flex-col bg-light-gray text-primary-dark">
-          <div className="flex flex-col gap-8 max-w-6xl w-full self-center py-16">
+          <div className="flex flex-col gap-12 md:gap-8 max-w-6xl w-full self-center py-16">
             <div className="grid md:grid-cols-[1fr_1fr] gap-4 md:gap-8 justify-center items-center lg:px-32 md:px-16 px-8">
               <DivInView>
                 <TextBlock title="The Program">
@@ -364,7 +358,7 @@ export default function Summit({ page }) {
               </DivInView>
               <DivInView amount={0.3} delay={0.1}>
                 <Image
-                  src={summit2Img}
+                  src={summitProgramImg}
                   alt="screenshot example of a SUMMIT workout with Andrea Brennan in the background working out with kettlebells"
                   sizes={imgSizes}
                   placeholder="blur"
@@ -391,7 +385,7 @@ export default function Summit({ page }) {
               </DivInView>
               <DivInView amount={0.3} delay={0.1}>
                 <Image
-                  src={summit5Img}
+                  src={summitAppImg}
                   alt="two examples of a SUMMIT workout"
                   sizes={imgSizes}
                   placeholder="blur"
@@ -423,10 +417,9 @@ export default function Summit({ page }) {
                 </TextBlock>
               </DivInView>
               <DivInView amount={0.3} delay={0.1}>
-                {/* TODO: replace image and alt text */}
                 <Image
-                  src={summit6Img}
-                  alt="example of a SUMMIT workout"
+                  src={summitExercisesImg}
+                  alt="Andrea performing three examples of exercise variations in the SUMMIT program."
                   sizes={imgSizes}
                   placeholder="blur"
                 />

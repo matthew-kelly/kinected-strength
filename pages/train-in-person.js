@@ -7,10 +7,10 @@ import MetaTags from "@/components/MetaTags";
 import { client } from "@/lib/sanityClient";
 import { testimonialsQuery } from "@/lib/queries";
 import { breakpoints } from "@/utils/theme";
-import bannerImg from "@/public/images/train-in-person.jpg";
-import bannerImgMobile from "@/public/images/train-in-person-mobile.jpg";
+import bannerImg from "@/public/images/train-in-person-banner.jpg";
+import bannerImgMobile from "@/public/images/train-in-person-banner-mobile.jpg";
 import imgICBC from "@/public/images/services-ICBC.jpg";
-import imgOnline from "@/public/images/services-online.jpg";
+import imgGroup from "@/public/images/services-group-classes.jpg";
 import imgPrivate from "@/public/images/services-private.jpg";
 
 export default function TrainInPerson({ page }) {
@@ -88,11 +88,11 @@ export default function TrainInPerson({ page }) {
             />
             <DivInView>
               <Image
-                src={imgOnline}
+                src={imgGroup}
                 alt="A kettlebell, water bottle, foam roller, and yoga mat on a dock"
                 sizes={`(max-width: ${breakpoints.sm}px) 100vw, (max-width: ${breakpoints.md}px) 100vw, 325px`}
                 placeholder="blur"
-                className="w-full h-auto"
+                className="md:w-full h-auto"
               />
             </DivInView>
           </div>
@@ -112,7 +112,7 @@ export default function TrainInPerson({ page }) {
 
 export async function getStaticProps() {
   const page = await client.fetch(testimonialsQuery, {
-    slug: "strength", // TODO: rename in sanity?
+    slug: "train-in-person",
   });
 
   return {
