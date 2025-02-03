@@ -8,9 +8,20 @@ export default async function handler(req, res) {
     const paths = req.query.paths.split(",");
 
     console.log(paths);
-    for (let i = 0; i < paths.length; i++) {
-      await res.revalidate(paths[i]);
+
+    if (!paths) {
+      return res.status(500).send("Error revalidating. No paths provided.");
     }
+
+    // if more than one path, pull out the first path, revalidate it, and then revalidate the rest after
+    if (paths.length > 1) {
+      const [firstPath, ...restPaths] = paths;
+      await res.revalidate(firstPath);
+      paths = restPaths;
+    }
+
+    // Use Promise.all to revalidate all paths concurrently
+    await Promise.all(paths.map((path) => res.revalidate(path)));
 
     return res.json({ revalidated: true });
   } catch (err) {
