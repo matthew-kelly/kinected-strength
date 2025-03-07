@@ -13,6 +13,7 @@ import summitProgramImg from "@/public/images/summit-the-program.png";
 import summitAppImg from "@/public/images/summit-the-app.png";
 import summitExercisesImg from "@/public/images/summit-3-exercise-variations.png";
 import Link from "next/link";
+import { YouTubeEmbed } from "@next/third-parties/google";
 
 export default function Summit({ page }) {
   const imgSizes = `(max-width: ${breakpoints.sm}px) 100vw, 50vw`;
@@ -186,14 +187,11 @@ export default function Summit({ page }) {
                 </TextBlock>
               </DivInView>
               <DivInView amount={0.3} className="flex max-w-full mx-auto">
-                <iframe
-                  src="https://www.youtube.com/embed/ysqPiGm35YE?rel=0&iv_load_policy=3&fs=0&color=white&disablekb=1"
-                  width="560"
-                  height="315"
-                  title="Everything you need to know about SUMMIT"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  frameborder="0"
-                ></iframe>
+                <YouTubeEmbed
+                  videoid="ysqPiGm35YE"
+                  width={560}
+                  params="controls=0&rel=0&iv_load_policy=3&fs=0&color=white&disablekb=1&modestbranding=1&playsinline=1"
+                />
               </DivInView>
               <DivInView>
                 <ButtonLink
