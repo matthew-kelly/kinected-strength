@@ -5,11 +5,11 @@ export default async function handler(req, res) {
   // }
 
   try {
-    const paths = req.query.paths.split(",");
+    let paths = req.query.paths.split(",");
 
-    console.log(paths);
+    console.log("revalidating paths:", paths);
 
-    if (!paths) {
+    if (!paths || paths.length === 0) {
       return res.status(500).send("Error revalidating. No paths provided.");
     }
 
@@ -25,8 +25,7 @@ export default async function handler(req, res) {
 
     return res.json({ revalidated: true });
   } catch (err) {
-    // If there was an error, Next.js will continue
-    // to show the last successfully generated page
+    // If there was an error, Next.js will continue to show the last successfully generated page
     return res.status(500).send("Error revalidating");
   }
 }
