@@ -8,6 +8,7 @@ import brianaImg from "@/public/images/our-story-briana.jpg";
 import geoffImg from "@/public/images/our-story-geoff.jpg";
 import daveImg from "@/public/images/our-story-dave.jpg";
 import christinaImg from "@/public/images/our-story-christina.jpg";
+import crystalImg from "@/public/images/our-story-crystal.jpg";
 import { Circle } from "@/components/shapes";
 import TestimonialBlock from "@/components/TestimonialBlock";
 import {
@@ -48,11 +49,15 @@ export default function OurStory({ page, team }) {
   const dataChristina = team.find(
     (member) => member._id === "d613f429-f833-4a4c-a4f9-1838f60c1a5e"
   );
+  const dataCrystal = team.find(
+    (member) => member._id === "3b340e19-bffe-420f-a4e8-8d46e12f4e10"
+  );
 
   // Animation - options
   const inViewOptions = {
     once: true,
-    amount: isMobile ? "some" : 0.1,
+    amount: 0.1,
+    // amount: isMobile ? "some" : 0.1,
   };
   const variantsMain = {
     hidden: {
@@ -64,7 +69,7 @@ export default function OurStory({ page, team }) {
       y: 0,
       transition: {
         // staggerChildren: 1,
-        delayChildren: isMobile ? 0 : 0.5,
+        delayChildren: isMobile ? 0 : 0.3,
         // delay: isMobile ? 0 : 0.3,
       },
     },
@@ -128,6 +133,16 @@ export default function OurStory({ page, team }) {
       controlsChristina.start("visible");
     }
   }, [controlsChristina, isInViewChristina]);
+
+  // Animation - Crystal
+  const controlsCrystal = useAnimationControls();
+  const refCrystal = useRef(null);
+  const isInViewCrystal = useInView(refCrystal, inViewOptions);
+  useEffect(() => {
+    if (isInViewCrystal) {
+      controlsCrystal.start("visible");
+    }
+  }, [controlsCrystal, isInViewCrystal]);
 
   return (
     <>
@@ -476,7 +491,7 @@ export default function OurStory({ page, team }) {
                     hidden: { opacity: 0, x: isMobile ? 0 : 100 },
                     visible: { opacity: 1, x: 0 },
                   }}
-                  className="md:w-2/5 w-full"
+                  className="md:w-2/5 w-full relative"
                 >
                   <Image
                     src={daveImg}
@@ -486,6 +501,7 @@ export default function OurStory({ page, team }) {
                     alt="David Ewart"
                     className="w-full h-auto"
                   />
+                  <div className="absolute top-0 left-0 md:bg-gradient-to-b from-white/60 w-full h-24"></div>
                 </m.div>
                 <m.div
                   variants={{
@@ -710,6 +726,101 @@ export default function OurStory({ page, team }) {
                   d="M0 154L445 154C445 -51.3336 -1.07576e-05 -51.3336 0 154ZM-2.61955e-06 154L0 204L445 204V154L-2.61955e-06 154Z"
                 />
               </m.svg>
+            </m.div>
+          </LayoutGroup>
+
+          <LayoutGroup>
+            <m.div
+              ref={refCrystal}
+              animate={controlsCrystal}
+              initial={reduceMotion ? "visible" : "hidden"}
+              variants={variantsMain}
+              className="relative md:max-w-4xl w-full flex flex-col lg:ml-24 lg:pr-8 md:mt-12 md:mb-12 md:pt-0 pt-16"
+            >
+              <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
+                <m.span
+                  variants={{
+                    hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      transition: { delay: isMobile ? 0 : 0.2 },
+                    },
+                  }}
+                >
+                  Crystal
+                </m.span>
+                <m.span
+                  variants={
+                    isMobile
+                      ? {
+                          visible: { opacity: 1, x: 0 },
+                        }
+                      : {
+                          hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                          visible: {
+                            opacity: 1,
+                            x: 0,
+                            transition: { delay: isMobile ? 0 : 0.4 },
+                          },
+                        }
+                  }
+                >
+                  Leyland
+                </m.span>
+              </h3>
+              <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
+                <m.div
+                  variants={{
+                    hidden: { opacity: 0, x: isMobile ? 0 : -200 },
+                    visible: { opacity: 1, x: 0 },
+                  }}
+                  className="md:w-2/5 w-full relative"
+                >
+                  <Image
+                    src={crystalImg}
+                    quality={80}
+                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 33vw`}
+                    placeholder="blur"
+                    alt="Crystal Leyland"
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute top-0 left-0 md:bg-gradient-to-b from-white/60 w-full h-24"></div>
+                </m.div>
+                <m.div
+                  variants={{
+                    hidden: { opacity: 0, y: isMobile ? 0 : 200 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { delay: isMobile ? 0 : 0.7 },
+                    },
+                  }}
+                  className="md:w-3/5"
+                >
+                  <div className="h-16 lg:block hidden"></div>
+                  {dataCrystal?.headline && (
+                    <p className="text-lg font-display font-extrabold mb-4">
+                      {dataCrystal.headline}
+                    </p>
+                  )}
+                  <div className="prose prose-sm prose-p:mt-0 prose-p:mb-4">
+                    <PortableText value={dataCrystal.bio} />
+                  </div>
+                </m.div>
+              </div>
+              <m.div
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { delay: isMobile ? 0 : 0.6 },
+                  },
+                }}
+                className="absolute md:top-1/2 md:-translate-y-1/2 md:-left-24 top-48 -translate-y-3/4 -left-16"
+              >
+                <Circle size={200} color="fill-secondary-dark" />
+              </m.div>
             </m.div>
           </LayoutGroup>
         </div>
