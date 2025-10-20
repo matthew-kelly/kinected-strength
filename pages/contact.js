@@ -6,6 +6,9 @@ import { useWindowSize } from "@/lib/useWindowSize";
 import { breakpoints } from "@/utils/theme";
 import MetaTags from "@/components/MetaTags";
 import PageBannerImage from "@/components/PageBannerImage";
+import { Turnstile } from "next-turnstile";
+
+const TURNSTILE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 export default function Contact() {
   // email contact form
@@ -19,6 +22,10 @@ export default function Contact() {
   const [isError, setIsError] = useState(false);
   const [formError, setFormError] = useState("");
   const windowSize = useWindowSize();
+  const formRef = createRef();
+
+  // turnstile
+  const [turnstileStatus, setTurnstileStatus] = useState("required");
 
   const messageBlock = createRef();
   const [messageBlockHeight, setMessageBlockHeight] = useState(null);
@@ -58,10 +65,19 @@ export default function Contact() {
     e.preventDefault();
     let isValidForm = handleValidation();
     if (!isValidForm) return;
+
+    if (turnstileStatus !== "success") {
+      setFormError("Please verify you are not a robot");
+      return;
+    }
+
     setFormError("");
     setIsSending(true);
     setIsError(false);
     setIsSent(false);
+
+    const formData = new FormData(formRef.current);
+    const token = formData.get("cf-turnstile-response");
 
     const res = await fetch("/api/contact", {
       method: "POST",
@@ -73,6 +89,7 @@ export default function Contact() {
         name: `${firstName} ${lastName}`,
         reason,
         message,
+        token,
       }),
     });
     const { error } = await res.json();
@@ -123,6 +140,7 @@ export default function Contact() {
               </p>
 
               <form
+                ref={formRef}
                 className="flex flex-col text-primary-dark mt-16 md:min-w-2xl"
                 onSubmit={handleSubmit}
               >
@@ -231,6 +249,35 @@ export default function Contact() {
                         calcMessageBlockHeight();
                       }}
                       required
+                    />
+                  </div>
+
+                  <div className="flex">
+                    <Turnstile
+                      siteKey={TURNSTILE_KEY}
+                      retry="auto"
+                      refreshExpired="auto"
+                      // sandbox={process.env.NODE_ENV === "development"}
+                      onError={() => {
+                        setTurnstileStatus("error");
+                        setFormError(
+                          "Security check failed. Please try again."
+                        );
+                      }}
+                      onExpire={() => {
+                        setTurnstileStatus("expired");
+                        setFormError(
+                          "Security check expired. Please verify again."
+                        );
+                      }}
+                      onLoad={() => {
+                        setTurnstileStatus("required");
+                        setFormError("");
+                      }}
+                      onVerify={(token) => {
+                        setTurnstileStatus("success");
+                        setFormError("");
+                      }}
                     />
                   </div>
 

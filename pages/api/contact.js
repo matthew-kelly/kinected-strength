@@ -1,7 +1,22 @@
+import { validateTurnstileToken } from "next-turnstile";
 import nodemailer from "nodemailer";
+import { v4 } from "uuid";
 
 export default async function sendEmail(req, res) {
-  const { name, email, reason, message } = req.body;
+  const { name, email, reason, message, token } = req.body;
+
+  const validationResponse = await validateTurnstileToken({
+    token,
+    secretKey: process.env.TURNSTILE_SECRET_KEY,
+    idempotencyKey: v4(),
+    // sandbox: process.env.NODE_ENV === "development",
+  });
+
+  if (!validationResponse.success) {
+    return res
+      .status(400)
+      .json({ error: "Unable to send message. Please try again." });
+  }
 
   try {
     // Initializing the SMTP connection
