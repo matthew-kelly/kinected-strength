@@ -18,7 +18,7 @@ import {
   useInView,
   useReducedMotion,
 } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useWindowSize } from "@/lib/useWindowSize";
 import { breakpoints } from "@/utils/theme";
 import { client } from "@/lib/sanityClient";
@@ -168,7 +168,7 @@ export default function OurStory({ page, team }) {
           <h2 className="uppercase text-xl mb-8 tracking-wider">
             Meet the founders
           </h2>
-
+          <div id="andrea-brennan"></div>
           <LayoutGroup>
             <m.div
               ref={refAndrea}
@@ -262,7 +262,7 @@ export default function OurStory({ page, team }) {
               </m.div>
             </m.div>
           </LayoutGroup>
-
+          <div id="jess-pastro"></div>
           <LayoutGroup>
             <m.div
               ref={refJess}
@@ -352,7 +352,7 @@ export default function OurStory({ page, team }) {
               </m.svg>
             </m.div>
           </LayoutGroup>
-
+          <div id="briana-kelly"></div>
           <LayoutGroup>
             <m.div
               ref={refBri}
@@ -450,7 +450,7 @@ export default function OurStory({ page, team }) {
           <h2 className="uppercase text-xl mb-8 mt-8 tracking-wider">
             Meet the team
           </h2>
-
+          <div id="david-ewart"></div>
           <LayoutGroup>
             <m.div
               ref={refDave}
@@ -541,7 +541,7 @@ export default function OurStory({ page, team }) {
               </m.svg>
             </m.div>
           </LayoutGroup>
-
+          <div id="geoffrey-soo"></div>
           <LayoutGroup>
             <m.div
               ref={refGeoff}
@@ -635,7 +635,7 @@ export default function OurStory({ page, team }) {
               </m.div>
             </m.div>
           </LayoutGroup>
-
+          <div id="christina-carrick"></div>
           <LayoutGroup>
             <m.div
               ref={refChristina}
@@ -729,6 +729,7 @@ export default function OurStory({ page, team }) {
             </m.div>
           </LayoutGroup>
 
+          <div id="crystal-leyland"></div>
           <LayoutGroup>
             <m.div
               ref={refCrystal}
