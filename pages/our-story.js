@@ -9,6 +9,7 @@ import geoffImg from "@/public/images/our-story-geoff.jpg";
 import daveImg from "@/public/images/our-story-dave.jpg";
 import christinaImg from "@/public/images/our-story-christina.jpg";
 import crystalImg from "@/public/images/our-story-crystal.jpg";
+import seanImg from "@/public/images/our-story-sean.jpg";
 import { Circle } from "@/components/shapes";
 import TestimonialBlock from "@/components/TestimonialBlock";
 import {
@@ -18,7 +19,7 @@ import {
   useInView,
   useReducedMotion,
 } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useWindowSize } from "@/lib/useWindowSize";
 import { breakpoints } from "@/utils/theme";
 import { client } from "@/lib/sanityClient";
@@ -26,31 +27,43 @@ import { authorsQuery, testimonialsQuery } from "@/lib/queries";
 import MetaTags from "@/components/MetaTags";
 import { PortableText } from "@portabletext/react";
 
+const TIME_BASE = 0.3;
+const TIME_SHORT = 0.1;
+const TIME_LONG = 0.6;
+
+const DISTANCE_BASE = 24;
+const DISTANCE_BASE_NEG = DISTANCE_BASE * -1;
+const DISTANCE_LONG = 48;
+const DISTANCE_LONG_NEG = DISTANCE_LONG * -1;
+
 export default function OurStory({ page, team }) {
   const windowSize = useWindowSize();
   const reduceMotion = useReducedMotion();
   const isMobile = windowSize.width < breakpoints.sm;
 
   const dataAndrea = team.find(
-    (member) => member._id === "6546d0cd-24ed-4569-b3ce-f6816858574a"
+    (member) => member._id === "6546d0cd-24ed-4569-b3ce-f6816858574a",
   );
   const dataJess = team.find(
-    (member) => member._id === "8934489f-bed1-4946-b55e-d1a0c0133078"
+    (member) => member._id === "8934489f-bed1-4946-b55e-d1a0c0133078",
   );
   const dataBriana = team.find(
-    (member) => member._id === "0ef95911-ac60-4c6d-8a2d-5e0a361f38ca"
+    (member) => member._id === "0ef95911-ac60-4c6d-8a2d-5e0a361f38ca",
   );
   const dataGeoff = team.find(
-    (member) => member._id === "d8b68a7a-0416-44c7-aafd-22094c3a20b2"
+    (member) => member._id === "d8b68a7a-0416-44c7-aafd-22094c3a20b2",
   );
   const dataDave = team.find(
-    (member) => member._id === "d53e13b2-70d2-449b-b80d-a4991505ae97"
+    (member) => member._id === "d53e13b2-70d2-449b-b80d-a4991505ae97",
   );
   const dataChristina = team.find(
-    (member) => member._id === "d613f429-f833-4a4c-a4f9-1838f60c1a5e"
+    (member) => member._id === "d613f429-f833-4a4c-a4f9-1838f60c1a5e",
   );
   const dataCrystal = team.find(
-    (member) => member._id === "3b340e19-bffe-420f-a4e8-8d46e12f4e10"
+    (member) => member._id === "3b340e19-bffe-420f-a4e8-8d46e12f4e10",
+  );
+  const dataSean = team.find(
+    (member) => member._id === "4686d581-372a-43d4-b546-324556391c0e",
   );
 
   // Animation - options
@@ -62,15 +75,15 @@ export default function OurStory({ page, team }) {
   const variantsMain = {
     hidden: {
       opacity: 0,
-      y: isMobile ? -100 : 0,
+      y: isMobile ? DISTANCE_BASE_NEG : 0,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         // staggerChildren: 1,
-        delayChildren: isMobile ? 0 : 0.3,
-        // delay: isMobile ? 0 : 0.3,
+        delayChildren: isMobile ? 0 : TIME_BASE,
+        // delay: isMobile ? 0 : TIME_BASE,
       },
     },
   };
@@ -144,6 +157,16 @@ export default function OurStory({ page, team }) {
     }
   }, [controlsCrystal, isInViewCrystal]);
 
+  // Animation - Sean
+  const controlsSean = useAnimationControls();
+  const refSean = useRef(null);
+  const isInViewSean = useInView(refSean, inViewOptions);
+  useEffect(() => {
+    if (isInViewSean) {
+      controlsSean.start("visible");
+    }
+  }, [controlsSean, isInViewSean]);
+
   return (
     <>
       <MetaTags
@@ -180,11 +203,11 @@ export default function OurStory({ page, team }) {
               <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.2 },
+                      transition: { delay: isMobile ? 0 : TIME_SHORT },
                     },
                   }}
                 >
@@ -197,11 +220,14 @@ export default function OurStory({ page, team }) {
                           visible: { opacity: 1, x: 0 },
                         }
                       : {
-                          hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                          hidden: {
+                            opacity: 0,
+                            x: isMobile ? 0 : DISTANCE_BASE,
+                          },
                           visible: {
                             opacity: 1,
                             x: 0,
-                            transition: { delay: isMobile ? 0 : 0.4 },
+                            transition: { delay: isMobile ? 0 : TIME_LONG },
                           },
                         }
                   }
@@ -212,7 +238,7 @@ export default function OurStory({ page, team }) {
               <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : -200 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_LONG_NEG },
                     visible: { opacity: 1, x: 0 },
                   }}
                   className="md:w-2/5 w-full"
@@ -228,11 +254,11 @@ export default function OurStory({ page, team }) {
                 </m.div>
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, y: isMobile ? 0 : 200 },
+                    hidden: { opacity: 0, y: isMobile ? 0 : DISTANCE_LONG },
                     visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { delay: isMobile ? 0 : 0.7 },
+                      transition: { delay: isMobile ? 0 : TIME_BASE },
                     },
                   }}
                   className="md:w-3/5"
@@ -274,11 +300,11 @@ export default function OurStory({ page, team }) {
               <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[60%] md:left-[73%] left-2/3 md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : -100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE_NEG },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.2 },
+                      transition: { delay: isMobile ? 0 : TIME_SHORT },
                     },
                   }}
                 >
@@ -286,11 +312,11 @@ export default function OurStory({ page, team }) {
                 </m.span>
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : -100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE_NEG },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.4 },
+                      transition: { delay: isMobile ? 0 : TIME_BASE },
                     },
                   }}
                 >
@@ -300,7 +326,7 @@ export default function OurStory({ page, team }) {
               <div className="flex md:flex-row-reverse flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE },
                     visible: { opacity: 1, x: 0 },
                   }}
                   className="md:w-2/5 w-full"
@@ -316,11 +342,11 @@ export default function OurStory({ page, team }) {
                 </m.div>
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, y: isMobile ? 0 : 200 },
+                    hidden: { opacity: 0, y: isMobile ? 0 : DISTANCE_LONG },
                     visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { delay: isMobile ? 0 : 0.7 },
+                      transition: { delay: isMobile ? 0 : TIME_LONG },
                     },
                   }}
                   className="md:w-3/5"
@@ -365,11 +391,11 @@ export default function OurStory({ page, team }) {
                 {/* flex md:flex-col md:gap-0 gap-2          md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] lg:-translate-x-1/2 md:-translate-x-1/2 md:-top-12 z-20 */}
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.2 },
+                      transition: { delay: isMobile ? 0 : TIME_SHORT },
                     },
                   }}
                 >
@@ -377,11 +403,11 @@ export default function OurStory({ page, team }) {
                 </m.span>
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.4 },
+                      transition: { delay: isMobile ? 0 : TIME_BASE },
                     },
                   }}
                 >
@@ -391,7 +417,7 @@ export default function OurStory({ page, team }) {
               <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : -200 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_LONG_NEG },
                     visible: { opacity: 1, x: 0 },
                   }}
                   className="md:w-2/5 w-full"
@@ -407,11 +433,11 @@ export default function OurStory({ page, team }) {
                 </m.div>
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, y: isMobile ? 0 : 200 },
+                    hidden: { opacity: 0, y: isMobile ? 0 : DISTANCE_LONG },
                     visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { delay: isMobile ? 0 : 0.7 },
+                      transition: { delay: isMobile ? 0 : TIME_LONG },
                     },
                   }}
                   className="md:w-3/5"
@@ -462,11 +488,11 @@ export default function OurStory({ page, team }) {
               <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[60%] md:left-[73%] left-2/3 md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : -100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE_NEG },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.2 },
+                      transition: { delay: isMobile ? 0 : TIME_SHORT },
                     },
                   }}
                 >
@@ -474,11 +500,11 @@ export default function OurStory({ page, team }) {
                 </m.span>
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : -100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE_NEG },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.4 },
+                      transition: { delay: isMobile ? 0 : TIME_BASE },
                     },
                   }}
                 >
@@ -488,7 +514,7 @@ export default function OurStory({ page, team }) {
               <div className="flex md:flex-row-reverse flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE },
                     visible: { opacity: 1, x: 0 },
                   }}
                   className="md:w-2/5 w-full relative"
@@ -505,11 +531,11 @@ export default function OurStory({ page, team }) {
                 </m.div>
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, y: isMobile ? 0 : 200 },
+                    hidden: { opacity: 0, y: isMobile ? 0 : DISTANCE_LONG },
                     visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { delay: isMobile ? 0 : 0.7 },
+                      transition: { delay: isMobile ? 0 : TIME_LONG },
                     },
                   }}
                   className="md:w-3/5"
@@ -553,11 +579,11 @@ export default function OurStory({ page, team }) {
               <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.2 },
+                      transition: { delay: isMobile ? 0 : TIME_SHORT },
                     },
                   }}
                 >
@@ -570,11 +596,14 @@ export default function OurStory({ page, team }) {
                           visible: { opacity: 1, x: 0 },
                         }
                       : {
-                          hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                          hidden: {
+                            opacity: 0,
+                            x: isMobile ? 0 : DISTANCE_BASE,
+                          },
                           visible: {
                             opacity: 1,
                             x: 0,
-                            transition: { delay: isMobile ? 0 : 0.4 },
+                            transition: { delay: isMobile ? 0 : TIME_BASE },
                           },
                         }
                   }
@@ -585,7 +614,7 @@ export default function OurStory({ page, team }) {
               <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : -200 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_LONG_NEG },
                     visible: { opacity: 1, x: 0 },
                   }}
                   className="md:w-2/5 w-full"
@@ -601,11 +630,11 @@ export default function OurStory({ page, team }) {
                 </m.div>
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, y: isMobile ? 0 : 200 },
+                    hidden: { opacity: 0, y: isMobile ? 0 : DISTANCE_LONG },
                     visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { delay: isMobile ? 0 : 0.7 },
+                      transition: { delay: isMobile ? 0 : TIME_LONG },
                     },
                   }}
                   className="md:w-3/5"
@@ -647,11 +676,11 @@ export default function OurStory({ page, team }) {
               <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[60%] md:left-[73%] left-2/3 md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : -100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE_NEG },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.2 },
+                      transition: { delay: isMobile ? 0 : TIME_SHORT },
                     },
                   }}
                 >
@@ -659,11 +688,11 @@ export default function OurStory({ page, team }) {
                 </m.span>
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : -100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE_NEG },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.4 },
+                      transition: { delay: isMobile ? 0 : TIME_BASE },
                     },
                   }}
                 >
@@ -673,7 +702,7 @@ export default function OurStory({ page, team }) {
               <div className="flex md:flex-row-reverse flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE },
                     visible: { opacity: 1, x: 0 },
                   }}
                   className="md:w-2/5 w-full"
@@ -689,11 +718,11 @@ export default function OurStory({ page, team }) {
                 </m.div>
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, y: isMobile ? 0 : 200 },
+                    hidden: { opacity: 0, y: isMobile ? 0 : DISTANCE_LONG },
                     visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { delay: isMobile ? 0 : 0.7 },
+                      transition: { delay: isMobile ? 0 : TIME_LONG },
                     },
                   }}
                   className="md:w-3/5"
@@ -741,11 +770,11 @@ export default function OurStory({ page, team }) {
               <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[40%] md:left-[25%] md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
                 <m.span
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE },
                     visible: {
                       opacity: 1,
                       x: 0,
-                      transition: { delay: isMobile ? 0 : 0.2 },
+                      transition: { delay: isMobile ? 0 : TIME_SHORT },
                     },
                   }}
                 >
@@ -758,11 +787,14 @@ export default function OurStory({ page, team }) {
                           visible: { opacity: 1, x: 0 },
                         }
                       : {
-                          hidden: { opacity: 0, x: isMobile ? 0 : 100 },
+                          hidden: {
+                            opacity: 0,
+                            x: isMobile ? 0 : DISTANCE_BASE,
+                          },
                           visible: {
                             opacity: 1,
                             x: 0,
-                            transition: { delay: isMobile ? 0 : 0.4 },
+                            transition: { delay: isMobile ? 0 : TIME_BASE },
                           },
                         }
                   }
@@ -773,7 +805,7 @@ export default function OurStory({ page, team }) {
               <div className="flex md:flex-row flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, x: isMobile ? 0 : -200 },
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_LONG_NEG },
                     visible: { opacity: 1, x: 0 },
                   }}
                   className="md:w-2/5 w-full relative"
@@ -790,11 +822,11 @@ export default function OurStory({ page, team }) {
                 </m.div>
                 <m.div
                   variants={{
-                    hidden: { opacity: 0, y: isMobile ? 0 : 200 },
+                    hidden: { opacity: 0, y: isMobile ? 0 : DISTANCE_LONG },
                     visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { delay: isMobile ? 0 : 0.7 },
+                      transition: { delay: isMobile ? 0 : TIME_LONG },
                     },
                   }}
                   className="md:w-3/5"
@@ -821,6 +853,112 @@ export default function OurStory({ page, team }) {
                 className="absolute md:top-1/2 md:-translate-y-1/2 md:-left-24 top-48 -translate-y-3/4 -left-16"
               >
                 <Circle size={200} color="fill-secondary-dark" />
+              </m.div>
+            </m.div>
+          </LayoutGroup>
+
+          <div id="sean-calderwood"></div>
+          <LayoutGroup>
+            <m.div
+              ref={refSean}
+              animate={controlsSean}
+              initial={reduceMotion ? "visible" : "hidden"}
+              variants={variantsMain}
+              className="relative md:max-w-4xl w-full flex flex-col md:self-end md:pt-0 pt-24 md:mt-24 lg:mr-24 lg:pl-8 md:mb-12"
+            >
+              <h3 className="flex md:flex-col md:gap-0 gap-2 md:text-5xl text-4xl md:absolute lg:left-[60%] md:left-[73%] left-2/3 md:-translate-x-1/2 md:-top-12 z-20 font-extrabold">
+                <m.span
+                  variants={{
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE_NEG },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      transition: { delay: isMobile ? 0 : TIME_SHORT },
+                    },
+                  }}
+                >
+                  Sean
+                </m.span>
+                <m.span
+                  variants={{
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE_NEG },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      transition: { delay: isMobile ? 0 : TIME_BASE },
+                    },
+                  }}
+                >
+                  Calderwood
+                </m.span>
+              </h3>
+              <div className="flex md:flex-row-reverse flex-col md:gap-10 gap-4 z-10 md:mt-0 mt-4">
+                <m.div
+                  variants={{
+                    hidden: { opacity: 0, x: isMobile ? 0 : DISTANCE_BASE },
+                    visible: { opacity: 1, x: 0 },
+                  }}
+                  className="md:w-2/5 w-full"
+                >
+                  <Image
+                    src={seanImg}
+                    quality={80}
+                    sizes={`(max-width: ${breakpoints.md}px) 100vw, 33vw`}
+                    placeholder="blur"
+                    alt="Sean Calderwood"
+                    className="w-full h-auto"
+                  />
+                </m.div>
+                <m.div
+                  variants={{
+                    hidden: { opacity: 0, y: isMobile ? 0 : DISTANCE_LONG },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { delay: isMobile ? 0 : TIME_LONG },
+                    },
+                  }}
+                  className="md:w-3/5"
+                >
+                  <div className="h-16 lg:block hidden"></div>
+                  {dataSean?.headline && (
+                    <p className="text-lg font-display font-extrabold mb-4">
+                      {dataSean.headline}
+                    </p>
+                  )}
+                  <div className="prose prose-sm prose-p:mt-0 prose-p:mb-4">
+                    <PortableText value={dataSean.bio} />
+                  </div>
+                </m.div>
+              </div>
+              {/* <m.svg
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { delay: isMobile ? 0 : 0.6 },
+                  },
+                }}
+                viewBox="0 0 445 204"
+                className="fill-primary-light absolute md:top-0 top-16 md:rotate-0 -rotate-90 md:-translate-y-1/2 translate-y-1/2 md:-right-32 -right-24 md:w-64 w-48"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M0 154L445 154C445 -51.3336 -1.07576e-05 -51.3336 0 154ZM-2.61955e-06 154L0 204L445 204V154L-2.61955e-06 154Z"
+                />
+              </m.svg> */}
+              <m.div
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { delay: isMobile ? 0 : 0.6 },
+                  },
+                }}
+                className="absolute md:top-1/2 md:-translate-y-1/2 md:-right-24 top-full -translate-y-3/4 -right-16"
+              >
+                <Circle size={200} color="fill-secondary-light" />
               </m.div>
             </m.div>
           </LayoutGroup>
