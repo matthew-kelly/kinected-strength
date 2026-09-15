@@ -81,7 +81,7 @@ export default function TrainInPerson({ page }) {
               title={`Group Classes`}
               subtitle={`All levels welcome!`}
               body={`Classes available 6 days per week. Smaller class sizes, expert coaching and guidance to help you achieve your goals. Even if you're a beginner to strength training, you're not on this journey alone; join our community of strong and confident members!`}
-              link="https://www.shypractice.ca/whatwedoyoga"
+              link="https://kinectedstrength.janeapp.com"
               linkText="Book Your Class Today"
               newTab={true}
               buttonClass="inverse"
